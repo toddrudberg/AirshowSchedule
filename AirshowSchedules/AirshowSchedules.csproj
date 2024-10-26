@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Electroimpact.SettingsFormBuilder">
+      <HintPath>..\..\..\..\..\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.SettingsFormBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Electroimpact.XmlSerializer">
+      <HintPath>..\..\..\..\..\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.XmlSerializer.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
