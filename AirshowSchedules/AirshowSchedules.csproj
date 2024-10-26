@@ -13,15 +13,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj" />
+    <ProjectReference Include="..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="Electroimpact.SettingsFormBuilder">
-      <HintPath>..\..\..\..\..\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.SettingsFormBuilder.dll</HintPath>
+      <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.SettingsFormBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Electroimpact.XmlSerializer">
-      <HintPath>..\..\..\..\..\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.XmlSerializer.dll</HintPath>
+      <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.XmlSerializer.dll</HintPath>
     </Reference>
   </ItemGroup>
 

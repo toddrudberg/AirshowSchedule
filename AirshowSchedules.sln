@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AirshowSchedules", "AirshowSchedules\AirshowSchedules.csproj", "{8EC50451-1EC4-4FF6-90E1-8AD836857588}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileParser", "..\..\..\..\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj", "{912B938F-2CF9-407E-9AF9-BC685657F564}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileParser", "..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj", "{912B938F-2CF9-407E-9AF9-BC685657F564}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
