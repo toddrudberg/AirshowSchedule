@@ -24,8 +24,14 @@ namespace AirshowSchedules
   public partial class frmAirshowScheduleTool : Form
   {
     cAirshowFormState myFormState = new cAirshowFormState();
+
+    //This is the master list
     List<cAirshow> myAirshows = new List<cAirshow>();
+
+    //this is used for display
     List<cAirshow> myFilteredAirshows = new List<cAirshow>();
+
+    //not sure
     List<cAirshow> myMergedShows = new List<cAirshow>();
     cAirshowFileParserSetupTool WorkingFileParserClass = new cAirshowFileParserSetupTool();
     cAirshowScheduleCompare myASGCompare = new cAirshowScheduleCompare();
