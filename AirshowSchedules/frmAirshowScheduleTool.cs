@@ -514,31 +514,44 @@ namespace AirshowSchedules
 
     public frmAirshowScheduleTool()
     {
-      InitializeComponent();
+      //if(!DesignMode)
+      {
+        try
+        {
+            InitializeComponent();
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show("Error loading Designer: " + ex.Message);
+        }
+      }
     }
 
     #region Form Event Callbacks
-    private void Form1_Load(object sender, EventArgs e)
+    private void frmAirshowScheduleTool_Load(object sender, EventArgs e)
     {
-      myFormState = cAirshowFormState.LoadMe();
-      cAirshowGroup asg = cAirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
-      myAirshows = asg.Airshows.myShows;
-      myFilteredAirshows = myAirshows.ToList();
-      myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
-      lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-      LoadGrid(myFormState.AirshowYearofInterest);
-      ColorGrid(myAirshows);
-      txtOutput.Lines = cAirshow.GetLines(myAirshows);
-      myFilteredAirshows = myAirshows.ToList();
-      myRegions = cRegions.LoadMe(myFormState.fnRegions);
-      chklstRegions.Items.Clear();
-      foreach (string rgn in myRegions.GetRegionList())
+      if (!DesignMode)
       {
-        chklstRegions.Items.Add(rgn);
-      }
-      for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
-      {
-        chklstRegions.SetItemChecked(ii, true);
+        myFormState = cAirshowFormState.LoadMe();
+        cAirshowGroup asg = cAirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
+        myAirshows = asg.Airshows.myShows;
+        //myFilteredAirshows = myAirshows.ToList();
+        myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
+        lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+        LoadGrid(myFormState.AirshowYearofInterest);
+        myFilteredAirshows = myAirshows.ToList();
+        ColorGrid(myFilteredAirshows);
+        txtOutput.Lines = cAirshow.GetLines(myAirshows);
+        myRegions = cRegions.LoadMe(myFormState.fnRegions);
+        chklstRegions.Items.Clear();
+        foreach (string rgn in myRegions.GetRegionList())
+        {
+          chklstRegions.Items.Add(rgn);
+        }
+        for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
+        {
+          chklstRegions.SetItemChecked(ii, true);
+        }
       }
     }
 
@@ -629,7 +642,7 @@ namespace AirshowSchedules
         myFilteredAirshows = myAirshows.ToList();
         this.Enabled = true;
         LoadGrid(myFormState.AirshowYearofInterest);
-        ColorGrid(myAirshows);
+        ColorGrid(myFilteredAirshows);
         lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
       }
     }
@@ -824,7 +837,7 @@ namespace AirshowSchedules
         if (dr == DialogResult.OK)
         {
           SaveAirshowSchedule(false);
-          ColorGrid(myAirshows);
+          ColorGrid(myFilteredAirshows);
         }
       }
     }
@@ -858,8 +871,10 @@ namespace AirshowSchedules
       if (dr == DialogResult.OK)
       {
         myAirshows.Add(ashow);
+        myFilteredAirshows.Add(ashow);
         SaveAirshowSchedule(false);
-        ColorGrid(myAirshows);
+        LoadGrid(myFormState.AirshowYearofInterest);
+        ColorGrid(myFilteredAirshows);
       }
     }
 
@@ -1150,8 +1165,14 @@ namespace AirshowSchedules
 
         DialogResult dr = MessageBox.Show("Are you sure you want to remomove { " + ashow.ToString() + " } from the database?  There is no UNDO.", "Remove Airshow", MessageBoxButtons.YesNo);
 
-        if(dr == DialogResult.Yes)
+        if (dr == DialogResult.Yes)
+        {
           myAirshows.Remove(ashow);
+          myFilteredAirshows.Remove(ashow);
+          SaveAirshowSchedule(false);
+          LoadGrid(myFormState.AirshowYearofInterest);
+          ColorGrid(myFilteredAirshows);
+        }
       }
     }
 
