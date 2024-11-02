@@ -129,7 +129,7 @@ namespace AirshowSchedules
         private void LoadGrid(int YearOfInterest)
         {
             //Creates the Saturdays in a given year. Formats the resulting grid.
-            List<cAirshowWeekend> lSaturdays = cCalenderYear.GetSaturdaysList(YearOfInterest);
+            List<AirshowWeekend> lSaturdays = cCalenderYear.GetSaturdaysList(YearOfInterest);
 
             DataTable dataTable = new DataTable();
 
@@ -141,7 +141,7 @@ namespace AirshowSchedules
             for (int nMonth = 0; nMonth < 12; nMonth++)
             {
                 DataRow row = dataTable.Rows.Add();
-                List<cAirshowWeekend> saturdaysthismonth = lSaturdays.Where(x => x.Date.Month == nMonth + 1).ToList();
+                List<AirshowWeekend> saturdaysthismonth = lSaturdays.Where(x => x.Date.Month == nMonth + 1).ToList();
                 for (int nSats = 0; nSats < saturdaysthismonth.Count; nSats++)
                 {
                     row[nSats] = saturdaysthismonth[nSats];
@@ -256,7 +256,7 @@ namespace AirshowSchedules
                         {
 
                             DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                            cAirshowWeekend asw = new cAirshowWeekend(dateTime);
+                            AirshowWeekend asw = new AirshowWeekend(dateTime);
                             List<Airshow> showsthisweekend = actionShows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
                             showsthisweekend = showsthisweekend.OrderBy(x => x.Status).ToList();
                             if (showsthisweekend.Count == 0)
@@ -298,7 +298,7 @@ namespace AirshowSchedules
                     if (weekendinquestion.Length >= 3)
                     {
                         DateTime dateTime = new DateTime(2023, int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                        cAirshowWeekend asw = new cAirshowWeekend(dateTime);
+                        AirshowWeekend asw = new AirshowWeekend(dateTime);
                         List<Airshow> showsthisweek = theseshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
                         if (showsthisweek.Count > 0)
                         {
@@ -378,6 +378,7 @@ namespace AirshowSchedules
                 myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
                 lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
                 LoadGrid(myFormState.AirshowYearofInterest);
+                //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
                 myFilteredAirshows = myAirshows.ToList();
                 ColorGrid(myFilteredAirshows);
                 txtOutput.Lines = Airshow.GetLines(myAirshows);
@@ -481,6 +482,7 @@ namespace AirshowSchedules
                 myFilteredAirshows = myAirshows.ToList();
                 this.Enabled = true;
                 LoadGrid(myFormState.AirshowYearofInterest);
+                //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
                 ColorGrid(myFilteredAirshows);
                 lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             }
@@ -626,7 +628,7 @@ namespace AirshowSchedules
                     if (weekendinquestion.Length > 2)
                     {
                         DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                        cAirshowWeekend asw = new cAirshowWeekend(dateTime);
+                        AirshowWeekend asw = new AirshowWeekend(dateTime);
 
                         List<Airshow> airshowsthisweek = myAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
                         airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
@@ -646,6 +648,7 @@ namespace AirshowSchedules
                                 lstBoxShows.Items.Add(airshow);
                             }
                             LoadShowGrid(airshowsthisweek, $"Airshows week of {cell.ToString()}:");
+                            //GridTools.LoadShowGrid(dataGridViewShows, airshowsthisweek, $"Airshows week of {cell.ToString()}:");
                         }
 
                         chklstbox_diff.Items.Clear();
@@ -1154,77 +1157,5 @@ namespace AirshowSchedules
     #endregion
 
 
-    public class cCalenderYear
-    {
 
-        public class cAirshowWeekend
-        {
-            public DateTime Date;
-
-            public cAirshowWeekend(DateTime date)
-            {
-                Date = date;
-            }
-
-
-            public override string ToString()
-            {
-                return $"{Date.Month} - {Date.Day}";
-            }
-
-            public int weekofyear
-            {
-                get
-                {
-                    // Get the week number using the current culture's calendar
-                    CultureInfo culture = CultureInfo.CurrentCulture;
-                    Calendar calendar = culture.Calendar;
-                    int weekNumber = calendar.GetWeekOfYear(Date, culture.DateTimeFormat.CalendarWeekRule, culture.DateTimeFormat.FirstDayOfWeek);
-                    return weekNumber;
-                }
-            }
-        }
-
-        public static List<cAirshowWeekend> GetSaturdaysList(int year)
-        {
-            // Create a list to store the Saturdays.
-            List<DateTime> saturdays = new List<DateTime>();
-
-            // Loop through the months in the year.
-            for (int month = 1; month <= 12; month++)
-            {
-                // Get the first day of the month.
-                DateTime firstDayOfMonth = new DateTime(year, month, 1);
-
-                // Check if the first day of the month is a Saturday.
-                if (firstDayOfMonth.DayOfWeek == DayOfWeek.Saturday)
-                {
-                    // Add the first day of the month to the list of Saturdays.
-                    saturdays.Add(firstDayOfMonth);
-                }
-
-                // Loop through the days of the month.
-                for (int day = 2; day <= DateTime.DaysInMonth(year, month); day++)
-                {
-                    // Get the current day.
-                    DateTime currentDay = new DateTime(year, month, day);
-
-                    // Check if the current day is a Saturday.
-                    if (currentDay.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        // Add the current day to the list of Saturdays.
-                        saturdays.Add(currentDay);
-                    }
-                }
-            }
-
-            List<cAirshowWeekend> weekends = new List<cAirshowWeekend>();
-            for (int ii = 0; ii < saturdays.Count; ii++)
-            {
-                weekends.Add(new cAirshowWeekend(saturdays[ii]));
-            }
-
-            return weekends;
-        }
-    }
 }
