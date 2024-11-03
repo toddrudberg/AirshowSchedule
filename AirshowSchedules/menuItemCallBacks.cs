@@ -63,7 +63,7 @@ public partial class frmAirshowScheduleTool
                 Airshow.LoadFile(WorkingFileParserClass, airshows);
                 airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
 
-                myFilteredAirshows = airshows.ToList();
+                //myFilteredAirshows = airshows.ToList();
                 asg.Airshows.myShows = airshows;
                 asg.AirshowYearOfInterest = WorkingFileParserClass.AirshowYear;
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -161,6 +161,7 @@ public partial class frmAirshowScheduleTool
                 {
                     myAirshows = copiedList;
                     SaveAirshowSchedule(false);
+                    
                 }
             }
 
@@ -426,5 +427,57 @@ public partial class frmAirshowScheduleTool
             MessageBox.Show("No cancelled shows found.");
         }
     }
+    private void arciveActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        string actvDBFile = myFormState.fnCurrentXMLDataBase;
+    
+        // Extract the filename from actvDBFile
+        string fileName = System.IO.Path.GetFileName(actvDBFile);
+    
+        // Get the current date and time
+        DateTime now = DateTime.Now;
+    
+        // Format the date and time as a string
+        string dateTimeString = now.ToString("yyyy-MM-dd_HH-mm-ss");
+    
+        // Prepend the formatted date and time to the filename
+        string archivedFileName = $"{dateTimeString}_{fileName}";
+    
+        // Use the archivedFileName as needed
+        Console.WriteLine($"Archived file name: {archivedFileName}");
+
+        string directory = System.IO.Path.GetDirectoryName(actvDBFile);
+        
+        //add archive folder
+        directory = System.IO.Path.Combine(directory, "Archive");
+        
+        //let's see if the directory exists
+        if (!System.IO.Directory.Exists(directory))
+        {
+            System.IO.Directory.CreateDirectory(directory);
+        }
+        // Combine the directory and new filename
+
+        string archivedFilePath = System.IO.Path.Combine(directory, archivedFileName);
+
+        // Use the archivedFilePath as needed
+        Console.WriteLine($"Archived file path: {archivedFilePath}");
+
+        bool success;
+        AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
+        if(!success) 
+        { 
+            Console.WriteLine("Failed to load the active database file.".Pastel(Color.Red));
+            Console.WriteLine($"Active DB File: {actvDBFile}".Pastel(Color.Red));
+            Console.WriteLine();
+            return; 
+        }
+
+        asg.Airshows.myShows = myAirshows;
+
+        Electroimpact.XmlSerialization.Serializer.Save(asg, archivedFilePath);
+        Console.WriteLine($"Active DB file archived to: {archivedFilePath}".Pastel(Color.Green));
+    }    
 }
+
 

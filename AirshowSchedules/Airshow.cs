@@ -236,13 +236,13 @@ namespace AirshowSchedules
             bool notesEqual = string.Equals(Notes_AirshowStuff, other.Notes_AirshowStuff, StringComparison.OrdinalIgnoreCase);
 
             // Compare lists (Performers and Contacts) if they are relevant for equality
-            bool performersEqual = Performers != null && other.Performers != null &&
-                                   Performers.performer.SequenceEqual(other.Performers.performer);
-            bool contactsEqual = Contacts != null && other.Contacts != null &&
-                                 Contacts.contact.SequenceEqual(other.Contacts.contact);
+            //bool performersEqual = Performers != null && other.Performers != null &&
+            //                       Performers.performer.SequenceEqual(other.Performers.performer);
+            //bool contactsEqual = Contacts != null && other.Contacts != null &&
+            //                     Contacts.contact.SequenceEqual(other.Contacts.contact);
 
             // Define equality based on relevant properties
-            return locationEquals && dateStartEquals && dateFinishEquals && nameEquals && notesEqual && performersEqual && contactsEqual;
+            return locationEquals && dateStartEquals && dateFinishEquals && nameEquals && notesEqual;
         }
 
         public override int GetHashCode()
@@ -257,8 +257,8 @@ namespace AirshowSchedules
             hash = hash * 23 + (Notes_AirshowStuff != null ? Notes_AirshowStuff.GetHashCode(StringComparison.OrdinalIgnoreCase) : 0);
 
             // Generate hash codes for lists (Performers and Contacts) if relevant
-            hash = hash * 23 + (Performers != null ? Performers.performer.Aggregate(0, (h, s) => h ^ s.GetHashCode(StringComparison.OrdinalIgnoreCase)) : 0);
-            hash = hash * 23 + (Contacts != null ? Contacts.contact.Aggregate(0, (h, c) => h ^ c.GetHashCode()) : 0);
+            //hash = hash * 23 + (Performers != null ? Performers.performer.Aggregate(0, (h, s) => h ^ s.GetHashCode(StringComparison.OrdinalIgnoreCase)) : 0);
+            //hash = hash * 23 + (Contacts != null ? Contacts.contact.Aggregate(0, (h, c) => h ^ c.GetHashCode()) : 0);
 
             return hash;
         }
