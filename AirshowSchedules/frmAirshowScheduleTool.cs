@@ -1109,6 +1109,30 @@ namespace AirshowSchedules
                         }
                     }
 
+                    List<Airshow> cancelledShows = copiedList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
+                    if (cancelledShows.Count > 0)
+                    {
+                        Console.WriteLine("Here are the cancelled shows:".Pastel(Color.Green));
+                        foreach (Airshow ashow in cancelledShows)
+                        {
+                            Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                        }
+                        Console.WriteLine();
+                        Console.WriteLine("Do you want to remove these shows (Y/N)?".Pastel(Color.Yellow));
+                        string response3 = Console.ReadLine();
+                        if (response3.ToLower() == "y")
+                        {
+                            foreach (Airshow ashow in cancelledShows)
+                            {
+                                copiedList.Remove(ashow);
+                            }
+                            myAirshows = copiedList;
+                            SaveAirshowSchedule(false);
+                        }
+                    }
+
+
+
                     // {
                     //     AirshowGroup asg = new AirshowGroup();
                     //     List<Airshow> airshows = new List<Airshow>();

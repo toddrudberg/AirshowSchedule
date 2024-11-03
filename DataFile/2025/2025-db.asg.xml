@@ -2,24 +2,6 @@
 <AirshowGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <Airshows>
     <Airshow>
-      <date_start>2025-03-15</date_start>
-      <date_finish>2025-03-16</date_finish>
-      <name_airshow>space coast warbird airshow </name_airshow>
-      <location>
-        <city>Titusville</city>
-        <state>FL</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Bob Boswell</name>
-          <phone>321-268-1941 x4104</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff>*cancled*</Notes_AirshowStuff>
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-03-28</date_start>
       <date_finish>2025-03-30</date_finish>
       <name_airshow>defenders of liberty air &amp; space show</name_airshow>
@@ -1395,24 +1377,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-03-08</date_start>
-      <date_finish>2025-03-09</date_finish>
-      <name_airshow>shaw air expo /thunder over the midlands</name_airshow>
-      <location>
-        <city>Shaw AFB</city>
-        <state>SC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>20 FW Public Affairs</name>
-          <phone>803-895-2019</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff>*cancled*</Notes_AirshowStuff>
-      <Status>NO</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-03-14</date_start>
       <date_finish>2025-03-15</date_finish>
       <name_airshow>yuma airshow 2025</name_airshow>
@@ -2593,40 +2557,6 @@
         <Contact>
           <name>Dewey Vinaya</name>
           <phone>772-971-3226</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-11-30</date_start>
-      <date_finish>2025-11-30</date_finish>
-      <name_airshow>new bern titan Airshow</name_airshow>
-      <location>
-        <city>New Bern</city>
-        <state>NC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-11-30</date_start>
-      <date_finish>2025-11-30</date_finish>
-      <name_airshow>new bern titan Airshow</name_airshow>
-      <location>
-        <city>New Bern</city>
-        <state>NC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
