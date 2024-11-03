@@ -38,23 +38,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-03-29</date_start>
-      <date_finish>2025-03-30</date_finish>
-      <name_airshow>the great florida Airshow</name_airshow>
-      <location>
-        <city>Melbourne</city>
-        <state>FL</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-04-01</date_start>
       <date_finish>2025-04-06</date_finish>
       <name_airshow>sun 'n fun aerospace expo</name_airshow>
@@ -93,23 +76,6 @@
     <Airshow>
       <date_start>2025-04-05</date_start>
       <date_finish>2025-04-06</date_finish>
-      <name_airshow>southern california airshow at march field 2025</name_airshow>
-      <location>
-        <city>Riverside</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-05</date_start>
-      <date_finish>2025-04-06</date_finish>
       <name_airshow>wings over homestead arb</name_airshow>
       <location>
         <city>Homestead ARB</city>
@@ -138,60 +104,6 @@
         <Contact>
           <name>Lt Col Ryan Meiergerd</name>
           <phone>719-210-5255</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-25</date_start>
-      <date_finish>2025-04-26</date_finish>
-      <name_airshow>thunder over the sound: keesler/biloxi air &amp; space show</name_airshow>
-      <location>
-        <city>Keesler AFB</city>
-        <state>MS</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Lt Col John Connors</name>
-          <phone>228-376-7464</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-26</date_start>
-      <date_finish>2025-04-27</date_finish>
-      <name_airshow>air power over hampton roads</name_airshow>
-      <location>
-        <city>JB Langley-Eustis</city>
-        <state>VA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Lt Col Elizabeth Cramer</name>
-          <phone>757-764-7995</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-26</date_start>
-      <date_finish>2025-04-27</date_finish>
-      <name_airshow>shaw air expo /thunder over the midlands</name_airshow>
-      <location>
-        <city>Shaw AFB</city>
-        <state>SC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>20 FW Public Affairs</name>
-          <phone>803-895-2019</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -246,76 +158,6 @@
         <Contact>
           <name>Maj Nathan Johnson</name>
           <phone>405-761-6644</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-15</date_start>
-      <date_finish>2025-05-15</date_finish>
-      <name_airshow>china lake Airshow</name_airshow>
-      <location>
-        <city>Ridgecrest</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-16</date_start>
-      <date_finish>2025-05-18</date_finish>
-      <name_airshow>yuma airshow 2025</name_airshow>
-      <location>
-        <city>MCAS Yuma</city>
-        <state>AZ</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Greg McShane</name>
-          <phone>928-269-3327</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-17</date_start>
-      <date_finish>2025-05-18</date_finish>
-      <name_airshow>gunfighter skies airshow</name_airshow>
-      <location>
-        <city>Mountain Home AFB</city>
-        <state>ID</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Maj Aaron Ruona</name>
-          <phone>208-828-4523</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-17</date_start>
-      <date_finish>2025-05-18</date_finish>
-      <name_airshow>vance afb partners in the sky Airshow</name_airshow>
-      <location>
-        <city>Enid</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -411,78 +253,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-05-24</date_start>
-      <date_finish>2025-05-25</date_finish>
-      <name_airshow>toledo Airshow</name_airshow>
-      <location>
-        <city>Toledo</city>
-        <state>OH</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Mike Timbrook</name>
-          <phone>419-345-3173</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-31</date_start>
-      <date_finish>2025-06-01</date_finish>
-      <name_airshow>2025 beale afb open house</name_airshow>
-      <location>
-        <city>Beale AFB</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Maj Matt Beaubien</name>
-          <phone>856-577-0512</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-07</date_start>
-      <date_finish>2025-06-08</date_finish>
-      <name_airshow>chennault international Airshow</name_airshow>
-      <location>
-        <city>Lake Charles</city>
-        <state>LA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Mary Jo Bayles</name>
-          <phone>337-515-3269</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-07</date_start>
-      <date_finish>2025-06-08</date_finish>
-      <name_airshow>fort wayne open house/airshow</name_airshow>
-      <location>
-        <city>Fort Wayne</city>
-        <state>IN</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Maj Marc Sordelet</name>
-          <phone>260-478-3284</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-06-07</date_start>
       <date_finish>2025-06-08</date_finish>
       <name_airshow>the great tennessee Airshow</name_airshow>
@@ -495,77 +265,6 @@
         <Contact>
           <name>John Black</name>
           <phone>615-459-2651</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-07</date_start>
-      <date_finish>2025-06-08</date_finish>
-      <name_airshow>chippewa valley Airshow</name_airshow>
-      <location>
-        <city>Eau Claire</city>
-        <state>WI</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Tim Molepske</name>
-          <phone>715-492-0496</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-14</date_start>
-      <date_finish>2025-06-15</date_finish>
-      <name_airshow>moses lake airshow</name_airshow>
-      <location>
-        <city>Moses Lake</city>
-        <state>WA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Terry Quick</name>
-          <phone>425-670-0888</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-14</date_start>
-      <date_finish>2025-06-15</date_finish>
-      <name_airshow>st cloud airshow</name_airshow>
-      <location>
-        <city>St Cloud</city>
-        <state>MN</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-14</date_start>
-      <date_finish>2025-06-15</date_finish>
-      <name_airshow>tinker Airshow</name_airshow>
-      <location>
-        <city>Tinker AFB</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Marc Bradley</name>
-          <phone>405-734-2191</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -644,42 +343,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-06-21</date_start>
-      <date_finish>2025-06-22</date_finish>
-      <name_airshow>oc Airshow</name_airshow>
-      <location>
-        <city>Ocean City</city>
-        <state>MD</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Bryan Lilley</name>
-          <phone>717-583-0800</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-21</date_start>
-      <date_finish>2025-06-22</date_finish>
-      <name_airshow>quad city Airshow</name_airshow>
-      <location>
-        <city>Davenport</city>
-        <state>IA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Kenneth Hopper </name>
-          <phone>563-349-0044</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-06-28</date_start>
       <date_finish>2025-06-29</date_finish>
       <name_airshow>national cherry festival Airshow</name_airshow>
@@ -716,24 +379,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-07-04</date_start>
-      <date_finish>2025-07-04</date_finish>
-      <name_airshow>rose city airfest</name_airshow>
-      <location>
-        <city>Tyler</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Lyn Thomas</name>
-          <phone>214-535-9513</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-07-05</date_start>
       <date_finish>2025-07-05</date_finish>
       <name_airshow>thunder over cedar creek lake Airshow</name_airshow>
@@ -746,24 +391,6 @@
         <Contact>
           <name>Lyn Thomas</name>
           <phone>214-535-9513</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-07-12</date_start>
-      <date_finish>2025-07-13</date_finish>
-      <name_airshow>duluth airshow</name_airshow>
-      <location>
-        <city>Duluth</city>
-        <state>MN</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Ryan Kern</name>
-          <phone>218-213-8080</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -823,23 +450,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-07-19</date_start>
-      <date_finish>2025-07-20</date_finish>
-      <name_airshow>flight over the falls </name_airshow>
-      <location>
-        <city>Great Falls</city>
-        <state>MT</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-07-21</date_start>
       <date_finish>2025-07-27</date_finish>
       <name_airshow>eaa airventure oshkosh </name_airshow>
@@ -891,42 +501,6 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>maybe</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-02</date_start>
-      <date_finish>2025-08-03</date_finish>
-      <name_airshow>thunder over michigan Airshow</name_airshow>
-      <location>
-        <city>Ypsilanti</city>
-        <state>MI</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Kevin Walsh</name>
-          <phone>734-637-8880</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-02</date_start>
-      <date_finish>2025-08-03</date_finish>
-      <name_airshow>gary Airshow </name_airshow>
-      <location>
-        <city>Gary</city>
-        <state>IN</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Lori Latham</name>
-          <phone>219-886-7099</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-08</date_start>
@@ -1039,23 +613,6 @@
     <Airshow>
       <date_start>2025-08-23</date_start>
       <date_finish>2025-08-24</date_finish>
-      <name_airshow>great pocono raceway Airshow</name_airshow>
-      <location>
-        <city>Long Pond</city>
-        <state>PA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-23</date_start>
-      <date_finish>2025-08-24</date_finish>
       <name_airshow>2025 wilkes-barre/scranton armed forces airshow</name_airshow>
       <location>
         <city>Avoca</city>
@@ -1066,23 +623,6 @@
         <Contact>
           <name>Carl Beardsley</name>
           <phone>570-602-2000</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-23</date_start>
-      <date_finish>2025-08-24</date_finish>
-      <name_airshow>branson wings of pride</name_airshow>
-      <location>
-        <city>Branson</city>
-        <state>MO</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1125,23 +665,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-08-29</date_start>
-      <date_finish>2025-08-31</date_finish>
-      <name_airshow>2025 thunder over the heartland Airshow</name_airshow>
-      <location>
-        <city>Topeka</city>
-        <state>KS</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-08-30</date_start>
       <date_finish>2025-08-31</date_finish>
       <name_airshow>cleveland national Airshow</name_airshow>
@@ -1154,24 +677,6 @@
         <Contact>
           <name>Leslie King</name>
           <phone>216-781-0747</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-30</date_start>
-      <date_finish>2025-08-31</date_finish>
-      <name_airshow>west virginia's greatest Airshow</name_airshow>
-      <location>
-        <city>Martinsburg</city>
-        <state>WV</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Nicolas Diehl</name>
-          <phone>304-702-3700</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1266,23 +771,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-09-13</date_start>
-      <date_finish>2025-09-14</date_finish>
-      <name_airshow>thunder over new hampshire Airshow</name_airshow>
-      <location>
-        <city>Portsmouth</city>
-        <state>NH</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-09-19</date_start>
       <date_finish>2025-09-21</date_finish>
       <name_airshow>oregon international Airshow</name_airshow>
@@ -1295,60 +783,6 @@
         <Contact>
           <name>Bill Braack</name>
           <phone>503-629-0706</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-09-19</date_start>
-      <date_finish>2025-09-21</date_finish>
-      <name_airshow>festival aérien volaria airshow</name_airshow>
-      <location>
-        <city>Mirabel</city>
-        <state>QC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Maude Paquette</name>
-          <phone>514-891-7790</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-09-19</date_start>
-      <date_finish>2025-09-21</date_finish>
-      <name_airshow>aero gatineau-ottawa airshow</name_airshow>
-      <location>
-        <city>Gatineau</city>
-        <state>QC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>John Bennett</name>
-          <phone>613-720-5837</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-09-20</date_start>
-      <date_finish>2025-09-21</date_finish>
-      <name_airshow>nas oceana Airshow</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Rich Erie</name>
-          <phone>757-433-2130</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1373,24 +807,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-09-27</date_start>
-      <date_finish>2025-09-28</date_finish>
-      <name_airshow>california international airshow</name_airshow>
-      <location>
-        <city>Salinas</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Don Chapin </name>
-          <phone>831-444-4130</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-10-04</date_start>
       <date_finish>2025-10-05</date_finish>
       <name_airshow>pacific airshow huntington beach</name_airshow>
@@ -1403,24 +819,6 @@
         <Contact>
           <name>Kevin Elliott</name>
           <phone>714-500-4994</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>california capital airshow</name_airshow>
-      <location>
-        <city>Sacramento</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Darcy Brewer</name>
-          <phone>916-876-7568 </phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1519,23 +917,6 @@
     <Airshow>
       <date_start>2025-10-18</date_start>
       <date_finish>2025-10-19</date_finish>
-      <name_airshow>thunder over the rock</name_airshow>
-      <location>
-        <city>Little Rock AFB</city>
-        <state>AR</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-18</date_start>
-      <date_finish>2025-10-19</date_finish>
       <name_airshow>wings over houston airshow</name_airshow>
       <location>
         <city>Houston</city>
@@ -1546,24 +927,6 @@
         <Contact>
           <name>Bill Roach</name>
           <phone>281-579-1942</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-18</date_start>
-      <date_finish>2025-10-19</date_finish>
-      <name_airshow>fort worth air power expo </name_airshow>
-      <location>
-        <city>NAS Fort Worth JRB</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Daphne Salinas</name>
-          <phone>817-782-7744</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1582,24 +945,6 @@
         <Contact>
           <name>Scott Gammel</name>
           <phone>3184276419</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-25</date_start>
-      <date_finish>2025-10-26</date_finish>
-      <name_airshow>orlando Airshow</name_airshow>
-      <location>
-        <city>Orlando</city>
-        <state>FL</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Bryan Lilley</name>
-          <phone>717-583-0800</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1677,23 +1022,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-04-12</date_start>
-      <date_finish>2025-04-13</date_finish>
-      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
-      <location>
-        <city>Altus AFB</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-04-26</date_start>
       <date_finish>2025-04-27</date_finish>
       <name_airshow>air dot show augusta</name_airshow>
@@ -1706,41 +1034,6 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-10</date_start>
-      <date_finish>2025-05-11</date_finish>
-      <name_airshow>air dot show fort lauderdale</name_airshow>
-      <location>
-        <city>Fort Lauderdale</city>
-        <state>FL</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Bryan Lilley</name>
-          <phone>717-583-0800</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-17</date_start>
-      <date_finish>2025-05-18</date_finish>
-      <name_airshow>wings over ocala</name_airshow>
-      <location>
-        <city>Ocala</city>
-        <state>FL</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1818,23 +1111,6 @@
     </Airshow>
     <Airshow>
       <date_start>2025-06-28</date_start>
-      <date_finish>2025-06-29</date_finish>
-      <name_airshow>wings over flint</name_airshow>
-      <location>
-        <city>Flint</city>
-        <state>MI</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-28</date_start>
       <date_finish>2025-06-28</date_finish>
       <name_airshow>great new york Airshow</name_airshow>
       <location>
@@ -1881,41 +1157,6 @@
         <Contact>
           <name>Mark Williams</name>
           <phone>509-783-4675</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-07-26</date_start>
-      <date_finish>2025-07-27</date_finish>
-      <name_airshow>lethbridge international Airshow </name_airshow>
-      <location>
-        <city>Lethbridge</city>
-        <state>AB</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Alison Arneson</name>
-          <phone>403-380-4245</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-09</date_start>
-      <date_finish>2025-08-10</date_finish>
-      <name_airshow>kaneohe bay Airshow</name_airshow>
-      <location>
-        <city>Kaneohe Bay</city>
-        <state>HI</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2058,23 +1299,6 @@
         <Contact>
           <name>Kerry Floyd</name>
           <phone>816-384-1200</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-17</date_start>
-      <date_finish>2025-10-19</date_finish>
-      <name_airshow>sky high aerospace expo</name_airshow>
-      <location>
-        <city>Kinston</city>
-        <state>NC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2320,23 +1544,6 @@
       <Contacts>
         <Contact>
           <name>Maj Alexander Chesney</name>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-05-15</date_start>
-      <date_finish>2025-05-18</date_finish>
-      <name_airshow>china lake Airshow</name_airshow>
-      <location>
-        <city>Ridgecrest (China Lake NAWS)</city>
-        <state>CA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2699,24 +1906,6 @@
     <Airshow>
       <date_start>2025-10-18</date_start>
       <date_finish>2025-10-19</date_finish>
-      <name_airshow>fort worth air power expo </name_airshow>
-      <location>
-        <city>Fort Worth NAS JRB</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Daphne Salinas</name>
-          <phone>817-782-7744</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-18</date_start>
-      <date_finish>2025-10-19</date_finish>
       <name_airshow>las cruces air &amp; space expo</name_airshow>
       <location>
         <city>Las Cruces</city>
@@ -2823,23 +2012,6 @@
         <Contact>
           <name>Nino Cardenas</name>
           <phone>956-722-0589</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-12</date_start>
-      <date_finish>2025-04-13</date_finish>
-      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
-      <location>
-        <city>Altus AFB</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2987,26 +2159,6 @@
         <Contact>
           <name>Tim Wagner</name>
           <phone>973-728-7721</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-06-14</date_start>
-      <date_finish>2025-06-14</date_finish>
-      <name_airshow>the flying proms symphonic airshow</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers>
-        <Performer>Military Aviation Museum</Performer>
-      </Performers>
-      <Contacts>
-        <Contact>
-          <name>Chris Vtipil</name>
-          <phone>757-490-3157</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -3367,44 +2519,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>warbirds over the beach</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers>
-        <Performer>Military Aviation Museum</Performer>
-      </Performers>
-      <Contacts>
-        <Contact>
-          <name>Chris Vtipil</name>
-          <phone>757-490-3157</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>rose city airfest</name_airshow>
-      <location>
-        <city>Tyler</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Travis Gladhill</name>
-          <phone>903.566.1010</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-10-09</date_start>
       <date_finish>2025-10-16</date_finish>
       <name_airshow>homecoming 250 tribute to naval aviation</name_airshow>
@@ -3479,6 +2593,23 @@
         <Contact>
           <name>Dewey Vinaya</name>
           <phone>772-971-3226</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-11-30</date_start>
+      <date_finish>2025-11-30</date_finish>
+      <name_airshow>new bern titan Airshow</name_airshow>
+      <location>
+        <city>New Bern</city>
+        <state>NC</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />

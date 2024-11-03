@@ -7,7 +7,7 @@ namespace AirshowSchedules
     {
         //public cAirshowFileParserSetupTool FileSetup = new cAirshowFileParserSetupTool();
         public cAirshows Airshows = new cAirshows();
-        public int AirshowYearOfInterest = 2023;
+        public int AirshowYearOfInterest = 2025;
         public AirshowGroup()
         { }
 
@@ -26,7 +26,7 @@ namespace AirshowSchedules
             myGroup.Airshows.myShows = AirShows;
             Electroimpact.XmlSerialization.Serializer.Save(AirShows, FileName);
         }
-        public static AirshowGroup LoadMe(string FileName)
+        public static AirshowGroup LoadMe(string FileName, out bool success)
         {
             try
             {
@@ -34,16 +34,20 @@ namespace AirshowSchedules
                 {
                     AirshowGroup asg = new AirshowGroup();
                     asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
+                    success = true;
                     return asg;
                 }
                 else
                 {
+
+                    success = false;
                     return new AirshowGroup();
                 }
             }
             catch(Exception ex) 
             {
                 MessageBox.Show(ex.Message);
+                success = false;
                 return new AirshowGroup();
             }
         }

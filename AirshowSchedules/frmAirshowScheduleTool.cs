@@ -1,28 +1,124 @@
 using Electroimpact.SettingsFormBuilderV2.Attributes;
 using System.Data;
 using System.Globalization;
+using System.Runtime.InteropServices;
 using System.Xml.Serialization;
 using static AirshowSchedules.Airshow;
 using static AirshowSchedules.cCalenderYear;
+using Pastel;
+using System.Diagnostics.Metrics;
 
 namespace AirshowSchedules
 {
     public partial class frmAirshowScheduleTool : Form
     {
-        FormState myFormState = new FormState();
 
+        FormState myFormState = new FormState();
         //This is the master list
         List<Airshow> myAirshows = new List<Airshow>();
-
-        //this is used for display
+        //This is the filter list and used for display. It is a subset of myAirshows, so watch out for that.
         List<Airshow> myFilteredAirshows = new List<Airshow>();
-
-        //not sure
         List<Airshow> myMergedShows = new List<Airshow>();
         cAirshowFileParserSetupTool WorkingFileParserClass = new cAirshowFileParserSetupTool();
         cAirshowScheduleCompare myASGCompare = new cAirshowScheduleCompare();
         AirshowSchedules.Regions myRegions = new AirshowSchedules.Regions();
         private System.Windows.Forms.TextBox TextBox1;
+
+       
+
+        public frmAirshowScheduleTool()
+        {
+            //if(!DesignMode)
+            {
+                try
+                {
+                    InitializeComponent();
+                    AllocConsole();
+                    // Set the console to be tall and narrow
+                    SetConsoleSize(75, 75); // Adjust width and height here
+                                            // Set form size to a percentage of screen resolution
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading Designer: " + ex.Message);
+                }
+            }
+        }
+        private void frmAirshowScheduleTool_Load(object sender, EventArgs e)
+        {
+            if (!DesignMode)
+            {
+
+                using (Graphics g = this.CreateGraphics())
+                {
+                    float dpiX = g.DpiX;
+                    float dpiY = g.DpiY;
+
+                    // Calculate the scale factor directly from the DPI
+                    float scaleFactor = dpiX / 96.0f; // 96 DPI is the baseline for 100%
+                    double m = (1 - .95) / (96 - 144);
+                    double b = 1 - m * 96;
+                    double scaleFactorX = m * dpiX + b;
+                    m = (1 - 1.1) / (96 - 144);
+                    b = 1 - m * 96;
+                    double scaleFactorY = m * dpiY + b;
+
+                    //when dpiX = 144 we need scaleFactor * .95, when dpiX = 96, we need scaleFactor * 1:
+                    // Apply scaling using the formula above
+
+
+
+                    // Apply scaling
+                    int formWidth = (int)(1450.0 * scaleFactor * scaleFactorX);
+                    int formHeight = (int)(770.0 * scaleFactor * scaleFactorY);
+
+                    this.Size = new Size(formWidth, formHeight);
+
+                    // Position the form in the top-right corner of the screen
+                    var screen = Screen.FromControl(this);
+                    this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top);
+                }
+
+                try
+                {
+
+                    myFormState = FormState.LoadMe();
+                    //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
+                    bool success;
+                    AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
+                    if (!success)
+                    {
+                        MessageBox.Show("Error loading form: " + "Unable to load the active database");
+                        return;
+                    }
+                    myAirshows = asg.Airshows.myShows;
+                    //myFilteredAirshows = myAirshows.ToList();
+                    myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
+                    lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                    LoadGrid(myFormState.AirshowYearofInterest);
+                    //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
+                    myFilteredAirshows = myAirshows.ToList();
+                    ColorGrid(myFilteredAirshows);
+                    txtOutput.Lines = Airshow.GetLines(myAirshows);
+                    myRegions = Regions.LoadMe(myFormState.fnRegions);
+                    chklstRegions.Items.Clear();
+                    foreach (string rgn in myRegions.GetRegionList())
+                    {
+                        chklstRegions.Items.Add(rgn);
+                    }
+                    for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
+                    {
+                        chklstRegions.SetItemChecked(ii, true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error loading form: " + ex.Message);
+                }
+            }
+        }
+
+
 
         #region Helper Classes
         [Serializable]
@@ -126,194 +222,16 @@ namespace AirshowSchedules
         #endregion
 
         #region Sub Routines
-        private void LoadGrid(int YearOfInterest)
-        {
-            //Creates the Saturdays in a given year. Formats the resulting grid.
-            List<AirshowWeekend> lSaturdays = cCalenderYear.GetSaturdaysList(YearOfInterest);
-
-            DataTable dataTable = new DataTable();
-
-            for (int nWeekend = 0; nWeekend < 5; nWeekend++)
-            {
-                dataTable.Columns.Add($" Weekend {nWeekend + 1}");
-            }
-
-            for (int nMonth = 0; nMonth < 12; nMonth++)
-            {
-                DataRow row = dataTable.Rows.Add();
-                List<AirshowWeekend> saturdaysthismonth = lSaturdays.Where(x => x.Date.Month == nMonth + 1).ToList();
-                for (int nSats = 0; nSats < saturdaysthismonth.Count; nSats++)
-                {
-                    row[nSats] = saturdaysthismonth[nSats];
-                }
-            }
-
-            dgvCalendar.DataSource = dataTable;
-
-            int rowCount = dgvCalendar.Rows.Count;
-            int columnCount = dgvCalendar.Columns.Count;
-
-
-            //dgvCalendar.RowHeadersDefaultCellStyle. = DataGridViewColumnSortMode.NotSortable;
-            dgvCalendar.RowHeadersVisible = false;
-
-            if (rowCount > 0 && columnCount > 0)
-            {
-                int rowHeight = dgvCalendar.Height / (rowCount + 1);
-                int columnWidth = (int)((double)dgvCalendar.Width * .999) / columnCount;
-
-                // Set the row heights
-                foreach (DataGridViewRow row in dgvCalendar.Rows)
-                {
-                    row.Height = rowHeight;
-                }
-
-                // Set the column widths
-                foreach (DataGridViewColumn column in dgvCalendar.Columns)
-                {
-                    column.Width = columnWidth;
-                }
-            }
-        }
-
-        private void LoadShowGrid(List<Airshow> listtheseshows, string ColumnTItle = "Shows This Weekend")
-        {
-            //This is what happens when you select a weekend in the main grid.  dataGridViewShows is the pop up to the right and it lists the shows for a given weekend. 
-            DataTable dataTable = new DataTable();
-
-            dataTable.Columns.Add(ColumnTItle);
-            for (int ii = 0; ii < listtheseshows.Count; ii++)
-            {
-                DataRow row = dataTable.Rows.Add();
-                row[0] = listtheseshows[ii].ToString();
-            }
-
-            dataGridViewShows.DataSource = dataTable;
-            dataGridViewShows.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewShows.Columns[0].SortMode = DataGridViewColumnSortMode.NotSortable;
-
-            // Create a new DataGridViewCellStyle object for the column headers
-            DataGridViewCellStyle headerStyle = new DataGridViewCellStyle();
-
-            // Set the desired font style to bold
-            headerStyle.Font = new Font(dataGridViewShows.Font, FontStyle.Bold);
-
-            // Apply the header style to the column headers
-            dataGridViewShows.ColumnHeadersDefaultCellStyle = headerStyle;
-
-            for (int ii = 0; ii < listtheseshows.Count; ii++)
-            {
-                Airshow ashow = listtheseshows[ii];
-                DataGridViewCell cell = dataGridViewShows.Rows[ii].Cells[0];
-                switch (ashow.Status)
-                {
-                    case eStatus.maybe:
-                        cell.Style.BackColor = Color.LightYellow;
-                        break;
-                    case eStatus.verbal:
-                        cell.Style.BackColor = Color.LightGreen;
-                        break;
-                    case eStatus.contract:
-                        cell.Style.BackColor = Color.LightBlue;
-                        break;
-                    case eStatus.pursue:
-                        cell.Style.BackColor = Color.LightCoral;
-                        break;
-                    case eStatus.NO:
-                        cell.Style.BackColor = Color.LightGray;
-                        break;
-                    default:
-                        cell.Style.BackColor = Color.White;
-                        break;
-                }
-            }
-        }
-
         private int GetYearOfInterest()
         {
             myFormState = FormState.LoadMe();
-            AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
+            bool success;
+            AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
             int yearofinterest = asg.AirshowYearOfInterest;
             return yearofinterest;
         }
 
-        private void ColorGrid(List<Airshow> theseshows)
-        {
-            //this colors the grid and puts an airshow name in there if there is some sort of status associated with it. 
-            //if there is a show this weekend at all, the cell is bolded regardless of state. 
-            List<Airshow> actionShows = theseshows.Where(x => x.Status != eStatus.none && x.Status != eStatus.NO).ToList();
 
-            //actionShows = actionShows.OrderByDescending(x => x.Status).ToList();
-            //foreach (cAirshow ashowwithInterest in actionShows)
-            {
-                foreach (DataGridViewRow row in dgvCalendar.Rows)
-                {
-                    foreach (DataGridViewCell cell in row.Cells)
-                    {
-                        string cellText = cell.Value?.ToString() ?? string.Empty;
-                        string[] weekendinquestion = cellText.Split(' ');
-                        if (weekendinquestion.Length >= 3)
-                        {
-
-                            DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                            AirshowWeekend asw = new AirshowWeekend(dateTime);
-                            List<Airshow> showsthisweekend = actionShows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                            showsthisweekend = showsthisweekend.OrderBy(x => x.Status).ToList();
-                            if (showsthisweekend.Count == 0)
-                                continue;
-                            Airshow ashowwithInterest = showsthisweekend[0];
-
-                            if (asw.weekofyear == ashowwithInterest.WeekNumber)
-                            {
-                                switch (ashowwithInterest.Status)
-                                {
-                                    case eStatus.pursue:
-                                        cell.Style.BackColor = Color.LightCoral;
-                                        break;
-                                    case eStatus.maybe:
-                                        cell.Style.BackColor = Color.LightYellow;
-                                        break;
-                                    case eStatus.verbal:
-                                        cell.Style.BackColor = Color.LightGreen;
-                                        break;
-                                    case eStatus.contract:
-                                        cell.Style.BackColor = Color.LightBlue;
-                                        break;
-                                    default:
-                                        cell.Style.BackColor = Color.White;
-                                        break;
-                                }
-                                cell.Value += $" \n{ashowwithInterest.name_airshow}";
-                            }
-                        }
-                    }
-                }
-            }
-            foreach (DataGridViewRow row in dgvCalendar.Rows)
-            {
-                foreach (DataGridViewCell cell in row.Cells)
-                {
-                    string cellText = cell.Value?.ToString() ?? string.Empty;
-                    string[] weekendinquestion = cellText.Split(' ');
-                    if (weekendinquestion.Length >= 3)
-                    {
-                        DateTime dateTime = new DateTime(2023, int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                        AirshowWeekend asw = new AirshowWeekend(dateTime);
-                        List<Airshow> showsthisweek = theseshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                        if (showsthisweek.Count > 0)
-                        {
-                            Font boldFont = new Font(dgvCalendar.DefaultCellStyle.Font, FontStyle.Bold);
-                            cell.Style.Font = boldFont;
-                        }
-                        else
-                        {
-                            Font regFont = new Font(dgvCalendar.DefaultCellStyle.Font, FontStyle.Regular);
-                            cell.Style.Font = regFont;
-                        }
-                    }
-                }
-            }
-        }
         private void SaveAirshowSchedule(bool DoFileDialogue)
         {
             SaveAirshowSchedule(DoFileDialogue, myAirshows);
@@ -345,55 +263,10 @@ namespace AirshowSchedules
         }
         #endregion
 
-        public frmAirshowScheduleTool()
-        {
-            //if(!DesignMode)
-            {
-                try
-                {
-                    InitializeComponent();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading Designer: " + ex.Message);
-                }
-            }
-        }
+
 
         #region Form Event Callbacks
-        private void frmAirshowScheduleTool_Load(object sender, EventArgs e)
-        {
-            if (!DesignMode)
-            {
-                this.Size = new Size(1650, 1000);
-                // set the location to the upper right of the screen
-                this.Location = new Point(Screen.PrimaryScreen.WorkingArea.Width - this.Width, 0);
 
-
-                myFormState = FormState.LoadMe();
-                //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
-                AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
-                myAirshows = asg.Airshows.myShows;
-                //myFilteredAirshows = myAirshows.ToList();
-                myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
-                lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-                LoadGrid(myFormState.AirshowYearofInterest);
-                //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
-                myFilteredAirshows = myAirshows.ToList();
-                ColorGrid(myFilteredAirshows);
-                txtOutput.Lines = Airshow.GetLines(myAirshows);
-                myRegions = Regions.LoadMe(myFormState.fnRegions);
-                chklstRegions.Items.Clear();
-                foreach (string rgn in myRegions.GetRegionList())
-                {
-                    chklstRegions.Items.Add(rgn);
-                }
-                for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
-                {
-                    chklstRegions.SetItemChecked(ii, true);
-                }
-            }
-        }
 
         private void btnParseAirshowDataFile_Click(object sender, EventArgs e)
         {
@@ -473,7 +346,9 @@ namespace AirshowSchedules
             if (dr == DialogResult.OK)
             {
                 this.Enabled = false;
-                AirshowGroup asg = AirshowGroup.LoadMe(ofd.FileName);
+                bool success;
+                AirshowGroup asg = AirshowGroup.LoadMe(ofd.FileName, out success);
+                if(!success) { return;  }
                 myAirshows = asg.Airshows.myShows;
                 myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
                 myFormState.fnCurrentXMLDataBase = ofd.FileName;
@@ -482,7 +357,6 @@ namespace AirshowSchedules
                 myFilteredAirshows = myAirshows.ToList();
                 this.Enabled = true;
                 LoadGrid(myFormState.AirshowYearofInterest);
-                //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
                 ColorGrid(myFilteredAirshows);
                 lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             }
@@ -518,7 +392,7 @@ namespace AirshowSchedules
                 {
                     //List<cPly> plys = Ply.Where(ply => ply.SeqId == SeqId).ToList();
                     //List<cAirshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.CompareYears(ashow)).ToList();
-                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.Equals(ashow, false)).ToList();
+                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (foundAirshows.Count > 0)
                         continue;
                     newShows.Add(ashow);
@@ -754,7 +628,7 @@ namespace AirshowSchedules
                 foreach (Airshow ashow in asgRight.Airshows.myShows)
                 {
 
-                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.Equals(ashow, false)).ToList();
+                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (foundAirshows.Count > 0)
                         continue;
                     newShows.Add(ashow);
@@ -795,7 +669,7 @@ namespace AirshowSchedules
 
             foreach (Airshow ashow in checkedShows)
             {
-                if (!newairshows.Exists(x => x.Equals(ashow)))
+                if (!newairshows.Exists(x => x.IsEqual(ashow)))
                 {
                     newairshows.Add(ashow);
                     myMergedShows.Remove(ashow);
@@ -1018,7 +892,7 @@ namespace AirshowSchedules
             }
         }
 
-        private void button6_Click(object sender, EventArgs e)
+        private void btnCheckForDuplicates_Click(object sender, EventArgs e)
         {
 
             List<Airshow> new_airshows = new List<Airshow>();
@@ -1113,6 +987,183 @@ namespace AirshowSchedules
                 }
             }
         }
+
+        private void btnCheckForDuplicatesInDB_Click(object sender, EventArgs e)
+        {
+            //check for duplicates in the database
+            List<Airshow> duplicateAirshowsFound = new List<Airshow>();
+            List<Airshow> airshowsFoundInNewDB = new List<Airshow>();
+
+            //for every airshow in the database, compare cities to see if they show up more than once
+            List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+            foreach (Airshow ashow in copiedList)
+            {
+                List<Airshow> duplicatesFound = new List<Airshow>();
+                duplicatesFound = copiedList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
+
+                if (duplicatesFound.Count > 1)
+                {
+                    foreach (Airshow adup in duplicatesFound)
+                    {
+                        string possibleDuplicate = string.Concat(adup.ToString(), "\n");
+                        duplicateAirshowsFound.Add(adup);
+                    }
+                }
+            }
+
+            //we need an open file dialogue to open up the most recently downloaded asg.xml file
+            if (duplicateAirshowsFound.Count == 0)
+            {
+                MessageBox.Show("No duplicates found.");
+                return;
+            }
+            DialogResult dr = MessageBox.Show($"There are {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
+            if (dr == DialogResult.Yes)
+            {
+                OpenFileDialog openFileDialog = new OpenFileDialog();
+                openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
+                openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
+                openFileDialog.DefaultExt = "asg.xml";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    bool success;
+                    AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success );
+                    List<Airshow> latestAirshowList = asgLatest.Airshows.myShows.ToList();
+                    int count = copiedList.Count;
+
+                    foreach (Airshow ashow in duplicateAirshowsFound)
+                    {
+                        List<Airshow> airshowsInNewDB = latestAirshowList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
+                        foreach (Airshow adup in airshowsInNewDB)
+                        {
+                            if (!airshowsFoundInNewDB.Contains(adup))
+                            {
+                                string airshowInNewDB = string.Concat(adup.ToString(), "\n");
+                                airshowsFoundInNewDB.Add(adup);
+                            }
+                        }
+                    }
+
+                    foreach (Airshow dupShow in duplicateAirshowsFound)
+                    {
+                        List<Airshow> validShows = airshowsFoundInNewDB.Where(airshow => airshow.location.Equals(dupShow.location)).ToList();
+                        if (validShows.Count == 1)
+                        {
+                            if (!validShows[0].IsEqual(dupShow, false))
+                            {
+                                List<Airshow> airshowToRemove = copiedList.Where(airshow => airshow.IsEqual(dupShow, false)).ToList();
+                                foreach (Airshow adup in airshowToRemove)
+                                {
+                                    validShows[0].AppendCustomFields(adup);
+                                    copiedList.Remove(adup);
+                                    Console.WriteLine($"Removed {adup.ToString()}".Pastel(Color.Red));
+                                }
+                            }
+                        }
+                    }
+                    Console.WriteLine();
+                    Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
+                    Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
+                    Console.WriteLine($"There are {duplicateAirshowsFound.Count / 2} duplicates detected.".Pastel(Color.Green));
+                    Console.WriteLine($"There are {count - copiedList.Count} duplicates removed.".Pastel(Color.Green));
+                    Console.WriteLine();
+                    Console.WriteLine("Press any key to continue.".Pastel(Color.Green));
+                    Console.ReadKey();
+
+                    count = copiedList.Count;
+                    List<Airshow> showsToRemove = new List<Airshow>();
+                    foreach (Airshow ashow in copiedList)
+                    {
+                        List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
+                        if (showsFound.Count == 0)
+                        {
+                            Console.WriteLine($"Airshow {ashow.ToString()} is not in the latest database. Do you want to remove it (Y/N)?".Pastel(Color.Red));
+                            string response = Console.ReadLine();
+                            if (response.ToLower() == "y")
+                            {
+                                showsToRemove.Add(ashow);
+                            }
+                        }
+                    }
+                    foreach (Airshow airshow in showsToRemove)
+                    {
+                        copiedList.Remove(airshow);
+                    }
+
+
+                    Console.WriteLine();
+                    Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
+                    Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
+                    Console.WriteLine($"We removed {count - copiedList.Count} non-existant Airshows.".Pastel(Color.Green));
+                    Console.WriteLine();
+                    Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
+                    string response2 = Console.ReadLine();
+                    if (response2.ToLower() == "y")
+                    {
+                        Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
+                        string confirm = Console.ReadLine();
+                        if (confirm.ToLower() == "y")
+                        {
+                            myAirshows = copiedList;
+                            SaveAirshowSchedule(false);
+                        }
+                    }
+
+                    // {
+                    //     AirshowGroup asg = new AirshowGroup();
+                    //     List<Airshow> airshows = new List<Airshow>();
+                    //     AirshowGroup workingASG = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
+
+                    //     try
+                    //     {
+
+                    //         copiedList = copiedList.OrderBy(airshow => airshow.WeekNumber).ToList();
+                    //         txtOutput.Lines = Airshow.GetLines(airshows);
+                    //         asg.Airshows.myShows = copiedList;
+                    //         asg.AirshowYearOfInterest = workingASG.AirshowYearOfInterest;
+                    //         SaveFileDialog sfd = new SaveFileDialog();
+                    //         sfd.Filter = "*.asg.XML|*.asg.xml";
+                    //         sfd.Title = "Save an Airshow Group";
+                    //         DialogResult dr2 = sfd.ShowDialog();
+                    //         if (dr2 == DialogResult.OK)
+                    //         {
+                    //             Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
+                    //         }
+                    //     }
+                    //     catch { }
+                    // }
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Here are the duplicates you need to fix:".Pastel(Color.Green));
+                foreach (Airshow ashow in duplicateAirshowsFound)
+                {
+                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                }
+                Console.WriteLine();
+
+                // Open the DeleteAirshowForm
+                int Count = copiedList.Count;
+                DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList);
+                deleteForm.ShowDialog();
+                Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));
+                Console.WriteLine();
+                Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
+                string response2 = Console.ReadLine();
+                if (response2.ToLower() == "y")
+                {
+                    Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
+                    string confirm = Console.ReadLine();
+                    if (confirm.ToLower() == "y")
+                    {
+                        myAirshows = copiedList;
+                        SaveAirshowSchedule(false);
+                    }
+                }
+            }
+        }
     }
 
     public class PopupForm : Form
@@ -1155,7 +1206,4 @@ namespace AirshowSchedules
     }
 
     #endregion
-
-
-
 }
