@@ -9,14 +9,16 @@ namespace AirshowSchedules
     {
         private List<Airshow> activeDB;
 
-        public CompareForm(List<Airshow> newAirshows, List<Airshow> activeDB)
+        public CompareForm(List<Airshow> newAirshows, List<Airshow> activeDB, System.Windows.Forms.Form mainForm)
         {
-            InitializeComponent();
+            InitializeComponent(mainForm);
+            CenterToMainForm(mainForm);
             PopulateCheckedListBox(newAirshows);
+            
             this.activeDB = activeDB;
         }
 
-        private void InitializeComponent()
+        private void InitializeComponent(System.Windows.Forms.Form mainForm)
         {
             this.checkedListBox = new System.Windows.Forms.CheckedListBox();
             this.btnMerge = new System.Windows.Forms.Button();
@@ -30,14 +32,20 @@ namespace AirshowSchedules
             this.checkedListBox.FormattingEnabled = true;
             this.checkedListBox.Location = new System.Drawing.Point(12, 12);
             this.checkedListBox.Name = "checkedListBox";
-            this.checkedListBox.Size = new System.Drawing.Size(360, 184);
+            this.checkedListBox.Size = new System.Drawing.Size((int)(mainForm.Width *.65), (int)(mainForm.Height*.5));
             this.checkedListBox.TabIndex = 0;
+            
+            
+            int buttonHeight = 40;
+            int buttonWidth = 150;
+            int buttonLocationX = 12;
+            int buttonStep = buttonWidth + buttonLocationX;
             // 
             // btnMerge
             // 
-            this.btnMerge.Location = new System.Drawing.Point(12, 202);
+            this.btnMerge.Location = new System.Drawing.Point(buttonLocationX, this.checkedListBox.Bottom + 10);
             this.btnMerge.Name = "btnMerge";
-            this.btnMerge.Size = new System.Drawing.Size(75, 23);
+            this.btnMerge.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
             this.btnMerge.TabIndex = 1;
             this.btnMerge.Text = "Merge All";
             this.btnMerge.UseVisualStyleBackColor = true;
@@ -45,9 +53,10 @@ namespace AirshowSchedules
             // 
             // btnManualMerge
             // 
-            this.btnManualMerge.Location = new System.Drawing.Point(93, 202);
+            buttonLocationX += buttonStep;
+            this.btnManualMerge.Location = new System.Drawing.Point(buttonLocationX, this.checkedListBox.Bottom + 10);
             this.btnManualMerge.Name = "btnManualMerge";
-            this.btnManualMerge.Size = new System.Drawing.Size(100, 23);
+            this.btnManualMerge.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
             this.btnManualMerge.TabIndex = 2;
             this.btnManualMerge.Text = "Merge Selected";
             this.btnManualMerge.UseVisualStyleBackColor = true;
@@ -55,9 +64,10 @@ namespace AirshowSchedules
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(199, 202);
+            buttonLocationX += buttonStep;
+            this.btnCancel.Location = new System.Drawing.Point(buttonLocationX, this.checkedListBox.Bottom + 10);
             this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
             this.btnCancel.TabIndex = 3;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
@@ -65,19 +75,26 @@ namespace AirshowSchedules
             // 
             // btnClose
             // 
-            this.btnClose.Location = new System.Drawing.Point(280, 202);
+            buttonLocationX += buttonStep;
+            this.btnClose.Location = new System.Drawing.Point(buttonLocationX, this.checkedListBox.Bottom + 10);
             this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(75, 23);
+            this.btnClose.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
             this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
+
             // 
             // CompareForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 237);
+            //this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            //this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size((int)(mainForm.Width * 0.75), (int)(mainForm.Height * 0.75));
+            this.StartPosition = FormStartPosition.Manual;
+                this.Location = new Point(
+                    mainForm.Location.X,
+                    mainForm.Location.Y
+                );
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnManualMerge);
@@ -150,6 +167,14 @@ namespace AirshowSchedules
             if (this.DialogResult == DialogResult.None)
             {
                 this.DialogResult = DialogResult.Cancel;
+            }
+        }
+
+        private void CenterToMainForm(System.Windows.Forms.Form mainForm)
+        {
+            if (mainForm != null)
+            {
+
             }
         }
     }

@@ -63,7 +63,7 @@ public partial class frmAirshowScheduleTool
                 Airshow.LoadFile(WorkingFileParserClass, airshows);
                 airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
 
-                myFilteredAirshows = airshows.ToList();
+                //myFilteredAirshows = airshows.ToList();
                 asg.Airshows.myShows = airshows;
                 asg.AirshowYearOfInterest = WorkingFileParserClass.AirshowYear;
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -152,7 +152,7 @@ public partial class frmAirshowScheduleTool
             // Show the CompareForm
             // create a deep copy of MyAirshows
             List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
-            CompareForm compareForm = new CompareForm(newShows, copiedList);
+            CompareForm compareForm = new CompareForm(newShows, copiedList, this);
             if (compareForm.ShowDialog() == DialogResult.OK)
             {
                 // ask the user if they want to save the merged data
@@ -161,6 +161,7 @@ public partial class frmAirshowScheduleTool
                 {
                     myAirshows = copiedList;
                     SaveAirshowSchedule(false);
+                    
                 }
             }
 
@@ -172,6 +173,7 @@ public partial class frmAirshowScheduleTool
         //check for duplicates in the database
         List<Airshow> duplicateAirshowsFound = new List<Airshow>();
         List<Airshow> airshowsFoundInNewDB = new List<Airshow>();
+        List<Airshow> latestAirshowList = new List<Airshow>();
 
         //for every airshow in the database, compare cities to see if they show up more than once
         List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
@@ -207,7 +209,7 @@ public partial class frmAirshowScheduleTool
             {
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
-                List<Airshow> latestAirshowList = asgLatest.Airshows.myShows.ToList();
+                latestAirshowList = asgLatest.Airshows.myShows.ToList();
                 int count = copiedList.Count;
 
                 foreach (Airshow ashow in duplicateAirshowsFound)
@@ -298,7 +300,55 @@ public partial class frmAirshowScheduleTool
                     }
                 }
 
+                Console.WriteLine();
+                Console.WriteLine("Looking for Airshows that have been cancelled.".Pastel(Color.Green));
+                List<Airshow> cancelledShows = latestAirshowList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
+                List<Airshow> cancelledInDB = new   List<Airshow>();
+                List<Airshow> airshowToRemove2 = new List<Airshow>();
+                foreach (Airshow ashow in cancelledShows)
+                {
+                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                    List<Airshow> mathingShow = copiedList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
+                    foreach (Airshow adup in mathingShow)
+                    {
+                        cancelledInDB.Add(adup);
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine("Do these shows match? (Y/N)?".Pastel(Color.Yellow));
+                foreach (Airshow ashow in cancelledInDB)
+                {
+                    List<Airshow> matchingShow = cancelledShows.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
+                    
+                    foreach(Airshow adup in matchingShow)
+                    {
+                        Console.WriteLine(adup.ToString().Pastel(Color.Yellow));
+                        Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                        Console.WriteLine("Do these match? (Y/N)".Pastel(Color.Yellow));
+                        string response = Console.ReadLine();
+                        if (response.ToLower() == "y")
+                        {
+                            airshowToRemove2.Add(ashow);
+                        }
+                    }
+                }
+                Console.WriteLine();
+                Console.WriteLine("Do you want to remove these shows (Y/N)?".Pastel(Color.Yellow));
+                foreach(Airshow ashow in airshowToRemove2)
+                {
+                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                }
 
+                string response3 = Console.ReadLine();
+                if (response3.ToLower() == "y")
+                {
+                    foreach (Airshow ashow in airshowToRemove2)
+                    {
+                        copiedList.Remove(ashow);
+                    }
+                    myAirshows = copiedList;
+                    SaveAirshowSchedule(false);
+                }
             }
             this.Enabled = true;
         }
@@ -377,5 +427,57 @@ public partial class frmAirshowScheduleTool
             MessageBox.Show("No cancelled shows found.");
         }
     }
+    private void arciveActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        string actvDBFile = myFormState.fnCurrentXMLDataBase;
+    
+        // Extract the filename from actvDBFile
+        string fileName = System.IO.Path.GetFileName(actvDBFile);
+    
+        // Get the current date and time
+        DateTime now = DateTime.Now;
+    
+        // Format the date and time as a string
+        string dateTimeString = now.ToString("yyyy-MM-dd_HH-mm-ss");
+    
+        // Prepend the formatted date and time to the filename
+        string archivedFileName = $"{dateTimeString}_{fileName}";
+    
+        // Use the archivedFileName as needed
+        Console.WriteLine($"Archived file name: {archivedFileName}");
+
+        string directory = System.IO.Path.GetDirectoryName(actvDBFile);
+        
+        //add archive folder
+        directory = System.IO.Path.Combine(directory, "Archive");
+        
+        //let's see if the directory exists
+        if (!System.IO.Directory.Exists(directory))
+        {
+            System.IO.Directory.CreateDirectory(directory);
+        }
+        // Combine the directory and new filename
+
+        string archivedFilePath = System.IO.Path.Combine(directory, archivedFileName);
+
+        // Use the archivedFilePath as needed
+        Console.WriteLine($"Archived file path: {archivedFilePath}");
+
+        bool success;
+        AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
+        if(!success) 
+        { 
+            Console.WriteLine("Failed to load the active database file.".Pastel(Color.Red));
+            Console.WriteLine($"Active DB File: {actvDBFile}".Pastel(Color.Red));
+            Console.WriteLine();
+            return; 
+        }
+
+        asg.Airshows.myShows = myAirshows;
+
+        Electroimpact.XmlSerialization.Serializer.Save(asg, archivedFilePath);
+        Console.WriteLine($"Active DB file archived to: {archivedFilePath}".Pastel(Color.Green));
+    }    
 }
+
 

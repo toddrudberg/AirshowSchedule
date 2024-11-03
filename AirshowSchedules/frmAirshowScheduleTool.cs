@@ -66,6 +66,9 @@ namespace AirshowSchedules
                     MessageBox.Show("Error loading form: " + "Unable to load the active database");
                     return;
                 }
+
+                arciveActiveDBToolStripMenuItem_Click(this, null);
+
                 myAirshows = asg.Airshows.myShows;
                 //myFilteredAirshows = myAirshows.ToList();
                 myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
@@ -219,6 +222,8 @@ namespace AirshowSchedules
         private void SaveAirshowSchedule(bool DoFileDialogue)
         {
             SaveAirshowSchedule(DoFileDialogue, myAirshows);
+            //update myFilteredAirshows
+            btnFilterShows_Click(null, null);
         }
 
         private void SaveAirshowSchedule(bool DoFileDialogue, List<Airshow> airshows)
@@ -377,7 +382,7 @@ namespace AirshowSchedules
         }
 
 
-        private void button3_Click(object sender, EventArgs e)
+        private void btnFilterSetAll_Click(object sender, EventArgs e)
         {
             for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
             {
@@ -385,7 +390,7 @@ namespace AirshowSchedules
             }
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void btnFilterClearAll_Click(object sender, EventArgs e)
         {
             for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
             {
@@ -397,7 +402,7 @@ namespace AirshowSchedules
         {
         }
 
-        private void button5_Click(object sender, EventArgs e)
+        private void btnFilterShows_Click(object sender, EventArgs e)
         {
             List<Airshow> FilteredAirshows = new List<Airshow>();
 

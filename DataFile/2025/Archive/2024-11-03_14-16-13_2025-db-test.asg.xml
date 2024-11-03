@@ -500,7 +500,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-15</date_start>
@@ -804,7 +804,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-11</date_start>
@@ -1267,6 +1267,24 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-10-25</date_start>
+      <date_finish>2025-10-26</date_finish>
+      <name_airshow>air dot show orlando</name_airshow>
+      <location>
+        <city>Orlando (Sanford)</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-11-01</date_start>
@@ -1792,7 +1810,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-11</date_start>
@@ -1810,7 +1828,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-18</date_start>
@@ -2614,39 +2632,6 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-25</date_start>
-      <date_finish>2025-10-26</date_finish>
-      <name_airshow>air dot show orlando</name_airshow>
-      <location>
-        <city>Orlando (Sanford)</city>
-        <state>FL</state>
-      </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
-      <Contacts>
-        <Contact>
-          <name>Bryan Lilley</name>
-          <phone>717-583-0800</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-11-15</date_start>
-      <date_finish>2025-11-16</date_finish>
-      <name_airshow>garbage show</name_airshow>
-      <location>
-        <city />
-        <state />
-      </location>
-      <Performers />
-      <Contacts />
-      <Notes_AirshowStuff />
-      <Status>none</Status>
     </Airshow>
   </Airshows>
   <AirshowYearOfInterest>2025</AirshowYearOfInterest>

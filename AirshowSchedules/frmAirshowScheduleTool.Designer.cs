@@ -38,12 +38,11 @@
             lblYearOfInterest = new Label();
             btnAddShow = new Button();
             chklstRegions = new CheckedListBox();
-            button3 = new Button();
-            button4 = new Button();
-            button5 = new Button();
+            btnFilterSetAll = new Button();
+            btnFilterClearAll = new Button();
+            btnFilterShows = new Button();
             menuStrip1 = new MenuStrip();
             fileToolStripMenuItem = new ToolStripMenuItem();
-            toolStripTextBox1 = new ToolStripTextBox();
             pareDataFileToolStripMenuItem = new ToolStripMenuItem();
             fileSaveParsedDataFile = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
@@ -65,6 +64,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -151,38 +151,38 @@
             chklstRegions.TabIndex = 22;
             chklstRegions.SelectedIndexChanged += chklstRegions_SelectedIndexChanged;
             // 
-            // button3
+            // btnFilterSetAll
             // 
-            button3.Location = new Point(1251, 446);
-            button3.Margin = new Padding(2, 1, 2, 1);
-            button3.Name = "button3";
-            button3.Size = new Size(80, 22);
-            button3.TabIndex = 23;
-            button3.Text = "Set All";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click;
+            btnFilterSetAll.Location = new Point(1251, 446);
+            btnFilterSetAll.Margin = new Padding(2, 1, 2, 1);
+            btnFilterSetAll.Name = "btnFilterSetAll";
+            btnFilterSetAll.Size = new Size(80, 22);
+            btnFilterSetAll.TabIndex = 23;
+            btnFilterSetAll.Text = "Set All";
+            btnFilterSetAll.UseVisualStyleBackColor = true;
+            btnFilterSetAll.Click += btnFilterSetAll_Click;
             // 
-            // button4
+            // btnFilterClearAll
             // 
-            button4.Location = new Point(1335, 446);
-            button4.Margin = new Padding(2, 1, 2, 1);
-            button4.Name = "button4";
-            button4.Size = new Size(80, 22);
-            button4.TabIndex = 24;
-            button4.Text = "Clear All";
-            button4.UseVisualStyleBackColor = true;
-            button4.Click += button4_Click;
+            btnFilterClearAll.Location = new Point(1335, 446);
+            btnFilterClearAll.Margin = new Padding(2, 1, 2, 1);
+            btnFilterClearAll.Name = "btnFilterClearAll";
+            btnFilterClearAll.Size = new Size(80, 22);
+            btnFilterClearAll.TabIndex = 24;
+            btnFilterClearAll.Text = "Clear All";
+            btnFilterClearAll.UseVisualStyleBackColor = true;
+            btnFilterClearAll.Click += btnFilterClearAll_Click;
             // 
-            // button5
+            // btnFilterShows
             // 
-            button5.Location = new Point(1167, 446);
-            button5.Margin = new Padding(2, 1, 2, 1);
-            button5.Name = "button5";
-            button5.Size = new Size(80, 22);
-            button5.TabIndex = 25;
-            button5.Text = "Filter List";
-            button5.UseVisualStyleBackColor = true;
-            button5.Click += button5_Click;
+            btnFilterShows.Location = new Point(1167, 446);
+            btnFilterShows.Margin = new Padding(2, 1, 2, 1);
+            btnFilterShows.Name = "btnFilterShows";
+            btnFilterShows.Size = new Size(80, 22);
+            btnFilterShows.TabIndex = 25;
+            btnFilterShows.Text = "Filter List";
+            btnFilterShows.UseVisualStyleBackColor = true;
+            btnFilterShows.Click += btnFilterShows_Click;
             // 
             // menuStrip1
             // 
@@ -197,60 +197,53 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripTextBox1, pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setRegionFileToolStripMenuItem, toolStripSeparator2, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setRegionFileToolStripMenuItem, toolStripSeparator2, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
             // 
-            // toolStripTextBox1
-            // 
-            toolStripTextBox1.Enabled = false;
-            toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(200, 23);
-            toolStripTextBox1.Text = "ICAS Data File";
-            // 
             // pareDataFileToolStripMenuItem
             // 
             pareDataFileToolStripMenuItem.Name = "pareDataFileToolStripMenuItem";
-            pareDataFileToolStripMenuItem.Size = new Size(260, 22);
+            pareDataFileToolStripMenuItem.Size = new Size(198, 22);
             pareDataFileToolStripMenuItem.Text = "Parse Data File";
             pareDataFileToolStripMenuItem.Click += fileParseDataFileToolStripMenuItem_Click;
             // 
             // fileSaveParsedDataFile
             // 
             fileSaveParsedDataFile.Name = "fileSaveParsedDataFile";
-            fileSaveParsedDataFile.Size = new Size(260, 22);
+            fileSaveParsedDataFile.Size = new Size(198, 22);
             fileSaveParsedDataFile.Text = "Save Parsed Data File";
             fileSaveParsedDataFile.Click += fileSaveParsedDataFile_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(257, 6);
+            toolStripSeparator1.Size = new Size(195, 6);
             // 
             // setRegionFileToolStripMenuItem
             // 
             setRegionFileToolStripMenuItem.Name = "setRegionFileToolStripMenuItem";
-            setRegionFileToolStripMenuItem.Size = new Size(260, 22);
+            setRegionFileToolStripMenuItem.Size = new Size(198, 22);
             setRegionFileToolStripMenuItem.Text = "Set Region File";
             setRegionFileToolStripMenuItem.Click += fileSetRegionFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(257, 6);
+            toolStripSeparator2.Size = new Size(195, 6);
             // 
             // setActiveDatabaseFileToolStripMenuItem
             // 
             setActiveDatabaseFileToolStripMenuItem.Name = "setActiveDatabaseFileToolStripMenuItem";
-            setActiveDatabaseFileToolStripMenuItem.Size = new Size(260, 22);
+            setActiveDatabaseFileToolStripMenuItem.Size = new Size(198, 22);
             setActiveDatabaseFileToolStripMenuItem.Text = "Set Active Database File";
             setActiveDatabaseFileToolStripMenuItem.Click += setActiveDatabaseFileToolStripMenuItem_Click;
             // 
             // saveDatabaseFileToolStripMenuItem
             // 
             saveDatabaseFileToolStripMenuItem.Name = "saveDatabaseFileToolStripMenuItem";
-            saveDatabaseFileToolStripMenuItem.Size = new Size(260, 22);
+            saveDatabaseFileToolStripMenuItem.Size = new Size(198, 22);
             saveDatabaseFileToolStripMenuItem.Text = "Save Database File";
             saveDatabaseFileToolStripMenuItem.Click += saveDatabaseFileToolStripMenuItem_Click;
             // 
@@ -356,15 +349,22 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
+            // arciveActiveDBToolStripMenuItem
+            // 
+            arciveActiveDBToolStripMenuItem.Name = "arciveActiveDBToolStripMenuItem";
+            arciveActiveDBToolStripMenuItem.Size = new Size(198, 22);
+            arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
+            arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
+            // 
             // frmAirshowScheduleTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1426, 488);
             Controls.Add(btnDeleteShow);
-            Controls.Add(button5);
-            Controls.Add(button4);
-            Controls.Add(button3);
+            Controls.Add(btnFilterShows);
+            Controls.Add(btnFilterClearAll);
+            Controls.Add(btnFilterSetAll);
             Controls.Add(chklstRegions);
             Controls.Add(btnAddShow);
             Controls.Add(lblYearOfInterest);
@@ -394,9 +394,9 @@
         private Label lblYearOfInterest;
         private Button btnAddShow;
         private CheckedListBox chklstRegions;
-        private Button button3;
-        private Button button4;
-        private Button button5;
+        private Button btnFilterSetAll;
+        private Button btnFilterClearAll;
+        private Button btnFilterShows;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem reportsToolStripMenuItem;
         private ToolStripMenuItem generateCallListToolStripMenuItem;
@@ -410,7 +410,6 @@
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
         private ToolStripMenuItem setRegionFileToolStripMenuItem;
-        private ToolStripTextBox toolStripTextBox1;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem fileSaveParsedDataFile;
         private ToolStripSeparator toolStripSeparator2;
@@ -422,5 +421,6 @@
         private ToolStripMenuItem compareToActiveDBToolStripMenuItem;
         private ToolStripMenuItem cleanUpDBToolStripMenuItem;
         private ToolStripMenuItem checkForCancelledShowsToolStripMenuItem;
+        private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
     }
 }
