@@ -7,6 +7,7 @@ using static AirshowSchedules.Airshow;
 using static AirshowSchedules.cCalenderYear;
 using Pastel;
 using System.Diagnostics.Metrics;
+using Markdig;
 
 namespace AirshowSchedules
 {
@@ -24,7 +25,11 @@ namespace AirshowSchedules
         AirshowSchedules.Regions myRegions = new AirshowSchedules.Regions();
         private System.Windows.Forms.TextBox TextBox1;
 
-       
+        [DllImport("user32.dll")]
+        private static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        [DllImport("kernel32.dll")]
+        private static extern IntPtr GetConsoleWindow();
 
         public frmAirshowScheduleTool()
         {
@@ -70,7 +75,7 @@ namespace AirshowSchedules
 
                     // Apply scaling
                     int formWidth = (int)(1450.0 * scaleFactor * scaleFactorX);
-                    int formHeight = (int)(770.0 * scaleFactor * scaleFactorY);
+                    int formHeight = (int)(550.0 * scaleFactor * scaleFactorY);
 
                     this.Size = new Size(formWidth, formHeight);
 
@@ -99,7 +104,7 @@ namespace AirshowSchedules
                     //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
                     myFilteredAirshows = myAirshows.ToList();
                     ColorGrid(myFilteredAirshows);
-                    txtOutput.Lines = Airshow.GetLines(myAirshows);
+
                     myRegions = Regions.LoadMe(myFormState.fnRegions);
                     chklstRegions.Items.Clear();
                     foreach (string rgn in myRegions.GetRegionList())
@@ -268,150 +273,6 @@ namespace AirshowSchedules
         #region Form Event Callbacks
 
 
-        private void btnParseAirshowDataFile_Click(object sender, EventArgs e)
-        {
-            //myAirshows.Clear();
-
-            List<Airshow> airshows = new List<Airshow>();
-
-            //WorkingFileParserClass;
-            WorkingFileParserClass = cAirshowFileParserSetupTool.LoadMe();
-
-            Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(WorkingFileParserClass);
-
-            DialogResult dr = DialogResult.OK;
-            dr = sb.showDialog();
-
-            if (dr == DialogResult.OK)
-            {
-                this.Enabled = false;
-                this.txtOutput.Clear();
-                Airshow.LoadFile(WorkingFileParserClass, airshows);
-                //myFormState.AirshowYearofInterest = WorkingFileParserClass.AirshowYear;
-                airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-                txtOutput.Lines = Airshow.GetLines(airshows);
-                myFilteredAirshows = airshows.ToList();
-                cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
-                this.Enabled = true;
-            }
-        }
-
-        private void btnCopyToTabs_Click(object sender, EventArgs e)
-        {
-            Clipboard.Clear();
-            myFilteredAirshows = myFilteredAirshows.OrderBy(c => c.WeekNumber).ToList();
-            string lines = Airshow.GetTabOutput(myFilteredAirshows);
-            Clipboard.SetText(lines);
-        }
-
-        private void btnSaveAs_Click(object sender, EventArgs e)
-        {
-
-            AirshowGroup asg = new AirshowGroup();
-            List<Airshow> airshows = new List<Airshow>();
-
-            if (System.IO.File.Exists(WorkingFileParserClass.sFileName))
-            {
-                try
-                {
-                    Airshow.LoadFile(WorkingFileParserClass, airshows);
-                    airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-                    txtOutput.Lines = Airshow.GetLines(airshows);
-                    myFilteredAirshows = airshows.ToList();
-                    asg.Airshows.myShows = airshows;
-                    asg.AirshowYearOfInterest = WorkingFileParserClass.AirshowYear;
-                    SaveFileDialog sfd = new SaveFileDialog();
-                    sfd.Filter = "*.asg.XML|*.asg.xml";
-                    sfd.Title = "Save an Airshow Group";
-                    DialogResult dr = sfd.ShowDialog();
-                    if (dr == DialogResult.OK)
-                    {
-                        Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
-                    }
-                    return;
-                }
-                catch { }
-            }
-            MessageBox.Show("Something Wrong.  Be first set this up by using the \"Parse Data File Tool\"");
-        }
-
-        private void btnReadXML_Click(object sender, EventArgs e)
-        {
-            myAirshows.Clear();
-
-            System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog();
-            ofd.Filter = "XML|*.xml";
-            DialogResult dr = ofd.ShowDialog();
-
-            if (dr == DialogResult.OK)
-            {
-                this.Enabled = false;
-                bool success;
-                AirshowGroup asg = AirshowGroup.LoadMe(ofd.FileName, out success);
-                if(!success) { return;  }
-                myAirshows = asg.Airshows.myShows;
-                myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
-                myFormState.fnCurrentXMLDataBase = ofd.FileName;
-                FormState.SaveMe(myFormState);
-                txtOutput.Lines = Airshow.GetLines(myAirshows);
-                myFilteredAirshows = myAirshows.ToList();
-                this.Enabled = true;
-                LoadGrid(myFormState.AirshowYearofInterest);
-                ColorGrid(myFilteredAirshows);
-                lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-            }
-        }
-
-        private void btnCompareXMLs_Click(object sender, EventArgs e)
-        {
-            //need to set pointers to each of the xmls
-            //What's new in future year?
-            //what's not in the other?
-            //interface to merge data - eg show merge
-            //interface for manual merge
-
-            DialogResult dr = SelectFilesToCompare();
-
-            if (dr == DialogResult.OK)
-            {
-                this.Enabled = false;
-                this.txtOutput.Clear();
-                this.chklstbox_diff.Items.Clear();
-                this.txtRight.Clear();
-
-                AirshowGroup asgLeft = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameLeft);
-                txtOutput.Lines = Airshow.GetLines(asgLeft.Airshows.myShows);
-                myFilteredAirshows = asgLeft.Airshows.myShows.ToList();
-
-                AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameRight);
-                txtRight.Lines = Airshow.GetLines(asgRight.Airshows.myShows);
-
-                List<Airshow> newShows = new List<Airshow>();
-
-                foreach (Airshow ashow in asgRight.Airshows.myShows)
-                {
-                    //List<cPly> plys = Ply.Where(ply => ply.SeqId == SeqId).ToList();
-                    //List<cAirshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.CompareYears(ashow)).ToList();
-                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
-                    if (foundAirshows.Count > 0)
-                        continue;
-                    newShows.Add(ashow);
-                }
-                myMergedShows.Clear();
-                myMergedShows = newShows;
-
-                //txtMerged.Lines = cAirshow.GetLines(myMergedShows);
-
-                foreach (Airshow ashow in newShows)
-                {
-                    chklstbox_diff.Items.Add(ashow);
-                }
-                //chklstbox_diff.Items = myMergedShows.ToList();
-
-                this.Enabled = true;
-            }
-        }
-
         private DialogResult SelectFilesToCompare(string fnActvDB = null)
         {
             myASGCompare = cAirshowScheduleCompare.LoadMe();
@@ -423,55 +284,6 @@ namespace AirshowSchedules
             DialogResult dr = sb.showDialog();
             cAirshowScheduleCompare.SaveMe(myASGCompare);
             return dr;
-        }
-
-        private void btnNewShows_Click(object sender, EventArgs e)
-        {
-            DialogResult dr = SelectFilesToCompare();
-            if (dr == DialogResult.OK)
-            {
-                this.Enabled = false;
-                this.txtOutput.Clear();
-                this.chklstbox_diff.Items.Clear();
-                this.txtRight.Clear();
-
-                AirshowGroup asgLeft = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameLeft);
-                txtOutput.Lines = Airshow.GetLines(asgLeft.Airshows.myShows);
-                myFilteredAirshows = asgLeft.Airshows.myShows.ToList();
-
-                AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameRight);
-                txtRight.Lines = Airshow.GetLines(asgRight.Airshows.myShows);
-
-                List<Airshow> newShows = new List<Airshow>();
-
-                foreach (Airshow ashow in asgRight.Airshows.myShows)
-                {
-                    //List<cPly> plys = Ply.Where(ply => ply.SeqId == SeqId).ToList();
-                    //List<cAirshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.CompareYears(ashow)).ToList();
-                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.CompareYears(ashow)).ToList();
-                    if (foundAirshows.Count > 0)
-                        continue;
-                    newShows.Add(ashow);
-                }
-
-                foreach (Airshow newAirshow in newShows)
-                {
-                    chklstbox_diff.Items.Add(newAirshow);
-                }
-                //txtMerged.Lines = cAirshow.GetLines(newShows);
-
-                myMergedShows.Clear();
-                myMergedShows = newShows;
-
-                this.Enabled = true;
-            }
-        }
-
-        private void btnCopyMiddle_Click(object sender, EventArgs e)
-        {
-            Clipboard.Clear();
-            string lines = Airshow.GetTabOutput(myMergedShows);
-            Clipboard.SetText(lines);
         }
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -523,15 +335,6 @@ namespace AirshowSchedules
                             }
                             LoadShowGrid(airshowsthisweek, $"Airshows week of {cell.ToString()}:");
                             //GridTools.LoadShowGrid(dataGridViewShows, airshowsthisweek, $"Airshows week of {cell.ToString()}:");
-                        }
-
-                        chklstbox_diff.Items.Clear();
-                        if (mergedAirshowsThisweek.Count > 0)
-                        {
-                            foreach (Airshow airshow in mergedAirshowsThisweek)
-                            {
-                                chklstbox_diff.Items.Add(airshow);
-                            }
                         }
                     }
                 }
@@ -594,126 +397,6 @@ namespace AirshowSchedules
             }
         }
 
-        private void btnARCVDB_Click(object sender, EventArgs e)
-        {
-            SaveAirshowSchedule(true);
-        }
-
-        private void btnCompareNewToDB_Click(object sender, EventArgs e)
-        {
-            //need to set pointers to each of the xmls
-            //What's new in future year?
-            //what's not in the other?
-            //interface to merge data - eg show merge
-            //interface for manual merge
-
-            DialogResult dr = SelectFilesToCompare(myFormState.fnCurrentXMLDataBase);
-
-            if (dr == DialogResult.OK)
-            {
-                this.Enabled = false;
-                this.txtOutput.Clear();
-                this.chklstbox_diff.Items.Clear();
-                this.txtRight.Clear();
-
-                AirshowGroup asgLeft = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameLeft);
-                txtOutput.Lines = Airshow.GetLines(asgLeft.Airshows.myShows);
-                myFilteredAirshows = asgLeft.Airshows.myShows.ToList();
-
-                AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameRight);
-                txtRight.Lines = Airshow.GetLines(asgRight.Airshows.myShows);
-
-                List<Airshow> newShows = new List<Airshow>();
-
-                foreach (Airshow ashow in asgRight.Airshows.myShows)
-                {
-
-                    List<Airshow> foundAirshows = asgLeft.Airshows.myShows.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
-                    if (foundAirshows.Count > 0)
-                        continue;
-                    newShows.Add(ashow);
-                }
-                myMergedShows.Clear();
-                myMergedShows = newShows;
-
-                //txtMerged.Lines = cAirshow.GetLines(myMergedShows);
-
-
-
-                foreach (Airshow ashow in newShows)
-                {
-                    chklstbox_diff.Items.Add(ashow);
-
-
-
-                }
-
-                this.Enabled = true;
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            List<Airshow> newairshows = myAirshows.ToList();
-            List<Airshow> checkedShows = new List<Airshow>();
-            List<int> indicesToNuke = new List<int>();
-
-            for (int ii = 0; ii < chklstbox_diff.Items.Count; ii++)
-            {
-                if (chklstbox_diff.GetItemChecked(ii) == true)
-                {
-                    checkedShows.Add((Airshow)chklstbox_diff.Items[ii]);
-                    indicesToNuke.Add(ii);
-                }
-            }
-
-            foreach (Airshow ashow in checkedShows)
-            {
-                if (!newairshows.Exists(x => x.IsEqual(ashow)))
-                {
-                    newairshows.Add(ashow);
-                    myMergedShows.Remove(ashow);
-                }
-            }
-
-            for (int ii = indicesToNuke.Count - 1; ii >= 0; ii--)
-            {
-                chklstbox_diff.Items.RemoveAt(indicesToNuke[ii]);
-            }
-
-            DialogResult dr = MessageBox.Show("Do you want to modify the active DB (YES) or save to a new DB (NO)?", "", MessageBoxButtons.YesNoCancel);
-            if (dr == DialogResult.Yes)
-            {
-                myAirshows = newairshows.ToList();
-                SaveAirshowSchedule(false);
-            }
-            else if (dr == DialogResult.No)
-            {
-                SaveAirshowSchedule(true, newairshows);
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Regions rgn = new Regions();
-            string clipboard = Clipboard.GetText();
-            rgn.BuildFile(clipboard);
-            Regions.SaveMe(rgn, $@"C:\test\Regons.xml");
-        }
-
-        private void btnSetRegionFile_Click(object sender, EventArgs e)
-        {
-            Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(myFormState);
-
-            DialogResult dr = DialogResult.OK;
-            dr = sb.showDialog();
-
-            if (dr == DialogResult.OK)
-            {
-                FormState.SaveMe(myFormState);
-                myRegions = Regions.LoadMe(myFormState.fnRegions);
-            }
-        }
 
         private void button3_Click(object sender, EventArgs e)
         {
@@ -761,8 +444,8 @@ namespace AirshowSchedules
                 }
             }
             myFilteredAirshows = FilteredAirshows.ToList();
-            txtOutput.Clear();
-            txtOutput.Lines = Airshow.GetLines(myFilteredAirshows);
+
+
             ColorGrid(myFilteredAirshows);
         }
 
@@ -892,41 +575,6 @@ namespace AirshowSchedules
             }
         }
 
-        private void btnCheckForDuplicates_Click(object sender, EventArgs e)
-        {
-
-            List<Airshow> new_airshows = new List<Airshow>();
-            for (int ii = 0; ii < chklstbox_diff.Items.Count; ii++)
-            {
-                //if (chklstbox_diff.GetItemChecked(ii) == true)
-                new_airshows.Add((Airshow)chklstbox_diff.Items[ii]);
-            }
-            List<string> Potential_Duplicates = new List<string>();
-
-            foreach (Airshow ashow in new_airshows)
-            {
-                List<Airshow> lstDuplicates = myAirshows.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
-
-                if (lstDuplicates.Count > 0)
-                {
-                    foreach (Airshow adup in lstDuplicates)
-                    {
-                        string possibleDuplicate = string.Concat(adup.ToString(), "\n");
-                        Potential_Duplicates.Add(possibleDuplicate);
-                    }
-                }
-            }
-
-            if (Potential_Duplicates.Count == 0)
-                return;
-
-            string wholestring = "";
-            foreach (string s in Potential_Duplicates)
-                wholestring += s;
-            MessageBox.Show(wholestring + "\n may be duplicate[s], OK to copy to clipboard.");
-            Clipboard.SetText(wholestring);
-        }
-
         private void contactToolStripMenuItem_Click(object sender, EventArgs e)
         {
             //MessageBox.Show("Who?", "Find This Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -988,206 +636,7 @@ namespace AirshowSchedules
             }
         }
 
-        private void btnCheckForDuplicatesInDB_Click(object sender, EventArgs e)
-        {
-            //check for duplicates in the database
-            List<Airshow> duplicateAirshowsFound = new List<Airshow>();
-            List<Airshow> airshowsFoundInNewDB = new List<Airshow>();
 
-            //for every airshow in the database, compare cities to see if they show up more than once
-            List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
-            foreach (Airshow ashow in copiedList)
-            {
-                List<Airshow> duplicatesFound = new List<Airshow>();
-                duplicatesFound = copiedList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
-
-                if (duplicatesFound.Count > 1)
-                {
-                    foreach (Airshow adup in duplicatesFound)
-                    {
-                        string possibleDuplicate = string.Concat(adup.ToString(), "\n");
-                        duplicateAirshowsFound.Add(adup);
-                    }
-                }
-            }
-
-            //we need an open file dialogue to open up the most recently downloaded asg.xml file
-            if (duplicateAirshowsFound.Count == 0)
-            {
-                MessageBox.Show("No duplicates found.");
-                return;
-            }
-            DialogResult dr = MessageBox.Show($"There are {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
-            if (dr == DialogResult.Yes)
-            {
-                OpenFileDialog openFileDialog = new OpenFileDialog();
-                openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
-                openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
-                openFileDialog.DefaultExt = "asg.xml";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    bool success;
-                    AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success );
-                    List<Airshow> latestAirshowList = asgLatest.Airshows.myShows.ToList();
-                    int count = copiedList.Count;
-
-                    foreach (Airshow ashow in duplicateAirshowsFound)
-                    {
-                        List<Airshow> airshowsInNewDB = latestAirshowList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
-                        foreach (Airshow adup in airshowsInNewDB)
-                        {
-                            if (!airshowsFoundInNewDB.Contains(adup))
-                            {
-                                string airshowInNewDB = string.Concat(adup.ToString(), "\n");
-                                airshowsFoundInNewDB.Add(adup);
-                            }
-                        }
-                    }
-
-                    foreach (Airshow dupShow in duplicateAirshowsFound)
-                    {
-                        List<Airshow> validShows = airshowsFoundInNewDB.Where(airshow => airshow.location.Equals(dupShow.location)).ToList();
-                        if (validShows.Count == 1)
-                        {
-                            if (!validShows[0].IsEqual(dupShow, false))
-                            {
-                                List<Airshow> airshowToRemove = copiedList.Where(airshow => airshow.IsEqual(dupShow, false)).ToList();
-                                foreach (Airshow adup in airshowToRemove)
-                                {
-                                    validShows[0].AppendCustomFields(adup);
-                                    copiedList.Remove(adup);
-                                    Console.WriteLine($"Removed {adup.ToString()}".Pastel(Color.Red));
-                                }
-                            }
-                        }
-                    }
-                    Console.WriteLine();
-                    Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
-                    Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
-                    Console.WriteLine($"There are {duplicateAirshowsFound.Count / 2} duplicates detected.".Pastel(Color.Green));
-                    Console.WriteLine($"There are {count - copiedList.Count} duplicates removed.".Pastel(Color.Green));
-                    Console.WriteLine();
-                    Console.WriteLine("Press any key to continue.".Pastel(Color.Green));
-                    Console.ReadKey();
-
-                    count = copiedList.Count;
-                    List<Airshow> showsToRemove = new List<Airshow>();
-                    foreach (Airshow ashow in copiedList)
-                    {
-                        List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
-                        if (showsFound.Count == 0)
-                        {
-                            Console.WriteLine($"Airshow {ashow.ToString()} is not in the latest database. Do you want to remove it (Y/N)?".Pastel(Color.Red));
-                            string response = Console.ReadLine();
-                            if (response.ToLower() == "y")
-                            {
-                                showsToRemove.Add(ashow);
-                            }
-                        }
-                    }
-                    foreach (Airshow airshow in showsToRemove)
-                    {
-                        copiedList.Remove(airshow);
-                    }
-
-
-                    Console.WriteLine();
-                    Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
-                    Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
-                    Console.WriteLine($"We removed {count - copiedList.Count} non-existant Airshows.".Pastel(Color.Green));
-                    Console.WriteLine();
-                    Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
-                    string response2 = Console.ReadLine();
-                    if (response2.ToLower() == "y")
-                    {
-                        Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
-                        string confirm = Console.ReadLine();
-                        if (confirm.ToLower() == "y")
-                        {
-                            myAirshows = copiedList;
-                            SaveAirshowSchedule(false);
-                        }
-                    }
-
-                    List<Airshow> cancelledShows = copiedList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
-                    if (cancelledShows.Count > 0)
-                    {
-                        Console.WriteLine("Here are the cancelled shows:".Pastel(Color.Green));
-                        foreach (Airshow ashow in cancelledShows)
-                        {
-                            Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
-                        }
-                        Console.WriteLine();
-                        Console.WriteLine("Do you want to remove these shows (Y/N)?".Pastel(Color.Yellow));
-                        string response3 = Console.ReadLine();
-                        if (response3.ToLower() == "y")
-                        {
-                            foreach (Airshow ashow in cancelledShows)
-                            {
-                                copiedList.Remove(ashow);
-                            }
-                            myAirshows = copiedList;
-                            SaveAirshowSchedule(false);
-                        }
-                    }
-
-
-
-                    // {
-                    //     AirshowGroup asg = new AirshowGroup();
-                    //     List<Airshow> airshows = new List<Airshow>();
-                    //     AirshowGroup workingASG = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase);
-
-                    //     try
-                    //     {
-
-                    //         copiedList = copiedList.OrderBy(airshow => airshow.WeekNumber).ToList();
-                    //         txtOutput.Lines = Airshow.GetLines(airshows);
-                    //         asg.Airshows.myShows = copiedList;
-                    //         asg.AirshowYearOfInterest = workingASG.AirshowYearOfInterest;
-                    //         SaveFileDialog sfd = new SaveFileDialog();
-                    //         sfd.Filter = "*.asg.XML|*.asg.xml";
-                    //         sfd.Title = "Save an Airshow Group";
-                    //         DialogResult dr2 = sfd.ShowDialog();
-                    //         if (dr2 == DialogResult.OK)
-                    //         {
-                    //             Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
-                    //         }
-                    //     }
-                    //     catch { }
-                    // }
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("Here are the duplicates you need to fix:".Pastel(Color.Green));
-                foreach (Airshow ashow in duplicateAirshowsFound)
-                {
-                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
-                }
-                Console.WriteLine();
-
-                // Open the DeleteAirshowForm
-                int Count = copiedList.Count;
-                DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList);
-                deleteForm.ShowDialog();
-                Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));
-                Console.WriteLine();
-                Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
-                string response2 = Console.ReadLine();
-                if (response2.ToLower() == "y")
-                {
-                    Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
-                    string confirm = Console.ReadLine();
-                    if (confirm.ToLower() == "y")
-                    {
-                        myAirshows = copiedList;
-                        SaveAirshowSchedule(false);
-                    }
-                }
-            }
-        }
     }
 
     public class PopupForm : Form
