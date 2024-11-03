@@ -38,10 +38,8 @@ namespace AirshowSchedules
                 try
                 {
                     InitializeComponent();
-                    AllocConsole();
-                    // Set the console to be tall and narrow
-                    SetConsoleSize(75, 75); // Adjust width and height here
-                                            // Set form size to a percentage of screen resolution
+                    this.Text = "Airshow Schedule Tool"; // Set the form title
+                    this.Shown += new EventHandler(frmAirshowScheduleTool_Shown); // Subscribe to the Shown event
                 }
                 catch (Exception ex)
                 {
@@ -51,79 +49,60 @@ namespace AirshowSchedules
         }
         private void frmAirshowScheduleTool_Load(object sender, EventArgs e)
         {
-            if (!DesignMode)
+
+            // Position the form in the top-right corner of the screen
+            var screen = Screen.FromControl(this);
+            this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top);
+
+            try
             {
 
-                using (Graphics g = this.CreateGraphics())
+                myFormState = FormState.LoadMe();
+                //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
+                bool success;
+                AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
+                if (!success)
                 {
-                    float dpiX = g.DpiX;
-                    float dpiY = g.DpiY;
+                    MessageBox.Show("Error loading form: " + "Unable to load the active database");
+                    return;
+                }
+                myAirshows = asg.Airshows.myShows;
+                //myFilteredAirshows = myAirshows.ToList();
+                myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
+                lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                LoadGrid(myFormState.AirshowYearofInterest);
+                //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
+                myFilteredAirshows = myAirshows.ToList();
+                ColorGrid(myFilteredAirshows);
 
-                    // Calculate the scale factor directly from the DPI
-                    float scaleFactor = dpiX / 96.0f; // 96 DPI is the baseline for 100%
-                    double m = (1 - .95) / (96 - 144);
-                    double b = 1 - m * 96;
-                    double scaleFactorX = m * dpiX + b;
-                    m = (1 - 1.1) / (96 - 144);
-                    b = 1 - m * 96;
-                    double scaleFactorY = m * dpiY + b;
-
-                    //when dpiX = 144 we need scaleFactor * .95, when dpiX = 96, we need scaleFactor * 1:
-                    // Apply scaling using the formula above
-
-
-
-                    // Apply scaling
-                    int formWidth = (int)(1450.0 * scaleFactor * scaleFactorX);
-                    int formHeight = (int)(550.0 * scaleFactor * scaleFactorY);
-
-                    this.Size = new Size(formWidth, formHeight);
-
-                    // Position the form in the top-right corner of the screen
-                    var screen = Screen.FromControl(this);
-                    this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top);
+                myRegions = Regions.LoadMe(myFormState.fnRegions);
+                chklstRegions.Items.Clear();
+                foreach (string rgn in myRegions.GetRegionList())
+                {
+                    chklstRegions.Items.Add(rgn);
+                }
+                for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
+                {
+                    chklstRegions.SetItemChecked(ii, true);
                 }
 
-                try
-                {
-
-                    myFormState = FormState.LoadMe();
-                    //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
-                    bool success;
-                    AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
-                    if (!success)
-                    {
-                        MessageBox.Show("Error loading form: " + "Unable to load the active database");
-                        return;
-                    }
-                    myAirshows = asg.Airshows.myShows;
-                    //myFilteredAirshows = myAirshows.ToList();
-                    myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
-                    lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-                    LoadGrid(myFormState.AirshowYearofInterest);
-                    //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
-                    myFilteredAirshows = myAirshows.ToList();
-                    ColorGrid(myFilteredAirshows);
-
-                    myRegions = Regions.LoadMe(myFormState.fnRegions);
-                    chklstRegions.Items.Clear();
-                    foreach (string rgn in myRegions.GetRegionList())
-                    {
-                        chklstRegions.Items.Add(rgn);
-                    }
-                    for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
-                    {
-                        chklstRegions.SetItemChecked(ii, true);
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Error loading form: " + ex.Message);
-                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error loading form: " + ex.Message);
+            }
+
         }
 
+        private void frmAirshowScheduleTool_Shown(object sender, EventArgs e)
+        {
+            AllocConsole();
+            // Set the console to be tall and narrow
+            SetConsoleSize(75, 75); // Adjust width and height here
+                                    // Set form size to a percentage of screen resolution
+                                    // Use a Timer to delay the call to SetConsoleSize
 
+        }
 
         #region Helper Classes
         [Serializable]
@@ -467,12 +446,46 @@ namespace AirshowSchedules
 
                 calltheseguys.Add(gettowork);
             }
-            string allthedata = "";
-            foreach (string st in calltheseguys)
-            {
-                allthedata += st + "\n";
-            }
-            Clipboard.SetText(allthedata);
+            showSearchResults(calltheseguys);
+        }
+
+        private void ShowDataInForm(string allthedata)
+        {
+            // Create a new form
+            Form dataForm = new Form();
+            dataForm.Text = "Call List";
+            dataForm.Size = new Size(this.Width, (int)((double)this.Height * .75));
+            dataForm.StartPosition = FormStartPosition.CenterParent;
+
+            // Create a Label to inform the user
+            Label infoLabel = new Label();
+            infoLabel.Text = "The data will be copied to the Clipboard in Tab Delimted for display in Excel.";
+            infoLabel.Dock = DockStyle.Top;
+            infoLabel.TextAlign = ContentAlignment.MiddleCenter;
+            infoLabel.Height = 30;
+
+            // Create a TextBox to display the data
+            TextBox textBox = new TextBox();
+            textBox.Multiline = true;
+            textBox.ReadOnly = true;
+            textBox.ScrollBars = ScrollBars.Vertical;
+            textBox.Dock = DockStyle.Fill;
+            textBox.Text = allthedata;
+
+            // Create an OK button to close the form
+            Button okButton = new Button();
+            okButton.Text = "OK";
+            okButton.Dock = DockStyle.Bottom;
+            okButton.Height = 40;
+            okButton.Click += (sender, e) => dataForm.Close();
+
+            // Add the Label, TextBox, and OK button to the form
+            dataForm.Controls.Add(textBox);
+            dataForm.Controls.Add(okButton);
+            dataForm.Controls.Add(infoLabel);
+
+            // Show the form as a modal dialog
+            dataForm.ShowDialog();
         }
 
         private void generateBookedListToolStripMenuItem_Click(object sender, EventArgs e)
@@ -494,11 +507,21 @@ namespace AirshowSchedules
 
                 calltheseguys.Add(gettowork);
             }
+            showSearchResults(calltheseguys);
+        }
+
+        private void showSearchResults(List<string> calltheseguys)
+        {
             string allthedata = "";
+            string fortextbox = "";
             foreach (string st in calltheseguys)
             {
                 allthedata += st + "\n";
+                fortextbox += st.Replace("\t", " ") + "\r\n";
             }
+            // show in a message box:
+            ShowDataInForm(fortextbox);
+            // copy to clipboard:
             Clipboard.SetText(allthedata);
         }
 
@@ -519,12 +542,7 @@ namespace AirshowSchedules
 
                 calltheseguys.Add(gettowork);
             }
-            string allthedata = "";
-            foreach (string st in calltheseguys)
-            {
-                allthedata += st + "\n";
-            }
-            Clipboard.SetText(allthedata);
+            showSearchResults(calltheseguys);
         }
 
         private void generateICASMailingListAllInRegionToolStripMenuItem_Click(object sender, EventArgs e)
@@ -544,12 +562,7 @@ namespace AirshowSchedules
 
                 calltheseguys.Add(gettowork);
             }
-            string allthedata = "";
-            foreach (string st in calltheseguys)
-            {
-                allthedata += st + "\n";
-            }
-            Clipboard.SetText(allthedata);
+            showSearchResults(calltheseguys);
         }
 
         private void btnDeleteShow_Click(object sender, EventArgs e)

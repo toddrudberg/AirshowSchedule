@@ -26,6 +26,10 @@ public partial class frmAirshowScheduleTool
 
     [DllImport("user32.dll", SetLastError = true, CharSet = CharSet.Auto)]
     static extern IntPtr FindWindow(string lpClassName, string lpWindowName);
+    
+    [DllImport("user32.dll", SetLastError = true)]
+    [return: MarshalAs(UnmanagedType.Bool)]
+    private static extern bool GetWindowRect(IntPtr hWnd, out RECT lpRect);
 
     private const int STD_OUTPUT_HANDLE = -11;
     private static readonly IntPtr HWND_TOP = IntPtr.Zero;
@@ -54,6 +58,18 @@ public partial class frmAirshowScheduleTool
         public short Bottom;
     }
     #endregion
+    [StructLayout(LayoutKind.Sequential)]
+    private struct RECT
+    {
+        public int Left;
+        public int Top;
+        public int Right;
+        public int Bottom;
+
+        public int Width => Right - Left;
+        public int Height => Bottom - Top;
+    }
+    
     private void SetConsoleSize(int width, int height)
     {
         IntPtr consoleHandle = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -69,10 +85,29 @@ public partial class frmAirshowScheduleTool
         windowSize.Right = (short)(width - 1);
         windowSize.Bottom = (short)(height - 1);
         SetConsoleWindowInfo(consoleHandle, true, ref windowSize);
+
         // Find the console window handle
-        IntPtr consoleWindowHandle = FindWindow(null, Console.Title);
-        // Position the console in the upper-left corner
-        SetWindowPos(consoleWindowHandle, HWND_TOP, 0, 0, 0, 0, SWP_NOZORDER | SWP_NOSIZE);
+        IntPtr consoleWindowHandle = GetConsoleWindow();
+
+        // Get the handle of the application window (assuming the title is "Airshow Schedule Tool")
+        IntPtr appWindowHandle = FindWindow(null, "Airshow Schedule Tool");
+
+        if (consoleWindowHandle == IntPtr.Zero || appWindowHandle == IntPtr.Zero)
+        {
+            Console.WriteLine("Unable to find console or application window.");
+            return;
+        }
+
+        // Get the dimensions of the application window
+        RECT appRect;
+        GetWindowRect(appWindowHandle, out appRect);
+
+        // Calculate the width and height of the console window
+        int consoleWidth = appRect.Left; // Set the console width to the left edge of the application window
+        int consoleHeight = appRect.Height;
+
+        // Position the console window on the left side of the application window
+        SetWindowPos(consoleWindowHandle, HWND_TOP, 0, 0, consoleWidth, consoleHeight, SWP_NOZORDER);
     }
 }
 

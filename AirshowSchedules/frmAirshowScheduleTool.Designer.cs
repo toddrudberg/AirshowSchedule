@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAirshowScheduleTool));
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
@@ -54,6 +54,7 @@
             dataBaseManagementToolStripMenuItem = new ToolStripMenuItem();
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
             cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
+            checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             generateCallListToolStripMenuItem = new ToolStripMenuItem();
             generateBookedListToolStripMenuItem = new ToolStripMenuItem();
@@ -64,7 +65,6 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -76,16 +76,16 @@
             dgvCalendar.AllowUserToDeleteRows = false;
             dgvCalendar.AllowUserToResizeColumns = false;
             dgvCalendar.AllowUserToResizeRows = false;
-            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
-            dgvCalendar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgvCalendar.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvCalendar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCalendar.Location = new Point(12, 85);
-            dgvCalendar.Margin = new Padding(3, 2, 3, 2);
+            dgvCalendar.Location = new Point(8, 51);
+            dgvCalendar.Margin = new Padding(2, 1, 2, 1);
             dgvCalendar.MultiSelect = false;
             dgvCalendar.Name = "dgvCalendar";
             dgvCalendar.RowHeadersWidth = 82;
             dgvCalendar.RowTemplate.Height = 41;
-            dgvCalendar.Size = new Size(1182, 690);
+            dgvCalendar.Size = new Size(827, 414);
             dgvCalendar.TabIndex = 11;
             dgvCalendar.CellClick += dataGridView2_CellClick;
             dgvCalendar.CellContentClick += dataGridView2_CellContentClick;
@@ -94,11 +94,11 @@
             // lstBoxShows
             // 
             lstBoxShows.FormattingEnabled = true;
-            lstBoxShows.ItemHeight = 25;
-            lstBoxShows.Location = new Point(2092, 537);
-            lstBoxShows.Margin = new Padding(3, 2, 3, 2);
+            lstBoxShows.ItemHeight = 15;
+            lstBoxShows.Location = new Point(1464, 322);
+            lstBoxShows.Margin = new Padding(2, 1, 2, 1);
             lstBoxShows.Name = "lstBoxShows";
-            lstBoxShows.Size = new Size(609, 579);
+            lstBoxShows.Size = new Size(428, 349);
             lstBoxShows.TabIndex = 12;
             lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
             // 
@@ -109,13 +109,13 @@
             dataGridViewShows.AllowUserToResizeColumns = false;
             dataGridViewShows.AllowUserToResizeRows = false;
             dataGridViewShows.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewShows.Location = new Point(1199, 84);
-            dataGridViewShows.Margin = new Padding(3, 2, 3, 2);
+            dataGridViewShows.Location = new Point(839, 50);
+            dataGridViewShows.Margin = new Padding(2, 1, 2, 1);
             dataGridViewShows.MultiSelect = false;
             dataGridViewShows.Name = "dataGridViewShows";
             dataGridViewShows.RowHeadersWidth = 82;
             dataGridViewShows.RowTemplate.Height = 41;
-            dataGridViewShows.Size = new Size(823, 387);
+            dataGridViewShows.Size = new Size(576, 232);
             dataGridViewShows.TabIndex = 13;
             dataGridViewShows.CellClick += dataGridViewShows_CellClick;
             dataGridViewShows.CellContentClick += dataGridViewShows_CellContentClick;
@@ -123,18 +123,19 @@
             // lblYearOfInterest
             // 
             lblYearOfInterest.AutoSize = true;
-            lblYearOfInterest.Location = new Point(12, 58);
+            lblYearOfInterest.Location = new Point(8, 35);
+            lblYearOfInterest.Margin = new Padding(2, 0, 2, 0);
             lblYearOfInterest.Name = "lblYearOfInterest";
-            lblYearOfInterest.Size = new Size(59, 25);
+            lblYearOfInterest.Size = new Size(38, 15);
             lblYearOfInterest.TabIndex = 14;
             lblYearOfInterest.Text = "label1";
             // 
             // btnAddShow
             // 
-            btnAddShow.Location = new Point(1202, 483);
-            btnAddShow.Margin = new Padding(3, 2, 3, 2);
+            btnAddShow.Location = new Point(841, 290);
+            btnAddShow.Margin = new Padding(2, 1, 2, 1);
             btnAddShow.Name = "btnAddShow";
-            btnAddShow.Size = new Size(177, 37);
+            btnAddShow.Size = new Size(124, 22);
             btnAddShow.TabIndex = 15;
             btnAddShow.Text = "Add A Show";
             btnAddShow.UseVisualStyleBackColor = true;
@@ -143,19 +144,19 @@
             // chklstRegions
             // 
             chklstRegions.FormattingEnabled = true;
-            chklstRegions.Location = new Point(1723, 483);
-            chklstRegions.Margin = new Padding(3, 2, 3, 2);
+            chklstRegions.Location = new Point(1206, 290);
+            chklstRegions.Margin = new Padding(2, 1, 2, 1);
             chklstRegions.Name = "chklstRegions";
-            chklstRegions.Size = new Size(301, 256);
+            chklstRegions.Size = new Size(212, 148);
             chklstRegions.TabIndex = 22;
             chklstRegions.SelectedIndexChanged += chklstRegions_SelectedIndexChanged;
             // 
             // button3
             // 
-            button3.Location = new Point(1787, 743);
-            button3.Margin = new Padding(3, 2, 3, 2);
+            button3.Location = new Point(1251, 446);
+            button3.Margin = new Padding(2, 1, 2, 1);
             button3.Name = "button3";
-            button3.Size = new Size(115, 37);
+            button3.Size = new Size(80, 22);
             button3.TabIndex = 23;
             button3.Text = "Set All";
             button3.UseVisualStyleBackColor = true;
@@ -163,10 +164,10 @@
             // 
             // button4
             // 
-            button4.Location = new Point(1907, 743);
-            button4.Margin = new Padding(3, 2, 3, 2);
+            button4.Location = new Point(1335, 446);
+            button4.Margin = new Padding(2, 1, 2, 1);
             button4.Name = "button4";
-            button4.Size = new Size(115, 37);
+            button4.Size = new Size(80, 22);
             button4.TabIndex = 24;
             button4.Text = "Clear All";
             button4.UseVisualStyleBackColor = true;
@@ -174,10 +175,10 @@
             // 
             // button5
             // 
-            button5.Location = new Point(1667, 743);
-            button5.Margin = new Padding(3, 2, 3, 2);
+            button5.Location = new Point(1167, 446);
+            button5.Margin = new Padding(2, 1, 2, 1);
             button5.Name = "button5";
-            button5.Size = new Size(115, 37);
+            button5.Size = new Size(80, 22);
             button5.TabIndex = 25;
             button5.Text = "Filter List";
             button5.UseVisualStyleBackColor = true;
@@ -189,8 +190,8 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, dataBaseManagementToolStripMenuItem, reportsToolStripMenuItem, searchToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(5, 2, 0, 2);
-            menuStrip1.Size = new Size(2515, 33);
+            menuStrip1.Padding = new Padding(4, 1, 0, 1);
+            menuStrip1.Size = new Size(1426, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -198,58 +199,58 @@
             // 
             fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { toolStripTextBox1, pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setRegionFileToolStripMenuItem, toolStripSeparator2, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            fileToolStripMenuItem.Size = new Size(54, 29);
+            fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
             // 
             // toolStripTextBox1
             // 
             toolStripTextBox1.Enabled = false;
             toolStripTextBox1.Name = "toolStripTextBox1";
-            toolStripTextBox1.Size = new Size(200, 31);
+            toolStripTextBox1.Size = new Size(200, 23);
             toolStripTextBox1.Text = "ICAS Data File";
             // 
             // pareDataFileToolStripMenuItem
             // 
             pareDataFileToolStripMenuItem.Name = "pareDataFileToolStripMenuItem";
-            pareDataFileToolStripMenuItem.Size = new Size(302, 34);
+            pareDataFileToolStripMenuItem.Size = new Size(260, 22);
             pareDataFileToolStripMenuItem.Text = "Parse Data File";
             pareDataFileToolStripMenuItem.Click += fileParseDataFileToolStripMenuItem_Click;
             // 
             // fileSaveParsedDataFile
             // 
             fileSaveParsedDataFile.Name = "fileSaveParsedDataFile";
-            fileSaveParsedDataFile.Size = new Size(302, 34);
+            fileSaveParsedDataFile.Size = new Size(260, 22);
             fileSaveParsedDataFile.Text = "Save Parsed Data File";
             fileSaveParsedDataFile.Click += fileSaveParsedDataFile_Click;
             // 
             // toolStripSeparator1
             // 
             toolStripSeparator1.Name = "toolStripSeparator1";
-            toolStripSeparator1.Size = new Size(299, 6);
+            toolStripSeparator1.Size = new Size(257, 6);
             // 
             // setRegionFileToolStripMenuItem
             // 
             setRegionFileToolStripMenuItem.Name = "setRegionFileToolStripMenuItem";
-            setRegionFileToolStripMenuItem.Size = new Size(302, 34);
+            setRegionFileToolStripMenuItem.Size = new Size(260, 22);
             setRegionFileToolStripMenuItem.Text = "Set Region File";
             setRegionFileToolStripMenuItem.Click += fileSetRegionFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 
             toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(299, 6);
+            toolStripSeparator2.Size = new Size(257, 6);
             // 
             // setActiveDatabaseFileToolStripMenuItem
             // 
             setActiveDatabaseFileToolStripMenuItem.Name = "setActiveDatabaseFileToolStripMenuItem";
-            setActiveDatabaseFileToolStripMenuItem.Size = new Size(302, 34);
+            setActiveDatabaseFileToolStripMenuItem.Size = new Size(260, 22);
             setActiveDatabaseFileToolStripMenuItem.Text = "Set Active Database File";
             setActiveDatabaseFileToolStripMenuItem.Click += setActiveDatabaseFileToolStripMenuItem_Click;
             // 
             // saveDatabaseFileToolStripMenuItem
             // 
             saveDatabaseFileToolStripMenuItem.Name = "saveDatabaseFileToolStripMenuItem";
-            saveDatabaseFileToolStripMenuItem.Size = new Size(302, 34);
+            saveDatabaseFileToolStripMenuItem.Size = new Size(260, 22);
             saveDatabaseFileToolStripMenuItem.Text = "Save Database File";
             saveDatabaseFileToolStripMenuItem.Click += saveDatabaseFileToolStripMenuItem_Click;
             // 
@@ -257,55 +258,62 @@
             // 
             dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
-            dataBaseManagementToolStripMenuItem.Size = new Size(216, 29);
+            dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
             // 
             // compareToActiveDBToolStripMenuItem
             // 
             compareToActiveDBToolStripMenuItem.Name = "compareToActiveDBToolStripMenuItem";
-            compareToActiveDBToolStripMenuItem.Size = new Size(329, 34);
+            compareToActiveDBToolStripMenuItem.Size = new Size(219, 22);
             compareToActiveDBToolStripMenuItem.Text = "Compare To Active DB";
             compareToActiveDBToolStripMenuItem.Click += compareToActiveDBToolStripMenuItem_Click;
             // 
             // cleanUpDBToolStripMenuItem
             // 
             cleanUpDBToolStripMenuItem.Name = "cleanUpDBToolStripMenuItem";
-            cleanUpDBToolStripMenuItem.Size = new Size(329, 34);
+            cleanUpDBToolStripMenuItem.Size = new Size(219, 22);
             cleanUpDBToolStripMenuItem.Text = "Clean Up DB";
             cleanUpDBToolStripMenuItem.Click += cleanUpDBToolStripMenuItem_Click;
+            // 
+            // checkForCancelledShowsToolStripMenuItem
+            // 
+            checkForCancelledShowsToolStripMenuItem.Name = "checkForCancelledShowsToolStripMenuItem";
+            checkForCancelledShowsToolStripMenuItem.Size = new Size(219, 22);
+            checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
+            checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
             reportsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateCallListToolStripMenuItem, generateBookedListToolStripMenuItem, generateICASMailingListToolStripMenuItem, generateICASMailingListAllInRegionToolStripMenuItem });
             reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            reportsToolStripMenuItem.Size = new Size(89, 29);
+            reportsToolStripMenuItem.Size = new Size(59, 22);
             reportsToolStripMenuItem.Text = "Reports";
             // 
             // generateCallListToolStripMenuItem
             // 
             generateCallListToolStripMenuItem.Name = "generateCallListToolStripMenuItem";
-            generateCallListToolStripMenuItem.Size = new Size(321, 34);
+            generateCallListToolStripMenuItem.Size = new Size(213, 22);
             generateCallListToolStripMenuItem.Text = "Generate Call List";
             generateCallListToolStripMenuItem.Click += generateCallListToolStripMenuItem_Click;
             // 
             // generateBookedListToolStripMenuItem
             // 
             generateBookedListToolStripMenuItem.Name = "generateBookedListToolStripMenuItem";
-            generateBookedListToolStripMenuItem.Size = new Size(321, 34);
+            generateBookedListToolStripMenuItem.Size = new Size(213, 22);
             generateBookedListToolStripMenuItem.Text = "Generate Booked List";
             generateBookedListToolStripMenuItem.Click += generateBookedListToolStripMenuItem_Click;
             // 
             // generateICASMailingListToolStripMenuItem
             // 
             generateICASMailingListToolStripMenuItem.Name = "generateICASMailingListToolStripMenuItem";
-            generateICASMailingListToolStripMenuItem.Size = new Size(321, 34);
+            generateICASMailingListToolStripMenuItem.Size = new Size(213, 22);
             generateICASMailingListToolStripMenuItem.Text = "Generate ICAS Mailing List";
             generateICASMailingListToolStripMenuItem.Click += generateICASMailingListToolStripMenuItem_Click;
             // 
             // generateICASMailingListAllInRegionToolStripMenuItem
             // 
             generateICASMailingListAllInRegionToolStripMenuItem.Name = "generateICASMailingListAllInRegionToolStripMenuItem";
-            generateICASMailingListAllInRegionToolStripMenuItem.Size = new Size(321, 34);
+            generateICASMailingListAllInRegionToolStripMenuItem.Size = new Size(213, 22);
             generateICASMailingListAllInRegionToolStripMenuItem.Text = "All in Filtered Region";
             generateICASMailingListAllInRegionToolStripMenuItem.Click += generateICASMailingListAllInRegionToolStripMenuItem_Click;
             // 
@@ -313,13 +321,13 @@
             // 
             searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contactToolStripMenuItem });
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
-            searchToolStripMenuItem.Size = new Size(80, 29);
+            searchToolStripMenuItem.Size = new Size(54, 22);
             searchToolStripMenuItem.Text = "Search";
             // 
             // contactToolStripMenuItem
             // 
             contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            contactToolStripMenuItem.Size = new Size(270, 34);
+            contactToolStripMenuItem.Size = new Size(146, 22);
             contactToolStripMenuItem.Text = "Search Dialog";
             contactToolStripMenuItem.Click += contactToolStripMenuItem_Click;
             // 
@@ -327,39 +335,32 @@
             // 
             helpToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { showHelpFileToolStripMenuItem });
             helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            helpToolStripMenuItem.Size = new Size(65, 29);
+            helpToolStripMenuItem.Size = new Size(44, 22);
             helpToolStripMenuItem.Text = "Help";
             // 
             // showHelpFileToolStripMenuItem
             // 
             showHelpFileToolStripMenuItem.Name = "showHelpFileToolStripMenuItem";
-            showHelpFileToolStripMenuItem.Size = new Size(231, 34);
+            showHelpFileToolStripMenuItem.Size = new Size(152, 22);
             showHelpFileToolStripMenuItem.Text = "Show Help File";
             showHelpFileToolStripMenuItem.Click += showHelpFileToolStripMenuItem_Click;
             // 
             // btnDeleteShow
             // 
-            btnDeleteShow.Location = new Point(1202, 523);
-            btnDeleteShow.Margin = new Padding(3, 2, 3, 2);
+            btnDeleteShow.Location = new Point(841, 314);
+            btnDeleteShow.Margin = new Padding(2, 1, 2, 1);
             btnDeleteShow.Name = "btnDeleteShow";
-            btnDeleteShow.Size = new Size(177, 37);
+            btnDeleteShow.Size = new Size(124, 22);
             btnDeleteShow.TabIndex = 27;
             btnDeleteShow.Text = "Delete A Show";
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // checkForCancelledShowsToolStripMenuItem
-            // 
-            checkForCancelledShowsToolStripMenuItem.Name = "checkForCancelledShowsToolStripMenuItem";
-            checkForCancelledShowsToolStripMenuItem.Size = new Size(329, 34);
-            checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
-            checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
-            // 
             // frmAirshowScheduleTool
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2515, 1273);
+            ClientSize = new Size(1426, 488);
             Controls.Add(btnDeleteShow);
             Controls.Add(button5);
             Controls.Add(button4);
@@ -373,7 +374,7 @@
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(5);
+            Margin = new Padding(4, 3, 4, 3);
             Name = "frmAirshowScheduleTool";
             Text = "Undaunted Airshows Schedule Maker";
             Load += frmAirshowScheduleTool_Load;

@@ -16,4 +16,17 @@
 3. Choose the file you want to compare
 4. Select the dates you'd like to add
 
+# cleaning up the database
+
+1. (Data Base Management -> Clean Up DB)
+2. Initially you'll want to compare to the most recent download.  This will go to the console for user diplay and input. 
+3. Once you've done that, run it again and don't compare, to see a list of remaining potential duplicates.  But becareful, we only are comparing locations and some locations have more than one airshow. 
+
+# checking for cancelled shows
+
+1. (Data Base Management -> Check For Cancelled Shows)
+2. Follow the prompts.
+
 # things to do:
+
+1. fix resizing issue, potentially upgrade to .NET 8. 
