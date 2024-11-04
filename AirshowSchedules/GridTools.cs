@@ -159,7 +159,7 @@ public partial class frmAirshowScheduleTool
                                     outputToConsole += s + " ";
                                 }
                                 Console.WriteLine($"Debugging ColorGrid: {outputToConsole} string array length: {weekendinquestion2.Length}");
-
+                                cell.Style.BackColor = Color.White;
                                 cell.Value = asw;
                             }
                             continue;
@@ -169,6 +169,8 @@ public partial class frmAirshowScheduleTool
 
                         if (asw.weekofyear == ashowwithInterest.WeekNumber)
                         {
+                            cell.Value = asw;
+                            
                             switch (ashowwithInterest.Status)
                             {
                                 case eStatus.pursue:
