@@ -67,7 +67,7 @@ namespace AirshowSchedules
                     return;
                 }
 
-                arciveActiveDBToolStripMenuItem_Click(this, null);
+                
 
                 myAirshows = asg.Airshows.myShows;
                 //myFilteredAirshows = myAirshows.ToList();
@@ -88,7 +88,7 @@ namespace AirshowSchedules
                 {
                     chklstRegions.SetItemChecked(ii, true);
                 }
-
+                arciveActiveDBToolStripMenuItem_Click(this, null);
             }
             catch (Exception ex)
             {
