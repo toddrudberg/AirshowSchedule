@@ -1,5 +1,6 @@
 ﻿using Electroimpact;
 using Electroimpact.SettingsFormBuilderV2.Attributes;
+using Pastel;
 using System.Globalization;
 using System.Xml.Serialization;
 using static AirshowSchedules.frmAirshowScheduleTool;
@@ -29,7 +30,13 @@ namespace AirshowSchedules
 
         public eStatus Status = eStatus.none;
 
+        public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow)
+        {
 
+            masterShow.Contacts.MergeContacts(newShow.Contacts);
+            Notes_AirshowStuff += newShow.Notes_AirshowStuff;
+            masterShow.Performers.MergePerformers(newShow.Performers);
+        }
         public void AppendCustomFields(Airshow airshow)
         {
 
@@ -53,6 +60,19 @@ namespace AirshowSchedules
         {
             [XmlElement("Performer")]
             public List<string> performer = new List<string>();
+
+            public void MergePerformers(cPerformers performersToMerge)
+            {
+                Console.WriteLine("Merging Performers");
+                foreach (string testPerformer in performersToMerge.performer)
+                {
+                    if (!performer.Contains(testPerformer))
+                    {
+                        Console.WriteLine($"Added Performer: {testPerformer}".Pastel(Color.Green));
+                        performer.Add(testPerformer);
+                    }
+                }
+            }
         }
 
         public class cContacts
@@ -62,12 +82,14 @@ namespace AirshowSchedules
 
             public void MergeContacts(cContacts contactsToMerge)
             {
+                Console.WriteLine("Merging Contacts");
                 foreach (cContact testContact in contactsToMerge.contact)
                 {
                     List<cContact> matchingContacts = contact.Where(c => c.name == testContact.name).ToList();
                     if (matchingContacts.Count == 0)
                     {
                         contact.Add(testContact);
+                        Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
                     }
                     else
                     {
@@ -76,6 +98,7 @@ namespace AirshowSchedules
                             if (matchingContact.phone != testContact.phone)
                             {
                                 matchingContact.phone = testContact.phone;
+                                Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
                             }
                         }
                     }

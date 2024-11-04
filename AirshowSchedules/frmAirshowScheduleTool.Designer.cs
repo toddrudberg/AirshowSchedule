@@ -65,6 +65,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -256,7 +257,7 @@
             // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -356,6 +357,13 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
+            // updateAdditionalFieldsToolStripMenuItem
+            // 
+            updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
+            updateAdditionalFieldsToolStripMenuItem.Size = new Size(219, 22);
+            updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
+            updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
+            // 
             // frmAirshowScheduleTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -422,5 +430,6 @@
         private ToolStripMenuItem cleanUpDBToolStripMenuItem;
         private ToolStripMenuItem checkForCancelledShowsToolStripMenuItem;
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
+        private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
     }
 }

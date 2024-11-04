@@ -67,7 +67,7 @@ namespace AirshowSchedules
                     return;
                 }
 
-                
+
 
                 myAirshows = asg.Airshows.myShows;
                 //myFilteredAirshows = myAirshows.ToList();
@@ -658,8 +658,6 @@ namespace AirshowSchedules
                 }
             }
         }
-
-
     }
 
     public class PopupForm : Form

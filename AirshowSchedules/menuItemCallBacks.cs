@@ -102,7 +102,7 @@ public partial class frmAirshowScheduleTool
 
             myFilteredAirshows = myAirshows.ToList();
             this.Enabled = true;
-            //LoadGrid(myFormState.AirshowYearofInterest);
+            LoadGrid(myFormState.AirshowYearofInterest);
             ColorGrid(myFilteredAirshows);
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
         }
@@ -436,6 +436,73 @@ public partial class frmAirshowScheduleTool
         else
         {
             MessageBox.Show("No cancelled shows found.");
+        }
+    }
+
+    private void updateAdditionalFieldsToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+        List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+        List<Airshow> latestAirshowList = new List<Airshow>();
+
+        {
+            this.Enabled = false;
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
+            openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
+            openFileDialog.DefaultExt = "asg.xml";
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                IntPtr consoleWindow = GetConsoleWindow();
+                bool success;
+                AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
+                if (!success)
+                {
+                    MessageBox.Show("Failed to load the selected file.");
+                    this.Enabled = true;
+                    return;
+                }
+
+                latestAirshowList = asgLatest.Airshows.myShows.ToList();
+
+                foreach (Airshow ashow in copiedList)
+                {
+                    List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
+                    if (showsFound.Count > 0)
+                    {
+                        Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
+                        if (showsFound.Count == 1)
+                        {
+                            showsFound[0].mergeAdditionalInformation(ashow, showsFound[0]);
+                        }
+                        else
+                        {
+                            foreach (Airshow adup in showsFound)
+                            {
+                                Console.WriteLine("Do these shows match? (Y/N)".Pastel(Color.Yellow));
+                                Console.WriteLine(adup.ToString().Pastel(Color.Yellow));
+                                Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+
+                                Console.WriteLine("Do you want to append the custom fields to this pair? (Y/N)".Pastel(Color.Yellow));
+                                string response = Console.ReadLine();
+                                if (response.ToLower() == "y")
+                                {
+                                    showsFound[0].mergeAdditionalInformation(ashow, adup);
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                myAirshows = copiedList;
+                SaveAirshowSchedule(false);
+                MessageBox.Show("Additional fields updated successfully.");
+            }
+            else
+            {
+                MessageBox.Show("No file selected.");
+            }
+
+            this.Enabled = true;
         }
     }
     private void arciveActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
