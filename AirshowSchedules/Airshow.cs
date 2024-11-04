@@ -88,33 +88,17 @@ namespace AirshowSchedules
         public class cLocation
         {
             [XmlIgnore]
-            public string? rawstring;
-            public string? city;
-            public string? state;
+            internal string? rawstring;
+            [XmlIgnore]
+            private string? City;
+            [XmlIgnore]
+            private string? State;
 
-            public string State
+            public string city
             {
                 get
                 {
-                    if (String.IsNullOrEmpty(state) || state == "")
-                    {
-                        if (rawstring == null)
-                            return "";
-                        string[] dog = rawstring.Split(',');
-                        if (dog.Length > 1)
-                        {
-                            state = dog[1].Trim();
-                        }
-                    }
-                    return state;
-                }
-            }
-
-            public string City
-            {
-                get
-                {
-                    if (String.IsNullOrEmpty(city) || city == "")
+                    if (String.IsNullOrEmpty(City) || City == "")
                     {
                         if (String.IsNullOrEmpty(rawstring) || rawstring == "")
                             return "";
@@ -122,11 +106,36 @@ namespace AirshowSchedules
                         if (dog.Length > 0)
                         {
                             csString oldshitty = new csString();
-                            city = dog[0].Trim();
-                            oldshitty.KillChar(ref city, '\"');
+                            City = dog[0].Trim();
+                            oldshitty.KillChar(ref City, '\"');
                         }
                     }
-                    return city;
+                    return City;
+                }
+                set
+                {
+                    City = value;
+                }
+            }
+            public string state
+            {
+                get
+                {
+                    if (String.IsNullOrEmpty(State) || State == "")
+                    {
+                        if (rawstring == null)
+                            return "";
+                        string[] dog = rawstring.Split(',');
+                        if (dog.Length > 1)
+                        {
+                            State = dog[1].Trim();
+                        }
+                    }
+                    return State;
+                }
+                set
+                {
+                    State = value;
                 }
             }
 
@@ -279,7 +288,7 @@ namespace AirshowSchedules
 
         public override string ToString()
         {
-            return $"{name_airshow.ToString()} - {location.city}, {location.State}, {date_start}";
+            return $"{name_airshow.ToString()} - {location.city}, {location.state}, {date_start}";
         }
 
         public bool CompareYears(object? obj)
@@ -332,14 +341,14 @@ namespace AirshowSchedules
 
             foreach (Airshow ashow in airshows)
             {
-                string sshow = ashow.date_start + "\t" + ashow.date_finish + "\t" + ashow.location.City + ", " + ashow.location.State + "\t" + ashow.name_airshow;
+                string sshow = ashow.date_start + "\t" + ashow.date_finish + "\t" + ashow.location.city + ", " + ashow.location.state + "\t" + ashow.name_airshow;
 
 
 
                 sshow = ashow.date_start.Length <= 10 ? ashow.date_start.PadRight(10) : ashow.date_start.Substring(0, 10);
                 sshow += ashow.date_finish.Length <= 11 ? ashow.date_finish.PadLeft(11) : ashow.date_finish.Substring(0, 11);
-                sshow += ashow.location.City.Length <= 30 ? ashow.location.City.PadLeft(30) : ashow.location.City.Substring(0, 30);
-                sshow += ashow.location.State.Length <= 2 ? ", " + ashow.location.State.PadLeft(2) : ", " + ashow.location.State.Substring(0, 2);
+                sshow += ashow.location.city.Length <= 30 ? ashow.location.city.PadLeft(30) : ashow.location.city.Substring(0, 30);
+                sshow += ashow.location.state.Length <= 2 ? ", " + ashow.location.state.PadLeft(2) : ", " + ashow.location.state.Substring(0, 2);
                 sshow += " - ";
                 sshow += ashow.name_airshow.Length <= 50 ? ashow.name_airshow.PadRight(50) : ashow.name_airshow.Substring(0, 50);
                 strings.Add(sshow);
@@ -381,6 +390,8 @@ namespace AirshowSchedules
 
                         airshow.name_airshow = airshowname;
                         airshow.location.rawstring = lines[ii++];
+                        string test = airshow.location.city;
+                        test = airshow.location.state;
 
                         List<string> airshowdata = new List<string>();
 
@@ -505,8 +516,8 @@ namespace AirshowSchedules
                 outputline += "\t" + airshow.date_start;
                 outputline += "\t" + airshow.date_finish;
                 outputline += "\t" + airshow.Days;
-                outputline += "\t" + airshow.location.City;
-                outputline += "\t" + airshow.location.State;
+                outputline += "\t" + airshow.location.city;
+                outputline += "\t" + airshow.location.state;
                 outputline += "\t" + airshow.name_airshow;
                 foreach (cContact acontact in airshow.Contacts.contact)
                 {

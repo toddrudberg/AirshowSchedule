@@ -49,7 +49,7 @@ namespace AirshowSchedules
         }
         private void frmAirshowScheduleTool_Load(object sender, EventArgs e)
         {
-
+            AllocConsole();
             // Position the form in the top-right corner of the screen
             var screen = Screen.FromControl(this);
             this.Location = new Point(screen.WorkingArea.Right - this.Width, screen.WorkingArea.Top);
@@ -99,7 +99,7 @@ namespace AirshowSchedules
 
         private void frmAirshowScheduleTool_Shown(object sender, EventArgs e)
         {
-            AllocConsole();
+
             // Set the console to be tall and narrow
             SetConsoleSize(75, 75); // Adjust width and height here
                                     // Set form size to a percentage of screen resolution
@@ -409,7 +409,7 @@ namespace AirshowSchedules
             foreach (Airshow airshow in myAirshows)
             {
                 string rgn = "";
-                string state = airshow.location.State.ToUpper();
+                string state = airshow.location.state.ToUpper();
                 try
                 {
                     rgn = myRegions.myRegions[state];
@@ -630,7 +630,7 @@ namespace AirshowSchedules
                         }
                     case cSearchTerms.eSearchField.CityName:
                         {
-                            ret = myFilteredAirshows.Where(c => c.location.City.ToLower().Contains(SearchTerms.szSearchTerm.ToLower())).ToList();
+                            ret = myFilteredAirshows.Where(c => c.location.city.ToLower().Contains(SearchTerms.szSearchTerm.ToLower())).ToList();
                             break;
                         }
                     default:
