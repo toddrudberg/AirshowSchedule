@@ -94,7 +94,7 @@ namespace AirshowSchedules
             {
                 MessageBox.Show("Error loading form: " + ex.Message);
             }
-
+            toolTip1.Active = false;
         }
 
         private void frmAirshowScheduleTool_Shown(object sender, EventArgs e)
