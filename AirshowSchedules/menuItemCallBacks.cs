@@ -120,11 +120,6 @@ public partial class frmAirshowScheduleTool
 
     private void compareToActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        //need to set pointers to each of the xmls
-        //What's new in future year?
-        //what's not in the other?
-        //interface to merge data - eg show merge
-        //interface for manual merge
 
         DialogResult dr = SelectFilesToCompare(myFormState.fnCurrentXMLDataBase);
 
