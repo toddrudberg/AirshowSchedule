@@ -102,7 +102,7 @@ public partial class frmAirshowScheduleTool
 
             myFilteredAirshows = myAirshows.ToList();
             this.Enabled = true;
-            LoadGrid(myFormState.AirshowYearofInterest);
+            //LoadGrid(myFormState.AirshowYearofInterest);
             ColorGrid(myFilteredAirshows);
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
         }
@@ -255,7 +255,8 @@ public partial class frmAirshowScheduleTool
                 Console.WriteLine($"There are {duplicateAirshowsFound.Count / 2} duplicates detected.".Pastel(Color.Green));
                 Console.WriteLine($"There are {count - copiedList.Count} duplicates removed.".Pastel(Color.Green));
                 Console.WriteLine();
-                Console.WriteLine("The easy ones are removed, now we will go through the remainder one by one:".Pastel(Color.Green));
+                Console.WriteLine();
+                Console.WriteLine("The easy ones are removed, now we will remove shows not in the new database:".Pastel(Color.Yellow));
                 Console.WriteLine("Press any key to continue.".Pastel(Color.Green));
                 Console.ReadKey();
                 Console.WriteLine();
@@ -268,7 +269,7 @@ public partial class frmAirshowScheduleTool
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count == 0)
                     {
-                        Console.WriteLine($"Airshow {ashow.ToString()} is not in the latest database. Do you want to remove it (Y/N)?".Pastel(Color.Red));
+                        Console.WriteLine($"Airshow {ashow.ToString()} is not in the latest database. Do you want to remove it (Y/N)?".Pastel(Color.Yellow));
                         string response = Console.ReadLine();
                         if (response.ToLower() == "y")
                         {
@@ -307,7 +308,7 @@ public partial class frmAirshowScheduleTool
                 List<Airshow> airshowToRemove2 = new List<Airshow>();
                 foreach (Airshow ashow in cancelledShows)
                 {
-                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                    Console.WriteLine(ashow.ToString().Pastel(Color.Green));
                     List<Airshow> mathingShow = copiedList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
                     foreach (Airshow adup in mathingShow)
                     {
@@ -322,8 +323,8 @@ public partial class frmAirshowScheduleTool
                     
                     foreach(Airshow adup in matchingShow)
                     {
-                        Console.WriteLine(adup.ToString().Pastel(Color.Yellow));
-                        Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                        Console.WriteLine(adup.ToString().Pastel(Color.Green));
+                        Console.WriteLine(ashow.ToString().Pastel(Color.Green));
                         Console.WriteLine("Do these match? (Y/N)".Pastel(Color.Yellow));
                         string response = Console.ReadLine();
                         if (response.ToLower() == "y")
@@ -333,21 +334,29 @@ public partial class frmAirshowScheduleTool
                     }
                 }
                 Console.WriteLine();
-                Console.WriteLine("Do you want to remove these shows (Y/N)?".Pastel(Color.Yellow));
+                Console.WriteLine();
+                Console.WriteLine("Do you want to remove these shows?".Pastel(Color.Yellow));
+                Console.WriteLine();
                 foreach(Airshow ashow in airshowToRemove2)
                 {
-                    Console.WriteLine(ashow.ToString().Pastel(Color.Yellow));
+                    Console.WriteLine(ashow.ToString().Pastel(Color.Red));
                 }
-
+                Console.WriteLine("(Y to remove, N to skip)?".Pastel(Color.Yellow));
                 string response3 = Console.ReadLine();
                 if (response3.ToLower() == "y")
                 {
                     foreach (Airshow ashow in airshowToRemove2)
                     {
                         copiedList.Remove(ashow);
+
                     }
                     myAirshows = copiedList;
                     SaveAirshowSchedule(false);
+                    Console.WriteLine("Shows removed.".Pastel(Color.Green));
+                }
+                else
+                {
+                    Console.WriteLine("Shows not removed.".Pastel(Color.Green));
                 }
             }
             this.Enabled = true;
@@ -372,6 +381,7 @@ public partial class frmAirshowScheduleTool
                 if (dr2 == DialogResult.Yes)
                 {
                     myAirshows = copiedList;
+                    myFilteredAirshows = myAirshows;
                     SaveAirshowSchedule(false);
                     Console.WriteLine();
                     Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));

@@ -88,7 +88,7 @@ namespace AirshowSchedules
         public class cLocation
         {
             [XmlIgnore]
-            internal string? rawstring;
+            public string? rawstring;
             [XmlIgnore]
             private string? City;
             [XmlIgnore]

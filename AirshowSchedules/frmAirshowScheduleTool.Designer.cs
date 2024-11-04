@@ -50,6 +50,7 @@
             toolStripSeparator2 = new ToolStripSeparator();
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
+            arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
             dataBaseManagementToolStripMenuItem = new ToolStripMenuItem();
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
             cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
@@ -64,7 +65,6 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -191,7 +191,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1426, 24);
+            menuStrip1.Size = new Size(1697, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -246,6 +246,13 @@
             saveDatabaseFileToolStripMenuItem.Size = new Size(198, 22);
             saveDatabaseFileToolStripMenuItem.Text = "Save Database File";
             saveDatabaseFileToolStripMenuItem.Click += saveDatabaseFileToolStripMenuItem_Click;
+            // 
+            // arciveActiveDBToolStripMenuItem
+            // 
+            arciveActiveDBToolStripMenuItem.Name = "arciveActiveDBToolStripMenuItem";
+            arciveActiveDBToolStripMenuItem.Size = new Size(198, 22);
+            arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
+            arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
             // 
             // dataBaseManagementToolStripMenuItem
             // 
@@ -349,18 +356,11 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // arciveActiveDBToolStripMenuItem
-            // 
-            arciveActiveDBToolStripMenuItem.Name = "arciveActiveDBToolStripMenuItem";
-            arciveActiveDBToolStripMenuItem.Size = new Size(198, 22);
-            arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
-            arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
-            // 
             // frmAirshowScheduleTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1426, 488);
+            ClientSize = new Size(1697, 474);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);

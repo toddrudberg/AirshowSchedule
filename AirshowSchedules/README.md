@@ -29,4 +29,8 @@
 
 # things to do:
 
-1. fix resizing issue, potentially upgrade to .NET 8. 
+1. after nuking duplicate shows, notify the user that they are now removing shows not in the new DB
+2. move the "do you want to remove these shows prompt below the list or add a seperator
+3. at the end of clean up database, tell them it was successful. 
+4. after cleaning up the database, the title of some of the grids isn't correct.  investigaate.  this list and filter is right, just not the grid title.
+5. copy loadgrid and color grid to saveairshows...not what we want.  when filtering the list, we lose some context.  we only want to LoadGrid on specific times

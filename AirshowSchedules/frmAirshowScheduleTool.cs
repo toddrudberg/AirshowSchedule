@@ -224,6 +224,12 @@ namespace AirshowSchedules
             SaveAirshowSchedule(DoFileDialogue, myAirshows);
             //update myFilteredAirshows
             btnFilterShows_Click(null, null);
+            // if (loadGrid)
+            // {
+            //     LoadGrid(myFormState.AirshowYearofInterest);
+            // }
+            ColorGrid(myAirshows);
+            ColorGrid(myFilteredAirshows);
         }
 
         private void SaveAirshowSchedule(bool DoFileDialogue, List<Airshow> airshows)
@@ -340,7 +346,7 @@ namespace AirshowSchedules
                 if (dr == DialogResult.OK)
                 {
                     SaveAirshowSchedule(false);
-                    ColorGrid(myFilteredAirshows);
+                    //ColorGrid(myFilteredAirshows);
                 }
             }
         }
@@ -376,8 +382,8 @@ namespace AirshowSchedules
                 myAirshows.Add(ashow);
                 myFilteredAirshows.Add(ashow);
                 SaveAirshowSchedule(false);
-                LoadGrid(myFormState.AirshowYearofInterest);
-                ColorGrid(myFilteredAirshows);
+                //LoadGrid(myFormState.AirshowYearofInterest);
+                //ColorGrid(myFilteredAirshows);
             }
         }
 
@@ -405,7 +411,6 @@ namespace AirshowSchedules
         private void btnFilterShows_Click(object sender, EventArgs e)
         {
             List<Airshow> FilteredAirshows = new List<Airshow>();
-
             foreach (Airshow airshow in myAirshows)
             {
                 string rgn = "";
@@ -428,14 +433,12 @@ namespace AirshowSchedules
                 }
             }
             myFilteredAirshows = FilteredAirshows.ToList();
-
-
             ColorGrid(myFilteredAirshows);
         }
 
         private void generateCallListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            List<Airshow> CallReport = myAirshows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.maybe).ToList();
+            List<Airshow> CallReport = myAirshows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.maybe || x.Status == eStatus.verbal).ToList();
 
             CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
 
@@ -465,6 +468,7 @@ namespace AirshowSchedules
             // Create a Label to inform the user
             Label infoLabel = new Label();
             infoLabel.Text = "The data will be copied to the Clipboard in Tab Delimted for display in Excel.";
+            infoLabel.Font = new Font(infoLabel.Font.FontFamily, 12, FontStyle.Bold);
             infoLabel.Dock = DockStyle.Top;
             infoLabel.TextAlign = ContentAlignment.MiddleCenter;
             infoLabel.Height = 30;
@@ -480,6 +484,7 @@ namespace AirshowSchedules
             // Create an OK button to close the form
             Button okButton = new Button();
             okButton.Text = "OK";
+            okButton.Font = new Font(infoLabel.Font.FontFamily, 12, FontStyle.Bold);
             okButton.Dock = DockStyle.Bottom;
             okButton.Height = 40;
             okButton.Click += (sender, e) => dataForm.Close();
@@ -587,8 +592,8 @@ namespace AirshowSchedules
                     myAirshows.Remove(ashow);
                     myFilteredAirshows.Remove(ashow);
                     SaveAirshowSchedule(false);
-                    LoadGrid(myFormState.AirshowYearofInterest);
-                    ColorGrid(myFilteredAirshows);
+                    //LoadGrid(myFormState.AirshowYearofInterest);
+                    //ColorGrid(myFilteredAirshows);
                 }
             }
         }
