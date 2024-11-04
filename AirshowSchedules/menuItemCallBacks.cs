@@ -416,6 +416,7 @@ public partial class frmAirshowScheduleTool
             Console.WriteLine();
             Console.WriteLine("Do you want to remove these shows (Y/N)?".Pastel(Color.Yellow));
             string response3 = Console.ReadLine();
+            int Count = copiedList.Count;
             if (response3.ToLower() == "y")
             {
                 foreach (Airshow ashow in cancelledShows)
@@ -424,7 +425,12 @@ public partial class frmAirshowScheduleTool
                 }
                 myAirshows = copiedList;
                 SaveAirshowSchedule(false);
+
+                    Console.WriteLine();
+                    Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));
+                    Console.WriteLine();
             }
+            Console.WriteLine("operation aborted".Pastel(Color.Green));
             this.Enabled = true;
         }
         else
