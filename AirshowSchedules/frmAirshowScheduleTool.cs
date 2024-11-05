@@ -66,10 +66,6 @@ public partial class frmAirshowScheduleTool : Form
             }
             myAirshowGroup = asg;
 
-
-            myAirshowGroup.Airshows.myShows = myAirshowGroup.Airshows.myShows;
-            //myFilteredAirshows = myAirshowGroup.Airshows.myShows.ToList();
-
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             myFilteredAirshows = myAirshowGroup.Airshows.myShows.ToList();
@@ -189,12 +185,7 @@ public partial class frmAirshowScheduleTool : Form
     private void SaveAirshowSchedule(bool DoFileDialogue)
     {
         SaveAirshowSchedule(DoFileDialogue, myAirshowGroup);
-        //update myFilteredAirshows
         btnFilterShows_Click(null, null);
-        // if (loadGrid)
-        // {
-        //     LoadGrid(myFormState.AirshowYearofInterest);
-        // }
         ColorGrid(myAirshowGroup.Airshows.myShows);
         ColorGrid(myFilteredAirshows);
     }
@@ -334,8 +325,6 @@ public partial class frmAirshowScheduleTool : Form
             myAirshowGroup.Airshows.myShows.Add(ashow);
             myFilteredAirshows.Add(ashow);
             SaveAirshowSchedule(false);
-            //LoadGrid(myFormState.AirshowYearofInterest);
-            //ColorGrid(myFilteredAirshows);
         }
     }
 
@@ -544,8 +533,6 @@ public partial class frmAirshowScheduleTool : Form
                 myAirshowGroup.Airshows.myShows.Remove(ashow);
                 myFilteredAirshows.Remove(ashow);
                 SaveAirshowSchedule(false);
-                //LoadGrid(myFormState.AirshowYearofInterest);
-                //ColorGrid(myFilteredAirshows);
             }
         }
     }
