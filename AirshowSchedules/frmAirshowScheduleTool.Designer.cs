@@ -228,7 +228,6 @@
             setRegionFileToolStripMenuItem.Name = "setRegionFileToolStripMenuItem";
             setRegionFileToolStripMenuItem.Size = new Size(198, 22);
             setRegionFileToolStripMenuItem.Text = "Set Region File";
-            setRegionFileToolStripMenuItem.Click += fileSetRegionFileToolStripMenuItem_Click;
             // 
             // toolStripSeparator2
             // 

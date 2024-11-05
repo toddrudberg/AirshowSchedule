@@ -13,15 +13,13 @@ namespace AirshowSchedules;
 
 public partial class frmAirshowScheduleTool : Form
 {
-
+    AirshowGroup myAirshowGroup = new AirshowGroup();
     FormState myFormState = new FormState();
-    //This is the master list
-    List<Airshow> myAirshows = new List<Airshow>();
-    //This is the filter list and used for display. It is a subset of myAirshows, so watch out for that.
+
+    //This is the filter list and used for display. It is a subset of myAirshowGroup.Airshows.myShows, so watch out for that.
     List<Airshow> myFilteredAirshows = new List<Airshow>();
-    List<Airshow> myMergedShows = new List<Airshow>();
     cAirshowFileParserSetupTool WorkingFileParserClass = new cAirshowFileParserSetupTool();
-    cAirshowScheduleCompare myASGCompare = new cAirshowScheduleCompare();
+
     AirshowSchedules.Regions myRegions = new AirshowSchedules.Regions();
     private System.Windows.Forms.TextBox TextBox1;
 
@@ -66,16 +64,15 @@ public partial class frmAirshowScheduleTool : Form
                 MessageBox.Show("Error loading form: " + "Unable to load the active database");
                 return;
             }
+            myAirshowGroup = asg;
 
 
+            myAirshowGroup.Airshows.myShows = myAirshowGroup.Airshows.myShows;
+            //myFilteredAirshows = myAirshowGroup.Airshows.myShows.ToList();
 
-            myAirshows = asg.Airshows.myShows;
-            //myFilteredAirshows = myAirshows.ToList();
-            myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-            LoadGrid(myFormState.AirshowYearofInterest);
-            //GridTools.LoadShowGrid(dataGridViewShows, myFormState.AirshowYearofInterest);
-            myFilteredAirshows = myAirshows.ToList();
+            LoadGrid(myAirshowGroup.AirshowYearOfInterest);
+            myFilteredAirshows = myAirshowGroup.Airshows.myShows.ToList();
             ColorGrid(myFilteredAirshows);
 
             // Get the execution directory
@@ -126,42 +123,6 @@ public partial class frmAirshowScheduleTool : Form
         }
 
         public eSearchField SearchFiled;
-    }
-
-    public class cAirshowScheduleCompare
-    {
-        [Display(DisplayName = "Choose an Input File Left (eg working database):")]
-        [FileBrowseDialog(OpenFileDialogFilter = "Airshow Group (*.asg.xml)|*.asg.xml")]
-        public string sFileNameLeft = "";
-
-
-        [Display(DisplayName = "Choose an Input File Right (eg freshly downloaded data):")]
-        [FileBrowseDialog(OpenFileDialogFilter = "Airshow Group (*.asg.xml)|*.asg.xml")]
-        public string sFileNameRight = "";
-
-        public static cAirshowScheduleCompare LoadMe()
-        {
-            string fng = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "AirshowCompare");
-
-            cAirshowScheduleCompare fs = new cAirshowScheduleCompare();
-
-            try
-            {
-                if (System.IO.File.Exists(fng))
-                    fs = Electroimpact.XmlSerialization.Serializer.Load<cAirshowScheduleCompare>(fng);
-
-                return fs;
-            }
-            catch { return fs; }
-        }
-
-        public static void SaveMe(cAirshowScheduleCompare fs)
-        {
-            string fng = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "AirshowCompare");
-
-            Electroimpact.XmlSerialization.Serializer.Save(fs, fng);
-        }
-
     }
 
 
@@ -227,22 +188,20 @@ public partial class frmAirshowScheduleTool : Form
 
     private void SaveAirshowSchedule(bool DoFileDialogue)
     {
-        SaveAirshowSchedule(DoFileDialogue, myAirshows);
+        SaveAirshowSchedule(DoFileDialogue, myAirshowGroup);
         //update myFilteredAirshows
         btnFilterShows_Click(null, null);
         // if (loadGrid)
         // {
         //     LoadGrid(myFormState.AirshowYearofInterest);
         // }
-        ColorGrid(myAirshows);
+        ColorGrid(myAirshowGroup.Airshows.myShows);
         ColorGrid(myFilteredAirshows);
     }
 
-    private void SaveAirshowSchedule(bool DoFileDialogue, List<Airshow> airshows)
+    private void SaveAirshowSchedule(bool DoFileDialogue, AirshowGroup airshowGroup)
     {
-        AirshowGroup asg = new AirshowGroup();
-        asg.Airshows.myShows = airshows;
-        asg.AirshowYearOfInterest = myFormState.AirshowYearofInterest;
+
         SaveFileDialog sfd = new SaveFileDialog();
         sfd.Filter = "*.asg.XML|*.asg.xml";
         sfd.Title = "Save an Airshow Group";
@@ -254,12 +213,14 @@ public partial class frmAirshowScheduleTool : Form
             DialogResult dr = sfd.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
+                //Electroimpact.XmlSerialization.Serializer.Save(airshowGroup, sfd.FileName);
+                AirshowGroup.SaveMe(airshowGroup, sfd.FileName);
             }
         }
         else
         {
-            Electroimpact.XmlSerialization.Serializer.Save(asg, fnCurrentWorkingAirshow);
+            AirshowGroup.SaveMe(airshowGroup, fnCurrentWorkingAirshow);
+            //Electroimpact.XmlSerialization.Serializer.Save(asg, fnCurrentWorkingAirshow);
         }
     }
     #endregion
@@ -268,19 +229,6 @@ public partial class frmAirshowScheduleTool : Form
 
     #region Form Event Callbacks
 
-
-    private DialogResult SelectFilesToCompare(string fnActvDB = null)
-    {
-        myASGCompare = cAirshowScheduleCompare.LoadMe();
-
-        if (!String.IsNullOrEmpty(fnActvDB))
-            myASGCompare.sFileNameLeft = fnActvDB;
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(myASGCompare);
-
-        DialogResult dr = sb.showDialog();
-        cAirshowScheduleCompare.SaveMe(myASGCompare);
-        return dr;
-    }
 
     private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
     {
@@ -312,10 +260,8 @@ public partial class frmAirshowScheduleTool : Form
                     DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
                     AirshowWeekend asw = new AirshowWeekend(dateTime);
 
-                    List<Airshow> airshowsthisweek = myAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
+                    List<Airshow> airshowsthisweek = myAirshowGroup.Airshows.myShows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
                     airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-
-                    List<Airshow> mergedAirshowsThisweek = myMergedShows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
 
                     List<string> shownames = new List<string>();
 
@@ -385,7 +331,7 @@ public partial class frmAirshowScheduleTool : Form
         DialogResult dr = sb.showDialog();
         if (dr == DialogResult.OK)
         {
-            myAirshows.Add(ashow);
+            myAirshowGroup.Airshows.myShows.Add(ashow);
             myFilteredAirshows.Add(ashow);
             SaveAirshowSchedule(false);
             //LoadGrid(myFormState.AirshowYearofInterest);
@@ -417,7 +363,7 @@ public partial class frmAirshowScheduleTool : Form
     private void btnFilterShows_Click(object sender, EventArgs e)
     {
         List<Airshow> FilteredAirshows = new List<Airshow>();
-        foreach (Airshow airshow in myAirshows)
+        foreach (Airshow airshow in myAirshowGroup.Airshows.myShows)
         {
             string rgn = "";
             string state = airshow.location.state.ToUpper();
@@ -444,7 +390,7 @@ public partial class frmAirshowScheduleTool : Form
 
     private void generateCallListToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> CallReport = myAirshows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.maybe || x.Status == eStatus.verbal).ToList();
+        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.maybe || x.Status == eStatus.verbal).ToList();
 
         CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
 
@@ -506,7 +452,7 @@ public partial class frmAirshowScheduleTool : Form
 
     private void generateBookedListToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> CallReport = myAirshows.Where(x => x.Status == eStatus.contract).ToList();
+        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.contract).ToList();
 
         CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
 
@@ -543,7 +489,7 @@ public partial class frmAirshowScheduleTool : Form
 
     private void generateICASMailingListToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> CallReport = myAirshows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.verbal || x.Status == eStatus.NO || x.Status == eStatus.contract || x.Status == eStatus.maybe).ToList();
+        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.verbal || x.Status == eStatus.NO || x.Status == eStatus.contract || x.Status == eStatus.maybe).ToList();
 
         CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
 
@@ -595,7 +541,7 @@ public partial class frmAirshowScheduleTool : Form
 
             if (dr == DialogResult.Yes)
             {
-                myAirshows.Remove(ashow);
+                myAirshowGroup.Airshows.myShows.Remove(ashow);
                 myFilteredAirshows.Remove(ashow);
                 SaveAirshowSchedule(false);
                 //LoadGrid(myFormState.AirshowYearofInterest);
@@ -665,22 +611,24 @@ public partial class frmAirshowScheduleTool : Form
         }
     }
 
-    private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
+private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
+{
+    int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
+
+    using (YearSelectionForm yearSelectionForm = new YearSelectionForm(likelyYear))
     {
-        using (YearSelectionForm yearSelectionForm = new YearSelectionForm())
+        if (yearSelectionForm.ShowDialog() == DialogResult.OK)
         {
-            if (yearSelectionForm.ShowDialog() == DialogResult.OK)
-            {
-                int selectedYear = yearSelectionForm.SelectedYear;
-                myFormState.AirshowYearofInterest = selectedYear;
-                FormState.SaveMe(myFormState);
-                lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-                LoadGrid(myFormState.AirshowYearofInterest);
-                ColorGrid(myFilteredAirshows);
-                SaveAirshowSchedule(false);
-            }
+            int selectedYear = yearSelectionForm.SelectedYear;
+            myAirshowGroup.AirshowYearOfInterest = selectedYear;
+            FormState.SaveMe(myFormState);
+            lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            LoadGrid(myAirshowGroup.AirshowYearOfInterest);
+            ColorGrid(myFilteredAirshows);
+            SaveAirshowSchedule(false);
         }
     }
+}
 
 
     public class PopupForm : Form
@@ -722,51 +670,6 @@ public partial class frmAirshowScheduleTool : Form
         }
     }
 
-    public class YearSelectionForm : Form
-    {
-        private ComboBox comboBoxYears;
-        private Button buttonOK;
 
-        public int SelectedYear { get; private set; }
-
-        public YearSelectionForm()
-        {
-            InitializeComponent();
-        }
-
-        private void InitializeComponent()
-        {
-            this.comboBoxYears = new ComboBox();
-            this.buttonOK = new Button();
-
-            // ComboBox
-            this.comboBoxYears.DropDownStyle = ComboBoxStyle.DropDownList;
-            this.comboBoxYears.Location = new Point(10, 10);
-            this.comboBoxYears.Width = 100;
-            for (int year = 2024; year <= 2035; year++)
-            {
-                this.comboBoxYears.Items.Add(year);
-            }
-            this.comboBoxYears.SelectedIndex = 0;
-
-            // OK Button
-            this.buttonOK.Text = "OK";
-            this.buttonOK.Location = new Point(120, 10);
-            this.buttonOK.Click += new EventHandler(this.ButtonOK_Click);
-
-            // Form
-            this.ClientSize = new Size(250, 50);
-            this.Controls.Add(this.comboBoxYears);
-            this.Controls.Add(this.buttonOK);
-            this.Text = "Select Year of Interest";
-        }
-
-        private void ButtonOK_Click(object sender, EventArgs e)
-        {
-            this.SelectedYear = (int)this.comboBoxYears.SelectedItem;
-            this.DialogResult = DialogResult.OK;
-            this.Close();
-        }
-    }
 }
     #endregion

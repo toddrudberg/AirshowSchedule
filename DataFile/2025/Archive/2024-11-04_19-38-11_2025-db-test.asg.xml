@@ -9,17 +9,11 @@
         <city>Barksdale AFB</city>
         <state>LA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>David Dethloff</name>
           <phone>318-834-6121</phone>
-        </Contact>
-        <Contact>
-          <name>Capt Kevan Thomas</name>
-          <phone>480-310-0065</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -33,18 +27,11 @@
         <city>Lakeland</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-        <Performer>Titan Aerobatic Team</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Gene Conrad</name>
           <phone>417-334-7813</phone>
-        </Contact>
-        <Contact>
-          <name>Dennis Dunbar</name>
-          <phone>321-543-8837</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -58,17 +45,11 @@
         <city>Nellis AFB</city>
         <state>NV</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Maj Cole Davenport</name>
           <phone>702-652-6573</phone>
-        </Contact>
-        <Contact>
-          <name>Robert Jones</name>
-          <phone>702-679-2539 / 702-241-1034 </phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff>we have a notice of interest from them</Notes_AirshowStuff>
@@ -100,9 +81,7 @@
         <city>Dyess AFB</city>
         <state>TX</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Lt Col Ryan Meiergerd</name>
@@ -120,9 +99,7 @@
         <city>Fort Lauderdale</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -146,9 +123,6 @@
           <name>Joseph Johnson</name>
           <phone>361-882-3242</phone>
         </Contact>
-        <Contact>
-          <name />
-        </Contact>
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
@@ -161,9 +135,7 @@
         <city>Seymour Johnson AFB</city>
         <state>NC</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Maj Nathan Johnson</name>
@@ -181,17 +153,11 @@
         <city>JB McGuire-Dix-Lakehurst</city>
         <state>NJ</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>LtCol Paul Murphy</name>
           <phone>707-330-7540</phone>
-        </Contact>
-        <Contact>
-          <name>LtCol Matthew Mattson</name>
-          <phone>719-237-7746</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -223,9 +189,7 @@
         <city>Wantagh</city>
         <state>NY</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>George Gorman Jr</name>
@@ -278,9 +242,7 @@
         <city>Smyrna</city>
         <state>TN</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>John Black</name>
@@ -304,10 +266,6 @@
           <name>Hahns Bodenbender</name>
           <phone>701-723-3447</phone>
         </Contact>
-        <Contact>
-          <name>Evan Pittman</name>
-          <phone>701-723-1926</phone>
-        </Contact>
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
@@ -325,9 +283,6 @@
         <Contact>
           <name>Lt Col Jeff Ledeboer</name>
           <phone>618-256-4494</phone>
-        </Contact>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -359,9 +314,7 @@
         <city>Dayton</city>
         <state>OH</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Katie Mitchell</name>
@@ -397,14 +350,7 @@
         <city>Battle Creek</city>
         <state>MI</state>
       </location>
-      <Performers>
-        <Performer>Bill Stein Airshows</Performer>
-        <Performer>Dacy Airshows</Performer>
-        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-        <Performer>GhostWriter Airshows</Performer>
-        <Performer>Firewalkers International Pyro, LLC</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Barbara Haluszka </name>
@@ -475,16 +421,10 @@
         <city>Milwaukee</city>
         <state>WI</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Brian Allendorfer</name>
-          <phone>773-919-1900</phone>
-        </Contact>
-        <Contact>
-          <name>Brian L Allendorfer Jr</name>
           <phone>773-919-1900</phone>
         </Contact>
       </Contacts>
@@ -499,10 +439,7 @@
         <city>Oshkosh</city>
         <state>WI</state>
       </location>
-      <Performers>
-        <Performer>Starlight Aerial Productions</Performer>
-        <Performer>Titan Aerobatic Team</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Rick Larsen</name>
@@ -537,9 +474,7 @@
         <city>Seattle</city>
         <state>WA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Frank Sebastian</name>
@@ -617,9 +552,6 @@
           <name>Brian Allendorfer</name>
           <phone>773-919-1900</phone>
         </Contact>
-        <Contact>
-          <name />
-        </Contact>
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
@@ -650,9 +582,7 @@
         <city>Madras</city>
         <state>OR</state>
       </location>
-      <Performers>
-        <Performer>Patriots Jet Team</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Rick Allen</name>
@@ -706,9 +636,7 @@
         <city>Cleveland</city>
         <state>OH</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Leslie King</name>
@@ -762,15 +690,10 @@
         <city>JB Andrews</city>
         <state>MD</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name />
-        </Contact>
-        <Contact>
-          <name>Col Tyler Schaff</name>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -837,18 +760,11 @@
         <city>Virginia Beach</city>
         <state>VA</state>
       </location>
-      <Performers>
-        <Performer>F/A-18 Super Hornet W Legacy Flight</Performer>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Rich Erie</name>
           <phone>757-433-2130</phone>
-        </Contact>
-        <Contact>
-          <name>Greg Courrier</name>
-          <phone>7573248485</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -862,11 +778,7 @@
         <city>San Diego</city>
         <state>CA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-        <Performer>USMC F-35B Lightning II</Performer>
-        <Performer>USMC MV-22 Osprey</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Christopher 'Oz' Van Stelle</name>
@@ -884,9 +796,7 @@
         <city>Huntington Beach</city>
         <state>CA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Kevin Elliott</name>
@@ -904,9 +814,7 @@
         <city>San Francisco</city>
         <state>CA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Judge Smales</name>
@@ -924,9 +832,7 @@
         <city>Peachtree City</city>
         <state>GA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -944,9 +850,7 @@
         <city>Hammond</city>
         <state>LA</state>
       </location>
-      <Performers>
-        <Performer>Skip Stewart Airshows</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>David Lobue</name>
@@ -964,9 +868,7 @@
         <city>Rome</city>
         <state>GA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>jlcairshows@att.net</name>
@@ -984,9 +886,7 @@
         <city>Houston</city>
         <state>TX</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bill Roach</name>
@@ -994,7 +894,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-23</date_start>
@@ -1075,14 +975,28 @@
         <city>NAS Key West</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-        <Performer>Skip Stewart Airshows</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Emma Harlow</name>
           <phone>305-293-2503</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
+      <location>
+        <city>Altus AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1096,9 +1010,7 @@
         <city>Augusta</city>
         <state>GA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -1133,9 +1045,7 @@
         <city>Harrisburg</city>
         <state>PA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -1170,9 +1080,7 @@
         <city>Ocean City</city>
         <state>MD</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -1207,9 +1115,7 @@
         <city>Pensacola Beach</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Robbie Lofty</name>
@@ -1251,9 +1157,6 @@
           <name>Cory Mullins</name>
           <phone>816-217-7324</phone>
         </Contact>
-        <Contact>
-          <name />
-        </Contact>
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
@@ -1284,16 +1187,10 @@
         <city>Twin Falls</city>
         <state>ID</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name />
-        </Contact>
-        <Contact>
-          <name>Jim O'Donnell</name>
-          <phone>208-733-5215 x0</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1307,9 +1204,7 @@
         <city>Columbus</city>
         <state>OH</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Herb Gillen</name>
@@ -1327,9 +1222,7 @@
         <city>Branson</city>
         <state>MO</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Kerry Floyd</name>
@@ -1347,9 +1240,7 @@
         <city>Mirabel</city>
         <state>QC</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Maude Paquette</name>
@@ -1367,16 +1258,10 @@
         <city>Loveland</city>
         <state>CO</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name />
-        </Contact>
-        <Contact>
-          <name>Wayne Hammack</name>
-          <phone>720-272-5490</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1390,9 +1275,7 @@
         <city>Pueblo</city>
         <state>CO</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Kerry Floyd</name>
@@ -1410,9 +1293,7 @@
         <city>Orlando (Sanford)</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Bryan Lilley</name>
@@ -1430,9 +1311,7 @@
         <city>Punta Gorda</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Denise Dull </name>
@@ -1468,9 +1347,7 @@
         <city>NAS Pensacola</city>
         <state>FL</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name>Mike McCarthy</name>
@@ -1509,13 +1386,6 @@
       <Performers>
         <Performer>USMC F-35B Lightning II</Performer>
         <Performer>USMC MV-22 Osprey</Performer>
-        <Performer>Patriots Jet Team</Performer>
-        <Performer>CAF RISE ABOVE</Performer>
-        <Performer>Tora Tora Tora</Performer>
-        <Performer>Redline Airshows</Performer>
-        <Performer>Jim Peitz Aerosports, Inc.</Performer>
-        <Performer>Darnell Racing Enterprises, Inc.</Performer>
-        <Performer>Precision Exotics</Performer>
       </Performers>
       <Contacts>
         <Contact>
@@ -1574,16 +1444,10 @@
         <city>Riverside (March ARB)</city>
         <state>CA</state>
       </location>
-      <Performers>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name />
-        </Contact>
-        <Contact>
-          <name>Michael Hunter </name>
-          <phone>901-268-4658</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1661,9 +1525,6 @@
         <Contact>
           <name>Nicolas Diehl</name>
           <phone>304-702-3700</phone>
-        </Contact>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1747,7 +1608,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -1779,7 +1640,6 @@
       </location>
       <Performers>
         <Performer>U.S. Air Force Thunderbirds</Performer>
-        <Performer>Skip Stewart Airshows</Performer>
       </Performers>
       <Contacts>
         <Contact>
@@ -1805,9 +1665,6 @@
         <Contact>
           <name>Brian L Allemdorfer Jr</name>
           <phone>773-919-1900</phone>
-        </Contact>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1843,13 +1700,6 @@
       </location>
       <Performers>
         <Performer>U.S. Air Force Thunderbirds</Performer>
-        <Performer>Dacy Airshows</Performer>
-        <Performer>DreamBIG Entertainment, LLC</Performer>
-        <Performer>FIGHTERJETS, INC. - Randy W. Ball</Performer>
-        <Performer>RAD AEROSPORTS</Performer>
-        <Performer>Skip Stewart Airshows</Performer>
-        <Performer>Smoke-n-Thunder Jet Shows</Performer>
-        <Performer>Tora Tora Tora</Performer>
       </Performers>
       <Contacts>
         <Contact>
@@ -1868,16 +1718,10 @@
         <city>Portsmouth</city>
         <state>NH</state>
       </location>
-      <Performers>
-        <Performer>U.S. Navy Blue Angels</Performer>
-      </Performers>
+      <Performers />
       <Contacts>
         <Contact>
           <name />
-        </Contact>
-        <Contact>
-          <name>Capt Jacob Ricciotti</name>
-          <phone>603-430-3396</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1980,10 +1824,6 @@
         <Contact>
           <name>Don Chapin </name>
           <phone>831-444-4130</phone>
-        </Contact>
-        <Contact>
-          <name>Harry Wardwell</name>
-          <phone>831-754-1983</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2099,7 +1939,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -2116,7 +1956,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -2154,7 +1994,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-05-02</date_start>
@@ -2221,7 +2061,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-07</date_start>
@@ -2355,7 +2195,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -2583,7 +2423,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-13</date_start>
@@ -2615,7 +2455,7 @@
       <Contacts>
         <Contact>
           <name>Adam Fox</name>
-          <phone>405-708-0412</phone>
+          <phone>4057080412</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2711,9 +2551,6 @@
       <Performers>
         <Performer>SRC Airshows</Performer>
         <Performer>Titan Aerobatic Team</Performer>
-        <Performer>Coleman Aerosports</Performer>
-        <Performer>Dacy Airshows</Performer>
-        <Performer>GhostWriter Airshows</Performer>
       </Performers>
       <Contacts>
         <Contact>
@@ -2794,24 +2631,6 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>rose city airfest</name_airshow>
-      <location>
-        <city>Tyler</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Travis Gladhill</name>
-          <phone>903.566.1010</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
     </Airshow>
   </Airshows>
   <AirshowYearOfInterest>2025</AirshowYearOfInterest>

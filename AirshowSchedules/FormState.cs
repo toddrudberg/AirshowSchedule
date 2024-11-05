@@ -5,7 +5,6 @@ namespace AirshowSchedules
     [Serializable]
     public class FormState
     {
-        public int AirshowYearofInterest = 2023;
         public string fnLastParsedFile = "";
         public string fnCurrentXMLDataBase = "";
         [Display(DisplayName = "Choose the Region File:")]

@@ -28,9 +28,9 @@
 2. Follow the prompts.
 
 # things to do:
-1) Start tracking the full AirshowGroup globally because the Airshow class doesn't hold that value.
-2) expose a way to change the YeaarOfInterest.
-3) Fixed the issue - get rid of toolTip1
+1) Done - Start tracking the full AirshowGroup globally because the Airshow class doesn't hold that value.
+2) Done - expose a way to change the YeaarOfInterest.
+3) done - Fixed the issue - get rid of toolTip1
 4) Done - in MS (Middle South) group Texas, Oklahoma and New Mexico to their own region
 5) Done - Added Data Base Management -> Update Additional Fields not all performers are showing up - Yuma for example
 6) add an email field to contacts

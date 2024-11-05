@@ -12,8 +12,6 @@ public partial class frmAirshowScheduleTool
 
     private void fileParseDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        //myAirshows.Clear();
-
         List<Airshow> airshows = new List<Airshow>();
 
         //WorkingFileParserClass;
@@ -31,26 +29,10 @@ public partial class frmAirshowScheduleTool
             Airshow.LoadFile(WorkingFileParserClass, airshows);
             //myFormState.AirshowYearofInterest = WorkingFileParserClass.AirshowYear;
             airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-
-            myFilteredAirshows = airshows.ToList();
             cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
             this.Enabled = true;
         }
     }
-    private void fileSetRegionFileToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(myFormState);
-
-        DialogResult dr = DialogResult.OK;
-        dr = sb.showDialog();
-
-        if (dr == DialogResult.OK)
-        {
-            FormState.SaveMe(myFormState);
-            myRegions = Regions.LoadMe(myFormState.fnRegions);
-        }
-    }
-
     private void fileSaveParsedDataFile_Click(object sender, EventArgs e)
     {
         AirshowGroup asg = new AirshowGroup();
@@ -83,8 +65,6 @@ public partial class frmAirshowScheduleTool
 
     private void setActiveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        myAirshows.Clear();
-
         System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog();
         ofd.Filter = "XML|*.xml";
         DialogResult dr = ofd.ShowDialog();
@@ -95,16 +75,15 @@ public partial class frmAirshowScheduleTool
             bool success;
             AirshowGroup asg = AirshowGroup.LoadMe(ofd.FileName, out success);
             if (!success) { return; }
-            myAirshows = asg.Airshows.myShows;
-            myFormState.AirshowYearofInterest = asg.AirshowYearOfInterest;
+            myAirshowGroup = asg;
+
             myFormState.fnCurrentXMLDataBase = ofd.FileName;
             FormState.SaveMe(myFormState);
-
-            myFilteredAirshows = myAirshows.ToList();
-            this.Enabled = true;
-            LoadGrid(myFormState.AirshowYearofInterest);
+            myFilteredAirshows = myAirshowGroup.Airshows.myShows;            
+            LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             ColorGrid(myFilteredAirshows);
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            this.Enabled = true;
         }
     }
     private void saveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -121,16 +100,21 @@ public partial class frmAirshowScheduleTool
     private void compareToActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
     {
 
-        DialogResult dr = SelectFilesToCompare(myFormState.fnCurrentXMLDataBase);
+        this.Enabled = false;
+        OpenFileDialog openFileDialog = new OpenFileDialog();
+        openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
+        openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
+        openFileDialog.DefaultExt = "asg.xml";
+        DialogResult dr = openFileDialog.ShowDialog();
+
 
         if (dr == DialogResult.OK)
         {
             this.Enabled = false;
 
-            AirshowGroup asgLeft = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameLeft);
-            myFilteredAirshows = asgLeft.Airshows.myShows.ToList();
+            AirshowGroup asgLeft = myAirshowGroup;
 
-            AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(myASGCompare.sFileNameRight);
+            AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(openFileDialog.FileName);
 
             List<Airshow> newShows = new List<Airshow>();
 
@@ -141,12 +125,10 @@ public partial class frmAirshowScheduleTool
                     continue;
                 newShows.Add(ashow);
             }
-            myMergedShows.Clear();
-            myMergedShows = newShows;
 
             // Show the CompareForm
             // create a deep copy of MyAirshows
-            List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+            List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
             CompareForm compareForm = new CompareForm(newShows, copiedList, this);
             if (compareForm.ShowDialog() == DialogResult.OK)
             {
@@ -154,9 +136,8 @@ public partial class frmAirshowScheduleTool
                 DialogResult dr2 = MessageBox.Show("Do you want to save the merged data to the active DB?", "Save Merged Data?", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
                 {
-                    myAirshows = copiedList;
+                    myAirshowGroup.Airshows.myShows = copiedList;
                     SaveAirshowSchedule(false);
-                    
                 }
             }
 
@@ -171,7 +152,7 @@ public partial class frmAirshowScheduleTool
         List<Airshow> latestAirshowList = new List<Airshow>();
 
         //for every airshow in the database, compare cities to see if they show up more than once
-        List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+        List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
         foreach (Airshow ashow in copiedList)
         {
             List<Airshow> duplicatesFound = new List<Airshow>();
@@ -246,7 +227,7 @@ public partial class frmAirshowScheduleTool
 
                 Console.WriteLine();
                 Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
-                Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
+                Console.WriteLine($"There are {myAirshowGroup.Airshows.myShows.Count} airshows in the original database.".Pastel(Color.Green));
                 Console.WriteLine($"There are {duplicateAirshowsFound.Count / 2} duplicates detected.".Pastel(Color.Green));
                 Console.WriteLine($"There are {count - copiedList.Count} duplicates removed.".Pastel(Color.Green));
                 Console.WriteLine();
@@ -280,7 +261,7 @@ public partial class frmAirshowScheduleTool
 
                 Console.WriteLine();
                 Console.WriteLine($"There are {copiedList.Count} airshows left in the list.".Pastel(Color.Green));
-                Console.WriteLine($"There are {myAirshows.Count} airshows in the original database.".Pastel(Color.Green));
+                Console.WriteLine($"There are {myAirshowGroup.Airshows.myShows.Count} airshows in the original database.".Pastel(Color.Green));
                 Console.WriteLine($"We removed {count - copiedList.Count} non-existant Airshows.".Pastel(Color.Green));
                 Console.WriteLine();
                 Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
@@ -291,7 +272,7 @@ public partial class frmAirshowScheduleTool
                     string confirm = Console.ReadLine();
                     if (confirm.ToLower() == "y")
                     {
-                        myAirshows = copiedList;
+                        myAirshowGroup.Airshows.myShows = copiedList;
                         SaveAirshowSchedule(false);
                     }
                 }
@@ -345,7 +326,7 @@ public partial class frmAirshowScheduleTool
                         copiedList.Remove(ashow);
 
                     }
-                    myAirshows = copiedList;
+                    myAirshowGroup.Airshows.myShows = copiedList;
                     SaveAirshowSchedule(false);
                     Console.WriteLine("Shows removed.".Pastel(Color.Green));
                 }
@@ -375,8 +356,8 @@ public partial class frmAirshowScheduleTool
                 DialogResult dr2 = MessageBox.Show("Do you want to save the merged data to the active DB?", "Save Merged Data?", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
                 {
-                    myAirshows = copiedList;
-                    myFilteredAirshows = myAirshows;
+                    myAirshowGroup.Airshows.myShows = copiedList;
+                    myFilteredAirshows = myAirshowGroup.Airshows.myShows;
                     SaveAirshowSchedule(false);
                     Console.WriteLine();
                     Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));
@@ -389,7 +370,7 @@ public partial class frmAirshowScheduleTool
     private void checkForCancelledShowsToolStripMenuItem_Click(object sender, EventArgs e)
     {
 
-        List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+        List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
         List<Airshow> cancelledShows = copiedList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
         List<Airshow> cancelledInNote = copiedList.Where(airshow => airshow.Notes_AirshowStuff.ToLower().Contains("canc")).ToList();
         foreach (Airshow ashow in cancelledInNote)
@@ -423,7 +404,7 @@ public partial class frmAirshowScheduleTool
                 {
                     copiedList.Remove(ashow);
                 }
-                myAirshows = copiedList;
+                myAirshowGroup.Airshows.myShows = copiedList;
                 SaveAirshowSchedule(false);
 
                     Console.WriteLine();
@@ -441,7 +422,7 @@ public partial class frmAirshowScheduleTool
 
     private void updateAdditionalFieldsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> copiedList = Airshow.DeepCopy(myAirshows);
+        List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
         List<Airshow> latestAirshowList = new List<Airshow>();
 
         {
@@ -493,7 +474,7 @@ public partial class frmAirshowScheduleTool
                         }
                     }
                 }
-                myAirshows = copiedList;
+                myAirshowGroup.Airshows.myShows = copiedList;
                 SaveAirshowSchedule(false);
                 MessageBox.Show("Additional fields updated successfully.");
             }
@@ -541,19 +522,7 @@ public partial class frmAirshowScheduleTool
         // Use the archivedFilePath as needed
         Console.WriteLine($"Archived file path: {archivedFilePath}");
 
-        bool success;
-        AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
-        if(!success) 
-        { 
-            Console.WriteLine("Failed to load the active database file.".Pastel(Color.Red));
-            Console.WriteLine($"Active DB File: {actvDBFile}".Pastel(Color.Red));
-            Console.WriteLine();
-            return; 
-        }
-
-        asg.Airshows.myShows = myAirshows;
-
-        Electroimpact.XmlSerialization.Serializer.Save(asg, archivedFilePath);
+        Electroimpact.XmlSerialization.Serializer.Save(myAirshowGroup, archivedFilePath);
         Console.WriteLine($"Active DB file archived to: {archivedFilePath}".Pastel(Color.Green));
     }    
 }
