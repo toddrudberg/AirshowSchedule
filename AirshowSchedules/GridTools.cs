@@ -152,13 +152,13 @@ public partial class frmAirshowScheduleTool
                         {
                             if (refreshAll)
                             {
-                                string[] weekendinquestion2 = cellText.Split(' ');
-                                string outputToConsole = "";
-                                foreach (string s in weekendinquestion)
-                                {
-                                    outputToConsole += s + " ";
-                                }
-                                Console.WriteLine($"Debugging ColorGrid: {outputToConsole} string array length: {weekendinquestion2.Length}");
+                                // string[] weekendinquestion2 = cellText.Split(' ');
+                                // string outputToConsole = "";
+                                // foreach (string s in weekendinquestion)
+                                // {
+                                //     outputToConsole += s + " ";
+                                // }
+                                // Console.WriteLine($"Debugging ColorGrid: {outputToConsole} string array length: {weekendinquestion2.Length}");
                                 cell.Style.BackColor = Color.White;
                                 cell.Value = asw;
                             }

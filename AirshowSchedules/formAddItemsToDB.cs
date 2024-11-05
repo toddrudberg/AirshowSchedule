@@ -128,8 +128,6 @@ namespace AirshowSchedules
                 Airshow airshow = (Airshow)item;
                 activeDB.Add(airshow);
             }
-
-            MessageBox.Show($"{checkedListBox.Items.Count} airshows merged successfully.");
             this.checkedListBox.Items.Clear();
         }
 
