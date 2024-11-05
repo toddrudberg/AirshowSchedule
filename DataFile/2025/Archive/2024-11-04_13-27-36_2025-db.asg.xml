@@ -53,7 +53,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff>we have a notice of interest from them</Notes_AirshowStuff>
-      <Status>verbal</Status>
+      <Status>maybe</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-05</date_start>
@@ -179,7 +179,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-05-24</date_start>
@@ -250,7 +250,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-14</date_start>
@@ -268,7 +268,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-14</date_start>
@@ -322,7 +322,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-28</date_start>
@@ -358,7 +358,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -393,7 +393,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>maybe</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-19</date_start>
@@ -411,7 +411,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-19</date_start>
@@ -429,7 +429,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-21</date_start>
@@ -447,7 +447,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-23</date_start>
@@ -464,7 +464,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-02</date_start>
@@ -482,7 +482,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>maybe</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-08</date_start>
@@ -500,7 +500,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-15</date_start>
@@ -518,7 +518,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-15</date_start>
@@ -590,7 +590,25 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>2025 wilkes-barre/scranton armed forces airshow</name_airshow>
+      <location>
+        <city>Avoca</city>
+        <state>PA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name>Carl Beardsley</name>
+          <phone>570-602-2000</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-23</date_start>
@@ -608,7 +626,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-23</date_start>
@@ -644,7 +662,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-30</date_start>
@@ -750,24 +768,6 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-09-20</date_start>
-      <date_finish>2025-09-21</date_finish>
-      <name_airshow>nas oceana Airshow</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Rich Erie</name>
-          <phone>757-433-2130</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -786,7 +786,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-04</date_start>
@@ -804,7 +804,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-11</date_start>
@@ -858,7 +858,25 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-10-18</date_start>
+      <date_finish>2025-10-19</date_finish>
+      <name_airshow>aerospace valley Airshow 2025</name_airshow>
+      <location>
+        <city>Edwards AFB</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name>S. Rebecca Schweitzer</name>
+          <phone>661-494-2265</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-18</date_start>
@@ -894,7 +912,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-23</date_start>
@@ -912,7 +930,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-25</date_start>
@@ -964,7 +982,7 @@
           <name />
         </Contact>
       </Contacts>
-      <Notes_AirshowStuff>need to find a contact</Notes_AirshowStuff>
+      <Notes_AirshowStuff />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -980,23 +998,6 @@
         <Contact>
           <name>Emma Harlow</name>
           <phone>305-293-2503</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-12</date_start>
-      <date_finish>2025-04-13</date_finish>
-      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
-      <location>
-        <city>Altus AFB</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -1138,16 +1139,10 @@
         <Contact>
           <name>Mark Williams</name>
           <phone>509-783-4675</phone>
-          <address />
-        </Contact>
-        <Contact>
-          <name>Kim Owen</name>
-          <phone />
-          <address>sk1owen@hotmail.com</address>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>maybe</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-09</date_start>
@@ -1165,7 +1160,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-16</date_start>
@@ -1183,7 +1178,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-16</date_start>
@@ -1218,7 +1213,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-30</date_start>
@@ -1236,7 +1231,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-06</date_start>
@@ -1271,7 +1266,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-27</date_start>
@@ -1289,7 +1284,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-25</date_start>
@@ -1419,7 +1414,7 @@
           <name>Abigail Cole</name>
         </Contact>
       </Contacts>
-      <Notes_AirshowStuff>Need to find a contact</Notes_AirshowStuff>
+      <Notes_AirshowStuff />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -1440,7 +1435,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -1457,7 +1452,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -1500,6 +1495,25 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
+      <date_start>2025-05-10</date_start>
+      <date_finish>2025-05-11</date_finish>
+      <name_airshow>gunfighter skies airshow</name_airshow>
+      <location>
+        <city>Mountain Home AFB</city>
+        <state>ID</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <name>Maj Alexander Chesney</name>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
       <date_start>2025-05-17</date_start>
       <date_finish>2025-05-17</date_finish>
       <name_airshow>vance afb partners in the sky Airshow</name_airshow>
@@ -1514,7 +1528,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-05-17</date_start>
@@ -1554,7 +1568,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-21</date_start>
@@ -1574,7 +1588,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-28</date_start>
@@ -1614,7 +1628,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -1634,7 +1648,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-12</date_start>
@@ -1654,7 +1668,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-09</date_start>
@@ -1674,7 +1688,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-08-09</date_start>
@@ -1714,7 +1728,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-06</date_start>
@@ -1796,7 +1810,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-20</date_start>
@@ -1833,7 +1847,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-11</date_start>
@@ -1851,7 +1865,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-18</date_start>
@@ -1872,6 +1886,26 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>maybe</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-10-25</date_start>
+      <date_finish>2025-10-26</date_finish>
+      <name_airshow>chennault international Airshow</name_airshow>
+      <location>
+        <city>Lake Charles</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <name>Mary Jo Bayles</name>
+          <phone>337-515-3269</phone>
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-11-01</date_start>
@@ -1949,23 +1983,6 @@
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
-      <date_finish>2025-04-13</date_finish>
-      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
-      <location>
-        <city>Altus AFB</city>
-        <state>OK</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-04-12</date_start>
       <date_finish>2025-04-12</date_finish>
       <name_airshow>thunder over louisville</name_airshow>
       <location>
@@ -1982,7 +1999,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -2021,7 +2038,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-05-10</date_start>
@@ -2085,7 +2102,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-13</date_start>
@@ -2112,26 +2129,6 @@
       <Status>none</Status>
     </Airshow>
     <Airshow>
-      <date_start>2025-06-14</date_start>
-      <date_finish>2025-06-14</date_finish>
-      <name_airshow>the flying proms symphonic airshow</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers>
-        <Performer>Military Aviation Museum</Performer>
-      </Performers>
-      <Contacts>
-        <Contact>
-          <name>Chris Vtipil</name>
-          <phone>757-490-3157</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
       <date_start>2025-06-21</date_start>
       <date_finish>2025-06-22</date_finish>
       <name_airshow>moses lake airshow</name_airshow>
@@ -2147,7 +2144,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-27</date_start>
@@ -2165,7 +2162,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-03</date_start>
@@ -2240,7 +2237,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-12</date_start>
@@ -2303,7 +2300,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-19</date_start>
@@ -2429,7 +2426,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-13</date_start>
@@ -2480,26 +2477,6 @@
         <Contact>
           <name>Christian Davis</name>
           <phone>801-804-4593</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>verbal</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>warbirds over the beach</name_airshow>
-      <location>
-        <city>Virginia Beach</city>
-        <state>VA</state>
-      </location>
-      <Performers>
-        <Performer>Military Aviation Museum</Performer>
-      </Performers>
-      <Contacts>
-        <Contact>
-          <name>Chris Vtipil</name>
-          <phone>757-490-3157</phone>
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
@@ -2565,7 +2542,7 @@
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-11-07</date_start>
@@ -2584,77 +2561,6 @@
       </Contacts>
       <Notes_AirshowStuff />
       <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-11-30</date_start>
-      <date_finish>2025-11-30</date_finish>
-      <name_airshow>new bern titan Airshow</name_airshow>
-      <location>
-        <city>New Bern</city>
-        <state>NC</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name />
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-08-02</date_start>
-      <date_finish>2025-08-03</date_finish>
-      <name_airshow>wings over marquette</name_airshow>
-      <location>
-        <city>Marquette</city>
-        <state>MI</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Meg Favio</name>
-          <phone>734-252-6571</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-09-12</date_start>
-      <date_finish>2025-09-13</date_finish>
-      <name_airshow>historic wendover airfield</name_airshow>
-      <location>
-        <city>Wendover Airfield</city>
-        <state>UT</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Thomas Petersen</name>
-          <phone>801--634-8763</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>rose city airfest</name_airshow>
-      <location>
-        <city>Tyler</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Travis Gladhill</name>
-          <phone>903.566.1010</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
     </Airshow>
   </Airshows>
   <AirshowYearOfInterest>2025</AirshowYearOfInterest>
