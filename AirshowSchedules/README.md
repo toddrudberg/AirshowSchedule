@@ -30,9 +30,9 @@
 # things to do:
 1) Start tracking the full AirshowGroup globally because the Airshow class doesn't hold that value.
 2) expose a way to change the YeaarOfInterest.
-3) get rid of toolTip1
-4) group Texas, Oklahoma and New Mexico to their own region
-5) not all performers are showing up - Yuma for example
+3) Fixed the issue - get rid of toolTip1
+4) Done - in MS (Middle South) group Texas, Oklahoma and New Mexico to their own region
+5) Done - Added Data Base Management -> Update Additional Fields not all performers are showing up - Yuma for example
 6) add an email field to contacts
 7) add number of days the show is to the text summary in the airshows by weekend.
 8) mexico airshows
@@ -42,7 +42,7 @@
 12) highlight airshows that showup mid week with a funny color so they don't block the weekend.
 13) make the notes thing work better so we caan keep track of exchanges. 
 14) ICAS furniture, 2 tall round table with 4 chairs.
-15) order a bad ass mac that can run parallels and has enough memory. 
+15) Done - order a bad ass mac that can run parallels and has enough memory. 
 16) Paris Hotel
 17) Clean up hotel reservation. 
 18) red and orange drop cloth for tables

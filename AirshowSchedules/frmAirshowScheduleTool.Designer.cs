@@ -55,6 +55,7 @@
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
             cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
             checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
+            updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             generateCallListToolStripMenuItem = new ToolStripMenuItem();
             generateBookedListToolStripMenuItem = new ToolStripMenuItem();
@@ -65,7 +66,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
+            setYearOfInterestToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -257,7 +258,7 @@
             // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -282,6 +283,13 @@
             checkForCancelledShowsToolStripMenuItem.Size = new Size(219, 22);
             checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
             checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
+            // 
+            // updateAdditionalFieldsToolStripMenuItem
+            // 
+            updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
+            updateAdditionalFieldsToolStripMenuItem.Size = new Size(219, 22);
+            updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
+            updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
@@ -357,12 +365,12 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // updateAdditionalFieldsToolStripMenuItem
+            // setYearOfInterestToolStripMenuItem
             // 
-            updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
-            updateAdditionalFieldsToolStripMenuItem.Size = new Size(219, 22);
-            updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
-            updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
+            setYearOfInterestToolStripMenuItem.Name = "setYearOfInterestToolStripMenuItem";
+            setYearOfInterestToolStripMenuItem.Size = new Size(219, 22);
+            setYearOfInterestToolStripMenuItem.Text = "Set Year of Interest";
+            setYearOfInterestToolStripMenuItem.Click += setYearOfInterestToolStripMenuItem_Click;
             // 
             // frmAirshowScheduleTool
             // 
@@ -431,5 +439,6 @@
         private ToolStripMenuItem checkForCancelledShowsToolStripMenuItem;
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
         private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
+        private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
     }
 }
