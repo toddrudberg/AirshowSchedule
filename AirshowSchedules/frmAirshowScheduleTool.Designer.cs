@@ -46,14 +46,15 @@
             pareDataFileToolStripMenuItem = new ToolStripMenuItem();
             fileSaveParsedDataFile = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
-            setRegionFileToolStripMenuItem = new ToolStripMenuItem();
-            toolStripSeparator2 = new ToolStripSeparator();
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
+            arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
             dataBaseManagementToolStripMenuItem = new ToolStripMenuItem();
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
             cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
             checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
+            updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
+            setYearOfInterestToolStripMenuItem = new ToolStripMenuItem();
             reportsToolStripMenuItem = new ToolStripMenuItem();
             generateCallListToolStripMenuItem = new ToolStripMenuItem();
             generateBookedListToolStripMenuItem = new ToolStripMenuItem();
@@ -64,7 +65,6 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -191,13 +191,13 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1426, 24);
+            menuStrip1.Size = new Size(1424, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setRegionFileToolStripMenuItem, toolStripSeparator2, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
@@ -221,18 +221,6 @@
             toolStripSeparator1.Name = "toolStripSeparator1";
             toolStripSeparator1.Size = new Size(195, 6);
             // 
-            // setRegionFileToolStripMenuItem
-            // 
-            setRegionFileToolStripMenuItem.Name = "setRegionFileToolStripMenuItem";
-            setRegionFileToolStripMenuItem.Size = new Size(198, 22);
-            setRegionFileToolStripMenuItem.Text = "Set Region File";
-            setRegionFileToolStripMenuItem.Click += fileSetRegionFileToolStripMenuItem_Click;
-            // 
-            // toolStripSeparator2
-            // 
-            toolStripSeparator2.Name = "toolStripSeparator2";
-            toolStripSeparator2.Size = new Size(195, 6);
-            // 
             // setActiveDatabaseFileToolStripMenuItem
             // 
             setActiveDatabaseFileToolStripMenuItem.Name = "setActiveDatabaseFileToolStripMenuItem";
@@ -244,12 +232,19 @@
             // 
             saveDatabaseFileToolStripMenuItem.Name = "saveDatabaseFileToolStripMenuItem";
             saveDatabaseFileToolStripMenuItem.Size = new Size(198, 22);
-            saveDatabaseFileToolStripMenuItem.Text = "Save Database File";
+            saveDatabaseFileToolStripMenuItem.Text = "Save Database File As...";
             saveDatabaseFileToolStripMenuItem.Click += saveDatabaseFileToolStripMenuItem_Click;
+            // 
+            // arciveActiveDBToolStripMenuItem
+            // 
+            arciveActiveDBToolStripMenuItem.Name = "arciveActiveDBToolStripMenuItem";
+            arciveActiveDBToolStripMenuItem.Size = new Size(198, 22);
+            arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
+            arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
             // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -274,6 +269,20 @@
             checkForCancelledShowsToolStripMenuItem.Size = new Size(219, 22);
             checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
             checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
+            // 
+            // updateAdditionalFieldsToolStripMenuItem
+            // 
+            updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
+            updateAdditionalFieldsToolStripMenuItem.Size = new Size(219, 22);
+            updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
+            updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
+            // 
+            // setYearOfInterestToolStripMenuItem
+            // 
+            setYearOfInterestToolStripMenuItem.Name = "setYearOfInterestToolStripMenuItem";
+            setYearOfInterestToolStripMenuItem.Size = new Size(219, 22);
+            setYearOfInterestToolStripMenuItem.Text = "Set Year of Interest";
+            setYearOfInterestToolStripMenuItem.Click += setYearOfInterestToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
@@ -349,18 +358,11 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // arciveActiveDBToolStripMenuItem
-            // 
-            arciveActiveDBToolStripMenuItem.Name = "arciveActiveDBToolStripMenuItem";
-            arciveActiveDBToolStripMenuItem.Size = new Size(198, 22);
-            arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
-            arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
-            // 
             // frmAirshowScheduleTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1426, 488);
+            ClientSize = new Size(1424, 474);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -409,10 +411,8 @@
     private ToolStripMenuItem contactToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
-        private ToolStripMenuItem setRegionFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
         private ToolStripMenuItem fileSaveParsedDataFile;
-        private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem setActiveDatabaseFileToolStripMenuItem;
         private ToolStripMenuItem saveDatabaseFileToolStripMenuItem;
         private ToolStripMenuItem helpToolStripMenuItem;
@@ -422,5 +422,7 @@
         private ToolStripMenuItem cleanUpDBToolStripMenuItem;
         private ToolStripMenuItem checkForCancelledShowsToolStripMenuItem;
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
+        private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
+        private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
     }
 }

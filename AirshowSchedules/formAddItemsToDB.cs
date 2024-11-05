@@ -80,7 +80,7 @@ namespace AirshowSchedules
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(buttonWidth, buttonHeight);
             this.btnClose.TabIndex = 4;
-            this.btnClose.Text = "Close";
+            this.btnClose.Text = @"Close && Save";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 
@@ -128,8 +128,6 @@ namespace AirshowSchedules
                 Airshow airshow = (Airshow)item;
                 activeDB.Add(airshow);
             }
-
-            MessageBox.Show($"{checkedListBox.Items.Count} airshows merged successfully.");
             this.checkedListBox.Items.Clear();
         }
 

@@ -18,13 +18,9 @@ namespace AirshowSchedules
             public List<Airshow> myShows = new List<Airshow>();
         }
         #endregion
-
-
-        public static void SaveMe(List<Airshow> AirShows, string FileName)
+        public static void SaveMe(AirshowGroup airshowGroup, string FileName)
         {
-            AirshowGroup myGroup = new AirshowGroup();
-            myGroup.Airshows.myShows = AirShows;
-            Electroimpact.XmlSerialization.Serializer.Save(AirShows, FileName);
+            Electroimpact.XmlSerialization.Serializer.Save(airshowGroup, FileName);
         }
         public static AirshowGroup LoadMe(string FileName, out bool success)
         {

@@ -2,20 +2,34 @@
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net6.0-windows</TargetFramework>
+    <TargetFramework>net7.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Regions.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Regions.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Markdig" Version="0.38.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Pastel" Version="5.2.1" />
   </ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj" />
   </ItemGroup>
+
   <ItemGroup>
     <Reference Include="Electroimpact.SettingsFormBuilder">
       <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.SettingsFormBuilder.dll</HintPath>
@@ -24,18 +38,11 @@
       <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.XmlSerializer.dll</HintPath>
     </Reference>
   </ItemGroup>
+
   <ItemGroup>
     <None Update="ReadMe.md">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-    <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net7.0-windows</TargetFramework>
-    <Nullable>enable</Nullable>
-    <UseWindowsForms>true</UseWindowsForms>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
-    <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
-  </PropertyGroup>
+
 </Project>
