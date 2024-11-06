@@ -598,24 +598,24 @@ public partial class frmAirshowScheduleTool : Form
         }
     }
 
-private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
-{
-    int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
-
-    using (YearSelectionForm yearSelectionForm = new YearSelectionForm(likelyYear))
+    private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (yearSelectionForm.ShowDialog() == DialogResult.OK)
+        int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
+
+        using (YearSelectionForm yearSelectionForm = new YearSelectionForm(likelyYear))
         {
-            int selectedYear = yearSelectionForm.SelectedYear;
-            myAirshowGroup.AirshowYearOfInterest = selectedYear;
-            FormState.SaveMe(myFormState);
-            lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-            LoadGrid(myAirshowGroup.AirshowYearOfInterest);
-            ColorGrid(myFilteredAirshows);
-            SaveAirshowSchedule(false);
+            if (yearSelectionForm.ShowDialog() == DialogResult.OK)
+            {
+                int selectedYear = yearSelectionForm.SelectedYear;
+                myAirshowGroup.AirshowYearOfInterest = selectedYear;
+                FormState.SaveMe(myFormState);
+                lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                LoadGrid(myAirshowGroup.AirshowYearOfInterest);
+                ColorGrid(myFilteredAirshows);
+                SaveAirshowSchedule(false);
+            }
         }
     }
-}
 
 
     public class PopupForm : Form
@@ -657,6 +657,40 @@ private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e
         }
     }
 
+    private void button1_Click(object sender, EventArgs e)
+    {
+        if (myFilteredAirshows.Count == 0)
+        {
+            MessageBox.Show("No airshows available to edit.");
+            return;
+        }
 
+        Airshow selectedAirshow = null;
+
+        foreach(Airshow aShow in myFilteredAirshows)
+        {
+            if(aShow.Performers.performer.Count > 1 && aShow.Contacts.contact.Count > 1)
+            {
+                selectedAirshow = aShow;
+                break;
+            }
+        }
+        if(selectedAirshow == null)
+        {
+            MessageBox.Show("No airshows available to edit.");
+            return;
+        }
+        // Load the editing form
+        using (AirshowEditForm editForm = new AirshowEditForm(selectedAirshow))
+        {
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // The Airshow object has been updated
+                // SaveAirshowSchedule(false); // Save the updated airshow schedule
+                // LoadGrid(myFormState.AirshowYearofInterest); // Reload the grid to reflect changes
+                // ColorGrid(myFilteredAirshows); // Reapply coloring to the grid
+            }
+        }
+    }
 }
     #endregion

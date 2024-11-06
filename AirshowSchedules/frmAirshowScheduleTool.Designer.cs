@@ -65,6 +65,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -358,11 +359,22 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(871, 351);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 28;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // frmAirshowScheduleTool
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1424, 474);
+            Controls.Add(button1);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -424,5 +436,6 @@
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
         private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
         private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
+        private Button button1;
     }
 }

@@ -10,14 +10,30 @@ namespace AirshowSchedules
     public class Airshow
     {
         [Display(DisplayName = "Start Date (yyyy-MM-DD):")]
-        public string date_start;
+        public string date_start { get; set; }
+
         [Display(DisplayName = "Finish Date (yyyy-MM-DD):")]
-        public string date_finish;
-        public string name_airshow;
-        public cLocation location = new cLocation();
-        public cPerformers Performers = new cPerformers();
-        public cContacts Contacts = new cContacts();
-        public string Notes_AirshowStuff = "";
+        public string date_finish { get; set; }
+
+        [Display(DisplayName = "Airshow Name:")]
+        public string name_airshow { get; set; }
+
+        [Display(DisplayName = "Location:")]
+        public cLocation location { get; set; } = new cLocation();
+
+        [Display(DisplayName = "Performers:")]
+        public cPerformers Performers { get; set; } = new cPerformers();
+
+        [Display(DisplayName = "Contacts:")]
+        public cContacts Contacts { get; set; } = new cContacts();
+
+        [Display(DisplayName = "Notes:")]
+        public string Notes_AirshowStuff { get; set; } = "";
+
+        [Display(DisplayName = "Undaunted Notes:")]
+        public List<string> UndauntedNotes { get; set; } = new List<string>();
+
+
         public enum eStatus
         {
             contract = 0,
@@ -28,8 +44,9 @@ namespace AirshowSchedules
             NO = 5
         };
 
-        public eStatus Status = eStatus.none;
-
+        [Display(DisplayName = "Status:")]
+        public eStatus Status { get; set; } = eStatus.none;
+        
         public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow)
         {
 
@@ -104,6 +121,7 @@ namespace AirshowSchedules
                     }
                 }
             }
+
         }
         #endregion
 
@@ -190,9 +208,17 @@ namespace AirshowSchedules
             public string name;
             public string phone;
             public string address;
+            [Display(DisplayName = "Email:")]
+            public List<string> emailAddresses { get; set; } = new List<string>();
+
 
             public cContact()
             { }
+
+            public override string ToString()
+            {
+                return name.ToString();
+            }
 
         }
         #endregion
@@ -552,7 +578,5 @@ namespace AirshowSchedules
             return outputs;
         }
         #endregion
-        //Filter = @"All Files|*.*|Text File (.txt)|*.txt|Word File (.docx ,.doc)|*.docx;*.doc|PDF (.pdf)|*.pdf|Spreadsheet (.xls ,.xlsx)|  *.xls ;*.xlsx|Presentation (.pptx ,.ppt)|*.pptx;*.ppt",
-
     }
 }
