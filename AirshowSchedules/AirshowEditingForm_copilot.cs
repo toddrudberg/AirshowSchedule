@@ -171,7 +171,7 @@ namespace AirshowSchedules
 
         private void ButtonAddNote_Click(object sender, EventArgs e)
         {
-            string newNote = Prompt.ShowDialog("Enter new note:", "Add Note");
+            string newNote = AddressPrompt.ShowDialog("Enter new note:", "Add Note");
             if (!string.IsNullOrEmpty(newNote))
             {
                 this.listBoxUndauntedNotes.Items.Add(newNote);
@@ -210,11 +210,11 @@ namespace AirshowSchedules
         }
     }
 
-    public static class Prompt
+    public static class AddressPrompt
     {
         public static string ShowDialog(string text, string caption)
         {
-            Form prompt = new Form()
+            Form AddressPrompt = new Form()
             {
                 Width = 500,
                 Height = 150,
@@ -225,13 +225,13 @@ namespace AirshowSchedules
             Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
             TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
             Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
-            confirmation.Click += (sender, e) => { prompt.Close(); };
-            prompt.Controls.Add(textBox);
-            prompt.Controls.Add(confirmation);
-            prompt.Controls.Add(textLabel);
-            prompt.AcceptButton = confirmation;
+            confirmation.Click += (sender, e) => { AddressPrompt.Close(); };
+            AddressPrompt.Controls.Add(textBox);
+            AddressPrompt.Controls.Add(confirmation);
+            AddressPrompt.Controls.Add(textLabel);
+            AddressPrompt.AcceptButton = confirmation;
 
-            return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+            return AddressPrompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
         }
     }
 }
