@@ -57,6 +57,10 @@ namespace AirshowSchedules
             masterShow.Contacts.MergeContacts(newShow.Contacts);
             Notes_AirshowStuff += newShow.Notes_AirshowStuff;
             masterShow.Performers.MergePerformers(newShow.Performers);
+            Console.WriteLine($"Merging Undaunted Notes: {newShow.UndauntedNotes.Count}".Pastel(Color.Green));
+            masterShow.UndauntedNotes = masterShow.UndauntedNotes.Union(newShow.UndauntedNotes).ToList();
+            Console.WriteLine($"Merging Airshow Links: {newShow.AirshowLinks.Count}".Pastel(Color.Green));
+            masterShow.AirshowLinks = masterShow.AirshowLinks.Union(newShow.AirshowLinks).ToList();
         }
         public void AppendCustomFields(Airshow airshow)
         {

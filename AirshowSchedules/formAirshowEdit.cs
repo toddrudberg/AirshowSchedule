@@ -70,6 +70,7 @@ namespace AirshowSchedules
             textBoxDateStart.PlaceholderText = "Start Date (yyyy-MM-DD)";
             textBoxDateStart.Size = new Size(200, 23);
             textBoxDateStart.TabIndex = 0;
+            textBoxDateStart.Click += TextBoxDateStart_Enter;
             // 
             // textBoxDateFinish
             // 
@@ -78,6 +79,7 @@ namespace AirshowSchedules
             textBoxDateFinish.PlaceholderText = "Finish Date (yyyy-MM-DD)";
             textBoxDateFinish.Size = new Size(200, 23);
             textBoxDateFinish.TabIndex = 1;
+            textBoxDateFinish.Click += TextBoxDateFinish_Enter;
             // 
             // textBoxNameAirshow
             // 
@@ -162,7 +164,7 @@ namespace AirshowSchedules
             buttonRemoveNote.Name = "buttonRemoveNote";
             buttonRemoveNote.Size = new Size(75, 23);
             buttonRemoveNote.TabIndex = 11;
-            buttonRemoveNote.Text = "Remove Note";
+            buttonRemoveNote.Text = "Remove";
             buttonRemoveNote.Click += ButtonRemoveNote_Click;
             // 
             // buttonOK
@@ -263,7 +265,7 @@ namespace AirshowSchedules
             btnRemoveLink.Name = "btnRemoveLink";
             btnRemoveLink.Size = new Size(75, 23);
             btnRemoveLink.TabIndex = 23;
-            btnRemoveLink.Text = "Remove Note";
+            btnRemoveLink.Text = "Remove";
             btnRemoveLink.Click += btnRemoveLink_Click;
             // 
             // AirshowEditForm
@@ -296,6 +298,26 @@ namespace AirshowSchedules
             Text = "Edit Airshow";
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void TextBoxDateFinish_Enter(object? sender, EventArgs e)
+        {
+            string existingDate = textBoxDateFinish.Text;
+            string newDate = EditDatePrompt.ShowDialog("Edit Finish Date:", "Edit Date", existingDate);
+            if (!string.IsNullOrEmpty(newDate))
+            {
+                textBoxDateFinish.Text = newDate;
+            }
+        }
+
+        private void TextBoxDateStart_Enter(object? sender, EventArgs e)
+        {
+            string existingDate = textBoxDateStart.Text;
+            string newDate = EditDatePrompt.ShowDialog("Edit Start Date:", "Edit Date", existingDate);
+            if (!string.IsNullOrEmpty(newDate))
+            {
+                textBoxDateStart.Text = newDate;
+            }
         }
 
         private void BindData()
@@ -348,21 +370,6 @@ namespace AirshowSchedules
             }
         }
 
-        private void ButtonEditNote_Click(object sender, EventArgs e)
-        {
-            if (listBoxUndauntedNotes.SelectedItem != null)
-            {
-                listBoxUndauntedNotes.SelectedIndexChanged -= listBoxUndauntedNotes_SelectedIndexChanged;
-                //string newNote = AddressPrompt.ShowDialog("Enter new note:", "Add Note");
-                string selectedNote = listBoxUndauntedNotes.SelectedItem.ToString();
-                string editedNote = UndauntedNotePrompt.ShowDialog("Edit note:", "Edit note:", selectedNote);
-                if (!string.IsNullOrEmpty(editedNote))
-                {
-                    int selectedIndex = listBoxUndauntedNotes.SelectedIndex;
-                    listBoxUndauntedNotes.Items[selectedIndex] = editedNote;
-                }
-            }
-        }
         private void listBoxUndauntedNotes_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (listBoxUndauntedNotes.SelectedItem != null)
@@ -528,6 +535,38 @@ namespace AirshowSchedules
                 prompt.AcceptButton = confirmation;
 
                 return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+            }
+        }
+    }
+
+    public static class EditDatePrompt
+    {
+        public static string ShowDialog(string text, string caption, string existingDate = "")
+        {
+            using (Form prompt = new Form())
+            {
+                prompt.Width = 300;
+                prompt.Height = 200;
+                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                prompt.Text = caption;
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
+                DateTimePicker dateTimePicker = new DateTimePicker() { Left = 50, Top = 50, Width = 200 };
+                if (DateTime.TryParse(existingDate, out DateTime parsedDate))
+                {
+                    dateTimePicker.Value = parsedDate;
+                }
+                Button confirmation = new Button() { Text = "OK", Left = 150, Width = 100, Top = 100, DialogResult = DialogResult.OK };
+
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+
+                prompt.Controls.Add(dateTimePicker);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? dateTimePicker.Value.ToString("yyyy-MM-dd") : string.Empty;
             }
         }
     }

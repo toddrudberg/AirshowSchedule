@@ -192,7 +192,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1424, 24);
+            menuStrip1.Size = new Size(1667, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -369,11 +369,11 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
-            // frmAirshowScheduleTool
+            // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1424, 474);
+            ClientSize = new Size(1667, 474);
             Controls.Add(button1);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
@@ -389,7 +389,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "frmAirshowScheduleTool";
+            Name = "formMain";
             Text = "Undaunted Airshows Schedule Maker";
             Load += frmAirshowScheduleTool_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).EndInit();

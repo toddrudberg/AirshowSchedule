@@ -284,13 +284,25 @@ public partial class formMain : Form
         if (lstBoxShows.SelectedItems.Count > 0)
         {
             Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
-            Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
-            DialogResult dr = sb.showDialog();
-            if (dr == DialogResult.OK)
+
+            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow))
             {
-                SaveAirshowSchedule(false);
-                //ColorGrid(myFilteredAirshows);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    // The Airshow object has been updated
+                     SaveAirshowSchedule(false); // Save the updated airshow schedule
+                }
             }
+
+
+            // Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
+            // Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
+            // DialogResult dr = sb.showDialog();
+            // if (dr == DialogResult.OK)
+            // {
+            //     SaveAirshowSchedule(false);
+            //     //ColorGrid(myFilteredAirshows);
+            // }
         }
     }
 

@@ -16,13 +16,17 @@
         <Contact>
           <name>David Dethloff</name>
           <phone>318-834-6121</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Capt Kevan Thomas</name>
           <phone>480-310-0065</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -41,13 +45,17 @@
         <Contact>
           <name>Gene Conrad</name>
           <phone>417-334-7813</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Dennis Dunbar</name>
           <phone>321-543-8837</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -65,13 +73,17 @@
         <Contact>
           <name>Maj Cole Davenport</name>
           <phone>702-652-6573</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Robert Jones</name>
           <phone>702-679-2539 / 702-241-1034 </phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff>we have a notice of interest from them</Notes_AirshowStuff>
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>maybe</Status>
     </Airshow>
     <Airshow>
@@ -87,9 +99,12 @@
         <Contact>
           <name>Henry Burgains</name>
           <phone>786-415-7474</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -107,9 +122,12 @@
         <Contact>
           <name>Lt Col Ryan Meiergerd</name>
           <phone>719-210-5255</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -127,9 +145,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -145,12 +166,16 @@
         <Contact>
           <name>Joseph Johnson</name>
           <phone>361-882-3242</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -168,9 +193,12 @@
         <Contact>
           <name>Maj Nathan Johnson</name>
           <phone>405-761-6644</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -188,13 +216,17 @@
         <Contact>
           <name>LtCol Paul Murphy</name>
           <phone>707-330-7540</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>LtCol Matthew Mattson</name>
           <phone>719-237-7746</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -210,9 +242,12 @@
         <Contact>
           <name>Ginger Cleavinger</name>
           <phone>806-333-2116</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -230,9 +265,12 @@
         <Contact>
           <name>George Gorman Jr</name>
           <phone>631-321-3501</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -247,9 +285,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -265,9 +306,12 @@
         <Contact>
           <name>Ted Plana</name>
           <phone>773-252-1644</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -285,9 +329,12 @@
         <Contact>
           <name>John Black</name>
           <phone>615-459-2651</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -303,13 +350,17 @@
         <Contact>
           <name>Hahns Bodenbender</name>
           <phone>701-723-3447</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Evan Pittman</name>
           <phone>701-723-1926</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -325,12 +376,16 @@
         <Contact>
           <name>Lt Col Jeff Ledeboer</name>
           <phone>618-256-4494</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -346,9 +401,12 @@
         <Contact>
           <name>Gabe Monzo</name>
           <phone>724-539-8100</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -366,9 +424,12 @@
         <Contact>
           <name>Katie Mitchell</name>
           <phone>937-665-2040</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -379,14 +440,26 @@
         <city>Traverse City</city>
         <state>MI</state>
       </location>
-      <Performers />
+      <Performers>
+        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
+        <Performer>Vertigo Airshows</Performer>
+        <Performer>Younkin Airshows, Inc.</Performer>
+      </Performers>
       <Contacts>
         <Contact>
           <name>Steve Plamondon</name>
           <phone>231-947-4230</phone>
+          <emailAddresses />
+        </Contact>
+        <Contact>
+          <name>Christian Smith</name>
+          <phone>231-947-4230</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -400,18 +473,24 @@
       <Performers>
         <Performer>Bill Stein Airshows</Performer>
         <Performer>Dacy Airshows</Performer>
-        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
-        <Performer>U.S. Air Force Thunderbirds</Performer>
-        <Performer>GhostWriter Airshows</Performer>
         <Performer>Firewalkers International Pyro, LLC</Performer>
+        <Performer>GhostWriter Airshows</Performer>
+        <Performer>NextGen Eagles</Performer>
+        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
+        <Performer>Skip Stewart Airshows</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
       </Performers>
       <Contacts>
         <Contact>
           <name>Barbara Haluszka </name>
           <phone>269-986-4150</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -427,9 +506,12 @@
         <Contact>
           <name>Lyn Thomas</name>
           <phone>214-535-9513</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -444,9 +526,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -462,9 +547,12 @@
         <Contact>
           <name>Melissa Sayers</name>
           <phone>778-968-2229</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -482,13 +570,17 @@
         <Contact>
           <name>Brian Allendorfer</name>
           <phone>773-919-1900</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Brian L Allendorfer Jr</name>
           <phone>773-919-1900</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -507,9 +599,12 @@
         <Contact>
           <name>Rick Larsen</name>
           <phone>920-426-4800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -524,9 +619,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -544,9 +642,12 @@
         <Contact>
           <name>Frank Sebastian</name>
           <phone>253-261-0034</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>maybe</Status>
     </Airshow>
     <Airshow>
@@ -562,9 +663,12 @@
         <Contact>
           <name>Dave Reith</name>
           <phone>604-852-8511</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -580,9 +684,12 @@
         <Contact>
           <name>Richard Skermer</name>
           <phone>780-718-8454</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -598,9 +705,12 @@
         <Contact>
           <name>Kevin Elliott</name>
           <phone>714-500-4994</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -616,12 +726,16 @@
         <Contact>
           <name>Brian Allendorfer</name>
           <phone>773-919-1900</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -637,9 +751,12 @@
         <Contact>
           <name>Atlantic City Chamber of Commerce</name>
           <phone>609-345-4524</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -657,9 +774,12 @@
         <Contact>
           <name>Rick Allen</name>
           <phone>541-815-4380</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -675,9 +795,12 @@
         <Contact>
           <name>Ryan Nissen</name>
           <phone>402-294-6311</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -693,9 +816,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -713,9 +839,12 @@
         <Contact>
           <name>Leslie King</name>
           <phone>216-781-0747</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -731,9 +860,12 @@
         <Contact>
           <name>Lori Duthie</name>
           <phone>416-902-5457</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -749,9 +881,12 @@
         <Contact>
           <name>Gerry Vanderhoek/Holly Doty </name>
           <phone>519-319-2338/519-636-7707</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -768,12 +903,16 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Col Tyler Schaff</name>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -789,9 +928,12 @@
         <Contact>
           <name>Geoffrey Buekenberghs</name>
           <phone>011-32-475599199</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -806,9 +948,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -824,9 +969,12 @@
         <Contact>
           <name>Bill Braack</name>
           <phone>503-629-0706</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -845,13 +993,17 @@
         <Contact>
           <name>Rich Erie</name>
           <phone>757-433-2130</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Greg Courrier</name>
           <phone>7573248485</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -871,9 +1023,12 @@
         <Contact>
           <name>Christopher 'Oz' Van Stelle</name>
           <phone>619-871-8061</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -891,9 +1046,12 @@
         <Contact>
           <name>Kevin Elliott</name>
           <phone>714-500-4994</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -911,9 +1069,12 @@
         <Contact>
           <name>Judge Smales</name>
           <phone>805-689-3711</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -931,9 +1092,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -951,9 +1115,12 @@
         <Contact>
           <name>David Lobue</name>
           <phone>985-277-5668</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -971,9 +1138,12 @@
         <Contact>
           <name>jlcairshows@att.net</name>
           <phone>706-291-0030</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -991,10 +1161,13 @@
         <Contact>
           <name>Bill Roach</name>
           <phone>281-579-1942</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-10-23</date_start>
@@ -1009,9 +1182,12 @@
         <Contact>
           <name>Scott Gammel</name>
           <phone>3184276419</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1027,9 +1203,12 @@
         <Contact>
           <name>Teneese K. Williams</name>
           <phone>904-255-5432</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1045,9 +1224,12 @@
         <Contact>
           <name>Jessica Thompson</name>
           <phone>623-349-6613</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -1062,9 +1244,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -1083,9 +1268,32 @@
         <Contact>
           <name>Emma Harlow</name>
           <phone>305-293-2503</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
+      <location>
+        <city>Altus AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name />
+          <emailAddresses />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1103,9 +1311,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1120,9 +1331,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1140,9 +1354,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1157,9 +1374,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1177,9 +1397,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1194,9 +1417,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1214,9 +1440,12 @@
         <Contact>
           <name>Robbie Lofty</name>
           <phone>850-932-2257</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1232,9 +1461,12 @@
         <Contact>
           <name>Mark Williams</name>
           <phone>509-783-4675</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1250,12 +1482,16 @@
         <Contact>
           <name>Cory Mullins</name>
           <phone>816-217-7324</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1271,9 +1507,12 @@
         <Contact>
           <name>Bill Thomas</name>
           <phone>805-910-5905</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1290,13 +1529,17 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Jim O'Donnell</name>
           <phone>208-733-5215 x0</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>contract</Status>
     </Airshow>
     <Airshow>
@@ -1314,9 +1557,12 @@
         <Contact>
           <name>Herb Gillen</name>
           <phone>614-488-2828</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1334,9 +1580,12 @@
         <Contact>
           <name>Kerry Floyd</name>
           <phone>816-384-1200</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1354,9 +1603,12 @@
         <Contact>
           <name>Maude Paquette</name>
           <phone>514-891-7790</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1373,13 +1625,17 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Wayne Hammack</name>
           <phone>720-272-5490</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1397,9 +1653,12 @@
         <Contact>
           <name>Kerry Floyd</name>
           <phone>816-384-1200</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1417,9 +1676,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1437,9 +1699,12 @@
         <Contact>
           <name>Denise Dull </name>
           <phone>941-626-9439</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1455,9 +1720,12 @@
         <Contact>
           <name>Tim Scherer</name>
           <phone>512-294-9495</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1475,9 +1743,12 @@
         <Contact>
           <name>Mike McCarthy</name>
           <phone>850-452-2547</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1493,9 +1764,12 @@
         <Contact>
           <name>Tracy Dixon</name>
           <phone>+64212548325</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1522,9 +1796,12 @@
           <name>Greg McShane</name>
           <phone>928-269-3327</phone>
           <address />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -1541,9 +1818,12 @@
       <Contacts>
         <Contact>
           <name>Abigail Cole</name>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>pursue</Status>
     </Airshow>
     <Airshow>
@@ -1561,9 +1841,12 @@
         <Contact>
           <name>Darcy Brewer</name>
           <phone>916-876-7568 </phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1580,13 +1863,17 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Michael Hunter </name>
           <phone>901-268-4658</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1604,9 +1891,12 @@
         <Contact>
           <name>Christina Swick</name>
           <phone>843-228-7333</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>verbal</Status>
     </Airshow>
     <Airshow>
@@ -1624,9 +1914,12 @@
         <Contact>
           <name>Lt Col Elizabeth Cramer</name>
           <phone>757-764-7995</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1641,9 +1934,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1661,12 +1957,16 @@
         <Contact>
           <name>Nicolas Diehl</name>
           <phone>304-702-3700</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1684,9 +1984,12 @@
         <Contact>
           <name>Maj Matt Beaubien</name>
           <phone>856-577-0512</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1704,9 +2007,12 @@
         <Contact>
           <name>Kevin Walsh</name>
           <phone>734-637-8880</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1724,9 +2030,12 @@
         <Contact>
           <name>Tim Molepske</name>
           <phone>715-492-0496</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1744,10 +2053,13 @@
         <Contact>
           <name>Marc Bradley</name>
           <phone>405-734-2191</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -1764,9 +2076,12 @@
         <Contact>
           <name>Ryan Kern</name>
           <phone>218-213-8080</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1785,9 +2100,12 @@
         <Contact>
           <name>Col Scott Boatright</name>
           <phone>260-478-3284</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1805,12 +2123,16 @@
         <Contact>
           <name>Brian L Allemdorfer Jr</name>
           <phone>773-919-1900</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1828,9 +2150,12 @@
         <Contact>
           <name>Jason Boyle</name>
           <phone>808-230-3195</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1855,9 +2180,12 @@
         <Contact>
           <name>Kenneth Hopper </name>
           <phone>563-349-0044</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1874,13 +2202,17 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Capt Jacob Ricciotti</name>
           <phone>603-430-3396</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1905,9 +2237,12 @@
         <Contact>
           <name>Trey Brown</name>
           <phone>919-580-8766</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1925,9 +2260,12 @@
         <Contact>
           <name>John Bennett</name>
           <phone>613-720-5837</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1943,9 +2281,12 @@
         <Contact>
           <name>CJeremiah Singleton</name>
           <phone>307-331-1753</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1960,9 +2301,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -1980,13 +2324,17 @@
         <Contact>
           <name>Don Chapin </name>
           <phone>831-444-4130</phone>
+          <emailAddresses />
         </Contact>
         <Contact>
           <name>Harry Wardwell</name>
           <phone>831-754-1983</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2002,9 +2350,12 @@
         <Contact>
           <name>Greg Zarco</name>
           <phone>909-387-8810</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2022,9 +2373,12 @@
         <Contact>
           <name>Andy Hume</name>
           <phone>575-541-2471</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>maybe</Status>
     </Airshow>
     <Airshow>
@@ -2042,9 +2396,12 @@
         <Contact>
           <name>Lt Col John Connors</name>
           <phone>228-376-7464</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2060,9 +2417,12 @@
         <Contact>
           <name>Alejandro Parra </name>
           <phone>011-52-744-484-5220 / 011-52-744</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2078,9 +2438,12 @@
         <Contact>
           <name>Jamal Steward</name>
           <phone>616-502-9503</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2096,10 +2459,13 @@
         <Contact>
           <name>Nino Cardenas</name>
           <phone>956-722-0589</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -2113,10 +2479,13 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-04-12</date_start>
@@ -2133,9 +2502,12 @@
         <Contact>
           <name>Wayne Hettinger</name>
           <phone>502-767-2255</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2151,10 +2523,13 @@
         <Contact>
           <name>Mr. Jay Stevens</name>
           <phone>(210) 221-2880</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-05-02</date_start>
@@ -2172,9 +2547,12 @@
         <Contact>
           <name>HOLLIE BOUDREAUX</name>
           <phone>3183625540</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2196,9 +2574,12 @@
         <Contact>
           <name>Mike Timbrook</name>
           <phone>419-345-3173</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2218,10 +2599,13 @@
         <Contact>
           <name>Sean Parker</name>
           <phone>254-298-5350</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-07</date_start>
@@ -2236,9 +2620,12 @@
         <Contact>
           <name>Shelby Barrett</name>
           <phone>509-576-6383</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2260,9 +2647,12 @@
         <Contact>
           <name>Tim Wagner</name>
           <phone>973-728-7721</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2280,9 +2670,12 @@
         <Contact>
           <name>Chris Vtipil</name>
           <phone>757-490-3157</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2298,10 +2691,13 @@
         <Contact>
           <name>Terry Quick</name>
           <phone>425-670-0888</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-06-27</date_start>
@@ -2316,9 +2712,12 @@
         <Contact>
           <name>Keith Love</name>
           <phone>3607088152</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2334,9 +2733,12 @@
         <Contact>
           <name>Perry Mason</name>
           <phone>563-690-0815</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2352,10 +2754,13 @@
         <Contact>
           <name>Lyn Thomas</name>
           <phone>214-535-9513</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-07-05</date_start>
@@ -2373,9 +2778,12 @@
         <Contact>
           <name>John Wallace</name>
           <phone>905-894-0731</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2391,9 +2799,12 @@
         <Contact>
           <name>Doug Fratoni</name>
           <phone>253-405-9604</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2418,9 +2829,12 @@
         <Contact>
           <name>Austin Wadsworth</name>
           <phone>585-243-2100</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2436,9 +2850,12 @@
         <Contact>
           <name>Bryan Lilley</name>
           <phone>717-583-0800</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2454,9 +2871,12 @@
         <Contact>
           <name>Joshua Gowey</name>
           <phone>6086331418</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2471,9 +2891,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2491,9 +2914,12 @@
         <Contact>
           <name>Sandi Miller</name>
           <phone>778-256-5689</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>contract</Status>
     </Airshow>
     <Airshow>
@@ -2508,9 +2934,12 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2526,9 +2955,12 @@
         <Contact>
           <name>Hans Krah</name>
           <phone>440-668-1718</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2544,9 +2976,12 @@
         <Contact>
           <name>Colin Stephenson</name>
           <phone>902-223-2099</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2562,9 +2997,12 @@
         <Contact>
           <name>Brand Lindsey</name>
           <phone>208-340-0382</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2580,10 +3018,13 @@
         <Contact>
           <name>Gena Linebarger</name>
           <phone>4325280997</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
-      <Status>pursue</Status>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
     </Airshow>
     <Airshow>
       <date_start>2025-09-13</date_start>
@@ -2598,9 +3039,12 @@
         <Contact>
           <name>Vendla Stockdale</name>
           <phone>970-249-3433</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2616,9 +3060,12 @@
         <Contact>
           <name>Adam Fox</name>
           <phone>405-708-0412</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2634,9 +3081,12 @@
         <Contact>
           <name>Christian Davis</name>
           <phone>801-804-4593</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2654,9 +3104,33 @@
         <Contact>
           <name>Chris Vtipil</name>
           <phone>757-490-3157</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-10-04</date_start>
+      <date_finish>2025-10-05</date_finish>
+      <name_airshow>rose city airfest</name_airshow>
+      <location>
+        <city>Tyler</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <name>Travis Gladhill</name>
+          <phone>903.566.1010</phone>
+          <emailAddresses />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2672,9 +3146,12 @@
         <Contact>
           <name>Clyde M Woltman</name>
           <phone>2672078352</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2695,9 +3172,12 @@
         <Contact>
           <name>Steve Nixon</name>
           <phone>540-729-9859</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2719,9 +3199,12 @@
         <Contact>
           <name>Patty Mekus</name>
           <phone>3185742731</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2737,9 +3220,12 @@
         <Contact>
           <name>Dewey Vinaya</name>
           <phone>772-971-3226</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2754,9 +3240,35 @@
       <Contacts>
         <Contact>
           <name />
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-05-16</date_start>
+      <date_finish>2025-05-17</date_finish>
+      <name_airshow>tbm avenger gathering &amp; salute to veterans</name_airshow>
+      <location>
+        <city>Peru</city>
+        <state>IL</state>
+      </location>
+      <Performers>
+        <Performer>Titan Aerobatic Team</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <name>Erin Shuttleworth/ Tim Gillian </name>
+          <phone>260-450-7350/ 708-514-5546</phone>
+          <emailAddresses />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2772,9 +3284,40 @@
         <Contact>
           <name>Meg Favio</name>
           <phone>734-252-6571</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <date_start>2025-09-10</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>national championship air races</name_airshow>
+      <location>
+        <city>Roswell</city>
+        <state>NM</state>
+      </location>
+      <Performers>
+        <Performer>Jim Peitz Aerosports, Inc.</Performer>
+        <Performer>Biplane Air Racing Class</Performer>
+        <Performer>STOL Drag Events LLC</Performer>
+        <Performer>Sport Class Air Racing Association</Performer>
+        <Performer>Palm Springs Air Museum</Performer>
+        <Performer>Planes of Fame Air Museum</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <name>Terry Marshall</name>
+          <phone>775-745-6768</phone>
+          <emailAddresses />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
     </Airshow>
     <Airshow>
@@ -2790,28 +3333,13 @@
         <Contact>
           <name>Thomas Petersen</name>
           <phone>801--634-8763</phone>
+          <emailAddresses />
         </Contact>
       </Contacts>
       <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
       <Status>none</Status>
-    </Airshow>
-    <Airshow>
-      <date_start>2025-10-04</date_start>
-      <date_finish>2025-10-05</date_finish>
-      <name_airshow>rose city airfest</name_airshow>
-      <location>
-        <city>Tyler</city>
-        <state>TX</state>
-      </location>
-      <Performers />
-      <Contacts>
-        <Contact>
-          <name>Travis Gladhill</name>
-          <phone>903.566.1010</phone>
-        </Contact>
-      </Contacts>
-      <Notes_AirshowStuff />
-      <Status>pursue</Status>
     </Airshow>
   </Airshows>
   <AirshowYearOfInterest>2025</AirshowYearOfInterest>
