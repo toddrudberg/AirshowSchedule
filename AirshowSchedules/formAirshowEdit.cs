@@ -303,6 +303,10 @@ namespace AirshowSchedules
         private void TextBoxDateFinish_Enter(object? sender, EventArgs e)
         {
             string existingDate = textBoxDateFinish.Text;
+            if (string.IsNullOrEmpty(existingDate))
+            {
+                existingDate = textBoxDateStart.Text;
+            }
             string newDate = EditDatePrompt.ShowDialog("Edit Finish Date:", "Edit Date", existingDate);
             if (!string.IsNullOrEmpty(newDate))
             {

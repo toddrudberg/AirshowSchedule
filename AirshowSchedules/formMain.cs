@@ -330,13 +330,25 @@ public partial class formMain : Form
     private void btnAddShow_Click(object sender, EventArgs e)
     {
         Airshow ashow = new Airshow();
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(ashow);
-        DialogResult dr = sb.showDialog();
-        if (dr == DialogResult.OK)
+        int year = myAirshowGroup.AirshowYearOfInterest;
+        //pick a date in year that is a saturday in july
+        DateTime firstSaturdayInJuly = new DateTime(year, 7, 1);
+        while (firstSaturdayInJuly.DayOfWeek != DayOfWeek.Saturday)
         {
-            myAirshowGroup.Airshows.myShows.Add(ashow);
-            myFilteredAirshows.Add(ashow);
-            SaveAirshowSchedule(false);
+            firstSaturdayInJuly = firstSaturdayInJuly.AddDays(1);
+        }
+        ashow.date_start = firstSaturdayInJuly.ToString("yyyy-MM-dd");
+        ashow.date_finish = firstSaturdayInJuly.AddDays(1).ToString("yyyy-MM-dd");
+
+        using (AirshowEditForm editForm = new AirshowEditForm(ashow))
+        {
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // The Airshow object has been updated
+                myAirshowGroup.Airshows.myShows.Add(ashow);
+                myFilteredAirshows.Add(ashow);
+                SaveAirshowSchedule(false); // Save the updated airshow schedule
+            }
         }
     }
 
