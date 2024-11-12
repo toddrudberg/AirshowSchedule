@@ -1,6 +1,6 @@
 ﻿namespace AirshowSchedules
 {
-  partial class frmAirshowScheduleTool
+  partial class formMain
   {
     /// <summary>
     ///  Required designer variable.
@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAirshowScheduleTool));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
             lstBoxShows = new ListBox();

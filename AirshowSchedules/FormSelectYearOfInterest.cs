@@ -7,14 +7,14 @@ using System.Threading.Tasks;
 
 namespace AirshowSchedules
 {
-    public class YearSelectionForm : Form
+    public class FormYearSelction : Form
     {
         private ComboBox comboBoxYears;
         private Button buttonOK;
 
         public int SelectedYear { get; private set; }
 
-        public YearSelectionForm(int likelyYear)
+        public FormYearSelction(int likelyYear)
         {
             InitializeComponent();
             SetLikelyYear(likelyYear);

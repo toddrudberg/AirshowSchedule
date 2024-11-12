@@ -4,10 +4,10 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
-using static AirshowSchedules.frmAirshowScheduleTool;
+using static AirshowSchedules.formMain;
 
 namespace AirshowSchedules;
-public partial class frmAirshowScheduleTool
+public partial class formMain
 {
     #region Console Output
     [DllImport("kernel32.dll")]

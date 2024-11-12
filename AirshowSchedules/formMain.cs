@@ -11,7 +11,7 @@ using Markdig;
 
 namespace AirshowSchedules;
 
-public partial class frmAirshowScheduleTool : Form
+public partial class formMain : Form
 {
     AirshowGroup myAirshowGroup = new AirshowGroup();
     FormState myFormState = new FormState();
@@ -29,7 +29,7 @@ public partial class frmAirshowScheduleTool : Form
     [DllImport("kernel32.dll")]
     private static extern IntPtr GetConsoleWindow();
 
-    public frmAirshowScheduleTool()
+    public formMain()
     {
         //if(!DesignMode)
         {
@@ -602,7 +602,7 @@ public partial class frmAirshowScheduleTool : Form
     {
         int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
 
-        using (YearSelectionForm yearSelectionForm = new YearSelectionForm(likelyYear))
+        using (FormYearSelction yearSelectionForm = new FormYearSelction(likelyYear))
         {
             if (yearSelectionForm.ShowDialog() == DialogResult.OK)
             {

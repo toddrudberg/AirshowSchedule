@@ -3,7 +3,7 @@ using Electroimpact.SettingsFormBuilderV2.Attributes;
 using Pastel;
 using System.Globalization;
 using System.Xml.Serialization;
-using static AirshowSchedules.frmAirshowScheduleTool;
+using static AirshowSchedules.formMain;
 
 namespace AirshowSchedules
 {
@@ -32,6 +32,10 @@ namespace AirshowSchedules
 
         [Display(DisplayName = "Undaunted Notes:")]
         public List<string> UndauntedNotes { get; set; } = new List<string>();
+
+        [Display(DisplayName = "Links To Show:")]
+        public List<string> AirshowLinks { get; set; } = new List<string>();
+        
 
 
         public enum eStatus
@@ -121,7 +125,6 @@ namespace AirshowSchedules
                     }
                 }
             }
-
         }
         #endregion
 
@@ -201,7 +204,6 @@ namespace AirshowSchedules
 
 
         }
-
 
         public class cContact
         {

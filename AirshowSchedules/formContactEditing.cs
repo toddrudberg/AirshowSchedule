@@ -3,165 +3,255 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static AirshowSchedules.Airshow;
 
-
-
-    
-    namespace AirshowSchedules
+namespace AirshowSchedules
+{
+    public class ContactEditForm : Form
     {
-        public class ContactEditForm : Form
+        private TextBox textBoxName;
+        private TextBox textBoxPhone;
+        private TextBox textBoxAddress;
+        private ListBox listBoxEmailAddresses;
+        private Button buttonAddEmail;
+        private Button buttonRemoveEmail;
+        private Button buttonEditEmail;
+        private Button buttonCopyEmail;
+        private Button buttonOK;
+        private Button buttonCancel;
+        private Label label1;
+
+        public cContact Contact { get; private set; }
+
+        public ContactEditForm(cContact contact)
         {
-            private TextBox textBoxName;
-            private TextBox textBoxPhone;
-            private TextBox textBoxAddress;
-            private ListBox listBoxEmailAddresses;
-            private Button buttonAddEmail;
-            private Button buttonRemoveEmail;
-            private Button buttonOK;
-            private Button buttonCancel;
-    
-            public cContact Contact { get; private set; }
-    
-            public ContactEditForm(cContact contact)
+            this.Contact = contact;
+            InitializeComponent();
+            BindData();
+        }
+
+        private void InitializeComponent()
+        {
+            textBoxName = new TextBox();
+            textBoxPhone = new TextBox();
+            textBoxAddress = new TextBox();
+            listBoxEmailAddresses = new ListBox();
+            buttonAddEmail = new Button();
+            buttonRemoveEmail = new Button();
+            buttonEditEmail = new Button();
+            buttonCopyEmail = new Button();
+            buttonOK = new Button();
+            buttonCancel = new Button();
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // textBoxName
+            // 
+            textBoxName.Location = new Point(10, 10);
+            textBoxName.Name = "textBoxName";
+            textBoxName.PlaceholderText = "Name";
+            textBoxName.Size = new Size(200, 23);
+            textBoxName.TabIndex = 0;
+            // 
+            // textBoxPhone
+            // 
+            textBoxPhone.Location = new Point(10, 40);
+            textBoxPhone.Name = "textBoxPhone";
+            textBoxPhone.PlaceholderText = "Phone";
+            textBoxPhone.Size = new Size(200, 23);
+            textBoxPhone.TabIndex = 1;
+            // 
+            // textBoxAddress
+            // 
+            textBoxAddress.Location = new Point(10, 70);
+            textBoxAddress.Name = "textBoxAddress";
+            textBoxAddress.PlaceholderText = "Address";
+            textBoxAddress.Size = new Size(200, 23);
+            textBoxAddress.TabIndex = 2;
+            // 
+            // listBoxEmailAddresses
+            // 
+            listBoxEmailAddresses.ItemHeight = 15;
+            listBoxEmailAddresses.Location = new Point(10, 115);
+            listBoxEmailAddresses.Name = "listBoxEmailAddresses";
+            listBoxEmailAddresses.Size = new Size(200, 94);
+            listBoxEmailAddresses.TabIndex = 3;
+            // 
+            // buttonAddEmail
+            // 
+            buttonAddEmail.Location = new Point(220, 115);
+            buttonAddEmail.Name = "buttonAddEmail";
+            buttonAddEmail.Size = new Size(75, 23);
+            buttonAddEmail.TabIndex = 4;
+            buttonAddEmail.Text = "Add Email";
+            buttonAddEmail.Click += ButtonAddEmail_Click;
+            // 
+            // buttonRemoveEmail
+            // 
+            buttonRemoveEmail.Location = new Point(220, 145);
+            buttonRemoveEmail.Name = "buttonRemoveEmail";
+            buttonRemoveEmail.Size = new Size(75, 23);
+            buttonRemoveEmail.TabIndex = 5;
+            buttonRemoveEmail.Text = "Remove Email";
+            buttonRemoveEmail.Click += ButtonRemoveEmail_Click;
+            // 
+            // buttonEditEmail
+            // 
+            buttonEditEmail.Location = new Point(220, 175);
+            buttonEditEmail.Name = "buttonEditEmail";
+            buttonEditEmail.Size = new Size(75, 23);
+            buttonEditEmail.TabIndex = 6;
+            buttonEditEmail.Text = "Edit Email";
+            buttonEditEmail.Click += ButtonEditEmail_Click;
+            // 
+            // buttonCopyEmail
+            // 
+            buttonCopyEmail.Location = new Point(220, 205);
+            buttonCopyEmail.Name = "buttonCopyEmail";
+            buttonCopyEmail.Size = new Size(75, 23);
+            buttonCopyEmail.TabIndex = 7;
+            buttonCopyEmail.Text = "Copy Email";
+            buttonCopyEmail.Click += ButtonCopyEmail_Click;
+            // 
+            // buttonOK
+            // 
+            buttonOK.Location = new Point(10, 225);
+            buttonOK.Name = "buttonOK";
+            buttonOK.Size = new Size(75, 23);
+            buttonOK.TabIndex = 8;
+            buttonOK.Text = "OK";
+            buttonOK.Click += ButtonOK_Click;
+            // 
+            // buttonCancel
+            // 
+            buttonCancel.Location = new Point(100, 225);
+            buttonCancel.Name = "buttonCancel";
+            buttonCancel.Size = new Size(75, 23);
+            buttonCancel.TabIndex = 9;
+            buttonCancel.Text = "Cancel";
+            buttonCancel.Click += ButtonCancel_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 96);
+            label1.Name = "label1";
+            label1.Size = new Size(95, 15);
+            label1.TabIndex = 10;
+            label1.Text = "Email Addresses:";
+            // 
+            // ContactEditForm
+            // 
+            ClientSize = new Size(350, 270);
+            Controls.Add(label1);
+            Controls.Add(textBoxName);
+            Controls.Add(textBoxPhone);
+            Controls.Add(textBoxAddress);
+            Controls.Add(listBoxEmailAddresses);
+            Controls.Add(buttonAddEmail);
+            Controls.Add(buttonRemoveEmail);
+            Controls.Add(buttonEditEmail);
+            Controls.Add(buttonCopyEmail);
+            Controls.Add(buttonOK);
+            Controls.Add(buttonCancel);
+            Name = "ContactEditForm";
+            Text = "Edit Contact";
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        private void BindData()
+        {
+            this.textBoxName.Text = Contact.name;
+            this.textBoxPhone.Text = Contact.phone;
+            this.textBoxAddress.Text = Contact.address;
+            this.listBoxEmailAddresses.Items.AddRange(Contact.emailAddresses.ToArray());
+        }
+
+        private void ButtonAddEmail_Click(object sender, EventArgs e)
+        {
+            string newEmail = EmailPrompt.ShowDialog("Enter new email address:", "Add Email");
+            if (!string.IsNullOrEmpty(newEmail))
             {
-                this.Contact = contact;
-                InitializeComponent();
-                BindData();
-            }
-    
-            private void InitializeComponent()
-            {
-                this.textBoxName = new TextBox();
-                this.textBoxPhone = new TextBox();
-                this.textBoxAddress = new TextBox();
-                this.listBoxEmailAddresses = new ListBox();
-                this.buttonAddEmail = new Button();
-                this.buttonRemoveEmail = new Button();
-                this.buttonOK = new Button();
-                this.buttonCancel = new Button();
-    
-                // TextBox for Name
-                this.textBoxName.Location = new Point(10, 10);
-                this.textBoxName.Width = 200;
-                this.textBoxName.PlaceholderText = "Name";
-    
-                // TextBox for Phone
-                this.textBoxPhone.Location = new Point(10, 40);
-                this.textBoxPhone.Width = 200;
-                this.textBoxPhone.PlaceholderText = "Phone";
-    
-                // TextBox for Address
-                this.textBoxAddress.Location = new Point(10, 70);
-                this.textBoxAddress.Width = 200;
-                this.textBoxAddress.PlaceholderText = "Address";
-    
-                // ListBox for Email Addresses
-                this.listBoxEmailAddresses.Location = new Point(10, 100);
-                this.listBoxEmailAddresses.Width = 200;
-                this.listBoxEmailAddresses.Height = 100;
-    
-                // Button to Add Email
-                this.buttonAddEmail.Text = "Add Email";
-                this.buttonAddEmail.Location = new Point(220, 100);
-                this.buttonAddEmail.Click += new EventHandler(this.ButtonAddEmail_Click);
-    
-                // Button to Remove Email
-                this.buttonRemoveEmail.Text = "Remove Email";
-                this.buttonRemoveEmail.Location = new Point(220, 130);
-                this.buttonRemoveEmail.Click += new EventHandler(this.ButtonRemoveEmail_Click);
-    
-                // OK Button
-                this.buttonOK.Text = "OK";
-                this.buttonOK.Location = new Point(10, 210);
-                this.buttonOK.Click += new EventHandler(this.ButtonOK_Click);
-    
-                // Cancel Button
-                this.buttonCancel.Text = "Cancel";
-                this.buttonCancel.Location = new Point(100, 210);
-                this.buttonCancel.Click += new EventHandler(this.ButtonCancel_Click);
-    
-                // Form
-                this.ClientSize = new Size(350, 250);
-                this.Controls.Add(this.textBoxName);
-                this.Controls.Add(this.textBoxPhone);
-                this.Controls.Add(this.textBoxAddress);
-                this.Controls.Add(this.listBoxEmailAddresses);
-                this.Controls.Add(this.buttonAddEmail);
-                this.Controls.Add(this.buttonRemoveEmail);
-                this.Controls.Add(this.buttonOK);
-                this.Controls.Add(this.buttonCancel);
-                this.Text = "Edit Contact";
-            }
-    
-            private void BindData()
-            {
-                this.textBoxName.Text = Contact.name;
-                this.textBoxPhone.Text = Contact.phone;
-                this.textBoxAddress.Text = Contact.address;
-                this.listBoxEmailAddresses.Items.AddRange(Contact.emailAddresses.ToArray());
-            }
-    
-            private void ButtonAddEmail_Click(object sender, EventArgs e)
-            {
-                string newEmail = EmailPrompt.ShowDialog("Enter new email address:", "Add Email");
-                if (!string.IsNullOrEmpty(newEmail))
-                {
-                    this.listBoxEmailAddresses.Items.Add(newEmail);
-                }
-            }
-    
-            private void ButtonRemoveEmail_Click(object sender, EventArgs e)
-            {
-                if (this.listBoxEmailAddresses.SelectedItem != null)
-                {
-                    this.listBoxEmailAddresses.Items.Remove(this.listBoxEmailAddresses.SelectedItem);
-                }
-            }
-    
-            private void ButtonOK_Click(object sender, EventArgs e)
-            {
-                Contact.name = this.textBoxName.Text;
-                Contact.phone = this.textBoxPhone.Text;
-                Contact.address = this.textBoxAddress.Text;
-                Contact.emailAddresses = new List<string>(this.listBoxEmailAddresses.Items.Cast<string>());
-    
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-    
-            private void ButtonCancel_Click(object sender, EventArgs e)
-            {
-                this.DialogResult = DialogResult.Cancel;
-                this.Close();
+                this.listBoxEmailAddresses.Items.Add(newEmail);
             }
         }
-    
-        public static class EmailPrompt
+
+        private void ButtonRemoveEmail_Click(object sender, EventArgs e)
         {
-            public static string ShowDialog(string text, string caption)
+            if (this.listBoxEmailAddresses.SelectedItem != null)
             {
-                using (Form prompt = new Form())
+                this.listBoxEmailAddresses.Items.Remove(this.listBoxEmailAddresses.SelectedItem);
+            }
+        }
+
+        private void ButtonEditEmail_Click(object sender, EventArgs e)
+        {
+            if (this.listBoxEmailAddresses.SelectedItem != null)
+            {
+                string selectedEmail = this.listBoxEmailAddresses.SelectedItem.ToString();
+                string editedEmail = EmailPrompt.ShowDialog("Edit email address:", "Edit Email", selectedEmail);
+                if (!string.IsNullOrEmpty(editedEmail))
                 {
-                    prompt.Width = 500;
-                    prompt.Height = 150;
-                    prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
-                    prompt.Text = caption;
-                    prompt.StartPosition = FormStartPosition.CenterScreen;
-        
-                    Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
-                    TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400 };
-                    Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 70, DialogResult = DialogResult.OK };
-        
-                    confirmation.Click += (sender, e) => { prompt.Close(); };
-        
-                    prompt.Controls.Add(textBox);
-                    prompt.Controls.Add(confirmation);
-                    prompt.Controls.Add(textLabel);
-                    prompt.AcceptButton = confirmation;
-        
-                    return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+                    int selectedIndex = this.listBoxEmailAddresses.SelectedIndex;
+                    this.listBoxEmailAddresses.Items[selectedIndex] = editedEmail;
                 }
+            }
+        }
+
+        private void ButtonCopyEmail_Click(object sender, EventArgs e)
+        {
+            if (this.listBoxEmailAddresses.SelectedItem != null)
+            {
+                string selectedEmail = this.listBoxEmailAddresses.SelectedItem.ToString();
+                Clipboard.SetText(selectedEmail);
+            }
+        }
+
+        private void ButtonOK_Click(object sender, EventArgs e)
+        {
+            Contact.name = this.textBoxName.Text;
+            Contact.phone = this.textBoxPhone.Text;
+            Contact.address = this.textBoxAddress.Text;
+            Contact.emailAddresses = new List<string>(this.listBoxEmailAddresses.Items.Cast<string>());
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
+
+        private void ButtonCancel_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+    }
+
+    public static class EmailPrompt
+    {
+        public static string ShowDialog(string text, string caption, string existingText = "")
+        {
+            using (Form prompt = new Form())
+            {
+                prompt.Width = 500;
+                prompt.Height = 150;
+                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                prompt.Text = caption;
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 300, Text = existingText };
+                Button confirmation = new Button() { Text = "OK", Left = 360, Width = 100, Top = 50, DialogResult = DialogResult.OK };
+
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
             }
         }
     }
+}
