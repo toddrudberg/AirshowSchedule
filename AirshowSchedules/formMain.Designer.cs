@@ -1,6 +1,6 @@
 ﻿namespace AirshowSchedules
 {
-  partial class frmAirshowScheduleTool
+  partial class formMain
   {
     /// <summary>
     ///  Required designer variable.
@@ -30,7 +30,7 @@
         {
             components = new System.ComponentModel.Container();
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmAirshowScheduleTool));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(formMain));
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
             lstBoxShows = new ListBox();
@@ -65,6 +65,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -191,7 +192,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1424, 24);
+            menuStrip1.Size = new Size(1667, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -358,11 +359,22 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // frmAirshowScheduleTool
+            // button1
+            // 
+            button1.Location = new Point(871, 351);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 28;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1424, 474);
+            ClientSize = new Size(1667, 474);
+            Controls.Add(button1);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -377,7 +389,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Margin = new Padding(4, 3, 4, 3);
-            Name = "frmAirshowScheduleTool";
+            Name = "formMain";
             Text = "Undaunted Airshows Schedule Maker";
             Load += frmAirshowScheduleTool_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).EndInit();
@@ -424,5 +436,6 @@
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
         private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
         private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
+        private Button button1;
     }
 }

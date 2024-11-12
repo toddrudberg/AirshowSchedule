@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AirshowSchedules;
 
-public partial class frmAirshowScheduleTool
+public partial class formMain
 {
 
     private void fileParseDataFileToolStripMenuItem_Click(object sender, EventArgs e)

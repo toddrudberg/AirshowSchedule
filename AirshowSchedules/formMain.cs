@@ -11,7 +11,7 @@ using Markdig;
 
 namespace AirshowSchedules;
 
-public partial class frmAirshowScheduleTool : Form
+public partial class formMain : Form
 {
     AirshowGroup myAirshowGroup = new AirshowGroup();
     FormState myFormState = new FormState();
@@ -29,7 +29,7 @@ public partial class frmAirshowScheduleTool : Form
     [DllImport("kernel32.dll")]
     private static extern IntPtr GetConsoleWindow();
 
-    public frmAirshowScheduleTool()
+    public formMain()
     {
         //if(!DesignMode)
         {
@@ -284,13 +284,25 @@ public partial class frmAirshowScheduleTool : Form
         if (lstBoxShows.SelectedItems.Count > 0)
         {
             Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
-            Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
-            DialogResult dr = sb.showDialog();
-            if (dr == DialogResult.OK)
+
+            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow))
             {
-                SaveAirshowSchedule(false);
-                //ColorGrid(myFilteredAirshows);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    // The Airshow object has been updated
+                     SaveAirshowSchedule(false); // Save the updated airshow schedule
+                }
             }
+
+
+            // Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
+            // Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
+            // DialogResult dr = sb.showDialog();
+            // if (dr == DialogResult.OK)
+            // {
+            //     SaveAirshowSchedule(false);
+            //     //ColorGrid(myFilteredAirshows);
+            // }
         }
     }
 
@@ -318,13 +330,25 @@ public partial class frmAirshowScheduleTool : Form
     private void btnAddShow_Click(object sender, EventArgs e)
     {
         Airshow ashow = new Airshow();
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(ashow);
-        DialogResult dr = sb.showDialog();
-        if (dr == DialogResult.OK)
+        int year = myAirshowGroup.AirshowYearOfInterest;
+        //pick a date in year that is a saturday in july
+        DateTime firstSaturdayInJuly = new DateTime(year, 7, 1);
+        while (firstSaturdayInJuly.DayOfWeek != DayOfWeek.Saturday)
         {
-            myAirshowGroup.Airshows.myShows.Add(ashow);
-            myFilteredAirshows.Add(ashow);
-            SaveAirshowSchedule(false);
+            firstSaturdayInJuly = firstSaturdayInJuly.AddDays(1);
+        }
+        ashow.date_start = firstSaturdayInJuly.ToString("yyyy-MM-dd");
+        ashow.date_finish = firstSaturdayInJuly.AddDays(1).ToString("yyyy-MM-dd");
+
+        using (AirshowEditForm editForm = new AirshowEditForm(ashow))
+        {
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // The Airshow object has been updated
+                myAirshowGroup.Airshows.myShows.Add(ashow);
+                myFilteredAirshows.Add(ashow);
+                SaveAirshowSchedule(false); // Save the updated airshow schedule
+            }
         }
     }
 
@@ -598,24 +622,24 @@ public partial class frmAirshowScheduleTool : Form
         }
     }
 
-private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
-{
-    int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
-
-    using (YearSelectionForm yearSelectionForm = new YearSelectionForm(likelyYear))
+    private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (yearSelectionForm.ShowDialog() == DialogResult.OK)
+        int likelyYear = myAirshowGroup.AirshowYearOfInterest; // Get the likely year
+
+        using (FormYearSelction yearSelectionForm = new FormYearSelction(likelyYear))
         {
-            int selectedYear = yearSelectionForm.SelectedYear;
-            myAirshowGroup.AirshowYearOfInterest = selectedYear;
-            FormState.SaveMe(myFormState);
-            lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
-            LoadGrid(myAirshowGroup.AirshowYearOfInterest);
-            ColorGrid(myFilteredAirshows);
-            SaveAirshowSchedule(false);
+            if (yearSelectionForm.ShowDialog() == DialogResult.OK)
+            {
+                int selectedYear = yearSelectionForm.SelectedYear;
+                myAirshowGroup.AirshowYearOfInterest = selectedYear;
+                FormState.SaveMe(myFormState);
+                lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                LoadGrid(myAirshowGroup.AirshowYearOfInterest);
+                ColorGrid(myFilteredAirshows);
+                SaveAirshowSchedule(false);
+            }
         }
     }
-}
 
 
     public class PopupForm : Form
@@ -657,6 +681,40 @@ private void setYearOfInterestToolStripMenuItem_Click(object sender, EventArgs e
         }
     }
 
+    private void button1_Click(object sender, EventArgs e)
+    {
+        if (myFilteredAirshows.Count == 0)
+        {
+            MessageBox.Show("No airshows available to edit.");
+            return;
+        }
 
+        Airshow selectedAirshow = null;
+
+        foreach(Airshow aShow in myFilteredAirshows)
+        {
+            if(aShow.Performers.performer.Count > 1 && aShow.Contacts.contact.Count > 1)
+            {
+                selectedAirshow = aShow;
+                break;
+            }
+        }
+        if(selectedAirshow == null)
+        {
+            MessageBox.Show("No airshows available to edit.");
+            return;
+        }
+        // Load the editing form
+        using (AirshowEditForm editForm = new AirshowEditForm(selectedAirshow))
+        {
+            if (editForm.ShowDialog() == DialogResult.OK)
+            {
+                // The Airshow object has been updated
+                // SaveAirshowSchedule(false); // Save the updated airshow schedule
+                // LoadGrid(myFormState.AirshowYearofInterest); // Reload the grid to reflect changes
+                // ColorGrid(myFilteredAirshows); // Reapply coloring to the grid
+            }
+        }
+    }
 }
     #endregion

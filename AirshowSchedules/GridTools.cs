@@ -13,7 +13,7 @@ namespace AirshowSchedules;
     using static AirshowSchedules.cCalenderYear;
 
 
-public partial class frmAirshowScheduleTool
+public partial class formMain
 {
     private void LoadGrid(int YearOfInterest)
     {
