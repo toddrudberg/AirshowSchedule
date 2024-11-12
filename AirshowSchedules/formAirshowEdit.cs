@@ -16,10 +16,17 @@ namespace AirshowSchedules
         private ListBox listBoxUndauntedNotes;
         private Button buttonAddNote;
         private Button buttonRemoveNote;
-        private Button buttonEditNote;
         private Button buttonOK;
         private Button buttonCancel;
         private Label label1;
+        private Button buttonAddContact;
+        private Button buttonRemoveContact;
+        private Label label2;
+        private Label label3;
+        private ListBox listBoxWeblinks;
+        private Label label4;
+        private Button buttonAddLink;
+        private Button btnRemoveLink;
         private Airshow airshow;
 
         public AirshowEditForm(Airshow airshow)
@@ -43,10 +50,17 @@ namespace AirshowSchedules
             listBoxUndauntedNotes = new ListBox();
             buttonAddNote = new Button();
             buttonRemoveNote = new Button();
-            buttonEditNote = new Button(); // New Edit Note button
             buttonOK = new Button();
             buttonCancel = new Button();
             label1 = new Label();
+            buttonAddContact = new Button();
+            buttonRemoveContact = new Button();
+            label2 = new Label();
+            label3 = new Label();
+            listBoxWeblinks = new ListBox();
+            label4 = new Label();
+            buttonAddLink = new Button();
+            btnRemoveLink = new Button();
             SuspendLayout();
             // 
             // textBoxDateStart
@@ -110,15 +124,15 @@ namespace AirshowSchedules
             // listBoxPerformers
             // 
             listBoxPerformers.ItemHeight = 15;
-            listBoxPerformers.Location = new Point(220, 10);
+            listBoxPerformers.Location = new Point(216, 26);
             listBoxPerformers.Name = "listBoxPerformers";
-            listBoxPerformers.Size = new Size(200, 94);
+            listBoxPerformers.Size = new Size(200, 64);
             listBoxPerformers.TabIndex = 7;
             // 
             // listBoxContacts
             // 
             listBoxContacts.ItemHeight = 15;
-            listBoxContacts.Location = new Point(220, 120);
+            listBoxContacts.Location = new Point(216, 108);
             listBoxContacts.Name = "listBoxContacts";
             listBoxContacts.Size = new Size(200, 94);
             listBoxContacts.TabIndex = 8;
@@ -127,41 +141,33 @@ namespace AirshowSchedules
             // listBoxUndauntedNotes
             // 
             listBoxUndauntedNotes.ItemHeight = 15;
-            listBoxUndauntedNotes.Location = new Point(10, 274);
+            listBoxUndauntedNotes.Location = new Point(10, 384);
             listBoxUndauntedNotes.Name = "listBoxUndauntedNotes";
-            listBoxUndauntedNotes.Size = new Size(200, 94);
+            listBoxUndauntedNotes.Size = new Size(406, 94);
             listBoxUndauntedNotes.TabIndex = 9;
+            listBoxUndauntedNotes.SelectedIndexChanged += listBoxUndauntedNotes_SelectedIndexChanged;
             // 
             // buttonAddNote
             // 
-            buttonAddNote.Location = new Point(220, 274);
+            buttonAddNote.Location = new Point(10, 484);
             buttonAddNote.Name = "buttonAddNote";
             buttonAddNote.Size = new Size(75, 23);
             buttonAddNote.TabIndex = 10;
-            buttonAddNote.Text = "Add Note";
+            buttonAddNote.Text = "Add";
             buttonAddNote.Click += ButtonAddNote_Click;
             // 
             // buttonRemoveNote
             // 
-            buttonRemoveNote.Location = new Point(220, 304);
+            buttonRemoveNote.Location = new Point(91, 484);
             buttonRemoveNote.Name = "buttonRemoveNote";
             buttonRemoveNote.Size = new Size(75, 23);
             buttonRemoveNote.TabIndex = 11;
             buttonRemoveNote.Text = "Remove Note";
             buttonRemoveNote.Click += ButtonRemoveNote_Click;
             // 
-            // buttonEditNote
-            // 
-            buttonEditNote.Location = new Point(220, 334);
-            buttonEditNote.Name = "buttonEditNote";
-            buttonEditNote.Size = new Size(75, 23);
-            buttonEditNote.TabIndex = 12;
-            buttonEditNote.Text = "Edit Note";
-            buttonEditNote.Click += ButtonEditNote_Click;
-            // 
             // buttonOK
             // 
-            buttonOK.Location = new Point(10, 384);
+            buttonOK.Location = new Point(247, 579);
             buttonOK.Name = "buttonOK";
             buttonOK.Size = new Size(75, 23);
             buttonOK.TabIndex = 13;
@@ -170,7 +176,7 @@ namespace AirshowSchedules
             // 
             // buttonCancel
             // 
-            buttonCancel.Location = new Point(100, 384);
+            buttonCancel.Location = new Point(337, 579);
             buttonCancel.Name = "buttonCancel";
             buttonCancel.Size = new Size(75, 23);
             buttonCancel.TabIndex = 14;
@@ -180,15 +186,97 @@ namespace AirshowSchedules
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 256);
+            label1.Location = new Point(10, 366);
             label1.Name = "label1";
             label1.Size = new Size(103, 15);
             label1.TabIndex = 15;
             label1.Text = "Undaunted Notes:";
             // 
+            // buttonAddContact
+            // 
+            buttonAddContact.Location = new Point(216, 208);
+            buttonAddContact.Name = "buttonAddContact";
+            buttonAddContact.Size = new Size(75, 23);
+            buttonAddContact.TabIndex = 16;
+            buttonAddContact.Text = "Add";
+            buttonAddContact.UseVisualStyleBackColor = true;
+            buttonAddContact.Click += buttonAddContact_Click;
+            // 
+            // buttonRemoveContact
+            // 
+            buttonRemoveContact.Location = new Point(297, 208);
+            buttonRemoveContact.Name = "buttonRemoveContact";
+            buttonRemoveContact.Size = new Size(75, 23);
+            buttonRemoveContact.TabIndex = 17;
+            buttonRemoveContact.Text = "Remove";
+            buttonRemoveContact.UseVisualStyleBackColor = true;
+            buttonRemoveContact.Click += buttonRemoveContact_Click;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(216, 91);
+            label2.Name = "label2";
+            label2.Size = new Size(57, 15);
+            label2.TabIndex = 18;
+            label2.Text = "Contacts:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(216, 9);
+            label3.Name = "label3";
+            label3.Size = new Size(68, 15);
+            label3.TabIndex = 19;
+            label3.Text = "Performers:";
+            // 
+            // listBoxWeblinks
+            // 
+            listBoxWeblinks.ItemHeight = 15;
+            listBoxWeblinks.Location = new Point(10, 278);
+            listBoxWeblinks.Name = "listBoxWeblinks";
+            listBoxWeblinks.Size = new Size(406, 49);
+            listBoxWeblinks.TabIndex = 20;
+            listBoxWeblinks.SelectedIndexChanged += listBoxWeblinks_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(10, 260);
+            label4.Name = "label4";
+            label4.Size = new Size(61, 15);
+            label4.TabIndex = 21;
+            label4.Text = "Web links:";
+            // 
+            // buttonAddLink
+            // 
+            buttonAddLink.Location = new Point(10, 333);
+            buttonAddLink.Name = "buttonAddLink";
+            buttonAddLink.Size = new Size(75, 23);
+            buttonAddLink.TabIndex = 22;
+            buttonAddLink.Text = "Add";
+            buttonAddLink.Click += buttonAddLink_Click;
+            // 
+            // btnRemoveLink
+            // 
+            btnRemoveLink.Location = new Point(91, 333);
+            btnRemoveLink.Name = "btnRemoveLink";
+            btnRemoveLink.Size = new Size(75, 23);
+            btnRemoveLink.TabIndex = 23;
+            btnRemoveLink.Text = "Remove Note";
+            btnRemoveLink.Click += btnRemoveLink_Click;
+            // 
             // AirshowEditForm
             // 
-            ClientSize = new Size(450, 421);
+            ClientSize = new Size(424, 614);
+            Controls.Add(buttonAddLink);
+            Controls.Add(btnRemoveLink);
+            Controls.Add(label4);
+            Controls.Add(listBoxWeblinks);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(buttonRemoveContact);
+            Controls.Add(buttonAddContact);
             Controls.Add(label1);
             Controls.Add(textBoxDateStart);
             Controls.Add(textBoxDateFinish);
@@ -202,7 +290,6 @@ namespace AirshowSchedules
             Controls.Add(listBoxUndauntedNotes);
             Controls.Add(buttonAddNote);
             Controls.Add(buttonRemoveNote);
-            Controls.Add(buttonEditNote); // Add the Edit Note button to the form
             Controls.Add(buttonOK);
             Controls.Add(buttonCancel);
             Name = "AirshowEditForm";
@@ -210,7 +297,6 @@ namespace AirshowSchedules
             ResumeLayout(false);
             PerformLayout();
         }
-        
 
         private void BindData()
         {
@@ -224,7 +310,9 @@ namespace AirshowSchedules
             this.listBoxPerformers.Items.AddRange(airshow.Performers.performer.ToArray());
             this.listBoxContacts.Items.AddRange(airshow.Contacts.contact.ToArray());
             this.listBoxUndauntedNotes.Items.AddRange(airshow.UndauntedNotes.ToArray());
+            this.listBoxWeblinks.Items.AddRange(airshow.AirshowLinks.ToArray());
         }
+
 
         private void ListBoxContacts_Click(object sender, EventArgs e)
         {
@@ -242,7 +330,6 @@ namespace AirshowSchedules
                 }
             }
         }
-
 
         private void ButtonAddNote_Click(object sender, EventArgs e)
         {
@@ -265,6 +352,7 @@ namespace AirshowSchedules
         {
             if (listBoxUndauntedNotes.SelectedItem != null)
             {
+                listBoxUndauntedNotes.SelectedIndexChanged -= listBoxUndauntedNotes_SelectedIndexChanged;
                 //string newNote = AddressPrompt.ShowDialog("Enter new note:", "Add Note");
                 string selectedNote = listBoxUndauntedNotes.SelectedItem.ToString();
                 string editedNote = UndauntedNotePrompt.ShowDialog("Edit note:", "Edit note:", selectedNote);
@@ -273,6 +361,22 @@ namespace AirshowSchedules
                     int selectedIndex = listBoxUndauntedNotes.SelectedIndex;
                     listBoxUndauntedNotes.Items[selectedIndex] = editedNote;
                 }
+            }
+        }
+        private void listBoxUndauntedNotes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxUndauntedNotes.SelectedItem != null)
+            {
+                listBoxUndauntedNotes.SelectedIndexChanged -= listBoxUndauntedNotes_SelectedIndexChanged;
+                //string newNote = AddressPrompt.ShowDialog("Enter new note:", "Add Note");
+                string selectedNote = listBoxUndauntedNotes.SelectedItem.ToString();
+                string editedNote = UndauntedNotePrompt.ShowDialog("Edit note:", "Edit note:", selectedNote);
+                if (!string.IsNullOrEmpty(editedNote))
+                {
+                    int selectedIndex = listBoxUndauntedNotes.SelectedIndex;
+                    listBoxUndauntedNotes.Items[selectedIndex] = editedNote;
+                }
+                listBoxUndauntedNotes.SelectedIndexChanged += listBoxUndauntedNotes_SelectedIndexChanged;
             }
         }
 
@@ -288,6 +392,7 @@ namespace AirshowSchedules
             airshow.Performers.performer = new List<string>(this.listBoxPerformers.Items.Cast<string>());
             airshow.Contacts.contact = new List<Airshow.cContact>(this.listBoxContacts.Items.Cast<Airshow.cContact>());
             airshow.UndauntedNotes = new List<string>(this.listBoxUndauntedNotes.Items.Cast<string>());
+            airshow.AirshowLinks = new List<string>(this.listBoxWeblinks.Items.Cast<string>());
 
             this.DialogResult = DialogResult.OK;
             this.Close();
@@ -299,11 +404,64 @@ namespace AirshowSchedules
             this.Close();
         }
 
+        private void buttonAddContact_Click(object sender, EventArgs e)
+        {
+            cContact newContact = new cContact();
+            using (ContactEditForm contactEditForm = new ContactEditForm(newContact))
+            {
+                if (contactEditForm.ShowDialog() == DialogResult.OK)
+                {
+                    this.listBoxContacts.Items.Add(contactEditForm.Contact);
+                }
+            }
+        }
+
+        private void buttonRemoveContact_Click(object sender, EventArgs e)
+        {
+            if (listBoxContacts.SelectedItem != null)
+            {
+                listBoxContacts.Items.Remove(listBoxContacts.SelectedItem);
+            }
+        }
+
+        private void buttonAddLink_Click(object sender, EventArgs e)
+        {
+            string newLink = WebLinkPrompt.ShowDialog("Enter new link:", "Add Link", "");
+            if (!string.IsNullOrEmpty(newLink))
+            {
+                this.listBoxWeblinks.Items.Add(newLink);
+            }
+        }
+
+        private void btnRemoveLink_Click(object sender, EventArgs e)
+        {
+            if (listBoxWeblinks.SelectedItem != null)
+            {
+                listBoxWeblinks.Items.Remove(listBoxWeblinks.SelectedItem);
+            }
+        }
+
+        private void listBoxWeblinks_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listBoxWeblinks.SelectedItem != null)
+            {
+                this.listBoxWeblinks.SelectedIndexChanged -= listBoxWeblinks_SelectedIndexChanged;
+                string selectedLink = listBoxWeblinks.SelectedItem.ToString();
+                string editedLink = WebLinkPrompt.ShowDialog("Edit link:", "Edit Link", selectedLink);
+                if (!string.IsNullOrEmpty(editedLink))
+                {
+                    int selectedIndex = listBoxWeblinks.SelectedIndex;
+                    listBoxWeblinks.Items[selectedIndex] = editedLink;
+                }
+                this.Enabled = true;
+                this.listBoxWeblinks.SelectedIndexChanged += listBoxWeblinks_SelectedIndexChanged;
+            }
+        }
     }
 
     public static class UndauntedNotePrompt
     {
-        public static string ShowDialog(string text, string caption, string existingText = "", bool newNote = false)
+        public static string ShowDialog(string text, string caption, string existingText = "", bool prependDate = false)
         {
             Form addressPrompt = new Form()
             {
@@ -329,17 +487,48 @@ namespace AirshowSchedules
             addressPrompt.Controls.Add(confirmation);
             addressPrompt.Controls.Add(textLabel);
             addressPrompt.AcceptButton = confirmation;
-            if (newNote)
+            if (prependDate)
             {
                 textBox.Text = $"{DateTime.Now:yyyy:MM:dd} - ";
             }
             else
-            {
+            {                
                 textBox.Text = existingText;
             }
             textBox.SelectionStart = textBox.Text.Length;
     
             return addressPrompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+        }
+    }
+
+    public static class WebLinkPrompt
+    {
+        public static string ShowDialog(string text, string caption, string existingText = "")
+        {
+            using (Form prompt = new Form())
+            {
+                prompt.Width = 500;
+                prompt.Height = 200;
+                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
+                prompt.Text = caption;
+                prompt.StartPosition = FormStartPosition.CenterScreen;
+
+                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
+                TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 400, Text = existingText };
+                Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 100, DialogResult = DialogResult.OK };
+                Button copyButton = new Button() { Text = "Copy", Left = 240, Width = 100, Top = 100 };
+
+                confirmation.Click += (sender, e) => { prompt.Close(); };
+                copyButton.Click += (sender, e) => { Clipboard.SetText(textBox.Text); };
+
+                prompt.Controls.Add(textBox);
+                prompt.Controls.Add(confirmation);
+                prompt.Controls.Add(copyButton);
+                prompt.Controls.Add(textLabel);
+                prompt.AcceptButton = confirmation;
+
+                return prompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
+            }
         }
     }
 }
