@@ -65,7 +65,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            button1 = new Button();
+            exportContactsToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -145,16 +145,16 @@
             // chklstRegions
             // 
             chklstRegions.FormattingEnabled = true;
-            chklstRegions.Location = new Point(1206, 290);
+            chklstRegions.Location = new Point(1132, 287);
             chklstRegions.Margin = new Padding(2, 1, 2, 1);
             chklstRegions.Name = "chklstRegions";
-            chklstRegions.Size = new Size(212, 148);
+            chklstRegions.Size = new Size(283, 184);
             chklstRegions.TabIndex = 22;
             chklstRegions.SelectedIndexChanged += chklstRegions_SelectedIndexChanged;
             // 
             // btnFilterSetAll
             // 
-            btnFilterSetAll.Location = new Point(1251, 446);
+            btnFilterSetAll.Location = new Point(950, 449);
             btnFilterSetAll.Margin = new Padding(2, 1, 2, 1);
             btnFilterSetAll.Name = "btnFilterSetAll";
             btnFilterSetAll.Size = new Size(80, 22);
@@ -165,7 +165,7 @@
             // 
             // btnFilterClearAll
             // 
-            btnFilterClearAll.Location = new Point(1335, 446);
+            btnFilterClearAll.Location = new Point(1034, 449);
             btnFilterClearAll.Margin = new Padding(2, 1, 2, 1);
             btnFilterClearAll.Name = "btnFilterClearAll";
             btnFilterClearAll.Size = new Size(80, 22);
@@ -176,7 +176,7 @@
             // 
             // btnFilterShows
             // 
-            btnFilterShows.Location = new Point(1167, 446);
+            btnFilterShows.Location = new Point(866, 449);
             btnFilterShows.Margin = new Padding(2, 1, 2, 1);
             btnFilterShows.Name = "btnFilterShows";
             btnFilterShows.Size = new Size(80, 22);
@@ -192,7 +192,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1667, 24);
+            menuStrip1.Size = new Size(1418, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -245,7 +245,7 @@
             // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem, exportContactsToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -359,22 +359,18 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // button1
+            // exportContactsToolStripMenuItem
             // 
-            button1.Location = new Point(871, 351);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 28;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            exportContactsToolStripMenuItem.Name = "exportContactsToolStripMenuItem";
+            exportContactsToolStripMenuItem.Size = new Size(219, 22);
+            exportContactsToolStripMenuItem.Text = "Export Contacts";
+            exportContactsToolStripMenuItem.Click += exportContactsToolStripMenuItem_Click;
             // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1667, 474);
-            Controls.Add(button1);
+            ClientSize = new Size(1418, 477);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -436,6 +432,6 @@
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
         private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
         private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
-        private Button button1;
+        private ToolStripMenuItem exportContactsToolStripMenuItem;
     }
 }

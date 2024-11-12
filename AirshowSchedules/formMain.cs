@@ -8,6 +8,7 @@ using static AirshowSchedules.cCalenderYear;
 using Pastel;
 using System.Diagnostics.Metrics;
 using Markdig;
+using Newtonsoft.Json;
 
 namespace AirshowSchedules;
 
@@ -290,7 +291,7 @@ public partial class formMain : Form
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
                     // The Airshow object has been updated
-                     SaveAirshowSchedule(false); // Save the updated airshow schedule
+                    SaveAirshowSchedule(false); // Save the updated airshow schedule
                 }
             }
 
@@ -671,48 +672,111 @@ public partial class formMain : Form
             okButton.Location = new Point(10, 1050);
             okButton.Height = 50;
             Controls.Add(okButton);
-
-            //System.Windows.Forms.Button cancelButton = new System.Windows.Forms.Button();
-            //cancelButton.Text = "Cancel";
-            //cancelButton.DialogResult = DialogResult.Cancel;
-            //cancelButton.Location = new Point(250, 1200);
-            //cancelButton.Height = 50;
-            //Controls.Add(cancelButton);
         }
     }
 
-    private void button1_Click(object sender, EventArgs e)
+
+    private void exportContactsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        if (myFilteredAirshows.Count == 0)
+        //let's make a list of all the contacts
+        List<cContact> allcontacts = new List<cContact>();
+        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
         {
-            MessageBox.Show("No airshows available to edit.");
-            return;
-        }
-
-        Airshow selectedAirshow = null;
-
-        foreach(Airshow aShow in myFilteredAirshows)
-        {
-            if(aShow.Performers.performer.Count > 1 && aShow.Contacts.contact.Count > 1)
+            foreach (cContact contact in ashow.Contacts.contact)
             {
-                selectedAirshow = aShow;
-                break;
+                allcontacts.Add(contact);
             }
         }
-        if(selectedAirshow == null)
+        //let's check for duplicates
+        List<cContact> nodups = new List<cContact>();
+        foreach (cContact contact in allcontacts)
         {
-            MessageBox.Show("No airshows available to edit.");
-            return;
-        }
-        // Load the editing form
-        using (AirshowEditForm editForm = new AirshowEditForm(selectedAirshow))
-        {
-            if (editForm.ShowDialog() == DialogResult.OK)
+            bool found = false;
+            foreach (cContact contact2 in nodups)
             {
-                // The Airshow object has been updated
-                // SaveAirshowSchedule(false); // Save the updated airshow schedule
-                // LoadGrid(myFormState.AirshowYearofInterest); // Reload the grid to reflect changes
-                // ColorGrid(myFilteredAirshows); // Reapply coloring to the grid
+                if (contact.name == contact2.name)
+                {
+                    found = true;
+                    break;
+                }
+            }
+            if (!found)
+            {
+                nodups.Add(contact);
+            }
+        }
+        // for all of the nodups, let's create a unique id
+        int id = 0;
+        foreach (cContact contact in nodups)
+        {
+            contact.id = id++;
+        }
+
+        Console.WriteLine($"Found {allcontacts.Count} contacts and {nodups.Count} unique contacts".Pastel(Color.LimeGreen));
+
+        //now we need to be sure to merge contact data:
+        List<cContact> merged = new List<cContact>();
+        foreach (cContact contact in nodups)
+        {
+            cContact newcontact = new cContact();
+            newcontact.id = contact.id;
+            newcontact.name = contact.name;
+            newcontact.phone = contact.phone;
+            newcontact.address = contact.address;
+            newcontact.emailAddresses = contact.emailAddresses;
+            foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
+            {
+                foreach (cContact contact2 in ashow.Contacts.contact)
+                {
+                    if (contact2.name == contact.name)
+                    {
+
+                        if (contact2.phone != "" && newcontact.phone == "")
+                        {
+                            newcontact.phone = contact2.phone;
+                        }
+                        if (contact2.address != "" && newcontact.address == "")
+                        {
+                            newcontact.address = contact2.address;
+                        }
+                        foreach (string email in contact2.emailAddresses)
+                        {
+                            if (!newcontact.emailAddresses.Contains(email))
+                            {
+                                newcontact.emailAddresses.Add(email);
+                            }
+                        }
+                    }
+                }
+            }
+            merged.Add(newcontact);
+        }
+        //output a json file
+        string json = JsonConvert.SerializeObject(merged, Formatting.Indented);
+        string FileName = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "Contacts");
+        //make sure the directory exists
+        string dir = Path.GetDirectoryName(FileName);
+        if (!Directory.Exists(dir))
+        {
+            Directory.CreateDirectory(dir);
+        }
+        System.IO.File.WriteAllText(FileName, json);
+        MessageBox.Show("Contacts have been exported to " + FileName);
+
+        Console.WriteLine();
+        //now for every contact, let's see if we can find a show they are associated with
+        foreach (cContact contact in merged)
+        {
+            Console.WriteLine();
+            List<Airshow> shows = myAirshowGroup.Airshows.myShows.Where(x => x.Contacts.contact.Contains(contact)).ToList();
+            if (shows.Count > 0)
+            {
+                Console.WriteLine($"Contact: {contact.name} is associated with {shows.Count} shows".Pastel(Color.LimeGreen));
+                int count = 0;
+                foreach (Airshow ashow in shows)
+                {
+                    Console.WriteLine($"\t\t{++count} - {ashow.name_airshow} in {ashow.location.city}, {ashow.location.state}".Pastel(Color.Yellow));
+                }
             }
         }
     }

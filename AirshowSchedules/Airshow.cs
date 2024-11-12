@@ -211,6 +211,7 @@ namespace AirshowSchedules
 
         public class cContact
         {
+            public int id;
             public string name;
             public string phone;
             public string address;
@@ -224,6 +225,18 @@ namespace AirshowSchedules
             public override string ToString()
             {
                 return name.ToString();
+            }
+
+            public override bool Equals(object? obj)
+            {
+                cContact other = obj as cContact;
+                if (other == null) return false;
+                
+                if (other.name.Trim().ToLower() == name.Trim().ToLower())
+                {
+                    return true;
+                }
+                return false;
             }
 
         }
@@ -343,7 +356,23 @@ namespace AirshowSchedules
 
         public override string ToString()
         {
-            return $"{name_airshow.ToString()} - {location.city}, {location.state}, {date_start}";
+            //let's get the number of days for this show:
+            string[] start = date_start.Split('-');
+            string[] end = date_finish.Split('-');
+            System.DateTime dstart = new DateTime(int.Parse(start[0]), int.Parse(start[1]), int.Parse(start[2]));
+            System.DateTime dfinish = new DateTime(int.Parse(end[0]), int.Parse(end[1]), int.Parse(end[2]));
+            TimeSpan days = dfinish - dstart;
+            int totalDays = days.TotalDays > 0 ? (int)days.TotalDays + 1 : 1;
+            string daysstring = "";
+            if( totalDays == 1)
+            {
+                daysstring = "1 day";
+            }
+            else
+            {
+                daysstring = totalDays.ToString() + " days";
+            }
+            return $"{name_airshow.ToString()} - {location.city}, {location.state}, {date_start} - {daysstring}";
         }
 
         public bool CompareYears(object? obj)
