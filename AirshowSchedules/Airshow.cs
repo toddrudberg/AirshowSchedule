@@ -1,5 +1,6 @@
 ﻿using Electroimpact;
 using Electroimpact.SettingsFormBuilderV2.Attributes;
+using Newtonsoft.Json;
 using Pastel;
 using System.Globalization;
 using System.Xml.Serialization;
@@ -9,6 +10,7 @@ namespace AirshowSchedules
 {
     public class Airshow
     {
+        public int ID;
         [Display(DisplayName = "Start Date (yyyy-MM-DD):")]
         public string date_start { get; set; }
 
@@ -24,8 +26,8 @@ namespace AirshowSchedules
         [Display(DisplayName = "Performers:")]
         public cPerformers Performers { get; set; } = new cPerformers();
 
-        [Display(DisplayName = "Contacts:")]
-        public cContacts Contacts { get; set; } = new cContacts();
+        // [Display(DisplayName = "Contacts:")]
+        // public cContacts Contacts { get; set; } = new cContacts(); 
 
         [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
@@ -36,7 +38,8 @@ namespace AirshowSchedules
         [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
         
-
+        [Display(DisplayName = "Contacts:")]
+        public List<int> contactIds { get; set; } = new List<int>();
 
         public enum eStatus
         {
@@ -100,36 +103,6 @@ namespace AirshowSchedules
             }
         }
 
-        public class cContacts
-        {
-            [XmlElement("Contact")]
-            public List<cContact> contact = new List<cContact>();
-
-            public void MergeContacts(cContacts contactsToMerge)
-            {
-                Console.WriteLine("Merging Contacts");
-                foreach (cContact testContact in contactsToMerge.contact)
-                {
-                    List<cContact> matchingContacts = contact.Where(c => c.name == testContact.name).ToList();
-                    if (matchingContacts.Count == 0)
-                    {
-                        contact.Add(testContact);
-                        Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
-                    }
-                    else
-                    {
-                        foreach (cContact matchingContact in matchingContacts)
-                        {
-                            if (matchingContact.phone != testContact.phone)
-                            {
-                                matchingContact.phone = testContact.phone;
-                                Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
-                            }
-                        }
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Helper Classes
@@ -205,41 +178,9 @@ namespace AirshowSchedules
                 }
                 return false;
             }
-
-
         }
 
-        public class cContact
-        {
-            public int id;
-            public string name;
-            public string phone;
-            public string address;
-            [Display(DisplayName = "Email:")]
-            public List<string> emailAddresses { get; set; } = new List<string>();
 
-
-            public cContact()
-            { }
-
-            public override string ToString()
-            {
-                return name.ToString();
-            }
-
-            public override bool Equals(object? obj)
-            {
-                cContact other = obj as cContact;
-                if (other == null) return false;
-                
-                if (other.name.Trim().ToLower() == name.Trim().ToLower())
-                {
-                    return true;
-                }
-                return false;
-            }
-
-        }
         #endregion
 
         #region Class Functions

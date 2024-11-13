@@ -65,8 +65,35 @@ public partial class formMain
 
     private void setActiveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        
+        // System.Windows.Forms.OpenFileDialog ofdContacts = new OpenFileDialog();
+        // ofdContacts.Filter = "json|*.json";
+        // ofdContacts.Title = "Open the Contact Database";
+        // string defaultContact = myFormState.fnContactDataBase;
+        // if (defaultContact != "")
+        // {
+        //     ofdContacts.InitialDirectory = System.IO.Path.GetDirectoryName(defaultContact);
+        // }
+        // DialogResult drContacts = ofdContacts.ShowDialog();
+        // if( drContacts == DialogResult.OK)
+        // {
+        //     myFormState.fnContactDataBase = ofdContacts.FileName;
+        //     FormState.SaveMe(myFormState);
+        // }
+        // else
+        // {
+        //     MessageBox.Show("No file selected.");
+        //     return;
+        // }
+        
         System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog();
         ofd.Filter = "XML|*.xml";
+        ofd.Title = "Open the Airshow Database";
+        string defaultFile = myFormState.fnCurrentXMLDataBase;
+        if (defaultFile != "")
+        {
+            ofd.InitialDirectory = System.IO.Path.GetDirectoryName(defaultFile);
+        }
         DialogResult dr = ofd.ShowDialog();
 
         if (dr == DialogResult.OK)
@@ -86,6 +113,12 @@ public partial class formMain
             this.Enabled = true;
         }
     }
+
+    private void saveContactFileAs(object sender, EventArgs e)
+    {
+        SaveContacts(true);
+    }
+
     private void saveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
         SaveAirshowSchedule(true);

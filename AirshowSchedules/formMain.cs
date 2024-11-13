@@ -15,6 +15,7 @@ namespace AirshowSchedules;
 public partial class formMain : Form
 {
     AirshowGroup myAirshowGroup = new AirshowGroup();
+    List<cContact> myContacts = new List<cContact>();
     FormState myFormState = new FormState();
 
     //This is the filter list and used for display. It is a subset of myAirshowGroup.Airshows.myShows, so watch out for that.
@@ -59,13 +60,24 @@ public partial class formMain : Form
             myFormState = FormState.LoadMe();
             //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
             bool success;
+            
+            myContacts = cContact.LoadMe(myFormState.fnContactDataBase, out success);
+            if (!success)
+            {
+                MessageBox.Show("Error loading form: " + "Unable to load the contact database");
+                return;
+            }
+            
+
             AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
             if (!success)
             {
                 MessageBox.Show("Error loading form: " + "Unable to load the active database");
                 return;
             }
-            myAirshowGroup = asg;
+            myAirshowGroup = asg;            
+
+
 
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
@@ -186,9 +198,34 @@ public partial class formMain : Form
     private void SaveAirshowSchedule(bool DoFileDialogue)
     {
         SaveAirshowSchedule(DoFileDialogue, myAirshowGroup);
+        SaveContacts(DoFileDialogue);
         btnFilterShows_Click(null, null);
         ColorGrid(myAirshowGroup.Airshows.myShows);
         ColorGrid(myFilteredAirshows);
+    }
+
+    private void SaveContacts(bool DoFileDialogue)
+    {
+        SaveFileDialog sfd = new SaveFileDialog();
+        sfd.Filter = "*.JSON|*.json";
+        sfd.Title = "Save a Contact List";
+
+        string fnCurrentWorkingContacts = myFormState.fnContactDataBase;
+
+        if (DoFileDialogue || fnCurrentWorkingContacts == "" || !File.Exists(fnCurrentWorkingContacts))
+        {
+            DialogResult dr = sfd.ShowDialog();
+            if (dr == DialogResult.OK)
+            {
+                //Electroimpact.XmlSerialization.Serializer.Save(myContacts, sfd.FileName);
+                cContact.SaveMe(myContacts, sfd.FileName);
+            }
+        }
+        else
+        {
+            //Electroimpact.XmlSerialization.Serializer.Save(myContacts, fnCurrentWorkingContacts);
+            cContact.SaveMe(myContacts, fnCurrentWorkingContacts);
+        }
     }
 
     private void SaveAirshowSchedule(bool DoFileDialogue, AirshowGroup airshowGroup)
@@ -680,12 +717,20 @@ public partial class formMain : Form
     {
         //let's make a list of all the contacts
         List<cContact> allcontacts = new List<cContact>();
+        int airshowID = 1;
         foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
         {
             foreach (cContact contact in ashow.Contacts.contact)
             {
+                if ( contact.name == "" )
+                {
+                    continue;
+                }
+                ashow.ID = airshowID;
+                contact.showIds.Add(airshowID);
                 allcontacts.Add(contact);
             }
+            airshowID++;
         }
         //let's check for duplicates
         List<cContact> nodups = new List<cContact>();
@@ -706,7 +751,7 @@ public partial class formMain : Form
             }
         }
         // for all of the nodups, let's create a unique id
-        int id = 0;
+        int id = 1;
         foreach (cContact contact in nodups)
         {
             contact.id = id++;
@@ -724,13 +769,14 @@ public partial class formMain : Form
             newcontact.phone = contact.phone;
             newcontact.address = contact.address;
             newcontact.emailAddresses = contact.emailAddresses;
+            newcontact.showIds = newcontact.showIds;
             foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
             {
                 foreach (cContact contact2 in ashow.Contacts.contact)
                 {
                     if (contact2.name == contact.name)
                     {
-
+                        newcontact.showIds = newcontact.showIds.Union(contact2.showIds).ToList();
                         if (contact2.phone != "" && newcontact.phone == "")
                         {
                             newcontact.phone = contact2.phone;
@@ -753,7 +799,22 @@ public partial class formMain : Form
         }
         //output a json file
         string json = JsonConvert.SerializeObject(merged, Formatting.Indented);
-        string FileName = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "Contacts");
+        string FileName = "";
+
+        SaveFileDialog sfd = new SaveFileDialog();
+        sfd.Filter = "*.JSON|*.json";
+        sfd.Title = "Save a Contact List";
+        //open the file dialog
+        DialogResult dr = sfd.ShowDialog();
+        if (dr == DialogResult.OK)
+        {
+            FileName = sfd.FileName;
+        }
+        else
+        {
+            return;
+        }
+
         //make sure the directory exists
         string dir = Path.GetDirectoryName(FileName);
         if (!Directory.Exists(dir))
@@ -761,7 +822,24 @@ public partial class formMain : Form
             Directory.CreateDirectory(dir);
         }
         System.IO.File.WriteAllText(FileName, json);
-        MessageBox.Show("Contacts have been exported to " + FileName);
+        Console.WriteLine($"Contacts have been exported to {FileName}".Pastel(Color.LimeGreen));
+
+
+        //now let's assign the contacts to the shows
+        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
+        {
+            foreach (cContact contact in merged)
+            {
+                if (contact.showIds.Contains(ashow.ID))
+                {
+                    ashow.contactIds.Add(contact.id);
+                }
+            }
+        }
+
+        //now let's save the airshow group as
+        SaveAirshowSchedule(true);
+
 
         Console.WriteLine();
         //now for every contact, let's see if we can find a show they are associated with

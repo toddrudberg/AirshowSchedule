@@ -44,12 +44,28 @@
  - adds text to the gridview if an airshow has a status that is interesting
  - bolds the text in cells where the filtered list has an airshow that weekend
  
- things to know:
+ # things to know:
  - anytime you change the database, you need to call ColorGrid with the complete airshow list.  We assume that anytime the database is saved, that there is a change and we pass myAirshows
  - then we run it again to apply myFilteredAirshows
 
 
- #LoadGrid
+ # LoadGrid
  - this fills the grid with an AirshowWeekEnd, which holds a System.Date.Time member an its ToString is displayed in the cell.
  - this should only need to be done when the YearOfInterest changes.
 
+# extracting contacts thoughts
+ - assign id's to each airshow
+ - extract contacts
+ - remove unnecessary contact information from shows
+ - figure out how to load everything
+ 
+ extract contacts
+ - 
+ - When comparing DB, you will first need to update contacts
+    - try to find the contact in the contactDB
+    - if not found, assign unique ID
+    - if found, check to see if the details have changed.  If they have merge the new data
+ - Then for each airshow entry, assign the list of contact IDs by searching through your contact list. 
+ - Then perform the normal series of operations
+ - you'll need to think about how you'll add contacts manually.
+ - you'll need to think about how you'll display contacts

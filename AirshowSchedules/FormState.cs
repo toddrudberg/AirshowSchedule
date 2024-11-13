@@ -7,6 +7,7 @@ namespace AirshowSchedules
     {
         public string fnLastParsedFile = "";
         public string fnCurrentXMLDataBase = "";
+        public string fnContactDataBase = "";
         [Display(DisplayName = "Choose the Region File:")]
         [FileBrowseDialog(OpenFileDialogFilter = "Region File (*.xml)|*.xml")]
         public string fnRegions = "";
