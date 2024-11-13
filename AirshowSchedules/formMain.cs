@@ -58,16 +58,15 @@ public partial class formMain : Form
         {
 
             myFormState = FormState.LoadMe();
-            //AirshowGroup asg = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(FileName);
             bool success;
-            
+
             myContacts = cContact.LoadMe(myFormState.fnContactDataBase, out success);
             if (!success)
             {
                 MessageBox.Show("Error loading form: " + "Unable to load the contact database");
                 return;
             }
-            
+
 
             AirshowGroup asg = AirshowGroup.LoadMe(myFormState.fnCurrentXMLDataBase, out success);
             if (!success)
@@ -75,7 +74,7 @@ public partial class formMain : Form
                 MessageBox.Show("Error loading form: " + "Unable to load the active database");
                 return;
             }
-            myAirshowGroup = asg;            
+            myAirshowGroup = asg;
 
 
 
@@ -323,7 +322,7 @@ public partial class formMain : Form
         {
             Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
 
-            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow))
+            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow, myContacts))
             {
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
@@ -378,7 +377,7 @@ public partial class formMain : Form
         ashow.date_start = firstSaturdayInJuly.ToString("yyyy-MM-dd");
         ashow.date_finish = firstSaturdayInJuly.AddDays(1).ToString("yyyy-MM-dd");
 
-        using (AirshowEditForm editForm = new AirshowEditForm(ashow))
+        using (AirshowEditForm editForm = new AirshowEditForm(ashow, myContacts))
         {
             if (editForm.ShowDialog() == DialogResult.OK)
             {
@@ -450,10 +449,11 @@ public partial class formMain : Form
         foreach (Airshow ashow in CallReport)
         {
             string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            foreach (cContact contact in ashow.Contacts.contact)
-            {
-                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            }
+            //contacts
+            //foreach (cContact contact in ashow.Contacts.contact)
+            //{
+            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
+            //}
 
             calltheseguys.Add(gettowork);
         }
@@ -513,10 +513,11 @@ public partial class formMain : Form
         foreach (Airshow ashow in CallReport)
         {
             string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            foreach (cContact contact in ashow.Contacts.contact)
-            {
-                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            }
+            //contacts
+            //foreach (cContact contact in ashow.Contacts.contact)
+            //{
+            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
+            //}
 
             calltheseguys.Add(gettowork);
         }
@@ -548,10 +549,11 @@ public partial class formMain : Form
         foreach (Airshow ashow in CallReport)
         {
             string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.Notes_AirshowStuff}";
-            foreach (cContact contact in ashow.Contacts.contact)
-            {
-                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            }
+            //contacts
+            //foreach (cContact contact in ashow.Contacts.contact)
+            //{
+            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
+            //}
 
             calltheseguys.Add(gettowork);
         }
@@ -568,10 +570,11 @@ public partial class formMain : Form
         foreach (Airshow ashow in CallReport)
         {
             string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            foreach (cContact contact in ashow.Contacts.contact)
-            {
-                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            }
+            //contacts
+            //foreach (cContact contact in ashow.Contacts.contact)
+            //{
+            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
+            //}
 
             calltheseguys.Add(gettowork);
         }
@@ -615,9 +618,10 @@ public partial class formMain : Form
                     {
                         foreach (Airshow ashow in myFilteredAirshows)
                         {
-                            if (ashow.Contacts.contact.Count > 0)
+                            List<cContact> contacts = cContact.getContacts(myContacts, ashow);
+                            if (contacts.Count > 0)
                             {
-                                foreach (cContact contact in ashow.Contacts.contact)
+                                foreach (cContact contact in contacts)
                                 {
                                     if (contact.name.ToLower().Contains(SearchTerms.szSearchTerm.ToLower()))
                                     {
@@ -712,151 +716,172 @@ public partial class formMain : Form
         }
     }
 
-
-    private void exportContactsToolStripMenuItem_Click(object sender, EventArgs e)
+    private void setActiveContactDBToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        //let's make a list of all the contacts
-        List<cContact> allcontacts = new List<cContact>();
-        int airshowID = 1;
-        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-        {
-            foreach (cContact contact in ashow.Contacts.contact)
-            {
-                if ( contact.name == "" )
-                {
-                    continue;
-                }
-                ashow.ID = airshowID;
-                contact.showIds.Add(airshowID);
-                allcontacts.Add(contact);
-            }
-            airshowID++;
-        }
-        //let's check for duplicates
-        List<cContact> nodups = new List<cContact>();
-        foreach (cContact contact in allcontacts)
-        {
-            bool found = false;
-            foreach (cContact contact2 in nodups)
-            {
-                if (contact.name == contact2.name)
-                {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found)
-            {
-                nodups.Add(contact);
-            }
-        }
-        // for all of the nodups, let's create a unique id
-        int id = 1;
-        foreach (cContact contact in nodups)
-        {
-            contact.id = id++;
-        }
+        OpenFileDialog ofd = new OpenFileDialog();
+        ofd.Filter = "*.JSON|*.json";
+        ofd.Title = "Open a Contact List";
 
-        Console.WriteLine($"Found {allcontacts.Count} contacts and {nodups.Count} unique contacts".Pastel(Color.LimeGreen));
-
-        //now we need to be sure to merge contact data:
-        List<cContact> merged = new List<cContact>();
-        foreach (cContact contact in nodups)
-        {
-            cContact newcontact = new cContact();
-            newcontact.id = contact.id;
-            newcontact.name = contact.name;
-            newcontact.phone = contact.phone;
-            newcontact.address = contact.address;
-            newcontact.emailAddresses = contact.emailAddresses;
-            newcontact.showIds = newcontact.showIds;
-            foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-            {
-                foreach (cContact contact2 in ashow.Contacts.contact)
-                {
-                    if (contact2.name == contact.name)
-                    {
-                        newcontact.showIds = newcontact.showIds.Union(contact2.showIds).ToList();
-                        if (contact2.phone != "" && newcontact.phone == "")
-                        {
-                            newcontact.phone = contact2.phone;
-                        }
-                        if (contact2.address != "" && newcontact.address == "")
-                        {
-                            newcontact.address = contact2.address;
-                        }
-                        foreach (string email in contact2.emailAddresses)
-                        {
-                            if (!newcontact.emailAddresses.Contains(email))
-                            {
-                                newcontact.emailAddresses.Add(email);
-                            }
-                        }
-                    }
-                }
-            }
-            merged.Add(newcontact);
-        }
-        //output a json file
-        string json = JsonConvert.SerializeObject(merged, Formatting.Indented);
-        string FileName = "";
-
-        SaveFileDialog sfd = new SaveFileDialog();
-        sfd.Filter = "*.JSON|*.json";
-        sfd.Title = "Save a Contact List";
-        //open the file dialog
-        DialogResult dr = sfd.ShowDialog();
+        DialogResult dr = ofd.ShowDialog();
         if (dr == DialogResult.OK)
         {
-            FileName = sfd.FileName;
-        }
-        else
-        {
-            return;
-        }
-
-        //make sure the directory exists
-        string dir = Path.GetDirectoryName(FileName);
-        if (!Directory.Exists(dir))
-        {
-            Directory.CreateDirectory(dir);
-        }
-        System.IO.File.WriteAllText(FileName, json);
-        Console.WriteLine($"Contacts have been exported to {FileName}".Pastel(Color.LimeGreen));
-
-
-        //now let's assign the contacts to the shows
-        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-        {
-            foreach (cContact contact in merged)
+            myFormState.fnContactDataBase = ofd.FileName;
+            FormState.SaveMe(myFormState);
+            myContacts = cContact.LoadMe(myFormState.fnContactDataBase, out bool success);
+            if (!success)
             {
-                if (contact.showIds.Contains(ashow.ID))
-                {
-                    ashow.contactIds.Add(contact.id);
-                }
+                MessageBox.Show("Error loading form: " + "Unable to load the contact database");
+                return;
             }
-        }
-
-        //now let's save the airshow group as
-        SaveAirshowSchedule(true);
-
-
-        Console.WriteLine();
-        //now for every contact, let's see if we can find a show they are associated with
-        foreach (cContact contact in merged)
-        {
-            Console.WriteLine();
-            List<Airshow> shows = myAirshowGroup.Airshows.myShows.Where(x => x.Contacts.contact.Contains(contact)).ToList();
-            if (shows.Count > 0)
-            {
-                Console.WriteLine($"Contact: {contact.name} is associated with {shows.Count} shows".Pastel(Color.LimeGreen));
-                int count = 0;
-                foreach (Airshow ashow in shows)
-                {
-                    Console.WriteLine($"\t\t{++count} - {ashow.name_airshow} in {ashow.location.city}, {ashow.location.state}".Pastel(Color.Yellow));
-                }
-            }
+            SaveContacts(false);
         }
     }
+
+
+    //private void exportContactsToolStripMenuItem_Click(object sender, EventArgs e)
+    //{
+    //    //let's make a list of all the contacts
+    //    List<cContact> allcontacts = new List<cContact>();
+    //    int airshowID = 1;
+    //    foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
+    //    {
+    //        foreach (cContact contact in ashow.Contacts.contact)
+    //        {
+    //            if ( contact.name == "" )
+    //            {
+    //                continue;
+    //            }
+    //            ashow.ID = airshowID;
+    //            contact.showIds.Add(airshowID);
+    //            allcontacts.Add(contact);
+    //        }
+    //        airshowID++;
+    //    }
+    //    //let's check for duplicates
+    //    List<cContact> nodups = new List<cContact>();
+    //    foreach (cContact contact in allcontacts)
+    //    {
+    //        bool found = false;
+    //        foreach (cContact contact2 in nodups)
+    //        {
+    //            if (contact.name == contact2.name)
+    //            {
+    //                found = true;
+    //                break;
+    //            }
+    //        }
+    //        if (!found)
+    //        {
+    //            nodups.Add(contact);
+    //        }
+    //    }
+    //    // for all of the nodups, let's create a unique id
+    //    int id = 1;
+    //    foreach (cContact contact in nodups)
+    //    {
+    //        contact.id = id++;
+    //    }
+
+    //    Console.WriteLine($"Found {allcontacts.Count} contacts and {nodups.Count} unique contacts".Pastel(Color.LimeGreen));
+
+    //    //now we need to be sure to merge contact data:
+    //    List<cContact> merged = new List<cContact>();
+    //    foreach (cContact contact in nodups)
+    //    {
+    //        cContact newcontact = new cContact();
+    //        newcontact.id = contact.id;
+    //        newcontact.name = contact.name;
+    //        newcontact.phone = contact.phone;
+    //        newcontact.address = contact.address;
+    //        newcontact.emailAddresses = contact.emailAddresses;
+    //        newcontact.showIds = newcontact.showIds;
+    //        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
+    //        {
+    //            foreach (cContact contact2 in ashow.Contacts.contact)
+    //            {
+    //                if (contact2.name == contact.name)
+    //                {
+    //                    newcontact.showIds = newcontact.showIds.Union(contact2.showIds).ToList();
+    //                    if (contact2.phone != "" && newcontact.phone == "")
+    //                    {
+    //                        newcontact.phone = contact2.phone;
+    //                    }
+    //                    if (contact2.address != "" && newcontact.address == "")
+    //                    {
+    //                        newcontact.address = contact2.address;
+    //                    }
+    //                    foreach (string email in contact2.emailAddresses)
+    //                    {
+    //                        if (!newcontact.emailAddresses.Contains(email))
+    //                        {
+    //                            newcontact.emailAddresses.Add(email);
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //        merged.Add(newcontact);
+    //    }
+    //    //output a json file
+    //    string json = JsonConvert.SerializeObject(merged, Formatting.Indented);
+    //    string FileName = "";
+
+    //    SaveFileDialog sfd = new SaveFileDialog();
+    //    sfd.Filter = "*.JSON|*.json";
+    //    sfd.Title = "Save a Contact List";
+    //    //open the file dialog
+    //    DialogResult dr = sfd.ShowDialog();
+    //    if (dr == DialogResult.OK)
+    //    {
+    //        FileName = sfd.FileName;
+    //    }
+    //    else
+    //    {
+    //        return;
+    //    }
+
+    //    //make sure the directory exists
+    //    string dir = Path.GetDirectoryName(FileName);
+    //    if (!Directory.Exists(dir))
+    //    {
+    //        Directory.CreateDirectory(dir);
+    //    }
+    //    System.IO.File.WriteAllText(FileName, json);
+    //    Console.WriteLine($"Contacts have been exported to {FileName}".Pastel(Color.LimeGreen));
+
+
+    //    //now let's assign the contacts to the shows
+    //    foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
+    //    {
+    //        foreach (cContact contact in merged)
+    //        {
+    //            if (contact.showIds.Contains(ashow.ID))
+    //            {
+    //                ashow.contactIds.Add(contact.id);
+    //            }
+    //        }
+    //    }
+
+    //    //now let's save the airshow group as
+    //    SaveAirshowSchedule(true);
+
+
+    //    Console.WriteLine();
+    //    //now for every contact, let's see if we can find a show they are associated with
+    //    foreach (cContact contact in merged)
+    //    {
+    //        Console.WriteLine();
+    //        List<Airshow> shows = myAirshowGroup.Airshows.myShows.Where(x => x.Contacts.contact.Contains(contact)).ToList();
+    //        if (shows.Count > 0)
+    //        {
+    //            Console.WriteLine($"Contact: {contact.name} is associated with {shows.Count} shows".Pastel(Color.LimeGreen));
+    //            int count = 0;
+    //            foreach (Airshow ashow in shows)
+    //            {
+    //                Console.WriteLine($"\t\t{++count} - {ashow.name_airshow} in {ashow.location.city}, {ashow.location.state}".Pastel(Color.Yellow));
+    //            }
+    //        }
+    //    }
+    //}
 }
     #endregion

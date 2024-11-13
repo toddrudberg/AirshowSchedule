@@ -28,10 +28,12 @@ namespace AirshowSchedules
         private Button buttonAddLink;
         private Button btnRemoveLink;
         private Airshow airshow;
+        private List<cContact> contacts;
 
-        public AirshowEditForm(Airshow airshow)
+        public AirshowEditForm(Airshow airshow, List<cContact> contacts)
         {
             this.airshow = airshow;
+            this.contacts = contacts;
             InitializeComponent();
             BindData();
         }
@@ -334,7 +336,8 @@ namespace AirshowSchedules
             this.textBoxNotes.Text = airshow.Notes_AirshowStuff;
             this.comboBoxStatus.SelectedItem = airshow.Status.ToString();
             this.listBoxPerformers.Items.AddRange(airshow.Performers.performer.ToArray());
-            this.listBoxContacts.Items.AddRange(airshow.Contacts.contact.ToArray());
+            //contacts
+            this.listBoxContacts.Items.AddRange(cContact.getContacts(contacts, airshow).ToArray());
             this.listBoxUndauntedNotes.Items.AddRange(airshow.UndauntedNotes.ToArray());
             this.listBoxWeblinks.Items.AddRange(airshow.AirshowLinks.ToArray());
         }
@@ -401,7 +404,8 @@ namespace AirshowSchedules
             airshow.Notes_AirshowStuff = this.textBoxNotes.Text;
             airshow.Status = (Airshow.eStatus)Enum.Parse(typeof(Airshow.eStatus), this.comboBoxStatus.SelectedItem.ToString());
             airshow.Performers.performer = new List<string>(this.listBoxPerformers.Items.Cast<string>());
-            airshow.Contacts.contact = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
+            //contacts
+            //airshow.Contacts.contact = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
             airshow.UndauntedNotes = new List<string>(this.listBoxUndauntedNotes.Items.Cast<string>());
             airshow.AirshowLinks = new List<string>(this.listBoxWeblinks.Items.Cast<string>());
 
@@ -422,6 +426,7 @@ namespace AirshowSchedules
             {
                 if (contactEditForm.ShowDialog() == DialogResult.OK)
                 {
+                    cContact.addContact(contacts, contactEditForm.Contact, airshow);
                     this.listBoxContacts.Items.Add(contactEditForm.Contact);
                 }
             }

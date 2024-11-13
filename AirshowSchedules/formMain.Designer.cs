@@ -68,6 +68,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            setActiveContactDBToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -200,7 +201,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactFileToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
@@ -304,7 +305,6 @@
             exportContactsToolStripMenuItem.Name = "exportContactsToolStripMenuItem";
             exportContactsToolStripMenuItem.Size = new Size(235, 22);
             exportContactsToolStripMenuItem.Text = "Reform DB extracting contacts";
-            exportContactsToolStripMenuItem.Click += exportContactsToolStripMenuItem_Click;
             // 
             // reportsToolStripMenuItem
             // 
@@ -380,6 +380,13 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
+            // setActiveContactDBToolStripMenuItem
+            // 
+            setActiveContactDBToolStripMenuItem.Name = "setActiveContactDBToolStripMenuItem";
+            setActiveContactDBToolStripMenuItem.Size = new Size(198, 22);
+            setActiveContactDBToolStripMenuItem.Text = "Set Active Contact DB";
+            setActiveContactDBToolStripMenuItem.Click += setActiveContactDBToolStripMenuItem_Click;
+            // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -449,5 +456,6 @@
         private ToolStripMenuItem exportContactsToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
+        private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
     }
 }

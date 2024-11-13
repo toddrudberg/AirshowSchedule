@@ -56,8 +56,7 @@ namespace AirshowSchedules
         
         public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow)
         {
-
-            masterShow.Contacts.MergeContacts(newShow.Contacts);
+            masterShow.contactIds = masterShow.contactIds.Union(newShow.contactIds).ToList();
             Notes_AirshowStuff += newShow.Notes_AirshowStuff;
             masterShow.Performers.MergePerformers(newShow.Performers);
             Console.WriteLine($"Merging Undaunted Notes: {newShow.UndauntedNotes.Count}".Pastel(Color.Green));
@@ -65,15 +64,16 @@ namespace AirshowSchedules
             Console.WriteLine($"Merging Airshow Links: {newShow.AirshowLinks.Count}".Pastel(Color.Green));
             masterShow.AirshowLinks = masterShow.AirshowLinks.Union(newShow.AirshowLinks).ToList();
         }
-        public void AppendCustomFields(Airshow airshow)
+        public void AppendCustomFields(Airshow dupAirshow)
         {
 
-            Contacts.MergeContacts(airshow.Contacts);
-            Notes_AirshowStuff += airshow.Notes_AirshowStuff;
+            //cContact.MergeContacts(contactIds, dupAirshow);
 
-            if(airshow.Status < Status)
+            Notes_AirshowStuff += dupAirshow.Notes_AirshowStuff;
+
+            if(dupAirshow.Status < Status)
             {
-              Status = airshow.Status;
+              Status = dupAirshow.Status;
             }
         }
         /*
@@ -381,8 +381,10 @@ namespace AirshowSchedules
 
             return strings.ToArray();
         }
-        public static void LoadFile(cAirshowFileParserSetupTool inputfile, List<Airshow> airshows)
+        public static void LoadFile(cAirshowFileParserSetupTool inputfile, List<Airshow> airshows, List<cContact> contacts)
         {
+            int contactID = 0;
+            int airshowID = 0;
             string[] lines;
             try
             {
@@ -460,8 +462,10 @@ namespace AirshowSchedules
                                     }
                                 }
                                 ii = jj - 1;
-                                airshow.Contacts.contact.Add(acontact);
-                                //airshow.contacts.Add(acontact);
+                                acontact.ID = contactID;
+                                airshow.contactIds.Add(contactID);
+                                contacts.Add(acontact);
+                                //airshow.contacts.Add(acontact);                            
                                 airshows.Add(airshow);
                                 break;
                             }
@@ -544,11 +548,12 @@ namespace AirshowSchedules
                 outputline += "\t" + airshow.location.city;
                 outputline += "\t" + airshow.location.state;
                 outputline += "\t" + airshow.name_airshow;
-                foreach (cContact acontact in airshow.Contacts.contact)
-                {
-                    outputline += "\t" + acontact.name;
-                    outputline += "\t" + acontact.phone;
-                }
+                //contacts
+                //foreach (cContact acontact in airshow.Contacts.contact)
+                //{
+                //    outputline += "\t" + acontact.name;
+                //    outputline += "\t" + acontact.phone;
+                //}
                 outputs += outputline + "\n";
             }
             return outputs;

@@ -82,7 +82,6 @@
       <AirshowLinks />
       <contactIds>
         <int>7</int>
-        <int>125</int>
       </contactIds>
       <Status>none</Status>
     </Airshow>

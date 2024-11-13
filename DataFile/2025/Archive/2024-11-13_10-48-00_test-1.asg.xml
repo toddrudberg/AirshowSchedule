@@ -41,7 +41,6 @@
       <contactIds>
         <int>3</int>
         <int>4</int>
-        <int>125</int>
       </contactIds>
       <Status>none</Status>
     </Airshow>
@@ -63,7 +62,6 @@
       <contactIds>
         <int>5</int>
         <int>6</int>
-        <int>125</int>
       </contactIds>
       <Status>maybe</Status>
     </Airshow>
@@ -82,7 +80,6 @@
       <AirshowLinks />
       <contactIds>
         <int>7</int>
-        <int>125</int>
       </contactIds>
       <Status>none</Status>
     </Airshow>

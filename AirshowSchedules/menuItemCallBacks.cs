@@ -13,6 +13,7 @@ public partial class formMain
     private void fileParseDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
         List<Airshow> airshows = new List<Airshow>();
+        List<cContact> contacts = new List<cContact>();
 
         //WorkingFileParserClass;
         WorkingFileParserClass = cAirshowFileParserSetupTool.LoadMe();
@@ -26,8 +27,7 @@ public partial class formMain
         {
             this.Enabled = false;
 
-            Airshow.LoadFile(WorkingFileParserClass, airshows);
-            //myFormState.AirshowYearofInterest = WorkingFileParserClass.AirshowYear;
+            Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
             airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
             cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
             this.Enabled = true;
@@ -37,15 +37,14 @@ public partial class formMain
     {
         AirshowGroup asg = new AirshowGroup();
         List<Airshow> airshows = new List<Airshow>();
+        List<cContact> contacts = new List<cContact>();
 
         if (System.IO.File.Exists(WorkingFileParserClass.sFileName))
         {
             try
             {
-                Airshow.LoadFile(WorkingFileParserClass, airshows);
+                Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
                 airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-
-                //myFilteredAirshows = airshows.ToList();
                 asg.Airshows.myShows = airshows;
                 asg.AirshowYearOfInterest = WorkingFileParserClass.AirshowYear;
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -55,6 +54,9 @@ public partial class formMain
                 if (dr == DialogResult.OK)
                 {
                     Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
+                    cContact.SaveMe(contacts, sfd.FileName.Replace(".asg.xml", ".contacts.json"));
+                    Console.WriteLine($"Airshow Group saved to {sfd.FileName}".Pastel(Color.Green));
+                    Console.WriteLine($"Contacts saved to {sfd.FileName.Replace(".asg.xml", ".contacts.json")}".Pastel(Color.Green));
                 }
                 return;
             }
@@ -455,7 +457,8 @@ public partial class formMain
 
     private void updateAdditionalFieldsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<Airshow> copiedASGlist = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContactList = cContact.DeepCopy(myContacts);
         List<Airshow> latestAirshowList = new List<Airshow>();
 
         {
@@ -478,7 +481,7 @@ public partial class formMain
 
                 latestAirshowList = asgLatest.Airshows.myShows.ToList();
 
-                foreach (Airshow ashow in copiedList)
+                foreach (Airshow ashow in copiedASGlist)
                 {
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count > 0)
@@ -507,7 +510,7 @@ public partial class formMain
                         }
                     }
                 }
-                myAirshowGroup.Airshows.myShows = copiedList;
+                myAirshowGroup.Airshows.myShows = copiedASGlist;
                 SaveAirshowSchedule(false);
                 MessageBox.Show("Additional fields updated successfully.");
             }
