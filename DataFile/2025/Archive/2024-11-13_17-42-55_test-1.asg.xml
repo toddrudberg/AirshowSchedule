@@ -2746,6 +2746,51 @@
       </contactIds>
       <Status>pursue</Status>
     </Airshow>
+    <Airshow>
+      <ID>143</ID>
+      <date_start>2025-09-10</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>national championship air races</name_airshow>
+      <location>
+        <city>Roswell</city>
+        <state>NM</state>
+      </location>
+      <Performers>
+        <Performer>Jim Peitz Aerosports, Inc.</Performer>
+        <Performer>Biplane Air Racing Class</Performer>
+        <Performer>STOL Drag Events LLC</Performer>
+        <Performer>Sport Class Air Racing Association</Performer>
+        <Performer>Palm Springs Air Museum</Performer>
+        <Performer>Planes of Fame Air Museum</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <contactIds>
+        <int>126</int>
+      </contactIds>
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>144</ID>
+      <date_start>2025-05-16</date_start>
+      <date_finish>2025-05-17</date_finish>
+      <name_airshow>tbm avenger gathering &amp; salute to veterans</name_airshow>
+      <location>
+        <city>Peru</city>
+        <state>IL</state>
+      </location>
+      <Performers>
+        <Performer>Titan Aerobatic Team</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <contactIds>
+        <int>127</int>
+      </contactIds>
+      <Status>none</Status>
+    </Airshow>
   </Airshows>
   <AirshowYearOfInterest>2025</AirshowYearOfInterest>
 </AirshowGroup>

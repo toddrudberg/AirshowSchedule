@@ -510,7 +510,8 @@ public partial class formMain
                         Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
                         if (showsFound.Count == 1)
                         {
-                            cContact newContact = showsFound[0].my
+                            MessageBox.Show("You need to think about Conttacts");
+                            return;
                             showsFound[0].mergeAdditionalInformation(ashow, showsFound[0]);
                         }
                         else
@@ -525,6 +526,8 @@ public partial class formMain
                                 string response = Console.ReadLine();
                                 if (response.ToLower() == "y")
                                 {
+                                    MessageBox.Show("You need to think about Conttacts");
+                                    return;
                                     showsFound[0].mergeAdditionalInformation(ashow, adup);
                                     break;
                                 }
