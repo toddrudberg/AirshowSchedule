@@ -167,7 +167,10 @@ namespace AirshowSchedules
                 {
                     contactsToDelete.Add(contact.ID);
                     contact.showIDs.Remove(airshowIDtoDelete);
-                    cContact.addContact(activeContacts, contact, airshowToAdd);
+                    if (!(contact.name == null || contact.name.Trim() == ""))
+                    {
+                        cContact.addContact(activeContacts, contact, airshowToAdd);
+                    }
                 }
                 airshowToAdd.contactIds = airshowToAdd.contactIds.Concat(airshowContacts.Select(c => c.ID)).Distinct().ToList();
                 foreach(var removeContactIDs in contactsToDelete)
@@ -175,6 +178,9 @@ namespace AirshowSchedules
                     airshowToAdd.contactIds.Remove(removeContactIDs);
                 }
             }
+            //int maxID = activeDB.Max(a =>  (int)a.ID);
+            //int newID = maxID + 1;
+            //airshowToAdd.ID = newID;
             activeDB.Add(airshowToAdd);
         }
 
