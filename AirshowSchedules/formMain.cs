@@ -726,10 +726,11 @@ public partial class formMain : Form
                 {
                     continue;
                 }
-                ashow.ID = airshowID;
+                
                 contact.showIds.Add(airshowID);
                 allcontacts.Add(contact);
             }
+            ashow.ID = airshowID;
             airshowID++;
         }
         //let's check for duplicates
