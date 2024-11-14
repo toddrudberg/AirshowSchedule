@@ -120,7 +120,11 @@ namespace AirshowSchedules
             else if (duplicateContact.Count == 1)
             {
                 cContact existingContact = duplicateContact[0];
-                if (!existingContact.phone.Contains(contactToAdd.phone))
+                if (existingContact.phone == null && contactToAdd.phone != null)
+                {
+                    existingContact.phone = contactToAdd.phone;
+                }
+                if (existingContact.phone != null && contactToAdd.phone != null && !existingContact.phone.Contains(contactToAdd.phone))
                 {
                     existingContact.phone += " / " + contactToAdd.phone;
                 }

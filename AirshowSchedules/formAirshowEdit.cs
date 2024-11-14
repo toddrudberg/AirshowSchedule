@@ -405,7 +405,7 @@ namespace AirshowSchedules
             airshow.Status = (Airshow.eStatus)Enum.Parse(typeof(Airshow.eStatus), this.comboBoxStatus.SelectedItem.ToString());
             airshow.Performers.performer = new List<string>(this.listBoxPerformers.Items.Cast<string>());
             //contacts
-            //airshow.Contacts.contact = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
+            //Contacts = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
             airshow.UndauntedNotes = new List<string>(this.listBoxUndauntedNotes.Items.Cast<string>());
             airshow.AirshowLinks = new List<string>(this.listBoxWeblinks.Items.Cast<string>());
 
