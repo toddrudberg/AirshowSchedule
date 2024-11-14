@@ -142,7 +142,6 @@ public partial class formMain
         openFileDialog.DefaultExt = "asg.xml";
         DialogResult dr = openFileDialog.ShowDialog();
 
-
         if (dr == DialogResult.OK)
         {
             this.Enabled = false;
@@ -150,8 +149,11 @@ public partial class formMain
             AirshowGroup asgLeft = myAirshowGroup;
 
             AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(openFileDialog.FileName);
+            bool success;
+            List<cContact> contactsRight = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
 
             List<Airshow> newShows = new List<Airshow>();
+            List<cContact> newContacts = new List<cContact>();
 
             foreach (Airshow ashow in asgRight.Airshows.myShows)
             {
@@ -159,12 +161,18 @@ public partial class formMain
                 if (foundAirshows.Count > 0)
                     continue;
                 newShows.Add(ashow);
+                foreach(int contactId in ashow.contactIds)
+                {
+                    List<cContact> contactsToAdd = contactsRight.Where(contact => contact.ID == contactId).ToList();
+                    newContacts.AddRange(contactsToAdd);
+                }
             }
 
             // Show the CompareForm
             // create a deep copy of MyAirshows
             List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
-            CompareForm compareForm = new CompareForm(newShows, copiedList, this);
+            List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
+            CompareForm compareForm = new CompareForm(newShows, newContacts, copiedList, copiedContacts, this);
             if (compareForm.ShowDialog() == DialogResult.OK)
             {
                 // ask the user if they want to save the merged data
@@ -172,6 +180,7 @@ public partial class formMain
                 if (dr2 == DialogResult.Yes)
                 {
                     myAirshowGroup.Airshows.myShows = copiedList;
+                    myContacts = copiedContacts;
                     SaveAirshowSchedule(false);
                 }
             }
@@ -188,6 +197,7 @@ public partial class formMain
 
         //for every airshow in the database, compare cities to see if they show up more than once
         List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
         foreach (Airshow ashow in copiedList)
         {
             List<Airshow> duplicatesFound = new List<Airshow>();
@@ -208,7 +218,7 @@ public partial class formMain
             MessageBox.Show("No duplicates found.");
             return;
         }
-        DialogResult dr = MessageBox.Show($"There are {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
+        DialogResult dr = MessageBox.Show($"There are approximately {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
         if (dr == DialogResult.Yes)
         {
             this.Enabled = false;
@@ -226,12 +236,12 @@ public partial class formMain
                 foreach (Airshow ashow in duplicateAirshowsFound)
                 {
                     List<Airshow> airshowsInNewDB = latestAirshowList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
-                    foreach (Airshow adup in airshowsInNewDB)
+                    foreach (Airshow airshowInNewDB in airshowsInNewDB)
                     {
-                        if (!airshowsFoundInNewDB.Contains(adup))
+                        if (!airshowsFoundInNewDB.Contains(airshowInNewDB))
                         {
-                            string airshowInNewDB = string.Concat(adup.ToString(), "\n");
-                            airshowsFoundInNewDB.Add(adup);
+                            //string airshowInNewDBstring = string.Concat(airshowInNewDB.ToString(), "\n");
+                            airshowsFoundInNewDB.Add(airshowInNewDB);
                         }
                     }
                 }
@@ -241,12 +251,14 @@ public partial class formMain
                     List<Airshow> validShows = airshowsFoundInNewDB.Where(airshow => airshow.location.Equals(dupShow.location)).ToList();
                     if (validShows.Count == 1)
                     {
+                        
                         if (!validShows[0].IsEqual(dupShow, false))
                         {
                             List<Airshow> airshowToRemove = copiedList.Where(airshow => airshow.IsEqual(dupShow, false)).ToList();
+                            
                             foreach (Airshow adup in airshowToRemove)
                             {
-                                validShows[0].AppendCustomFields(adup);
+                                validShows[0].AppendCustomFields(adup, copiedContacts);                            
                                 copiedList.Remove(adup);
                                 Console.WriteLine($"Removed {adup.ToString()}".Pastel(Color.Red));
                             }
@@ -284,12 +296,14 @@ public partial class formMain
                         string response = Console.ReadLine();
                         if (response.ToLower() == "y")
                         {
+                            
                             showsToRemove.Add(ashow);
                         }
                     }
                 }
                 foreach (Airshow airshow in showsToRemove)
-                {
+                {                    
+                    cContact.RemoveAirshowReference(copiedContacts, airshow);
                     copiedList.Remove(airshow);
                 }
 
@@ -308,6 +322,7 @@ public partial class formMain
                     if (confirm.ToLower() == "y")
                     {
                         myAirshowGroup.Airshows.myShows = copiedList;
+                        myContacts = copiedContacts;
                         SaveAirshowSchedule(false);
                     }
                 }
@@ -358,9 +373,11 @@ public partial class formMain
                 {
                     foreach (Airshow ashow in airshowToRemove2)
                     {
+                        cContact.RemoveAirshowReference(copiedContacts, ashow);
                         copiedList.Remove(ashow);
 
                     }
+                    myContacts = copiedContacts;
                     myAirshowGroup.Airshows.myShows = copiedList;
                     SaveAirshowSchedule(false);
                     Console.WriteLine("Shows removed.".Pastel(Color.Green));
@@ -384,13 +401,14 @@ public partial class formMain
 
             // Open the DeleteAirshowForm
             int Count = copiedList.Count;
-            DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList);
+            DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList, copiedContacts);
             if (deleteForm.ShowDialog() == DialogResult.OK)
             {
                 // ask the user if they want to save the merged data
                 DialogResult dr2 = MessageBox.Show("Do you want to save the merged data to the active DB?", "Save Merged Data?", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
                 {
+                    myContacts = copiedContacts;
                     myAirshowGroup.Airshows.myShows = copiedList;
                     myFilteredAirshows = myAirshowGroup.Airshows.myShows;
                     SaveAirshowSchedule(false);
@@ -406,6 +424,7 @@ public partial class formMain
     {
 
         List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
         List<Airshow> cancelledShows = copiedList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
         List<Airshow> cancelledInNote = copiedList.Where(airshow => airshow.Notes_AirshowStuff.ToLower().Contains("canc")).ToList();
         foreach (Airshow ashow in cancelledInNote)
@@ -437,6 +456,7 @@ public partial class formMain
             {
                 foreach (Airshow ashow in cancelledShows)
                 {
+                    cContact.RemoveAirshowReference(copiedContacts, ashow);
                     copiedList.Remove(ashow);
                 }
                 myAirshowGroup.Airshows.myShows = copiedList;
@@ -472,6 +492,7 @@ public partial class formMain
                 IntPtr consoleWindow = GetConsoleWindow();
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
+                List<cContact> latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
                 if (!success)
                 {
                     MessageBox.Show("Failed to load the selected file.");
@@ -489,6 +510,7 @@ public partial class formMain
                         Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
                         if (showsFound.Count == 1)
                         {
+                            cContact newContact = showsFound[0].my
                             showsFound[0].mergeAdditionalInformation(ashow, showsFound[0]);
                         }
                         else

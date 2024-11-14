@@ -110,8 +110,8 @@ namespace AirshowSchedules
                 int maxID = contacts.Max(c => c.ID);
                 int newID = maxID + 1;
                 contactToAdd.ID = newID;
-                
 
+                contactToAdd.showIDs.Clear();
                 contactToAdd.showIDs.Add(show.ID);
                 show.contactIds.Add(contactToAdd.ID);
 
@@ -143,30 +143,38 @@ namespace AirshowSchedules
             }
         }
 
-        //    public void MergeContacts(List<cContact> contactsToMerge)
+        public static void RemoveAirshowReference(List<cContact> contacts, Airshow airshowToRemove)
+        {
+            foreach(cContact contact in contacts) 
+            { 
+                contact.showIDs.Remove(airshowToRemove.ID);
+            }
+        }
+
+        //public void MergeContacts(List<cContact> contactsToMerge, Airshow airshow)
+        //{
+        //    Console.WriteLine("Merging Contacts");
+        //    foreach (cContact testContact in contactsToMerge)
         //    {
-        //        Console.WriteLine("Merging Contacts");
-        //        foreach (cContact testContact in contactsToMerge)
+        //        List<cContact> matchingContacts = myContacts.Where(c => c.name == testContact.name).ToList();
+        //        if (matchingContacts.Count == 0)
         //        {
-        //            List<cContact> matchingContacts = contact.Where(c => c.name == testContact.name).ToList();
-        //            if (matchingContacts.Count == 0)
+        //            myContacts.Add(testContact);
+        //            Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
+        //        }
+        //        else
+        //        {
+        //            foreach (cContact matchingContact in matchingContacts)
         //            {
-        //                contact.Add(testContact);
-        //                Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
-        //            }
-        //            else
-        //            {
-        //                foreach (cContact matchingContact in matchingContacts)
+        //                if (matchingContact.phone != testContact.phone)
         //                {
-        //                    if (matchingContact.phone != testContact.phone)
-        //                    {
-        //                        matchingContact.phone = testContact.phone;
-        //                        Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
-        //                    }
+        //                    matchingContact.phone = testContact.phone;
+        //                    Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
         //                }
         //            }
         //        }
         //    }
+        //}
 
     }
 }

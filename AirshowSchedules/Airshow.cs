@@ -64,10 +64,16 @@ namespace AirshowSchedules
             Console.WriteLine($"Merging Airshow Links: {newShow.AirshowLinks.Count}".Pastel(Color.Green));
             masterShow.AirshowLinks = masterShow.AirshowLinks.Union(newShow.AirshowLinks).ToList();
         }
-        public void AppendCustomFields(Airshow dupAirshow)
+        public void AppendCustomFields(Airshow dupAirshow, List<cContact> copiedContacts)
         {
+            //merge the contact lists
+            //remove the dupAirShow ID from the contacts
 
-            //cContact.MergeContacts(contactIds, dupAirshow);
+            this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
+            cContact.RemoveAirshowReference(copiedContacts, dupAirshow);
+
+            this.UndauntedNotes = this.UndauntedNotes.Union(dupAirshow.UndauntedNotes).ToList();
+            this.AirshowLinks = this.AirshowLinks.Union(dupAirshow.AirshowLinks).ToList();
 
             Notes_AirshowStuff += dupAirshow.Notes_AirshowStuff;
 
@@ -404,6 +410,14 @@ namespace AirshowSchedules
             {
                 for (int ii = 0; ii < lines.Length; ii++)
                 {
+                    // the show starts with a date, we look for the year
+                    // line 1 is the start date
+                    // line 2 is the end date
+                    // line 3 is the name of the show
+                    // line 4 is the location
+                    // performers start with a -
+                    // contacts are after performers and start with a name
+
                     if (lines[ii].StartsWith(ScheduleYear))
                     {//we got one.
 
@@ -463,9 +477,15 @@ namespace AirshowSchedules
                                 }
                                 ii = jj - 1;
                                 acontact.ID = contactID;
+                                acontact.showIDs.Add(airshowID);
+
                                 airshow.contactIds.Add(contactID);
+                                airshow.ID = airshowID;
+                                
+                                contactID++;
+                                airshowID++;
+
                                 contacts.Add(acontact);
-                                //airshow.contacts.Add(acontact);                            
                                 airshows.Add(airshow);
                                 break;
                             }

@@ -8,14 +8,18 @@ namespace AirshowSchedules
     public partial class CompareForm : Form
     {
         private List<Airshow> activeDB;
+        private List<cContact> activeContacts;
+        private List<cContact> newContacts;
 
-        public CompareForm(List<Airshow> newAirshows, List<Airshow> activeDB, System.Windows.Forms.Form mainForm)
+        public CompareForm(List<Airshow> newAirshows, List<cContact> newContacts, List<Airshow> activeDB, List<cContact> activeContacts, System.Windows.Forms.Form mainForm)
         {
             InitializeComponent(mainForm);
             CenterToMainForm(mainForm);
             PopulateCheckedListBox(newAirshows);
             
             this.activeDB = activeDB;
+            this.activeContacts = activeContacts;
+            this.newContacts = newContacts;
         }
 
         private void InitializeComponent(System.Windows.Forms.Form mainForm)
@@ -123,10 +127,11 @@ namespace AirshowSchedules
 
         private void btnMerge_Click(object sender, EventArgs e)
         {
-            foreach (var item in checkedListBox.Items)
+            foreach (Airshow airshowToAdd in checkedListBox.Items)
             {
-                Airshow airshow = (Airshow)item;
-                activeDB.Add(airshow);
+                
+                mergeContactAndAirshow(airshowToAdd);
+                
             }
             this.checkedListBox.Items.Clear();
         }
@@ -134,18 +139,43 @@ namespace AirshowSchedules
         private void btnManualMerge_Click(object sender, EventArgs e)
         {
             List<Airshow> airshowsToRemove = new List<Airshow>();
-            foreach (var item in checkedListBox.CheckedItems)
+            foreach (Airshow airshowToAdd in checkedListBox.CheckedItems)
             {
-                Airshow airshow = (Airshow)item;
-                activeDB.Add(airshow);
-                airshowsToRemove.Add(airshow);
-                
+                mergeContactAndAirshow(airshowToAdd);
+                airshowsToRemove.Add(airshowToAdd);
             }
 
             foreach (var airshow in airshowsToRemove)
             {
                 checkedListBox.Items.Remove(airshow);
             }
+        }
+
+        private void mergeContactAndAirshow(Airshow airshowToAdd)
+        {
+            //since this list is made from a fresh download, the airshowID and contactID lists aren't synched up
+            //we have to assign an airshowID and copy it to the contact
+            //we have to add the new contactID to the airshow.contactIds.  
+            //we have to remove the original contactID from the airshow.contactIds.
+            List<cContact> airshowContacts = cContact.getContacts(newContacts, airshowToAdd);
+            int airshowIDtoDelete = airshowToAdd.ID;
+            airshowToAdd.ID = activeDB.Max(a => a.ID) + 1;
+            if (airshowContacts.Count > 0)
+            {
+                List<int> contactsToDelete = new List<int>();
+                foreach (var contact in airshowContacts)
+                {
+                    contactsToDelete.Add(contact.ID);
+                    contact.showIDs.Remove(airshowIDtoDelete);
+                    cContact.addContact(activeContacts, contact, airshowToAdd);
+                }
+                airshowToAdd.contactIds = airshowToAdd.contactIds.Concat(airshowContacts.Select(c => c.ID)).Distinct().ToList();
+                foreach(var removeContactIDs in contactsToDelete)
+                {
+                    airshowToAdd.contactIds.Remove(removeContactIDs);
+                }
+            }
+            activeDB.Add(airshowToAdd);
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
