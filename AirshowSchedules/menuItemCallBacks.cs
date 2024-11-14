@@ -480,6 +480,7 @@ public partial class formMain
         List<Airshow> copiedASGlist = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
         List<cContact> copiedContactList = cContact.DeepCopy(myContacts);
         List<Airshow> latestAirshowList = new List<Airshow>();
+        List<cContact> latestContacts = new List<cContact>();
 
         {
             this.Enabled = false;
@@ -492,7 +493,7 @@ public partial class formMain
                 IntPtr consoleWindow = GetConsoleWindow();
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
-                List<cContact> latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
+                latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
                 if (!success)
                 {
                     MessageBox.Show("Failed to load the selected file.");
@@ -510,9 +511,7 @@ public partial class formMain
                         Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
                         if (showsFound.Count == 1)
                         {
-                            MessageBox.Show("You need to think about Conttacts");
-                            return;
-                            showsFound[0].mergeAdditionalInformation(ashow, showsFound[0]);
+                            showsFound[0].mergeAdditionalInformation(ashow, showsFound[0], copiedContactList, latestContacts);
                         }
                         else
                         {
@@ -526,9 +525,7 @@ public partial class formMain
                                 string response = Console.ReadLine();
                                 if (response.ToLower() == "y")
                                 {
-                                    MessageBox.Show("You need to think about Conttacts");
-                                    return;
-                                    showsFound[0].mergeAdditionalInformation(ashow, adup);
+                                    showsFound[0].mergeAdditionalInformation(ashow, adup, copiedContactList, latestContacts);
                                     break;
                                 }
                             }

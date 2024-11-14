@@ -54,9 +54,22 @@ namespace AirshowSchedules
         [Display(DisplayName = "Status:")]
         public eStatus Status { get; set; } = eStatus.none;
         
-        public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow)
+        public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow, List<cContact> copiedContacts, List<cContact> latestContacts)
         {
-            masterShow.contactIds = masterShow.contactIds.Union(newShow.contactIds).ToList();
+            List<cContact> masterContacts = cContact.getContacts(copiedContacts, masterShow);
+            List<cContact> newContacts = cContact.getContacts(latestContacts, newShow);
+
+            foreach (cContact newContact in newContacts)
+            {
+                List<cContact> existingContact = masterContacts.Where(c => c.name.Trim().ToLower() == newContact.name.Trim().ToLower()).ToList();
+                if (existingContact.Count == 0)
+                {
+                    if (newContact.name.Trim() != "")
+                    {
+                        cContact.addContact(copiedContacts, newContact, masterShow);
+                    }
+                }
+            }
             Notes_AirshowStuff += newShow.Notes_AirshowStuff;
             masterShow.Performers.MergePerformers(newShow.Performers);
             Console.WriteLine($"Merging Undaunted Notes: {newShow.UndauntedNotes.Count}".Pastel(Color.Green));
