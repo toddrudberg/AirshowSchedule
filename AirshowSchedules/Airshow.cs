@@ -27,7 +27,7 @@ namespace AirshowSchedules
         public cPerformers Performers { get; set; } = new cPerformers();
 
         // [Display(DisplayName = "Contacts:")]
-        // public cContacts Contacts { get; set; } = new cContacts(); 
+         public cContacts Contacts { get; set; } = new cContacts(); 
 
         [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
