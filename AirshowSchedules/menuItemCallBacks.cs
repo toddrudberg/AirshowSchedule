@@ -493,8 +493,9 @@ public partial class formMain
                 IntPtr consoleWindow = GetConsoleWindow();
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
-                latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
-                if (!success)
+                bool success2;
+                latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success2);
+                if (!(success && success2))
                 {
                     MessageBox.Show("Failed to load the selected file.");
                     this.Enabled = true;

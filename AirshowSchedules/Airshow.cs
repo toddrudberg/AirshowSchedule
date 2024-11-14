@@ -59,8 +59,14 @@ namespace AirshowSchedules
             List<cContact> masterContacts = cContact.getContacts(copiedContacts, masterShow);
             List<cContact> newContacts = cContact.getContacts(latestContacts, newShow);
 
+            if(newContacts.Count > 1)
+            {
+                MessageBox.Show("SomethingWong.".Pastel(Color.Green));
+            }
+
             foreach (cContact newContact in newContacts)
             {
+                
                 List<cContact> existingContact = masterContacts.Where(c => c.name.Trim().ToLower() == newContact.name.Trim().ToLower()).ToList();
                 if (existingContact.Count == 0)
                 {
