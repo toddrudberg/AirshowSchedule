@@ -61,7 +61,7 @@ namespace AirshowSchedules
 
             if(newContacts.Count > 1)
             {
-                MessageBox.Show("SomethingWong.".Pastel(Color.Green));
+                MessageBox.Show("Something Wrong.".Pastel(Color.Green));
             }
 
             foreach (cContact newContact in newContacts)
