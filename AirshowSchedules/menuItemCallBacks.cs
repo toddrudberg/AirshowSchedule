@@ -143,8 +143,6 @@ public partial class formMain
 
         if (dr == DialogResult.OK)
         {
-            this.Enabled = false;
-
             AirshowGroup asgLeft = myAirshowGroup;
 
             AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(openFileDialog.FileName);
@@ -492,7 +490,6 @@ public partial class formMain
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
                 bool success2;
                 List<cContact> latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success2);
-                List<cContact> latestContactsCopy = cContact.DeepCopy(latestContacts);
                 if (!(success && success2))
                 {
                     MessageBox.Show("Failed to load the selected file.");
@@ -505,40 +502,7 @@ public partial class formMain
                 foreach (Airshow ashow in copiedASGlist)
                 {
                     numPasses++;
-                    for( int i = 0; i < latestContactsCopy.Count; i++)
-                    {
-                        cContact copyContact = latestContactsCopy[i];
-                        cContact latestContact = latestContacts[i];
-                        //check equality item by item and throw an error if they aren't the same:
-                        if (!copyContact.IsEqual(latestContact))
-                        {
-                            Console.WriteLine(numPasses.ToString().Pastel(Color.Yellow));
-                            Console.WriteLine("The following contacts are not equal:".Pastel(Color.Yellow));
-                            Console.WriteLine(copyContact.ToString().Pastel(Color.Yellow));
-                            Console.WriteLine(latestContact.ToString().Pastel(Color.Yellow));
-                            //output each element to the console to see what is different
-                            Console.WriteLine($"{copyContact.name} - {latestContact.name}".Pastel(Color.Yellow));
-                            Console.WriteLine($"{copyContact.phone} - {latestContact.phone}".Pastel(Color.Yellow));
-                            Console.WriteLine($"{copyContact.address} - {latestContact.address}".Pastel(Color.Yellow));
-                            Console.WriteLine($"{copyContact.emailAddresses.Count} - {latestContact.emailAddresses.Count}".Pastel(Color.Yellow));
-                            Console.WriteLine($"{copyContact.showIDs.Count} - {latestContact.showIDs.Count}".Pastel(Color.Yellow));
-                            foreach (string email in copyContact.emailAddresses)
-                            {
-                                if (!latestContact.emailAddresses.Contains(email))
-                                {
-                                    Console.WriteLine($"{email} not found in latest contact".Pastel(Color.Yellow));
-                                }
-                            }
-                            foreach (int showID in copyContact.showIDs)
-                            {
-                                if (!latestContact.showIDs.Contains(showID))
-                                {
-                                    Console.WriteLine($"{showID} not found in latest contact".Pastel(Color.Yellow));
-                                }
-                            }
-                            Console.WriteLine("WTF?".Pastel(Color.Yellow));
-                        }
-                    }
+
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count > 0)
                     {
