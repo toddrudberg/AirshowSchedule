@@ -253,8 +253,6 @@ public partial class formMain : Form
     }
     #endregion
 
-
-
     #region Form Event Callbacks
 
 
