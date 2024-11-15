@@ -189,31 +189,5 @@ namespace AirshowSchedules
 
             return true;
         }
-
-        //public void MergeContacts(List<cContact> contactsToMerge, Airshow airshow)
-        //{
-        //    Console.WriteLine("Merging Contacts");
-        //    foreach (cContact testContact in contactsToMerge)
-        //    {
-        //        List<cContact> matchingContacts = myContacts.Where(c => c.name == testContact.name).ToList();
-        //        if (matchingContacts.Count == 0)
-        //        {
-        //            myContacts.Add(testContact);
-        //            Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
-        //        }
-        //        else
-        //        {
-        //            foreach (cContact matchingContact in matchingContacts)
-        //            {
-        //                if (matchingContact.phone != testContact.phone)
-        //                {
-        //                    matchingContact.phone = testContact.phone;
-        //                    Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
     }
 }
