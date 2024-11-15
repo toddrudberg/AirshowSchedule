@@ -449,11 +449,22 @@ public partial class formMain : Form
         foreach (Airshow ashow in CallReport)
         {
             string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
+            List<cContact> contacts = cContact.getContacts(myContacts, ashow);
             //contacts
-            //foreach (cContact contact in ashow.Contacts.contact)
-            //{
-            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            //}
+            foreach (cContact contact in contacts)
+            {
+               gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t";
+               foreach( string email in contact.emailAddresses)
+                {
+                    gettowork = $"{gettowork}{email}\t;";
+                }
+            }
+            foreach( string UndauntedNote in ashow.UndauntedNotes)
+            {
+                gettowork = $"{gettowork}{UndauntedNote}\t";
+            }
+
+
 
             calltheseguys.Add(gettowork);
         }
