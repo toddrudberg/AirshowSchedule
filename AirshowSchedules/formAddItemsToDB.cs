@@ -178,9 +178,7 @@ namespace AirshowSchedules
                     airshowToAdd.contactIds.Remove(removeContactIDs);
                 }
             }
-            //int maxID = activeDB.Max(a =>  (int)a.ID);
-            //int newID = maxID + 1;
-            //airshowToAdd.ID = newID;
+
             activeDB.Add(airshowToAdd);
         }
 

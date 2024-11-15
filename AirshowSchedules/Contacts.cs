@@ -86,6 +86,18 @@ namespace AirshowSchedules
             return result;
         }
 
+        public cContact DeepCopy()
+        {
+            cContact newContact = new cContact();
+            newContact.ID = ID;
+            newContact.name = name;
+            newContact.phone = phone;
+            newContact.address = address;
+            newContact.emailAddresses = new List<string>(emailAddresses);
+            newContact.showIDs = new List<int>(showIDs);
+            return newContact;
+        }
+
         public static List<cContact> getContacts(List<cContact> contacts, Airshow show)
         {
             List<cContact> result = contacts.Where(c => c.showIDs.Contains(show.ID)).ToList();
@@ -105,40 +117,42 @@ namespace AirshowSchedules
 
             //bind the contacts to the show and the show to the contact
 
+            cContact contact = contactToAdd.DeepCopy();
+
             if (duplicateContact.Count == 0)
             {
                 int maxID = contacts.Max(c => c.ID);
                 int newID = maxID + 1;
-                contactToAdd.ID = newID;
+                contact.ID = newID;
 
-                contactToAdd.showIDs.Clear();
-                contactToAdd.showIDs.Add(show.ID);
-                show.contactIds.Add(contactToAdd.ID);
+                contact.showIDs.Clear();
+                contact.showIDs.Add(show.ID);
+                show.contactIds.Add(contact.ID);
 
-                contacts.Add(contactToAdd);
+                contacts.Add(contact);
             }
             else if (duplicateContact.Count == 1)
             {
                 cContact existingContact = duplicateContact[0];
-                if (existingContact.phone == null && contactToAdd.phone != null)
+                if (existingContact.phone == null && contact.phone != null)
                 {
-                    existingContact.phone = contactToAdd.phone;
+                    existingContact.phone = contact.phone;
                 }
-                if (existingContact.phone != null && contactToAdd.phone != null && !existingContact.phone.Contains(contactToAdd.phone))
+                if (existingContact.phone != null && contact.phone != null && !existingContact.phone.Contains(contact.phone))
                 {
-                    existingContact.phone += " / " + contactToAdd.phone;
+                    existingContact.phone += " / " + contact.phone;
                 }
-                contactToAdd.showIDs.Add(show.ID);
-                existingContact.address = contactToAdd.address;
+                contact.showIDs.Add(show.ID);
+                existingContact.address = contact.address;
 
-                existingContact.showIDs = existingContact.showIDs.Union(contactToAdd.showIDs).ToList();
-                existingContact.emailAddresses = existingContact.emailAddresses.Union(contactToAdd.emailAddresses).ToList();
+                existingContact.showIDs = existingContact.showIDs.Union(contact.showIDs).ToList();
+                existingContact.emailAddresses = existingContact.emailAddresses.Union(contact.emailAddresses).ToList();
 
                 show.contactIds.Add(existingContact.ID);
             }
             else
             {
-                Console.WriteLine($"Duplicate Contact: {contactToAdd.name} appers in the database more than once".Pastel(Color.Red));
+                Console.WriteLine($"Duplicate Contact: {contact.name} appers in the database more than once".Pastel(Color.Red));
                 foreach (cContact existingContact in duplicateContact)
                 {
                     Console.WriteLine($"ID: {existingContact.ID}".Pastel(Color.Yellow));
@@ -153,6 +167,27 @@ namespace AirshowSchedules
             { 
                 contact.showIDs.Remove(airshowToRemove.ID);
             }
+        }
+
+        internal bool IsEqual(cContact latestContact)
+        {
+            if (latestContact.name != name) return false;
+            if (latestContact.phone != phone) return false;
+            if (latestContact.address != address) return false;
+            if (latestContact.emailAddresses.Count != emailAddresses.Count) return false;
+            if (latestContact.showIDs.Count != showIDs.Count) return false;
+
+            foreach (string email in latestContact.emailAddresses)
+            {
+                if (!emailAddresses.Contains(email)) return false;
+            }
+
+            foreach (int showID in latestContact.showIDs)
+            {
+                if (!showIDs.Contains(showID)) return false;
+            }
+
+            return true;
         }
 
         //public void MergeContacts(List<cContact> contactsToMerge, Airshow airshow)

@@ -57,11 +57,23 @@ namespace AirshowSchedules
         public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow, List<cContact> copiedContacts, List<cContact> latestContacts)
         {
             List<cContact> masterContacts = cContact.getContacts(copiedContacts, masterShow);
+            Console.WriteLine($"Master: {masterShow.name_airshow} ID {masterShow.ID} has {masterContacts.Count} contacts.".Pastel(Color.LimeGreen));
+            foreach (cContact contact in masterContacts)
+            {
+                Console.WriteLine($"{contact.name} with ID: {contact.ID}");
+            }
+
             List<cContact> newContacts = cContact.getContacts(latestContacts, newShow);
+            Console.WriteLine($"New: {newShow.name_airshow} ID {newShow.ID} has {newContacts.Count} contacts.".Pastel(Color.LimeGreen));
+            foreach (cContact contact in newContacts)
+            {
+                Console.WriteLine($"{contact.name} with ID: {contact.ID}");
+            }
 
             if(newContacts.Count > 1)
             {
                 MessageBox.Show("Something Wrong.".Pastel(Color.Green));
+                List<cContact> test = cContact.getContacts(latestContacts, newShow);
             }
 
             foreach (cContact newContact in newContacts)
@@ -151,9 +163,8 @@ namespace AirshowSchedules
                         string[] dog = rawstring.Split(',');
                         if (dog.Length > 0)
                         {
-                            csString oldshitty = new csString();
                             City = dog[0].Trim();
-                            oldshitty.KillChar(ref City, '\"');
+                            City = City.Replace("\\", "");
                         }
                     }
                     return City;
@@ -361,12 +372,12 @@ namespace AirshowSchedules
             if (name.ToUpper() == this.name_airshow.ToUpper())
                 return true;
 
-            csString cs = new csString();
-            string name_clean = this.name_airshow.ToUpper();
+            string name_clean = this.name_airshow.Trim().ToUpper();
             char[] kill = { ',', '-', '$', '&', '(', ')', '\t' };
             foreach (char killchar in kill)
             {
-                cs.KillChar(ref name_clean, killchar);
+
+                name_clean = name_clean.Replace(killchar.ToString(), "");
             }
 
             int n = 0;
@@ -520,12 +531,7 @@ namespace AirshowSchedules
 
                     string linein = lines[ii];
 
-                    csString stringer = new csString();
-
-                    //if (linein.Contains("\""))
-                    //  MessageBox.Show("WTF");
-
-                    stringer.KillChar(ref linein, '\"');
+                    linein = linein.Replace("\"", "");
 
                     string[] line = linein.Split('\t');
 

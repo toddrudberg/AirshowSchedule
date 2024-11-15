@@ -135,7 +135,6 @@ public partial class formMain
     private void compareToActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
     {
 
-        this.Enabled = false;
         OpenFileDialog openFileDialog = new OpenFileDialog();
         openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
         openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
@@ -184,8 +183,6 @@ public partial class formMain
                     SaveAirshowSchedule(false);
                 }
             }
-
-            this.Enabled = true;
         }
     }
     private void cleanUpDBToolStripMenuItem_Click(object sender, EventArgs e)
@@ -480,7 +477,7 @@ public partial class formMain
         List<Airshow> copiedASGlist = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
         List<cContact> copiedContactList = cContact.DeepCopy(myContacts);
         List<Airshow> latestAirshowList = new List<Airshow>();
-        List<cContact> latestContacts = new List<cContact>();
+        
 
         {
             this.Enabled = false;
@@ -494,7 +491,8 @@ public partial class formMain
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
                 bool success2;
-                latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success2);
+                List<cContact> latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success2);
+                List<cContact> latestContactsCopy = cContact.DeepCopy(latestContacts);
                 if (!(success && success2))
                 {
                     MessageBox.Show("Failed to load the selected file.");
@@ -503,13 +501,48 @@ public partial class formMain
                 }
 
                 latestAirshowList = asgLatest.Airshows.myShows.ToList();
-
+                int numPasses = 0;
                 foreach (Airshow ashow in copiedASGlist)
                 {
+                    numPasses++;
+                    for( int i = 0; i < latestContactsCopy.Count; i++)
+                    {
+                        cContact copyContact = latestContactsCopy[i];
+                        cContact latestContact = latestContacts[i];
+                        //check equality item by item and throw an error if they aren't the same:
+                        if (!copyContact.IsEqual(latestContact))
+                        {
+                            Console.WriteLine(numPasses.ToString().Pastel(Color.Yellow));
+                            Console.WriteLine("The following contacts are not equal:".Pastel(Color.Yellow));
+                            Console.WriteLine(copyContact.ToString().Pastel(Color.Yellow));
+                            Console.WriteLine(latestContact.ToString().Pastel(Color.Yellow));
+                            //output each element to the console to see what is different
+                            Console.WriteLine($"{copyContact.name} - {latestContact.name}".Pastel(Color.Yellow));
+                            Console.WriteLine($"{copyContact.phone} - {latestContact.phone}".Pastel(Color.Yellow));
+                            Console.WriteLine($"{copyContact.address} - {latestContact.address}".Pastel(Color.Yellow));
+                            Console.WriteLine($"{copyContact.emailAddresses.Count} - {latestContact.emailAddresses.Count}".Pastel(Color.Yellow));
+                            Console.WriteLine($"{copyContact.showIDs.Count} - {latestContact.showIDs.Count}".Pastel(Color.Yellow));
+                            foreach (string email in copyContact.emailAddresses)
+                            {
+                                if (!latestContact.emailAddresses.Contains(email))
+                                {
+                                    Console.WriteLine($"{email} not found in latest contact".Pastel(Color.Yellow));
+                                }
+                            }
+                            foreach (int showID in copyContact.showIDs)
+                            {
+                                if (!latestContact.showIDs.Contains(showID))
+                                {
+                                    Console.WriteLine($"{showID} not found in latest contact".Pastel(Color.Yellow));
+                                }
+                            }
+                            Console.WriteLine("WTF?".Pastel(Color.Yellow));
+                        }
+                    }
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count > 0)
                     {
-                        Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
+                        Console.WriteLine($"Airshow {ashow.ToString()} may have a change, looking for items to add.".Pastel(Color.Yellow));
                         if (showsFound.Count == 1)
                         {
                             showsFound[0].mergeAdditionalInformation(ashow, showsFound[0], copiedContactList, latestContacts);
@@ -533,6 +566,7 @@ public partial class formMain
                         }
                     }
                 }
+                myContacts = copiedContactList;
                 myAirshowGroup.Airshows.myShows = copiedASGlist;
                 SaveAirshowSchedule(false);
                 MessageBox.Show("Additional fields updated successfully.");
