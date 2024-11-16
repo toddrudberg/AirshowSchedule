@@ -16,14 +16,16 @@ namespace AirshowSchedules
         private TextBox txtShowLocation;
         private CheckedListBox clbShowRegion;
         private TextBox txtContactName;
-        private Button btnSearch;
         private Label lblShowName;
         private Label lblShowLocation;
-        private Label lblShowRegion;
         private ListBox lstAirshows;
         private ListBox lstContacts;
         private Button btnFilterClearAll;
         private Button btnFilterSetAll;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Label label1;
+        private Label label2;
+        private Label label3;
         private Label lblContactName;
 
         public formSearch(AirshowGroup group, List<cContact> contacts, Regions regions)
@@ -44,15 +46,17 @@ namespace AirshowSchedules
             txtShowName = new TextBox();
             lblShowLocation = new Label();
             txtShowLocation = new TextBox();
-            lblShowRegion = new Label();
             clbShowRegion = new CheckedListBox();
             lblContactName = new Label();
             txtContactName = new TextBox();
-            btnSearch = new Button();
             lstAirshows = new ListBox();
             lstContacts = new ListBox();
             btnFilterClearAll = new Button();
             btnFilterSetAll = new Button();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             SuspendLayout();
             // 
             // lblShowName
@@ -87,14 +91,6 @@ namespace AirshowSchedules
             txtShowLocation.TabIndex = 3;
             txtShowLocation.TextChanged += txtShowLocation_TextChanged;
             // 
-            // lblShowRegion
-            // 
-            lblShowRegion.Location = new Point(397, 20);
-            lblShowRegion.Name = "lblShowRegion";
-            lblShowRegion.Size = new Size(100, 23);
-            lblShowRegion.TabIndex = 4;
-            lblShowRegion.Text = "Show Region:";
-            // 
             // clbShowRegion
             // 
             clbShowRegion.Location = new Point(503, 20);
@@ -119,22 +115,13 @@ namespace AirshowSchedules
             txtContactName.TabIndex = 7;
             txtContactName.TextChanged += txtContactName_TextChanged;
             // 
-            // btnSearch
-            // 
-            btnSearch.Location = new Point(20, 181);
-            btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
-            btnSearch.TabIndex = 8;
-            btnSearch.Text = "Search";
-            btnSearch.Click += BtnSearch_Click;
-            // 
             // lstAirshows
             // 
             lstAirshows.FormattingEnabled = true;
             lstAirshows.ItemHeight = 15;
-            lstAirshows.Location = new Point(20, 210);
+            lstAirshows.Location = new Point(20, 225);
             lstAirshows.Name = "lstAirshows";
-            lstAirshows.Size = new Size(550, 469);
+            lstAirshows.Size = new Size(550, 454);
             lstAirshows.TabIndex = 9;
             lstAirshows.SelectedIndexChanged += lstAirshows_SelectedIndexChanged;
             // 
@@ -142,9 +129,9 @@ namespace AirshowSchedules
             // 
             lstContacts.FormattingEnabled = true;
             lstContacts.ItemHeight = 15;
-            lstContacts.Location = new Point(576, 210);
+            lstContacts.Location = new Point(576, 225);
             lstContacts.Name = "lstContacts";
-            lstContacts.Size = new Size(191, 469);
+            lstContacts.Size = new Size(191, 454);
             lstContacts.TabIndex = 10;
             lstContacts.SelectedIndexChanged += lstContacts_SelectedIndexChanged;
             // 
@@ -168,9 +155,39 @@ namespace AirshowSchedules
             btnFilterSetAll.UseVisualStyleBackColor = true;
             btnFilterSetAll.Click += btnFilterSetAll_Click;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(576, 207);
+            label1.Name = "label1";
+            label1.Size = new Size(54, 15);
+            label1.TabIndex = 13;
+            label1.Text = "Contacts";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(20, 207);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 15);
+            label2.TabIndex = 14;
+            label2.Text = "Airshows";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(503, 2);
+            label3.Name = "label3";
+            label3.Size = new Size(76, 15);
+            label3.TabIndex = 15;
+            label3.Text = "Show Region";
+            // 
             // formSearch
             // 
             ClientSize = new Size(800, 711);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Controls.Add(btnFilterSetAll);
             Controls.Add(btnFilterClearAll);
             Controls.Add(lstContacts);
@@ -179,11 +196,9 @@ namespace AirshowSchedules
             Controls.Add(txtShowName);
             Controls.Add(lblShowLocation);
             Controls.Add(txtShowLocation);
-            Controls.Add(lblShowRegion);
             Controls.Add(clbShowRegion);
             Controls.Add(lblContactName);
             Controls.Add(txtContactName);
-            Controls.Add(btnSearch);
             Name = "formSearch";
             Text = "Search Form";
             Load += formSearch_Load;
