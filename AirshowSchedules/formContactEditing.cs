@@ -240,6 +240,8 @@ namespace AirshowSchedules
                 prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
                 prompt.Text = caption;
                 prompt.StartPosition = FormStartPosition.CenterScreen;
+                prompt.AutoScaleDimensions = new SizeF(7F, 15F);
+                prompt.AutoScaleMode = AutoScaleMode.Font;
 
                 Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
                 TextBox textBox = new TextBox() { Left = 50, Top = 50, Width = 300, Text = existingText };
