@@ -69,6 +69,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            advancedSearchToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -350,7 +351,7 @@
             // 
             // searchToolStripMenuItem
             // 
-            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contactToolStripMenuItem });
+            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contactToolStripMenuItem, advancedSearchToolStripMenuItem });
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             searchToolStripMenuItem.Size = new Size(54, 22);
             searchToolStripMenuItem.Text = "Search";
@@ -358,7 +359,7 @@
             // contactToolStripMenuItem
             // 
             contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            contactToolStripMenuItem.Size = new Size(146, 22);
+            contactToolStripMenuItem.Size = new Size(180, 22);
             contactToolStripMenuItem.Text = "Search Dialog";
             contactToolStripMenuItem.Click += contactToolStripMenuItem_Click;
             // 
@@ -386,6 +387,13 @@
             btnDeleteShow.Text = "Delete A Show";
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
+            // 
+            // advancedSearchToolStripMenuItem
+            // 
+            advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
+            advancedSearchToolStripMenuItem.Size = new Size(180, 22);
+            advancedSearchToolStripMenuItem.Text = "Advanced Search";
+            advancedSearchToolStripMenuItem.Click += advancedSearchToolStripMenuItem_Click;
             // 
             // formMain
             // 
@@ -457,5 +465,6 @@
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
+        private ToolStripMenuItem advancedSearchToolStripMenuItem;
     }
 }

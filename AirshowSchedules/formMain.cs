@@ -451,13 +451,13 @@ public partial class formMain : Form
             //contacts
             foreach (cContact contact in contacts)
             {
-               gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t";
-               foreach( string email in contact.emailAddresses)
+                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t";
+                foreach (string email in contact.emailAddresses)
                 {
                     gettowork = $"{gettowork}{email}\t;";
                 }
             }
-            foreach( string UndauntedNote in ashow.UndauntedNotes)
+            foreach (string UndauntedNote in ashow.UndauntedNotes)
             {
                 gettowork = $"{gettowork}{UndauntedNote}\t";
             }
@@ -744,6 +744,14 @@ public partial class formMain : Form
             }
             SaveContacts(false);
         }
+    }
+
+    private void advancedSearchToolStripMenuItem_Click(object sender, EventArgs e)
+    {
+            using (formSearch searchForm = new formSearch(myAirshowGroup, myContacts, myRegions))
+            {
+                searchForm.ShowDialog();
+            }
     }
 
 
