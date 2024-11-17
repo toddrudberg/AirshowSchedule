@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
@@ -26,6 +27,9 @@ namespace AirshowSchedules
         private Label label1;
         private Label label2;
         private Label label3;
+        private CheckedListBox clbStatus;
+        private Label label4;
+        private Button btnGenerateReport;
         private Label lblContactName;
 
         public formSearch(AirshowGroup group, List<cContact> contacts, Regions regions)
@@ -38,6 +42,8 @@ namespace AirshowSchedules
             InitializeForm(GetRegions());
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
+            //fill in the clbStatus with the enumStatus values
+
         }
 
         private void InitializeComponent()
@@ -57,6 +63,9 @@ namespace AirshowSchedules
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            clbStatus = new CheckedListBox();
+            label4 = new Label();
+            btnGenerateReport = new Button();
             SuspendLayout();
             // 
             // lblShowName
@@ -182,9 +191,40 @@ namespace AirshowSchedules
             label3.TabIndex = 15;
             label3.Text = "Show Region";
             // 
+            // clbStatus
+            // 
+            clbStatus.FormattingEnabled = true;
+            clbStatus.Location = new Point(386, 20);
+            clbStatus.Name = "clbStatus";
+            clbStatus.Size = new Size(111, 130);
+            clbStatus.TabIndex = 16;
+            clbStatus.ItemCheck += clbStatus_SelectedIndexChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(386, 2);
+            label4.Name = "label4";
+            label4.Size = new Size(39, 15);
+            label4.TabIndex = 17;
+            label4.Text = "Status";
+            // 
+            // btnGenerateReport
+            // 
+            btnGenerateReport.Location = new Point(25, 176);
+            btnGenerateReport.Name = "btnGenerateReport";
+            btnGenerateReport.Size = new Size(127, 23);
+            btnGenerateReport.TabIndex = 18;
+            btnGenerateReport.Text = "Generate Report";
+            btnGenerateReport.UseVisualStyleBackColor = true;
+            btnGenerateReport.Click += btnGenerateReport_Click;
+            // 
             // formSearch
             // 
             ClientSize = new Size(800, 711);
+            Controls.Add(btnGenerateReport);
+            Controls.Add(label4);
+            Controls.Add(clbStatus);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -213,8 +253,6 @@ namespace AirshowSchedules
 
         private void InitializeForm(Regions regions)
         {
-
-
             // Populate the ComboBox with regions
             foreach (var region in regions.GetRegionList())
             {
@@ -225,6 +263,14 @@ namespace AirshowSchedules
             {
                 clbShowRegion.SetItemChecked(i, true);
             }
+
+            this.clbStatus.DataSource = Enum.GetValues(typeof(Airshow.eStatus));
+            //select all the status options
+            for (int i = 0; i < clbStatus.Items.Count; i++)
+            {
+                clbStatus.SetItemChecked(i, true);
+            }
+
         }
 
         private void BtnSearch_Click(object sender, EventArgs e)
@@ -236,13 +282,16 @@ namespace AirshowSchedules
             performSerch();
         }
 
-        private void performSerch(List<object> updatedCheckedItems = null)
+        private void performSerch(List<object> updatedCheckedItems = null, List<object> updateStatusCheckedItems = null)
         {
             //we dont't want to modify our masterlist.
             List<Airshow> searchAirshows = Airshow.DeepCopy(airshowGroup.Airshows.myShows);
             //pair down searchAirshow by region
 
             searchAirshows = filterByRegion(searchAirshows, updatedCheckedItems);
+            searchAirshows = filterByStatus(searchAirshows, updateStatusCheckedItems);
+
+
             List<cContact> searchContacts = cContact.DeepCopy(this.contacts);
 
 
@@ -393,6 +442,30 @@ namespace AirshowSchedules
             performSerch();
         }
 
+        private List<Airshow> filterByStatus(List<Airshow> TheseAirshows, List<object> updatedCheckedItems = null)
+        {
+            // Use the updatedCheckedItems if provided, otherwise fall back to clbStatus.CheckedItems
+            var checkedItems = updatedCheckedItems ?? clbStatus.CheckedItems.Cast<object>().ToList();
+
+            // Initialize a new list to store the filtered airshows
+            List<Airshow> FilteredAirshows = new List<Airshow>();
+
+            // Iterate over the input list of airshows
+            foreach (Airshow airshow in TheseAirshows)
+            {
+                // Check if the status matches any of the checked items
+                foreach (Airshow.eStatus status in checkedItems)
+                {
+                    if (airshow.Status == status)
+                    {
+                        FilteredAirshows.Add(airshow);
+                    }
+                }
+            }
+
+            // Return the filtered list of airshows
+            return FilteredAirshows;
+        }
         private List<Airshow> filterByRegion(List<Airshow> TheseAirshows, List<object> updatedCheckedItems = null)
         {
             // Use the updatedCheckedItems if provided, otherwise fall back to clbShowRegion.CheckedItems
@@ -450,7 +523,26 @@ namespace AirshowSchedules
                 performSerch(checkedItems);
             }
         }
+        private void clbStatus_SelectedIndexChanged(object sender, ItemCheckEventArgs e)
+        {
+            if (!isFormLoading)
+            {
+                // Clone current CheckedItems list into a new collection
+                var checkedItems = clbStatus.CheckedItems.Cast<object>().ToList();
 
+                // Apply the pending change
+                var changedItem = clbStatus.Items[e.Index];
+                if (e.NewValue == CheckState.Checked)
+                {
+                    checkedItems.Add(changedItem);
+                }
+                else
+                {
+                    checkedItems.Remove(changedItem);
+                }
+                performSerch(null, checkedItems);
+            }
+        }
         private void formSearch_Load(object sender, EventArgs e)
         {
             isFormLoading = false;
@@ -472,6 +564,87 @@ namespace AirshowSchedules
                     }
                 }
             }
+        }
+
+        private void btnGenerateReport_Click(object sender, EventArgs e)
+        {
+            string result = "";
+            string header = "";
+            header += "Start Date\t";
+            header += "End Date\t";
+            header += "Airshow Name\t";
+            header += "City\t";
+            header += "State\t";
+            header += "Status\t";
+            header += "Undaunted Notes\t";
+            int maxContacts = 1;
+
+
+            foreach (Airshow show in lstAirshows.Items)
+            {
+                // Add airshow details
+                result += show.date_start + "\t"
+                        + show.date_finish + "\t"
+                        + show.name_airshow + "\t"
+                        + show.location.city + "\t"
+                        + show.location.state + "\t"
+                        + show.Status + "\t";
+
+                // Add Undaunted notes with line breaks
+                string undauntedNotes = "";
+                foreach(string note in show.UndauntedNotes)
+                {
+                    undauntedNotes += note + "\r\n";
+                }
+                if( undauntedNotes.Length > 1 )
+                    undauntedNotes = undauntedNotes.Substring(0, undauntedNotes.Length - 2);
+
+                result += "\"" + undauntedNotes + "\"" + "\t";
+
+                // Add contacts
+                List<cContact> showContacts = cContact.getContacts(contacts, show);
+
+                string showContactDeets = "";
+                string stringShowContacts = "";
+
+                int count = 0;
+                foreach (cContact contact in showContacts)
+                {                   
+                    count++;
+                    showContactDeets += contact.name + "\r\n";
+                    if( contact.phone != null && contact.phone != "")
+                        showContactDeets += contact.phone + "\r\n";
+
+                    foreach( string email in contact.emailAddresses)
+                    {
+                        showContactDeets += email + "\r\n";
+                    }
+                    if( showContactDeets.Length > 2)
+                        showContactDeets = showContactDeets.Substring(0, showContactDeets.Length - 2);
+
+                    stringShowContacts += "\"" + showContactDeets + "\"" + "\t";
+                    showContactDeets = "";
+                    if( count > maxContacts)
+                    {
+                        maxContacts = count;
+                    }
+                }
+
+                result += stringShowContacts + "\n";
+                
+            }
+            for (int i = 0; i < maxContacts; i++)
+            {
+                header += "Contact " + (i + 1) + "\t";
+            }
+            result = header + "\n" + result;
+
+            // Copy to clipboard
+            Clipboard.SetText(result);
+            // write out to a file on the desktop:
+            string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+            string filePath = desktopPath + "\\AirshowReport.txt";
+            System.IO.File.WriteAllText(filePath, result);
         }
     }
 }
