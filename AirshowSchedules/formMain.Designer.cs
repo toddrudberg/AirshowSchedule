@@ -59,17 +59,11 @@
             updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
             setYearOfInterestToolStripMenuItem = new ToolStripMenuItem();
             exportContactsToolStripMenuItem = new ToolStripMenuItem();
-            reportsToolStripMenuItem = new ToolStripMenuItem();
-            generateCallListToolStripMenuItem = new ToolStripMenuItem();
-            generateBookedListToolStripMenuItem = new ToolStripMenuItem();
-            generateICASMailingListToolStripMenuItem = new ToolStripMenuItem();
-            generateICASMailingListAllInRegionToolStripMenuItem = new ToolStripMenuItem();
             searchToolStripMenuItem = new ToolStripMenuItem();
-            contactToolStripMenuItem = new ToolStripMenuItem();
+            advancedSearchToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            advancedSearchToolStripMenuItem = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -192,7 +186,7 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, dataBaseManagementToolStripMenuItem, reportsToolStripMenuItem, searchToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, dataBaseManagementToolStripMenuItem, searchToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
@@ -314,54 +308,19 @@
             exportContactsToolStripMenuItem.Size = new Size(234, 22);
             exportContactsToolStripMenuItem.Text = "Reform DB extracting contacts";
             // 
-            // reportsToolStripMenuItem
-            // 
-            reportsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateCallListToolStripMenuItem, generateBookedListToolStripMenuItem, generateICASMailingListToolStripMenuItem, generateICASMailingListAllInRegionToolStripMenuItem });
-            reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            reportsToolStripMenuItem.Size = new Size(59, 22);
-            reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // generateCallListToolStripMenuItem
-            // 
-            generateCallListToolStripMenuItem.Name = "generateCallListToolStripMenuItem";
-            generateCallListToolStripMenuItem.Size = new Size(213, 22);
-            generateCallListToolStripMenuItem.Text = "Generate Call List";
-            generateCallListToolStripMenuItem.Click += generateCallListToolStripMenuItem_Click;
-            // 
-            // generateBookedListToolStripMenuItem
-            // 
-            generateBookedListToolStripMenuItem.Name = "generateBookedListToolStripMenuItem";
-            generateBookedListToolStripMenuItem.Size = new Size(213, 22);
-            generateBookedListToolStripMenuItem.Text = "Generate Booked List";
-            generateBookedListToolStripMenuItem.Click += generateBookedListToolStripMenuItem_Click;
-            // 
-            // generateICASMailingListToolStripMenuItem
-            // 
-            generateICASMailingListToolStripMenuItem.Name = "generateICASMailingListToolStripMenuItem";
-            generateICASMailingListToolStripMenuItem.Size = new Size(213, 22);
-            generateICASMailingListToolStripMenuItem.Text = "Generate ICAS Mailing List";
-            generateICASMailingListToolStripMenuItem.Click += generateICASMailingListToolStripMenuItem_Click;
-            // 
-            // generateICASMailingListAllInRegionToolStripMenuItem
-            // 
-            generateICASMailingListAllInRegionToolStripMenuItem.Name = "generateICASMailingListAllInRegionToolStripMenuItem";
-            generateICASMailingListAllInRegionToolStripMenuItem.Size = new Size(213, 22);
-            generateICASMailingListAllInRegionToolStripMenuItem.Text = "All in Filtered Region";
-            generateICASMailingListAllInRegionToolStripMenuItem.Click += generateICASMailingListAllInRegionToolStripMenuItem_Click;
-            // 
             // searchToolStripMenuItem
             // 
-            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contactToolStripMenuItem, advancedSearchToolStripMenuItem });
+            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { advancedSearchToolStripMenuItem });
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             searchToolStripMenuItem.Size = new Size(54, 22);
             searchToolStripMenuItem.Text = "Search";
             // 
-            // contactToolStripMenuItem
+            // advancedSearchToolStripMenuItem
             // 
-            contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            contactToolStripMenuItem.Size = new Size(180, 22);
-            contactToolStripMenuItem.Text = "Search Dialog";
-            contactToolStripMenuItem.Click += contactToolStripMenuItem_Click;
+            advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
+            advancedSearchToolStripMenuItem.Size = new Size(180, 22);
+            advancedSearchToolStripMenuItem.Text = "Advanced Search";
+            advancedSearchToolStripMenuItem.Click += advancedSearchToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
@@ -387,13 +346,6 @@
             btnDeleteShow.Text = "Delete A Show";
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
-            // 
-            // advancedSearchToolStripMenuItem
-            // 
-            advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
-            advancedSearchToolStripMenuItem.Size = new Size(180, 22);
-            advancedSearchToolStripMenuItem.Text = "Advanced Search";
-            advancedSearchToolStripMenuItem.Click += advancedSearchToolStripMenuItem_Click;
             // 
             // formMain
             // 
@@ -437,15 +389,9 @@
         private Button btnFilterClearAll;
         private Button btnFilterShows;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem reportsToolStripMenuItem;
-        private ToolStripMenuItem generateCallListToolStripMenuItem;
-        private ToolStripMenuItem generateBookedListToolStripMenuItem;
-        private ToolStripMenuItem generateICASMailingListToolStripMenuItem;
-        private ToolStripMenuItem generateICASMailingListAllInRegionToolStripMenuItem;
         private Button btnDeleteShow;
         private Button btnCheckForDuplicates;
     private ToolStripMenuItem searchToolStripMenuItem;
-    private ToolStripMenuItem contactToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;

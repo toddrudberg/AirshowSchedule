@@ -129,7 +129,7 @@ public partial class formMain
         //if there is a show this weekend at all, the cell is bolded regardless of state. 
         List<Airshow> actionShows = theseshows.Where(x => x.Status != eStatus.none && x.Status != eStatus.NO).ToList();
 
-        bool refreshAll = theseshows.Count == myAirshowGroup.Airshows.myShows.Count;
+        bool refreshAll = theseshows.Count == myAirshowGroup.GetAirshowsForYear().Count;
 
 
         //actionShows = actionShows.OrderByDescending(x => x.Status).ToList();

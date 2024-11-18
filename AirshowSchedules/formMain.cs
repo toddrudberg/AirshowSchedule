@@ -80,7 +80,7 @@ public partial class formMain : Form
 
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
-            myFilteredAirshows = myAirshowGroup.Airshows.myShows.ToList();
+            myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();
             ColorGrid(myFilteredAirshows);
 
             // Get the execution directory
@@ -199,7 +199,7 @@ public partial class formMain : Form
         SaveAirshowSchedule(DoFileDialogue, myAirshowGroup);
         SaveContacts(DoFileDialogue);
         btnFilterShows_Click(null, null);
-        ColorGrid(myAirshowGroup.Airshows.myShows);
+        ColorGrid(myAirshowGroup.GetAirshowsForYear());
         ColorGrid(myFilteredAirshows);
     }
 
@@ -286,7 +286,7 @@ public partial class formMain : Form
                     DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
                     AirshowWeekend asw = new AirshowWeekend(dateTime);
 
-                    List<Airshow> airshowsthisweek = myAirshowGroup.Airshows.myShows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
+                    List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
                     airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
 
                     List<string> shownames = new List<string>();
@@ -411,7 +411,7 @@ public partial class formMain : Form
     private void btnFilterShows_Click(object sender, EventArgs e)
     {
         List<Airshow> FilteredAirshows = new List<Airshow>();
-        foreach (Airshow airshow in myAirshowGroup.Airshows.myShows)
+        foreach (Airshow airshow in myAirshowGroup.GetAirshowsForYear())
         {
             string rgn = "";
             string state = airshow.location.state.ToUpper();
@@ -436,38 +436,6 @@ public partial class formMain : Form
         ColorGrid(myFilteredAirshows);
     }
 
-    private void generateCallListToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.maybe || x.Status == eStatus.verbal).ToList();
-
-        CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
-
-        List<string> calltheseguys = new List<string>();
-        calltheseguys.Add($"Date\tStatus\tName\tLocation\tNotes\tContact");
-        foreach (Airshow ashow in CallReport)
-        {
-            string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            List<cContact> contacts = cContact.getContacts(myContacts, ashow);
-            //contacts
-            foreach (cContact contact in contacts)
-            {
-                gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t";
-                foreach (string email in contact.emailAddresses)
-                {
-                    gettowork = $"{gettowork}{email}\t;";
-                }
-            }
-            foreach (string UndauntedNote in ashow.UndauntedNotes)
-            {
-                gettowork = $"{gettowork}{UndauntedNote}\t";
-            }
-
-
-
-            calltheseguys.Add(gettowork);
-        }
-        showSearchResults(calltheseguys);
-    }
 
     private void ShowDataInForm(string allthedata)
     {
@@ -510,28 +478,7 @@ public partial class formMain : Form
         dataForm.ShowDialog();
     }
 
-    private void generateBookedListToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.contract).ToList();
 
-        CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
-
-        List<string> calltheseguys = new List<string>();
-        calltheseguys.Add($"Date\tStatus\tName\tLocation\tNotes\tContact");
-
-        foreach (Airshow ashow in CallReport)
-        {
-            string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            //contacts
-            //foreach (cContact contact in ashow.Contacts.contact)
-            //{
-            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            //}
-
-            calltheseguys.Add(gettowork);
-        }
-        showSearchResults(calltheseguys);
-    }
 
     private void showSearchResults(List<string> calltheseguys)
     {
@@ -546,48 +493,6 @@ public partial class formMain : Form
         ShowDataInForm(fortextbox);
         // copy to clipboard:
         Clipboard.SetText(allthedata);
-    }
-
-    private void generateICASMailingListToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        List<Airshow> CallReport = myAirshowGroup.Airshows.myShows.Where(x => x.Status == eStatus.pursue || x.Status == eStatus.verbal || x.Status == eStatus.NO || x.Status == eStatus.contract || x.Status == eStatus.maybe).ToList();
-
-        CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
-
-        List<string> calltheseguys = new List<string>();
-        foreach (Airshow ashow in CallReport)
-        {
-            string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.Notes_AirshowStuff}";
-            //contacts
-            //foreach (cContact contact in ashow.Contacts.contact)
-            //{
-            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            //}
-
-            calltheseguys.Add(gettowork);
-        }
-        showSearchResults(calltheseguys);
-    }
-
-    private void generateICASMailingListAllInRegionToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        List<Airshow> CallReport = myFilteredAirshows.ToList();
-        CallReport = CallReport.OrderBy(x => x.WeekNumber).ToList();
-
-        List<string> calltheseguys = new List<string>();
-        calltheseguys.Add($"Date\tStatus\tName\tLocation\tNotes\tContact");
-        foreach (Airshow ashow in CallReport)
-        {
-            string gettowork = $"{ashow.date_start.ToString()}\t{ashow.Status.ToString()}\t{ashow.name_airshow}\t{ashow.location.ToString()}\t{ashow.Notes_AirshowStuff}";
-            //contacts
-            //foreach (cContact contact in ashow.Contacts.contact)
-            //{
-            //    gettowork = $"{gettowork}\t{contact.name}\t{contact.phone}\t{contact.address}";
-            //}
-
-            calltheseguys.Add(gettowork);
-        }
-        showSearchResults(calltheseguys);
     }
 
     private void btnDeleteShow_Click(object sender, EventArgs e)
@@ -607,68 +512,6 @@ public partial class formMain : Form
                 myAirshowGroup.Airshows.myShows.Remove(ashow);
                 myFilteredAirshows.Remove(ashow);
                 SaveAirshowSchedule(false);
-            }
-        }
-    }
-
-    private void contactToolStripMenuItem_Click(object sender, EventArgs e)
-    {
-        //MessageBox.Show("Who?", "Find This Person", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-        cSearchTerms SearchTerms = new cSearchTerms();
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(SearchTerms);
-        DialogResult dr = sb.showDialog();
-        if (dr == DialogResult.OK)
-        {
-            List<Airshow> ret = new List<Airshow>();
-            Clipboard.Clear();
-            switch (SearchTerms.SearchFiled)
-            {
-                case cSearchTerms.eSearchField.ContactName:
-                    {
-                        foreach (Airshow ashow in myFilteredAirshows)
-                        {
-                            List<cContact> contacts = cContact.getContacts(myContacts, ashow);
-                            if (contacts.Count > 0)
-                            {
-                                foreach (cContact contact in contacts)
-                                {
-                                    if (contact.name.ToLower().Contains(SearchTerms.szSearchTerm.ToLower()))
-                                    {
-                                        ret.Add(ashow);
-                                        break;
-                                    }
-                                }
-                            }
-                        }
-                        break;
-                    }
-                case cSearchTerms.eSearchField.ShowName:
-                    {
-                        ret = myFilteredAirshows.Where(c => c.name_airshow.ToLower().Contains(SearchTerms.szSearchTerm.ToLower())).ToList();
-                        break;
-                    }
-                case cSearchTerms.eSearchField.CityName:
-                    {
-                        ret = myFilteredAirshows.Where(c => c.location.city.ToLower().Contains(SearchTerms.szSearchTerm.ToLower())).ToList();
-                        break;
-                    }
-                default:
-                    break;
-            }
-            if (ret.Count > 0)
-            {
-                Clipboard.Clear();
-                ret = ret.OrderBy(c => c.WeekNumber).ToList();
-                string lines = Airshow.GetTabOutput(ret);
-                Clipboard.SetText(lines);
-
-                {
-                    PopupForm puf = new PopupForm();
-                    puf.TextBox1.Lines = Airshow.GetLines(ret);
-                    puf.Width = 1100;
-                    puf.Height = 1200;
-                    puf.ShowDialog();
-                }
             }
         }
     }
