@@ -76,8 +76,6 @@ public partial class formMain : Form
             }
             myAirshowGroup = asg;
 
-
-
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();

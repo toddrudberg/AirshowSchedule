@@ -40,6 +40,9 @@ namespace AirshowSchedules
         
         [Display(DisplayName = "Contacts:")]
         public List<int> contactIds { get; set; } = new List<int>();
+        
+        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
+        public string date_added { get; set; }
 
         public enum eStatus
         {
@@ -84,6 +87,7 @@ namespace AirshowSchedules
                 {
                     if (newContact.name.Trim() != "")
                     {
+                        // There is no existing contact, so legitimately need to add a contact.
                         cContact.addContact(copiedContacts, newContact, masterShow);
                     }
                 }
@@ -454,6 +458,7 @@ namespace AirshowSchedules
                         Airshow airshow = new Airshow();
                         airshow.date_start = lines[ii++];
                         airshow.date_finish = lines[ii++];
+                        airshow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
 
                         string airshowname = lines[ii++].ToLower();
                         if (airshowname.Contains("air show"))

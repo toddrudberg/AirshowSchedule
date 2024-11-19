@@ -589,6 +589,7 @@ public partial class formMain
         Console.WriteLine($"Archived file path: {archivedFilePath}");
 
         Electroimpact.XmlSerialization.Serializer.Save(myAirshowGroup, archivedFilePath);
+        cContact.SaveMe(myContacts, archivedFilePath.Replace(".asg.xml", ".contacts.json"));
         Console.WriteLine($"Active DB file archived to: {archivedFilePath}".Pastel(Color.Green));
     }    
 }

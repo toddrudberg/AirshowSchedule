@@ -157,6 +157,8 @@ namespace AirshowSchedules
             //we have to assign an airshowID and copy it to the contact
             //we have to add the new contactID to the airshow.contactIds.  
             //we have to remove the original contactID from the airshow.contactIds.
+
+            //this should only return 1 contact because at this stage we aren't referencing the activeDB
             List<cContact> airshowContacts = cContact.getContacts(newContacts, airshowToAdd);
             int airshowIDtoDelete = airshowToAdd.ID;
             airshowToAdd.ID = activeDB.Max(a => a.ID) + 1;
@@ -166,6 +168,8 @@ namespace AirshowSchedules
                 foreach (var contact in airshowContacts)
                 {
                     contactsToDelete.Add(contact.ID);
+
+                    //before adding the contact, we need to remove the bogus airshowID.  
                     contact.showIDs.Remove(airshowIDtoDelete);
                     if (!(contact.name == null || contact.name.Trim() == ""))
                     {

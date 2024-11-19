@@ -104,7 +104,13 @@ namespace AirshowSchedules
             return result;
         }
 
-        
+        /// <summary>
+        /// It is very important to note that the show being referenced has already been assigned a legitimate ID.  This is important because the contact being added has to be assigned the same ID as the show.
+        /// We DO NOT want to accidently had a showID to a contact that hasn't been allocated correctly.  That's why we must pass only shows with a valid ShowID as a parameter.
+        /// </summary>
+        /// <param name="contacts"></param>
+        /// <param name="contactToAdd"></param>
+        /// <param name="show"></param>
         public static void addContact(List<cContact> contacts, cContact contactToAdd, Airshow show)
         {
             List<cContact> duplicateContact = contacts.Where(c => c.name.Trim().ToLower() == contactToAdd.name.Trim().ToLower()).ToList();
@@ -133,6 +139,10 @@ namespace AirshowSchedules
             }
             else if (duplicateContact.Count == 1)
             {
+                // ok, this is an interesting case:
+                // what happens if this is a new show?
+                // what happens if this is an existing show?
+
                 cContact existingContact = duplicateContact[0];
                 if (existingContact.phone == null && contact.phone != null)
                 {
@@ -142,10 +152,16 @@ namespace AirshowSchedules
                 {
                     existingContact.phone += " / " + contact.phone;
                 }
+                // do we want to clear the showIDs, then add the showID?  For instance, is this thing looking at the new show list?  If it is, we don't want to merge the showIDs
+                // i think this works because we remove newShowIDs from the showID in mergeContactAndAirshow.
                 contact.showIDs.Add(show.ID);
+
+                //if the existing contact has an address, do we really want to overwrite it?
                 existingContact.address = contact.address;
 
                 existingContact.showIDs = existingContact.showIDs.Union(contact.showIDs).ToList();
+
+                //this one makes sense:
                 existingContact.emailAddresses = existingContact.emailAddresses.Union(contact.emailAddresses).ToList();
 
                 show.contactIds.Add(existingContact.ID);
@@ -156,8 +172,9 @@ namespace AirshowSchedules
                 foreach (cContact existingContact in duplicateContact)
                 {
                     Console.WriteLine($"ID: {existingContact.ID}".Pastel(Color.Yellow));
-                    show.contactIds.Add(existingContact.ID);
+                    //show.contactIds.Add(existingContact.ID);
                 }
+                MessageBox.Show($"Duplicate Contact: {contact.name} appers in the database more than once.  Nothing Done, check contact DB for errors".Pastel(Color.Red));
             }
         }
 
