@@ -589,10 +589,97 @@ public partial class formMain : Form
 
     private void advancedSearchToolStripMenuItem_Click(object sender, EventArgs e)
     {
-            using (formSearch searchForm = new formSearch(myAirshowGroup, myContacts, myRegions))
+        using (formSearch searchForm = new formSearch(myAirshowGroup, myContacts, myRegions))
+        {
+            if (searchForm.ShowDialog() == DialogResult.OK)
             {
-                searchForm.ShowDialog();
+                //save the airshow group
+                SaveAirshowSchedule(false);
             }
+        }
+    }
+
+    public class compare2DBs
+    {
+        [Display(DisplayName = "Choose More Recent DB:")]
+        [FileBrowseDialog(OpenFileDialogFilter = "asg.xml (.asg.xml)|*.asg.xml")]
+        public string fnDB1 = "";
+        [Display(DisplayName = "Choose Older DB")]
+        [FileBrowseDialog(OpenFileDialogFilter = "asg.xml (.asg.xml)|*.asg.xml")]
+        public string fnDB2 = "";
+
+
+        public static void SaveMe(compare2DBs afpst)
+        {   
+            string FileName = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "DBCompare");
+            Electroimpact.XmlSerialization.Serializer.Save(afpst, FileName);
+        }
+
+        public static compare2DBs LoadMe()
+        {
+            string fng = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "DBCompare");
+            compare2DBs afpst = new compare2DBs();
+            if (System.IO.File.Exists(fng))
+            {
+                try
+                {
+                    afpst = Electroimpact.XmlSerialization.Serializer.Load<compare2DBs>(fng);
+                }
+                catch { }
+            }
+            return afpst;
+        }
+    }
+    private void toolStripMenuItem1_Click(object sender, EventArgs e)
+    {
+        compare2DBs TwoDBs = compare2DBs.LoadMe();
+
+        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(TwoDBs);
+
+        DialogResult dr = DialogResult.OK;
+        dr = sb.showDialog();
+
+        if (dr == DialogResult.OK)
+        {
+            compare2DBs.SaveMe(TwoDBs);
+            AirshowGroup asg1 = AirshowGroup.LoadMe(TwoDBs.fnDB1, out bool success);
+            if (!success)
+            {
+                MessageBox.Show("Error loading form: " + "Unable to load the active database");
+                return;
+            }
+            AirshowGroup asg2 = AirshowGroup.LoadMe(TwoDBs.fnDB2, out success);
+            if (!success)
+            {
+                MessageBox.Show("Error loading form: " + "Unable to load the active database");
+                return;
+            }
+
+            //let's make a list of all the shows in asg1 that don't exist in asg2
+            List<Airshow> showsnotin1 = new List<Airshow>();
+            foreach (Airshow ashow in asg1.GetAirshows())
+            {
+                bool found = false;
+                foreach (Airshow ashow2 in asg2.GetAirshows())
+                {
+                    if (ashow.ToString() == ashow2.ToString())
+                    {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found)
+                {
+                    showsnotin1.Add(ashow);
+                }
+            }
+
+            Console.WriteLine($"Found {showsnotin1.Count} shows in {TwoDBs.fnDB2} that are not in {TwoDBs.fnDB1}".Pastel(Color.LimeGreen));
+            foreach (Airshow ashow in showsnotin1)
+            {
+                Console.WriteLine(ashow.ToString());
+            }
+        }
     }
 
 

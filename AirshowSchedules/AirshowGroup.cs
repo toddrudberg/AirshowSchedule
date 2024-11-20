@@ -21,7 +21,13 @@ namespace AirshowSchedules
         {
             return Airshows.myShows;
         }
-
+        public AirshowGroup DeepCopy()
+        {
+            AirshowGroup asg = new AirshowGroup();
+            asg.AirshowYearOfInterest = AirshowYearOfInterest;
+            asg.Airshows.myShows = Airshow.DeepCopy(GetAirshows());
+            return asg;
+        }
         public List<Airshow> GetAirshowsForYear()
         {
             return Airshows.myShows.Where(x => x.Year == AirshowYearOfInterest).ToList();

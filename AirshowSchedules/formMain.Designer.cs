@@ -64,6 +64,7 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -196,7 +197,7 @@
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripMenuItem1, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
@@ -318,7 +319,7 @@
             // advancedSearchToolStripMenuItem
             // 
             advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
-            advancedSearchToolStripMenuItem.Size = new Size(180, 22);
+            advancedSearchToolStripMenuItem.Size = new Size(165, 22);
             advancedSearchToolStripMenuItem.Text = "Advanced Search";
             advancedSearchToolStripMenuItem.Click += advancedSearchToolStripMenuItem_Click;
             // 
@@ -346,6 +347,13 @@
             btnDeleteShow.Text = "Delete A Show";
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(198, 22);
+            toolStripMenuItem1.Text = "Compare ASGs";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // formMain
             // 
@@ -412,5 +420,6 @@
         private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
         private ToolStripMenuItem advancedSearchToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }

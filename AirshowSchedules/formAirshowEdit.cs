@@ -576,7 +576,8 @@ namespace AirshowSchedules
                 Button copyButton = new Button() { Text = "Copy", Left = 240, Width = 100, Top = 100 };
 
                 confirmation.Click += (sender, e) => { prompt.Close(); };
-                copyButton.Click += (sender, e) => { Clipboard.SetText(textBox.Text); };
+                if( textBox.Text.Length > 0)
+                    copyButton.Click += (sender, e) => { Clipboard.SetText(textBox.Text); };
 
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(confirmation);

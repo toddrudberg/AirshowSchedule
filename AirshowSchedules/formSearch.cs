@@ -9,8 +9,8 @@ namespace AirshowSchedules
     {
 
         private bool isFormLoading = true;
-        private AirshowGroup airshowGroup { get; set; }
-        private List<cContact> contacts { get; set; }
+        private AirshowGroup officialAirshowGroup { get; set; }
+        private List<cContact> officialContacts { get; set; }
         private Regions regions { get; set; }
 
         private TextBox txtShowName;
@@ -34,12 +34,13 @@ namespace AirshowSchedules
         private TextBox txtShowState;
         private Label label6;
         private CheckedListBox clbYear;
+        private Button btnSaveChanges;
         private Label lblContactName;
 
         public formSearch(AirshowGroup group, List<cContact> contacts, Regions regions)
         {
-            airshowGroup = group;
-            this.contacts = contacts;
+            this.officialAirshowGroup = group;
+            this.officialContacts = contacts;
             this.regions = regions;
 
             InitializeComponent();
@@ -74,6 +75,7 @@ namespace AirshowSchedules
             txtShowState = new TextBox();
             label6 = new Label();
             clbYear = new CheckedListBox();
+            btnSaveChanges = new Button();
             SuspendLayout();
             // 
             // lblShowName
@@ -208,15 +210,6 @@ namespace AirshowSchedules
             clbStatus.TabIndex = 16;
             clbStatus.ItemCheck += clbStatus_SelectedIndexChanged;
             // 
-            // clbYear
-            // 
-            clbYear.FormattingEnabled = true;
-            clbYear.Location = new Point(119, 139);
-            clbYear.Name = "clbYear";
-            clbYear.Size = new Size(88, 76);
-            clbYear.TabIndex = 22;
-            clbYear.ItemCheck += clbYear_SelectedIndexChanged;
-            // 
             // label4
             // 
             label4.AutoSize = true;
@@ -259,11 +252,30 @@ namespace AirshowSchedules
             label6.Size = new Size(100, 23);
             label6.TabIndex = 21;
             label6.Text = "Year:";
-
+            // 
+            // clbYear
+            // 
+            clbYear.FormattingEnabled = true;
+            clbYear.Location = new Point(119, 139);
+            clbYear.Name = "clbYear";
+            clbYear.Size = new Size(88, 76);
+            clbYear.TabIndex = 22;
+            clbYear.ItemCheck += clbYear_SelectedIndexChanged;
+            // 
+            // btnSaveChanges
+            // 
+            btnSaveChanges.Location = new Point(167, 685);
+            btnSaveChanges.Name = "btnSaveChanges";
+            btnSaveChanges.Size = new Size(127, 23);
+            btnSaveChanges.TabIndex = 23;
+            btnSaveChanges.Text = "Save Changes";
+            btnSaveChanges.UseVisualStyleBackColor = true;
+            btnSaveChanges.Click += btnSaveChanges_Click;
             // 
             // formSearch
             // 
             ClientSize = new Size(800, 711);
+            Controls.Add(btnSaveChanges);
             Controls.Add(clbYear);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -320,7 +332,7 @@ namespace AirshowSchedules
             // Populate the CheckedListBox with years
             // Get the list of years from the airshows
             List<int> years = new List<int>();
-            foreach (Airshow show in airshowGroup.Airshows.myShows)
+            foreach (Airshow show in officialAirshowGroup.Airshows.myShows)
             {
                 if (!years.Contains(show.Year))
                 {
@@ -345,20 +357,20 @@ namespace AirshowSchedules
 
         private void txtContactName_TextChanged(object sender, EventArgs e)
         {
-            performSerch();
+            performSearch();
         }
 
-        private void performSerch(List<object> updatedCheckedItems = null, List<object> updateStatusCheckedItems = null, List<object> updateYearCheckedItems = null)
+        private void performSearch(List<object> updatedCheckedItems = null, List<object> updateStatusCheckedItems = null, List<object> updateYearCheckedItems = null)
         {
             //we dont't want to modify our masterlist.
-            List<Airshow> searchAirshows = Airshow.DeepCopy(airshowGroup.GetAirshows());
+            List<Airshow> searchAirshows = officialAirshowGroup.GetAirshows();
 
             searchAirshows = filterByRegion(searchAirshows, updatedCheckedItems);
             searchAirshows = filterByStatus(searchAirshows, updateStatusCheckedItems);
             searchAirshows = filterByYear(searchAirshows, updateYearCheckedItems);
 
 
-            List<cContact> searchContacts = cContact.DeepCopy(this.contacts);
+            List<cContact> searchContacts = officialContacts;
 
 
             bool allSearchTermsEmpty = txtContactName.Text == "" && txtShowName.Text == "" && txtShowLocation.Text == "";
@@ -465,25 +477,24 @@ namespace AirshowSchedules
             {
                 lstAirshows.Items.Add(show);
             }
-
         }
 
 
 
         private void txtShowName_TextChanged(object sender, EventArgs e)
         {
-            performSerch();
+            performSearch();
         }
 
         private void txtShowLocation_TextChanged(object sender, EventArgs e)
         {
-            performSerch();
+            performSearch();
         }
 
 
         private void txtShowState_TextChanged(object sender, EventArgs e)
         {
-            performSerch();
+            performSearch();
         }
 
         private void lstAirshows_SelectedIndexChanged(object sender, EventArgs e)
@@ -491,8 +502,7 @@ namespace AirshowSchedules
             if (lstAirshows.SelectedItems.Count > 0)
             {
                 Airshow theAirshow = (Airshow)lstAirshows.Items[lstAirshows.SelectedIndex];
-                List<cContact> myContacts = cContact.DeepCopy(contacts);
-                using (AirshowEditForm editForm = new AirshowEditForm(theAirshow, myContacts))
+                using (AirshowEditForm editForm = new AirshowEditForm(theAirshow, officialContacts))
                 {
                     if (editForm.ShowDialog() == DialogResult.OK)
                     {
@@ -512,7 +522,7 @@ namespace AirshowSchedules
                 clbShowRegion.SetItemChecked(i, false);
             }
             isFormLoading = false;
-            performSerch();
+            performSearch();
         }
 
         private void btnFilterSetAll_Click(object sender, EventArgs e)
@@ -524,7 +534,7 @@ namespace AirshowSchedules
                 clbShowRegion.SetItemChecked(i, true);
             }
             isFormLoading = false;
-            performSerch();
+            performSearch();
         }
 
         private List<Airshow> filterByStatus(List<Airshow> TheseAirshows, List<object> updatedCheckedItems = null)
@@ -631,7 +641,7 @@ namespace AirshowSchedules
                 {
                     checkedItems.Remove(changedItem);
                 }
-                performSerch(checkedItems);
+                performSearch(checkedItems);
             }
         }
         private void clbStatus_SelectedIndexChanged(object sender, ItemCheckEventArgs e)
@@ -651,7 +661,7 @@ namespace AirshowSchedules
                 {
                     checkedItems.Remove(changedItem);
                 }
-                performSerch(null, checkedItems);
+                performSearch(null, checkedItems);
             }
         }
 
@@ -672,29 +682,37 @@ namespace AirshowSchedules
                 {
                     checkedItems.Remove(changedItem);
                 }
-                performSerch(null, null, checkedItems);
+                performSearch(null, null, checkedItems);
             }
         }
         private void formSearch_Load(object sender, EventArgs e)
         {
             isFormLoading = false;
-            performSerch();
+            performSearch();
         }
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if( isFormLoading )
+            {
+                return;
+            }
+              
             if (this.lstContacts.SelectedItem != null)
             {
+                isFormLoading = true; 
                 cContact selectedContact = (cContact)this.lstContacts.SelectedItem;
                 using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact))
                 {
                     if (contactEditForm.ShowDialog() == DialogResult.OK)
                     {
+
                         // Refresh the list box to reflect the updated contact
                         int selectedIndex = this.lstContacts.SelectedIndex;
                         this.lstContacts.Items[selectedIndex] = contactEditForm.Contact;
                     }
                 }
+                isFormLoading = false;
             }
         }
 
@@ -734,7 +752,7 @@ namespace AirshowSchedules
                 result += "\"" + undauntedNotes + "\"" + "\t";
 
                 // Add contacts
-                List<cContact> showContacts = cContact.getContacts(contacts, show);
+                List<cContact> showContacts = cContact.getContacts(officialContacts, show);
 
                 string showContactDeets = "";
                 string stringShowContacts = "";
@@ -779,5 +797,12 @@ namespace AirshowSchedules
             System.IO.File.WriteAllText(filePath, result);
         }
 
+        private void btnSaveChanges_Click(object sender, EventArgs e)
+        {   
+            
+
+            this.DialogResult = DialogResult.OK;
+            this.Close();
+        }
     }
 }
