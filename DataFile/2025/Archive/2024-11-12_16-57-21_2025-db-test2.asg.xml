@@ -1,0 +1,3765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AirshowGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Airshows>
+    <Airshow>
+      <ID>1</ID>
+      <date_start>2025-03-28</date_start>
+      <date_finish>2025-03-30</date_finish>
+      <name_airshow>defenders of liberty air &amp; space show</name_airshow>
+      <location>
+        <city>Barksdale AFB</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>David Dethloff</name>
+          <phone>318-834-6121</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>1</id>
+          <name>Capt Kevan Thomas</name>
+          <phone>480-310-0065</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>3</ID>
+      <date_start>2025-04-01</date_start>
+      <date_finish>2025-04-06</date_finish>
+      <name_airshow>sun 'n fun aerospace expo</name_airshow>
+      <location>
+        <city>Lakeland</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>2</id>
+          <name>Gene Conrad</name>
+          <phone>417-334-7813</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>3</id>
+          <name>Dennis Dunbar</name>
+          <phone>321-543-8837</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>5</ID>
+      <date_start>2025-04-05</date_start>
+      <date_finish>2025-04-06</date_finish>
+      <name_airshow>aviation nation Airshow</name_airshow>
+      <location>
+        <city>Nellis AFB</city>
+        <state>NV</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>4</id>
+          <name>Maj Cole Davenport</name>
+          <phone>702-652-6573</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>5</id>
+          <name>Robert Jones</name>
+          <phone>702-679-2539 / 702-241-1034 </phone>
+          <address />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff>we have a notice of interest from them</Notes_AirshowStuff>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>verbal</Status>
+    </Airshow>
+    <Airshow>
+      <ID>6</ID>
+      <date_start>2025-04-05</date_start>
+      <date_finish>2025-04-06</date_finish>
+      <name_airshow>wings over homestead arb</name_airshow>
+      <location>
+        <city>Homestead ARB</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>6</id>
+          <name>Henry Burgains</name>
+          <phone>786-415-7474</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>7</ID>
+      <date_start>2025-04-19</date_start>
+      <date_finish>2025-04-20</date_finish>
+      <name_airshow>dyess 2025 open house</name_airshow>
+      <location>
+        <city>Dyess AFB</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>7</id>
+          <name>Lt Col Ryan Meiergerd</name>
+          <phone>719-210-5255</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>8</ID>
+      <date_start>2025-05-03</date_start>
+      <date_finish>2025-05-04</date_finish>
+      <name_airshow>fort lauderdale Airshow</name_airshow>
+      <location>
+        <city>Fort Lauderdale</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>8</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>10</ID>
+      <date_start>2025-05-03</date_start>
+      <date_finish>2025-05-04</date_finish>
+      <name_airshow>2025 wings over south texas airshow @ buccaneer days</name_airshow>
+      <location>
+        <city>Corpus Christi</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>9</id>
+          <name>Joseph Johnson</name>
+          <phone>361-882-3242</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>10</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>11</ID>
+      <date_start>2025-05-03</date_start>
+      <date_finish>2025-05-04</date_finish>
+      <name_airshow>wings over wayne air space &amp; technology expo</name_airshow>
+      <location>
+        <city>Seymour Johnson AFB</city>
+        <state>NC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>11</id>
+          <name>Maj Nathan Johnson</name>
+          <phone>405-761-6644</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>13</ID>
+      <date_start>2025-05-17</date_start>
+      <date_finish>2025-05-18</date_finish>
+      <name_airshow>power in the pines open house &amp; Airshow</name_airshow>
+      <location>
+        <city>JB McGuire-Dix-Lakehurst</city>
+        <state>NJ</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>12</id>
+          <name>LtCol Paul Murphy</name>
+          <phone>707-330-7540</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>13</id>
+          <name>LtCol Matthew Mattson</name>
+          <phone>719-237-7746</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>14</ID>
+      <date_start>2025-05-17</date_start>
+      <date_finish>2025-05-18</date_finish>
+      <name_airshow>thunder over dalhart</name_airshow>
+      <location>
+        <city>Dalhart</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>14</id>
+          <name>Ginger Cleavinger</name>
+          <phone>806-333-2116</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>15</ID>
+      <date_start>2025-05-24</date_start>
+      <date_finish>2025-05-25</date_finish>
+      <name_airshow>bethpage Airshow at jones beach park</name_airshow>
+      <location>
+        <city>Wantagh</city>
+        <state>NY</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>15</id>
+          <name>George Gorman Jr</name>
+          <phone>631-321-3501</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>16</ID>
+      <date_start>2025-05-24</date_start>
+      <date_finish>2025-05-25</date_finish>
+      <name_airshow>2025 millville airshow</name_airshow>
+      <location>
+        <city>Millville</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>17</ID>
+      <date_start>2025-05-24</date_start>
+      <date_finish>2025-05-25</date_finish>
+      <name_airshow>miami beach air &amp; sea show</name_airshow>
+      <location>
+        <city>Miami Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>16</id>
+          <name>Ted Plana</name>
+          <phone>773-252-1644</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>18</ID>
+      <date_start>2025-06-07</date_start>
+      <date_finish>2025-06-08</date_finish>
+      <name_airshow>the great tennessee Airshow</name_airshow>
+      <location>
+        <city>Smyrna</city>
+        <state>TN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>17</id>
+          <name>John Black</name>
+          <phone>615-459-2651</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>20</ID>
+      <date_start>2025-06-14</date_start>
+      <date_finish>2025-06-14</date_finish>
+      <name_airshow>northern neighbors day air &amp; space show</name_airshow>
+      <location>
+        <city>Minot AFB</city>
+        <state>ND</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>18</id>
+          <name>Hahns Bodenbender</name>
+          <phone>701-723-3447</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>19</id>
+          <name>Evan Pittman</name>
+          <phone>701-723-1926</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>22</ID>
+      <date_start>2025-06-14</date_start>
+      <date_finish>2025-06-15</date_finish>
+      <name_airshow>scott afb airshow &amp; open house </name_airshow>
+      <location>
+        <city>Scott AFB</city>
+        <state>IL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>20</id>
+          <name>Lt Col Jeff Ledeboer</name>
+          <phone>618-256-4494</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>23</ID>
+      <date_start>2025-06-21</date_start>
+      <date_finish>2025-06-22</date_finish>
+      <name_airshow>westmoreland county Airshow</name_airshow>
+      <location>
+        <city>Latrobe</city>
+        <state>PA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>21</id>
+          <name>Gabe Monzo</name>
+          <phone>724-539-8100</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>24</ID>
+      <date_start>2025-06-21</date_start>
+      <date_finish>2025-06-22</date_finish>
+      <name_airshow>centerpoint energy dayton Airshow</name_airshow>
+      <location>
+        <city>Dayton</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>22</id>
+          <name>Katie Mitchell</name>
+          <phone>937-665-2040</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>25</ID>
+      <date_start>2025-06-28</date_start>
+      <date_finish>2025-06-29</date_finish>
+      <name_airshow>national cherry festival Airshow</name_airshow>
+      <location>
+        <city>Traverse City</city>
+        <state>MI</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>23</id>
+          <name>Steve Plamondon</name>
+          <phone>231-947-4230</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>26</ID>
+      <date_start>2025-07-02</date_start>
+      <date_finish>2025-07-06</date_finish>
+      <name_airshow>battle creek field of flight Airshow &amp; balloon festival</name_airshow>
+      <location>
+        <city>Battle Creek</city>
+        <state>MI</state>
+      </location>
+      <Performers>
+        <Performer>Bill Stein Airshows</Performer>
+        <Performer>Dacy Airshows</Performer>
+        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>GhostWriter Airshows</Performer>
+        <Performer>Firewalkers International Pyro, LLC</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>24</id>
+          <name>Barbara Haluszka </name>
+          <phone>269-986-4150</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>27</ID>
+      <date_start>2025-07-05</date_start>
+      <date_finish>2025-07-05</date_finish>
+      <name_airshow>thunder over cedar creek lake Airshow</name_airshow>
+      <location>
+        <city>Cedar Creek Lake</city>
+        <state>Mabank</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>25</id>
+          <name>Lyn Thomas</name>
+          <phone>214-535-9513</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>28</ID>
+      <date_start>2025-07-17</date_start>
+      <date_finish>2025-07-18</date_finish>
+      <name_airshow>sentry eagle 2025 and open house</name_airshow>
+      <location>
+        <city>Klamath Falls</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>maybe</Status>
+    </Airshow>
+    <Airshow>
+      <ID>29</ID>
+      <date_start>2025-07-19</date_start>
+      <date_finish>2025-07-20</date_finish>
+      <name_airshow>boundary bay airshow</name_airshow>
+      <location>
+        <city>Delta</city>
+        <state>BC</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>26</id>
+          <name>Melissa Sayers</name>
+          <phone>778-968-2229</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>31</ID>
+      <date_start>2025-07-19</date_start>
+      <date_finish>2025-07-20</date_finish>
+      <name_airshow>milwaukee air &amp; water show </name_airshow>
+      <location>
+        <city>Milwaukee</city>
+        <state>WI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>27</id>
+          <name>Brian Allendorfer</name>
+          <phone>773-919-1900</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>28</id>
+          <name>Brian L Allendorfer Jr</name>
+          <phone>773-919-1900</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>32</ID>
+      <date_start>2025-07-21</date_start>
+      <date_finish>2025-07-27</date_finish>
+      <name_airshow>eaa airventure oshkosh </name_airshow>
+      <location>
+        <city>Oshkosh</city>
+        <state>WI</state>
+      </location>
+      <Performers>
+        <Performer>Starlight Aerial Productions</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>29</id>
+          <name>Rick Larsen</name>
+          <phone>920-426-4800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>33</ID>
+      <date_start>2025-07-23</date_start>
+      <date_finish>2025-07-24</date_finish>
+      <name_airshow>wings over warren</name_airshow>
+      <location>
+        <city>Cheyenne (F.E. Warren AFB)</city>
+        <state>WY</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>34</ID>
+      <date_start>2025-08-02</date_start>
+      <date_finish>2025-08-03</date_finish>
+      <name_airshow>boeing seafair Airshow </name_airshow>
+      <location>
+        <city>Seattle</city>
+        <state>WA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>30</id>
+          <name>Frank Sebastian</name>
+          <phone>253-261-0034</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>35</ID>
+      <date_start>2025-08-08</date_start>
+      <date_finish>2025-08-10</date_finish>
+      <name_airshow>abbotsford international airshow</name_airshow>
+      <location>
+        <city>Abbotsford</city>
+        <state>BC</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>31</id>
+          <name>Dave Reith</name>
+          <phone>604-852-8511</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>36</ID>
+      <date_start>2025-08-15</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>villeaero (alberta international airshow)</name_airshow>
+      <location>
+        <city>Edmonton</city>
+        <state>AB</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>32</id>
+          <name>Richard Skermer</name>
+          <phone>780-718-8454</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>37</ID>
+      <date_start>2025-08-15</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>pacific airshow gold coast </name_airshow>
+      <location>
+        <city>Gold Coast</city>
+        <state>Australia</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>33</id>
+          <name>Kevin Elliott</name>
+          <phone>714-500-4994</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>39</ID>
+      <date_start>2025-08-16</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>67th chicago air &amp; water show</name_airshow>
+      <location>
+        <city>Chicago</city>
+        <state>IL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Brian Allendorfer</name>
+          <phone>773-919-1900</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>40</ID>
+      <date_start>2025-08-20</date_start>
+      <date_finish>2025-08-20</date_finish>
+      <name_airshow>atlantic city airshow</name_airshow>
+      <location>
+        <city>Atlantic City</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>34</id>
+          <name>Atlantic City Chamber of Commerce</name>
+          <phone>609-345-4524</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>41</ID>
+      <date_start>2025-08-21</date_start>
+      <date_finish>2025-08-23</date_finish>
+      <name_airshow>airshow of the cascades</name_airshow>
+      <location>
+        <city>Madras</city>
+        <state>OR</state>
+      </location>
+      <Performers>
+        <Performer>Patriots Jet Team</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>35</id>
+          <name>Rick Allen</name>
+          <phone>541-815-4380</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>42</ID>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>defenders of freedom air &amp; space show </name_airshow>
+      <location>
+        <city>Offutt AFB</city>
+        <state>NE</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>36</id>
+          <name>Ryan Nissen</name>
+          <phone>402-294-6311</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>43</ID>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>new york Airshow</name_airshow>
+      <location>
+        <city>Montgomery</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>44</ID>
+      <date_start>2025-08-30</date_start>
+      <date_finish>2025-08-31</date_finish>
+      <name_airshow>cleveland national Airshow</name_airshow>
+      <location>
+        <city>Cleveland</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>37</id>
+          <name>Leslie King</name>
+          <phone>216-781-0747</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>45</ID>
+      <date_start>2025-08-30</date_start>
+      <date_finish>2025-09-01</date_finish>
+      <name_airshow>canadian international Airshow</name_airshow>
+      <location>
+        <city>Toronto</city>
+        <state>ON</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>38</id>
+          <name>Lori Duthie</name>
+          <phone>416-902-5457</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>46</ID>
+      <date_start>2025-09-05</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>airshow london </name_airshow>
+      <location>
+        <city>London</city>
+        <state>ON</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>39</id>
+          <name>Gerry Vanderhoek/Holly Doty </name>
+          <phone>519-319-2338/519-636-7707</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>48</ID>
+      <date_start>2025-09-12</date_start>
+      <date_finish>2025-09-13</date_finish>
+      <name_airshow>jb andrews Airshow</name_airshow>
+      <location>
+        <city>JB Andrews</city>
+        <state>MD</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>40</id>
+          <name>Col Tyler Schaff</name>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>49</ID>
+      <date_start>2025-09-12</date_start>
+      <date_finish>2025-09-13</date_finish>
+      <name_airshow>international sanicole airshow</name_airshow>
+      <location>
+        <city>Hechtel</city>
+        <state>Belgium</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>41</id>
+          <name>Geoffrey Buekenberghs</name>
+          <phone>011-32-475599199</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>50</ID>
+      <date_start>2025-09-13</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>greater binghamton Airshow</name_airshow>
+      <location>
+        <city>Johnson City</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>51</ID>
+      <date_start>2025-09-19</date_start>
+      <date_finish>2025-09-21</date_finish>
+      <name_airshow>oregon international Airshow</name_airshow>
+      <location>
+        <city>McMinnville</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>42</id>
+          <name>Bill Braack</name>
+          <phone>503-629-0706</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>53</ID>
+      <date_start>2025-09-20</date_start>
+      <date_finish>2025-09-21</date_finish>
+      <name_airshow>nas oceana Airshow</name_airshow>
+      <location>
+        <city>Virginia Beach</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>F/A-18 Super Hornet W Legacy Flight</Performer>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>43</id>
+          <name>Rich Erie</name>
+          <phone>757-433-2130</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>44</id>
+          <name>Greg Courrier</name>
+          <phone>7573248485</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>54</ID>
+      <date_start>2025-09-26</date_start>
+      <date_finish>2025-09-28</date_finish>
+      <name_airshow>mcas miramar Airshow</name_airshow>
+      <location>
+        <city>San Diego</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+        <Performer>USMC F-35B Lightning II</Performer>
+        <Performer>USMC MV-22 Osprey</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>45</id>
+          <name>Christopher 'Oz' Van Stelle</name>
+          <phone>619-871-8061</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>55</ID>
+      <date_start>2025-10-04</date_start>
+      <date_finish>2025-10-05</date_finish>
+      <name_airshow>pacific airshow huntington beach</name_airshow>
+      <location>
+        <city>Huntington Beach</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Kevin Elliott</name>
+          <phone>714-500-4994</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>56</ID>
+      <date_start>2025-10-11</date_start>
+      <date_finish>2025-10-12</date_finish>
+      <name_airshow>san francisco fleet week</name_airshow>
+      <location>
+        <city>San Francisco</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>46</id>
+          <name>Judge Smales</name>
+          <phone>805-689-3711</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>57</ID>
+      <date_start>2025-10-11</date_start>
+      <date_finish>2025-10-12</date_finish>
+      <name_airshow>atlanta Airshow</name_airshow>
+      <location>
+        <city>Peachtree City</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>58</ID>
+      <date_start>2025-10-11</date_start>
+      <date_finish>2025-10-12</date_finish>
+      <name_airshow>hammond northshore regional airshow</name_airshow>
+      <location>
+        <city>Hammond</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>Skip Stewart Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>47</id>
+          <name>David Lobue</name>
+          <phone>985-277-5668</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>59</ID>
+      <date_start>2025-10-18</date_start>
+      <date_finish>2025-10-19</date_finish>
+      <name_airshow>wings over north georgia</name_airshow>
+      <location>
+        <city>Rome</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>48</id>
+          <name>jlcairshows@att.net</name>
+          <phone>706-291-0030</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>60</ID>
+      <date_start>2025-10-18</date_start>
+      <date_finish>2025-10-19</date_finish>
+      <name_airshow>wings over houston airshow</name_airshow>
+      <location>
+        <city>Houston</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>49</id>
+          <name>Bill Roach</name>
+          <phone>281-579-1942</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>61</ID>
+      <date_start>2025-10-23</date_start>
+      <date_finish>2025-10-26</date_finish>
+      <name_airshow>planes over the pines</name_airshow>
+      <location>
+        <city>Alexandria</city>
+        <state>LA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>50</id>
+          <name>Scott Gammel</name>
+          <phone>3184276419</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>62</ID>
+      <date_start>2025-10-25</date_start>
+      <date_finish>2025-10-26</date_finish>
+      <name_airshow>jacksonville beach sea &amp; sky airshow</name_airshow>
+      <location>
+        <city>Jacksonville Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>51</id>
+          <name>Teneese K. Williams</name>
+          <phone>904-255-5432</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>63</ID>
+      <date_start>2025-02-14</date_start>
+      <date_finish>2025-02-16</date_finish>
+      <name_airshow>buckeye air fare &amp; aopa fly-in</name_airshow>
+      <location>
+        <city>Buckeye</city>
+        <state>AZ</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>52</id>
+          <name>Jessica Thompson</name>
+          <phone>623-349-6613</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>64</ID>
+      <date_start>2025-03-15</date_start>
+      <date_finish>2025-03-15</date_finish>
+      <name_airshow>naf el centro festival of flight</name_airshow>
+      <location>
+        <city>NAF El Centro</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff>need to find a contact</Notes_AirshowStuff>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>65</ID>
+      <date_start>2025-03-29</date_start>
+      <date_finish>2025-03-30</date_finish>
+      <name_airshow>nas key west southernmost air spectacular</name_airshow>
+      <location>
+        <city>NAS Key West</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+        <Performer>Skip Stewart Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>53</id>
+          <name>Emma Harlow</name>
+          <phone>305-293-2503</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>66</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
+      <location>
+        <city>Altus AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>67</ID>
+      <date_start>2025-04-26</date_start>
+      <date_finish>2025-04-27</date_finish>
+      <name_airshow>air dot show augusta</name_airshow>
+      <location>
+        <city>Augusta</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>68</ID>
+      <date_start>2025-05-21</date_start>
+      <date_finish>2025-05-23</date_finish>
+      <name_airshow>u.s. naval academy Airshow/graduation flyover</name_airshow>
+      <location>
+        <city>Annapolis</city>
+        <state>MD</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>69</ID>
+      <date_start>2025-05-24</date_start>
+      <date_finish>2025-05-25</date_finish>
+      <name_airshow>air dot show harrisburg</name_airshow>
+      <location>
+        <city>Harrisburg</city>
+        <state>PA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>70</ID>
+      <date_start>2025-05-27</date_start>
+      <date_finish>2025-05-27</date_finish>
+      <name_airshow>u.s. air force academy graduation</name_airshow>
+      <location>
+        <city>USAF Academy</city>
+        <state>CO</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>71</ID>
+      <date_start>2025-06-14</date_start>
+      <date_finish>2025-06-15</date_finish>
+      <name_airshow>air dot show ocean city</name_airshow>
+      <location>
+        <city>Ocean City</city>
+        <state>MD</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>72</ID>
+      <date_start>2025-06-28</date_start>
+      <date_finish>2025-06-28</date_finish>
+      <name_airshow>great new york Airshow</name_airshow>
+      <location>
+        <city>Queensbury</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>73</ID>
+      <date_start>2025-07-12</date_start>
+      <date_finish>2025-07-13</date_finish>
+      <name_airshow>pensacola beach Airshow</name_airshow>
+      <location>
+        <city>Pensacola Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>54</id>
+          <name>Robbie Lofty</name>
+          <phone>850-932-2257</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>75</ID>
+      <date_start>2025-07-26</date_start>
+      <date_finish>2025-07-28</date_finish>
+      <name_airshow>tri-city water follies</name_airshow>
+      <location>
+        <city>Kennewick/Pasco</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>55</id>
+          <name>Mark Williams</name>
+          <phone>509-783-4675</phone>
+          <address />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>56</id>
+          <name>Kim Owen</name>
+          <phone />
+          <address>sk1owen@hotmail.com</address>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>maybe</Status>
+    </Airshow>
+    <Airshow>
+      <ID>77</ID>
+      <date_start>2025-08-09</date_start>
+      <date_finish>2025-08-10</date_finish>
+      <name_airshow>garmin kc Airshow</name_airshow>
+      <location>
+        <city>New Century</city>
+        <state>KS</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>57</id>
+          <name>Cory Mullins</name>
+          <phone>816-217-7324</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>78</ID>
+      <date_start>2025-08-16</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>wings over camarillo</name_airshow>
+      <location>
+        <city>Camarillo</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>58</id>
+          <name>Bill Thomas</name>
+          <phone>805-910-5905</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>80</ID>
+      <date_start>2025-08-16</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>magic valley airshow</name_airshow>
+      <location>
+        <city>Twin Falls</city>
+        <state>ID</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>59</id>
+          <name>Jim O'Donnell</name>
+          <phone>208-733-5215 x0</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>contract</Status>
+    </Airshow>
+    <Airshow>
+      <ID>81</ID>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>columbus Airshow</name_airshow>
+      <location>
+        <city>Columbus</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>60</id>
+          <name>Herb Gillen</name>
+          <phone>614-488-2828</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>82</ID>
+      <date_start>2025-08-30</date_start>
+      <date_finish>2025-08-31</date_finish>
+      <name_airshow>branson wings of pride airshow</name_airshow>
+      <location>
+        <city>Branson</city>
+        <state>MO</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>61</id>
+          <name>Kerry Floyd</name>
+          <phone>816-384-1200</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>83</ID>
+      <date_start>2025-09-06</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>festival a�rien volaria airshow</name_airshow>
+      <location>
+        <city>Mirabel</city>
+        <state>QC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>62</id>
+          <name>Maude Paquette</name>
+          <phone>514-891-7790</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>85</ID>
+      <date_start>2025-09-20</date_start>
+      <date_finish>2025-09-21</date_finish>
+      <name_airshow>the great colorado Airshow</name_airshow>
+      <location>
+        <city>Loveland</city>
+        <state>CO</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>63</id>
+          <name>Wayne Hammack</name>
+          <phone>720-272-5490</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>86</ID>
+      <date_start>2025-09-27</date_start>
+      <date_finish>2025-09-28</date_finish>
+      <name_airshow>pueblo wings of pride airshow</name_airshow>
+      <location>
+        <city>Pueblo</city>
+        <state>CO</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Kerry Floyd</name>
+          <phone>816-384-1200</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>87</ID>
+      <date_start>2025-10-25</date_start>
+      <date_finish>2025-10-26</date_finish>
+      <name_airshow>air dot show orlando</name_airshow>
+      <location>
+        <city>Orlando (Sanford)</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>88</ID>
+      <date_start>2025-11-01</date_start>
+      <date_finish>2025-11-02</date_finish>
+      <name_airshow>florida international Airshow</name_airshow>
+      <location>
+        <city>Punta Gorda</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>64</id>
+          <name>Denise Dull </name>
+          <phone>941-626-9439</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>89</ID>
+      <date_start>2025-11-01</date_start>
+      <date_finish>2025-11-02</date_finish>
+      <name_airshow>wings and warriors</name_airshow>
+      <location>
+        <city>San Marcos</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>65</id>
+          <name>Tim Scherer</name>
+          <phone>512-294-9495</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>90</ID>
+      <date_start>2025-11-07</date_start>
+      <date_finish>2025-11-08</date_finish>
+      <name_airshow>blue angels homecoming Airshow</name_airshow>
+      <location>
+        <city>NAS Pensacola</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>66</id>
+          <name>Mike McCarthy</name>
+          <phone>850-452-2547</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>91</ID>
+      <date_start>2025-02-21</date_start>
+      <date_finish>2025-02-23</date_finish>
+      <name_airshow>wings over wairarapa</name_airshow>
+      <location>
+        <city>Masterton</city>
+        <state>New Zealand</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>67</id>
+          <name>Tracy Dixon</name>
+          <phone>+64212548325</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>92</ID>
+      <date_start>2025-03-14</date_start>
+      <date_finish>2025-03-15</date_finish>
+      <name_airshow>yuma airshow 2025</name_airshow>
+      <location>
+        <city>MCAS Yuma</city>
+        <state>AZ</state>
+      </location>
+      <Performers>
+        <Performer>USMC F-35B Lightning II</Performer>
+        <Performer>USMC MV-22 Osprey</Performer>
+        <Performer>Patriots Jet Team</Performer>
+        <Performer>CAF RISE ABOVE</Performer>
+        <Performer>Tora Tora Tora</Performer>
+        <Performer>Redline Airshows</Performer>
+        <Performer>Jim Peitz Aerosports, Inc.</Performer>
+        <Performer>Darnell Racing Enterprises, Inc.</Performer>
+        <Performer>Precision Exotics</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>68</id>
+          <name>Greg McShane</name>
+          <phone>928-269-3327</phone>
+          <address />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>93</ID>
+      <date_start>2025-03-22</date_start>
+      <date_finish>2025-03-23</date_finish>
+      <name_airshow>thunder &amp; lightning over arizona</name_airshow>
+      <location>
+        <city>Davis-Monthan AFB</city>
+        <state>AZ</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>69</id>
+          <name>Abigail Cole</name>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff>Need to find a contact</Notes_AirshowStuff>
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>94</ID>
+      <date_start>2025-03-22</date_start>
+      <date_finish>2025-03-23</date_finish>
+      <name_airshow>california capital airshow</name_airshow>
+      <location>
+        <city>Sacramento</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>70</id>
+          <name>Darcy Brewer</name>
+          <phone>916-876-7568 </phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>96</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>southern california airshow at march field 2025</name_airshow>
+      <location>
+        <city>Riverside (March ARB)</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>71</id>
+          <name>Michael Hunter </name>
+          <phone>901-268-4658</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>97</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>mcas beaufort Airshow </name_airshow>
+      <location>
+        <city>MCAS Beaufort</city>
+        <state>SC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>72</id>
+          <name>Christina Swick</name>
+          <phone>843-228-7333</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>verbal</Status>
+    </Airshow>
+    <Airshow>
+      <ID>98</ID>
+      <date_start>2025-04-26</date_start>
+      <date_finish>2025-04-27</date_finish>
+      <name_airshow>air power over hampton roads</name_airshow>
+      <location>
+        <city>Langley AFB</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>73</id>
+          <name>Lt Col Elizabeth Cramer</name>
+          <phone>757-764-7995</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>99</ID>
+      <date_start>2025-05-17</date_start>
+      <date_finish>2025-05-17</date_finish>
+      <name_airshow>vance afb partners in the sky Airshow</name_airshow>
+      <location>
+        <city>Enid (Vance AFB)</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>101</ID>
+      <date_start>2025-05-17</date_start>
+      <date_finish>2025-05-18</date_finish>
+      <name_airshow>west virginia's greatest Airshow</name_airshow>
+      <location>
+        <city>Martinsburg</city>
+        <state>WV</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>74</id>
+          <name>Nicolas Diehl</name>
+          <phone>304-702-3700</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>102</ID>
+      <date_start>2025-06-07</date_start>
+      <date_finish>2025-06-08</date_finish>
+      <name_airshow>2025 beale afb open house</name_airshow>
+      <location>
+        <city>Beale AFB</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>75</id>
+          <name>Maj Matt Beaubien</name>
+          <phone>856-577-0512</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>103</ID>
+      <date_start>2025-06-21</date_start>
+      <date_finish>2025-06-22</date_finish>
+      <name_airshow>thunder over michigan Airshow</name_airshow>
+      <location>
+        <city>Ypsilanti</city>
+        <state>MI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>76</id>
+          <name>Kevin Walsh</name>
+          <phone>734-637-8880</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>104</ID>
+      <date_start>2025-06-28</date_start>
+      <date_finish>2025-06-29</date_finish>
+      <name_airshow>chippewa valley Airshow</name_airshow>
+      <location>
+        <city>Eau Claire</city>
+        <state>WI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>77</id>
+          <name>Tim Molepske</name>
+          <phone>715-492-0496</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>105</ID>
+      <date_start>2025-06-28</date_start>
+      <date_finish>2025-06-29</date_finish>
+      <name_airshow>tinker Airshow</name_airshow>
+      <location>
+        <city>Tinker AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>78</id>
+          <name>Marc Bradley</name>
+          <phone>405-734-2191</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>106</ID>
+      <date_start>2025-07-05</date_start>
+      <date_finish>2025-07-06</date_finish>
+      <name_airshow>duluth airshow</name_airshow>
+      <location>
+        <city>Duluth</city>
+        <state>MN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>79</id>
+          <name>Ryan Kern</name>
+          <phone>218-213-8080</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>107</ID>
+      <date_start>2025-07-12</date_start>
+      <date_finish>2025-07-13</date_finish>
+      <name_airshow>fort wayne open house/airshow</name_airshow>
+      <location>
+        <city>Fort Wayne</city>
+        <state>IN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>Skip Stewart Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>80</id>
+          <name>Col Scott Boatright</name>
+          <phone>260-478-3284</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>109</ID>
+      <date_start>2025-08-09</date_start>
+      <date_finish>2025-08-10</date_finish>
+      <name_airshow>gary Airshow </name_airshow>
+      <location>
+        <city>Gary</city>
+        <state>IN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>81</id>
+          <name>Brian L Allemdorfer Jr</name>
+          <phone>773-919-1900</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>110</ID>
+      <date_start>2025-08-09</date_start>
+      <date_finish>2025-08-10</date_finish>
+      <name_airshow>kaneohe bay Airshow</name_airshow>
+      <location>
+        <city>MCBH Kaneohe Bay</city>
+        <state>HI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>82</id>
+          <name>Jason Boyle</name>
+          <phone>808-230-3195</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>111</ID>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>quad city Airshow</name_airshow>
+      <location>
+        <city>Davenport</city>
+        <state>IA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>Dacy Airshows</Performer>
+        <Performer>DreamBIG Entertainment, LLC</Performer>
+        <Performer>FIGHTERJETS, INC. - Randy W. Ball</Performer>
+        <Performer>RAD AEROSPORTS</Performer>
+        <Performer>Skip Stewart Airshows</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+        <Performer>Tora Tora Tora</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>83</id>
+          <name>Kenneth Hopper </name>
+          <phone>563-349-0044</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>113</ID>
+      <date_start>2025-09-06</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>thunder over new hampshire Airshow</name_airshow>
+      <location>
+        <city>Portsmouth</city>
+        <state>NH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>84</id>
+          <name>Capt Jacob Ricciotti</name>
+          <phone>603-430-3396</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>114</ID>
+      <date_start>2025-09-06</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>sky high aerospace expo and fly-in</name_airshow>
+      <location>
+        <city>Maxton</city>
+        <state>NC</state>
+      </location>
+      <Performers>
+        <Performer>Tora Tora Tora</Performer>
+        <Performer>Thom Richard's P-40 Warhawk American Dream</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+        <Performer>Quick Silver P-51 Airshows</Performer>
+        <Performer>Warbird Thunder Airshows &amp; Chris Thomas Airshows</Performer>
+        <Performer>U.S. Army Parachute Team Golden Knights</Performer>
+        <Performer>Robert 'Rooster' Schmidle Airshows</Performer>
+        <Performer>Precision Exotics</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>85</id>
+          <name>Trey Brown</name>
+          <phone>919-580-8766</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>115</ID>
+      <date_start>2025-09-12</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>aero gatineau-ottawa airshow</name_airshow>
+      <location>
+        <city>Gatineau</city>
+        <state>QC</state>
+      </location>
+      <Performers>
+        <Performer>Royal Air Force Red Arrows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>86</id>
+          <name>John Bennett</name>
+          <phone>613-720-5837</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>116</ID>
+      <date_start>2025-09-13</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>wild west Airshow</name_airshow>
+      <location>
+        <city>Cheyenne (Wyoming ANG)</city>
+        <state>WY</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>87</id>
+          <name>CJeremiah Singleton</name>
+          <phone>307-331-1753</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>117</ID>
+      <date_start>2025-09-20</date_start>
+      <date_finish>2025-09-21</date_finish>
+      <name_airshow>central coast airfest</name_airshow>
+      <location>
+        <city>Santa Maria</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>119</ID>
+      <date_start>2025-10-03</date_start>
+      <date_finish>2025-10-05</date_finish>
+      <name_airshow>california international airshow</name_airshow>
+      <location>
+        <city>Salinas</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>88</id>
+          <name>Don Chapin </name>
+          <phone>831-444-4130</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+        <Contact>
+          <id>89</id>
+          <name>Harry Wardwell</name>
+          <phone>831-754-1983</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>120</ID>
+      <date_start>2025-10-11</date_start>
+      <date_finish>2025-10-11</date_finish>
+      <name_airshow>apple valley airshow</name_airshow>
+      <location>
+        <city>Apple Valley</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>90</id>
+          <name>Greg Zarco</name>
+          <phone>909-387-8810</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>121</ID>
+      <date_start>2025-10-18</date_start>
+      <date_finish>2025-10-19</date_finish>
+      <name_airshow>las cruces air &amp; space expo</name_airshow>
+      <location>
+        <city>Las Cruces</city>
+        <state>NM</state>
+      </location>
+      <Performers>
+        <Performer>Sport Class Air Racing Association</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>91</id>
+          <name>Andy Hume</name>
+          <phone>575-541-2471</phone>
+          <address />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes>
+        <string>2024:11:11 - Sent Bill Beaton a pricing sheet</string>
+      </UndauntedNotes>
+      <AirshowLinks />
+      <Status>maybe</Status>
+    </Airshow>
+    <Airshow>
+      <ID>122</ID>
+      <date_start>2025-11-01</date_start>
+      <date_finish>2025-11-02</date_finish>
+      <name_airshow>thunder over the sound: keesler/biloxi air &amp; space show</name_airshow>
+      <location>
+        <city>Keesler AFB</city>
+        <state>MS</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>92</id>
+          <name>Lt Col John Connors</name>
+          <phone>228-376-7464</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>123</ID>
+      <date_start>2025-11-07</date_start>
+      <date_finish>2025-11-09</date_finish>
+      <name_airshow>acapulco Airshow</name_airshow>
+      <location>
+        <city>Acapulco</city>
+        <state>Mexico</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>93</id>
+          <name>Alejandro Parra </name>
+          <phone>011-52-744-484-5220 / 011-52-744</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>124</ID>
+      <date_start>2025-06-07</date_start>
+      <date_finish>2025-06-08</date_finish>
+      <name_airshow>michigan lakeshores' elemental experience</name_airshow>
+      <location>
+        <city>Grand Haven</city>
+        <state>MI</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>94</id>
+          <name>Jamal Steward</name>
+          <phone>616-502-9503</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>125</ID>
+      <date_start>2025-02-16</date_start>
+      <date_finish>2025-02-16</date_finish>
+      <name_airshow>wbca stars &amp; stripes Airshow spectacular sponsored by miller lite</name_airshow>
+      <location>
+        <city>Laredo</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>95</id>
+          <name>Nino Cardenas</name>
+          <phone>956-722-0589</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>contract</Status>
+    </Airshow>
+    <Airshow>
+      <ID>126</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-13</date_finish>
+      <name_airshow>altus air force base open house &amp; airshow</name_airshow>
+      <location>
+        <city>Altus AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>127</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-12</date_finish>
+      <name_airshow>thunder over louisville</name_airshow>
+      <location>
+        <city>Louisville</city>
+        <state>KY</state>
+      </location>
+      <Performers>
+        <Performer>Starlight Aerial Productions</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>96</id>
+          <name>Wayne Hettinger</name>
+          <phone>502-767-2255</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>128</ID>
+      <date_start>2025-04-12</date_start>
+      <date_finish>2025-04-12</date_finish>
+      <name_airshow>great texas freedomfest</name_airshow>
+      <location>
+        <city>San Antonio</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>97</id>
+          <name>Mr. Jay Stevens</name>
+          <phone>(210) 221-2880</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>129</ID>
+      <date_start>2025-05-02</date_start>
+      <date_finish>2025-05-04</date_finish>
+      <name_airshow>red white and blue airshow</name_airshow>
+      <location>
+        <city>MONROE</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>RJ Gritter Airshows</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>98</id>
+          <name>HOLLIE BOUDREAUX</name>
+          <phone>3183625540</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>130</ID>
+      <date_start>2025-05-10</date_start>
+      <date_finish>2025-05-11</date_finish>
+      <name_airshow>toledo Airshow</name_airshow>
+      <location>
+        <city>Toledo</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>Class of '45</Performer>
+        <Performer>Quick Silver P-51 Airshows</Performer>
+        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
+        <Performer>Redline Airshows</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>99</id>
+          <name>Mike Timbrook</name>
+          <phone>419-345-3173</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>131</ID>
+      <date_start>2025-05-16</date_start>
+      <date_finish>2025-05-17</date_finish>
+      <name_airshow>central texas airfest</name_airshow>
+      <location>
+        <city>Temple</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>Commemorative Air Force</Performer>
+        <Performer>NextGen Eagles</Performer>
+        <Performer>SRC Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>100</id>
+          <name>Sean Parker</name>
+          <phone>254-298-5350</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>132</ID>
+      <date_start>2025-06-07</date_start>
+      <date_finish>2025-06-07</date_finish>
+      <name_airshow>aviation day</name_airshow>
+      <location>
+        <city>Yakima</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>101</id>
+          <name>Shelby Barrett</name>
+          <phone>509-576-6383</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>133</ID>
+      <date_start>2025-06-13</date_start>
+      <date_finish>2025-06-15</date_finish>
+      <name_airshow>nj Airshow</name_airshow>
+      <location>
+        <city>West Milford</city>
+        <state>NJ</state>
+      </location>
+      <Performers>
+        <Performer>McCart Jet Motorsports</Performer>
+        <Performer>Mini Jet Airshows</Performer>
+        <Performer>Redline Airshows</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+        <Performer>Vertigo Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>102</id>
+          <name>Tim Wagner</name>
+          <phone>973-728-7721</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>134</ID>
+      <date_start>2025-06-14</date_start>
+      <date_finish>2025-06-14</date_finish>
+      <name_airshow>the flying proms symphonic airshow</name_airshow>
+      <location>
+        <city>Virginia Beach</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>Military Aviation Museum</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>103</id>
+          <name>Chris Vtipil</name>
+          <phone>757-490-3157</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>135</ID>
+      <date_start>2025-06-21</date_start>
+      <date_finish>2025-06-22</date_finish>
+      <name_airshow>moses lake airshow</name_airshow>
+      <location>
+        <city>Moses Lake</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>104</id>
+          <name>Terry Quick</name>
+          <phone>425-670-0888</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>136</ID>
+      <date_start>2025-06-27</date_start>
+      <date_finish>2025-06-29</date_finish>
+      <name_airshow>2025 community aviation day and airshow</name_airshow>
+      <location>
+        <city>Burlington</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>105</id>
+          <name>Keith Love</name>
+          <phone>3607088152</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>137</ID>
+      <date_start>2025-07-03</date_start>
+      <date_finish>2025-07-03</date_finish>
+      <name_airshow>radio dubuque Airshow &amp; fireworks spectacular</name_airshow>
+      <location>
+        <city>Dubuque</city>
+        <state>IA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>106</id>
+          <name>Perry Mason</name>
+          <phone>563-690-0815</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>138</ID>
+      <date_start>2025-07-04</date_start>
+      <date_finish>2025-07-04</date_finish>
+      <name_airshow>thunder over east texas Airshow</name_airshow>
+      <location>
+        <city>Athens</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Lyn Thomas</name>
+          <phone>214-535-9513</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>139</ID>
+      <date_start>2025-07-05</date_start>
+      <date_finish>2025-07-05</date_finish>
+      <name_airshow>sky fest 2025</name_airshow>
+      <location>
+        <city>Sherkston Shores Resort</city>
+        <state>Port Colborne</state>
+      </location>
+      <Performers>
+        <Performer>GERONIMO! Skydiving Team</Performer>
+        <Performer>Round Canopy Parachuting Team - USA</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>107</id>
+          <name>John Wallace</name>
+          <phone>905-894-0731</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>140</ID>
+      <date_start>2025-07-11</date_start>
+      <date_finish>2025-07-13</date_finish>
+      <name_airshow>bremerton airshow</name_airshow>
+      <location>
+        <city>Bremerton</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>108</id>
+          <name>Doug Fratoni</name>
+          <phone>253-405-9604</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>141</ID>
+      <date_start>2025-07-12</date_start>
+      <date_finish>2025-07-13</date_finish>
+      <name_airshow>geneseo airshow: the greatest show on turf!</name_airshow>
+      <location>
+        <city>Geneseo</city>
+        <state>NY</state>
+      </location>
+      <Performers>
+        <Performer>Tora Tora Tora</Performer>
+        <Performer>The Museum of the Forgotten Warrior</Performer>
+        <Performer>Thom Richard's P-40 Warhawk American Dream</Performer>
+        <Performer>Rob Holland Ultimate Airshows, LLC</Performer>
+        <Performer>Rag Wings &amp; Radials Vintage Aircraft</Performer>
+        <Performer>Quick Silver P-51 Airshows</Performer>
+        <Performer>National Warplane Museum</Performer>
+        <Performer>American Airpower Museum - Cockpit USA</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>109</id>
+          <name>Austin Wadsworth</name>
+          <phone>585-243-2100</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>142</ID>
+      <date_start>2025-07-12</date_start>
+      <date_finish>2025-07-13</date_finish>
+      <name_airshow>air dot show cocoa beach</name_airshow>
+      <location>
+        <city>Cocoa Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Bryan Lilley</name>
+          <phone>717-583-0800</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>143</ID>
+      <date_start>2025-07-18</date_start>
+      <date_finish>2025-07-20</date_finish>
+      <name_airshow>pistons and props</name_airshow>
+      <location>
+        <city>Janesville</city>
+        <state>WI</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>110</id>
+          <name>Joshua Gowey</name>
+          <phone>6086331418</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>144</ID>
+      <date_start>2025-07-19</date_start>
+      <date_finish>2025-07-20</date_finish>
+      <name_airshow>cape girardeau regional air festival</name_airshow>
+      <location>
+        <city>Cape Girardeau</city>
+        <state>MO</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>145</ID>
+      <date_start>2025-08-02</date_start>
+      <date_finish>2025-08-03</date_finish>
+      <name_airshow>fort st john international Airshow</name_airshow>
+      <location>
+        <city>Fort St John</city>
+        <state>BC</state>
+      </location>
+      <Performers>
+        <Performer>Yellow Thunder</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>111</id>
+          <name>Sandi Miller</name>
+          <phone>778-256-5689</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks>
+        <string>https://fsjairshow.com/</string>
+      </AirshowLinks>
+      <Status>contract</Status>
+    </Airshow>
+    <Airshow>
+      <ID>146</ID>
+      <date_start>2025-08-16</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>wings over willamette fly-in &amp; stol wars 2025</name_airshow>
+      <location>
+        <city>Independence</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>147</ID>
+      <date_start>2025-08-16</date_start>
+      <date_finish>2025-08-17</date_finish>
+      <name_airshow>props and pistons festival</name_airshow>
+      <location>
+        <city>Akron</city>
+        <state>OH</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>112</id>
+          <name>Hans Krah</name>
+          <phone>440-668-1718</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>148</ID>
+      <date_start>2025-08-23</date_start>
+      <date_finish>2025-08-24</date_finish>
+      <name_airshow>Airshow atlantic </name_airshow>
+      <location>
+        <city>Summerside</city>
+        <state>PE</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>113</id>
+          <name>Colin Stephenson</name>
+          <phone>902-223-2099</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>149</ID>
+      <date_start>2025-09-06</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>warhawk air museum warbird roundup</name_airshow>
+      <location>
+        <city>Nampa</city>
+        <state>ID</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>114</id>
+          <name>Brand Lindsey</name>
+          <phone>208-340-0382</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>150</ID>
+      <date_start>2025-09-06</date_start>
+      <date_finish>2025-09-07</date_finish>
+      <name_airshow>caf high sky wing airsho</name_airshow>
+      <location>
+        <city>Midland</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>115</id>
+          <name>Gena Linebarger</name>
+          <phone>4325280997</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>151</ID>
+      <date_start>2025-09-13</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>colorado tribute to aviation</name_airshow>
+      <location>
+        <city>Montrose</city>
+        <state>CO</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>116</id>
+          <name>Vendla Stockdale</name>
+          <phone>970-249-3433</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>152</ID>
+      <date_start>2025-09-13</date_start>
+      <date_finish>2025-09-14</date_finish>
+      <name_airshow>north alabama airfest</name_airshow>
+      <location>
+        <city>Decatur</city>
+        <state>AL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>117</id>
+          <name>Adam Fox</name>
+          <phone>405-708-0412</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>153</ID>
+      <date_start>2025-09-27</date_start>
+      <date_finish>2025-09-27</date_finish>
+      <name_airshow>wings and wheels</name_airshow>
+      <location>
+        <city>Spanish Fork</city>
+        <state>UT</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>118</id>
+          <name>Christian Davis</name>
+          <phone>801-804-4593</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>verbal</Status>
+    </Airshow>
+    <Airshow>
+      <ID>154</ID>
+      <date_start>2025-10-04</date_start>
+      <date_finish>2025-10-05</date_finish>
+      <name_airshow>warbirds over the beach</name_airshow>
+      <location>
+        <city>Virginia Beach</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>Military Aviation Museum</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name>Chris Vtipil</name>
+          <phone>757-490-3157</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>155</ID>
+      <date_start>2025-10-09</date_start>
+      <date_finish>2025-10-16</date_finish>
+      <name_airshow>homecoming 250 tribute to naval aviation</name_airshow>
+      <location>
+        <city>Philadelphia</city>
+        <state>PA</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>119</id>
+          <name>Clyde M Woltman</name>
+          <phone>2672078352</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>156</ID>
+      <date_start>2025-10-11</date_start>
+      <date_finish>2025-10-11</date_finish>
+      <name_airshow>culpeper air fest 2024</name_airshow>
+      <location>
+        <city>Culpeper</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>CAF - The Capital Wing</Performer>
+        <Performer>Scott Francis Airshows</Performer>
+        <Performer>Chefpitts Airshows</Performer>
+        <Performer>Nalls Aviation, Inc.</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>120</id>
+          <name>Steve Nixon</name>
+          <phone>540-729-9859</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>157</ID>
+      <date_start>2025-10-18</date_start>
+      <date_finish>2025-10-19</date_finish>
+      <name_airshow>best little Airshow in the world</name_airshow>
+      <location>
+        <city>Tallulah</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>SRC Airshows</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+        <Performer>Coleman Aerosports</Performer>
+        <Performer>Dacy Airshows</Performer>
+        <Performer>GhostWriter Airshows</Performer>
+      </Performers>
+      <Contacts>
+        <Contact>
+          <id>121</id>
+          <name>Patty Mekus</name>
+          <phone>3185742731</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>158</ID>
+      <date_start>2025-11-07</date_start>
+      <date_finish>2025-11-09</date_finish>
+      <name_airshow>stuart airshow</name_airshow>
+      <location>
+        <city>Stuart</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>122</id>
+          <name>Dewey Vinaya</name>
+          <phone>772-971-3226</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>159</ID>
+      <date_start>2025-11-30</date_start>
+      <date_finish>2025-11-30</date_finish>
+      <name_airshow>new bern titan Airshow</name_airshow>
+      <location>
+        <city>New Bern</city>
+        <state>NC</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>0</id>
+          <name />
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>160</ID>
+      <date_start>2025-08-02</date_start>
+      <date_finish>2025-08-03</date_finish>
+      <name_airshow>wings over marquette</name_airshow>
+      <location>
+        <city>Marquette</city>
+        <state>MI</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>123</id>
+          <name>Meg Favio</name>
+          <phone>734-252-6571</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>161</ID>
+      <date_start>2025-09-12</date_start>
+      <date_finish>2025-09-13</date_finish>
+      <name_airshow>historic wendover airfield</name_airshow>
+      <location>
+        <city>Wendover Airfield</city>
+        <state>UT</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>124</id>
+          <name>Thomas Petersen</name>
+          <phone>801--634-8763</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+    <Airshow>
+      <ID>162</ID>
+      <date_start>2025-10-04</date_start>
+      <date_finish>2025-10-05</date_finish>
+      <name_airshow>rose city airfest</name_airshow>
+      <location>
+        <city>Tyler</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Contacts>
+        <Contact>
+          <id>125</id>
+          <name>Travis Gladhill</name>
+          <phone>903.566.1010</phone>
+          <emailAddresses />
+          <showIds />
+        </Contact>
+      </Contacts>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>pursue</Status>
+    </Airshow>
+  </Airshows>
+  <AirshowYearOfInterest>2025</AirshowYearOfInterest>
+</AirshowGroup>

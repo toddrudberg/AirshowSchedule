@@ -49,23 +49,22 @@
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             arciveActiveDBToolStripMenuItem = new ToolStripMenuItem();
+            toolStripSeparator2 = new ToolStripSeparator();
+            setActiveContactDBToolStripMenuItem = new ToolStripMenuItem();
+            setActiveContactFileToolStripMenuItem = new ToolStripMenuItem();
             dataBaseManagementToolStripMenuItem = new ToolStripMenuItem();
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
             cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
             checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
             updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
             setYearOfInterestToolStripMenuItem = new ToolStripMenuItem();
-            reportsToolStripMenuItem = new ToolStripMenuItem();
-            generateCallListToolStripMenuItem = new ToolStripMenuItem();
-            generateBookedListToolStripMenuItem = new ToolStripMenuItem();
-            generateICASMailingListToolStripMenuItem = new ToolStripMenuItem();
-            generateICASMailingListAllInRegionToolStripMenuItem = new ToolStripMenuItem();
+            exportContactsToolStripMenuItem = new ToolStripMenuItem();
             searchToolStripMenuItem = new ToolStripMenuItem();
-            contactToolStripMenuItem = new ToolStripMenuItem();
+            advancedSearchToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            button1 = new Button();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -110,7 +109,7 @@
             dataGridViewShows.AllowUserToResizeColumns = false;
             dataGridViewShows.AllowUserToResizeRows = false;
             dataGridViewShows.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewShows.Location = new Point(839, 50);
+            dataGridViewShows.Location = new Point(839, 51);
             dataGridViewShows.Margin = new Padding(2, 1, 2, 1);
             dataGridViewShows.MultiSelect = false;
             dataGridViewShows.Name = "dataGridViewShows";
@@ -145,16 +144,16 @@
             // chklstRegions
             // 
             chklstRegions.FormattingEnabled = true;
-            chklstRegions.Location = new Point(1206, 290);
+            chklstRegions.Location = new Point(1132, 287);
             chklstRegions.Margin = new Padding(2, 1, 2, 1);
             chklstRegions.Name = "chklstRegions";
-            chklstRegions.Size = new Size(212, 148);
+            chklstRegions.Size = new Size(283, 184);
             chklstRegions.TabIndex = 22;
             chklstRegions.SelectedIndexChanged += chklstRegions_SelectedIndexChanged;
             // 
             // btnFilterSetAll
             // 
-            btnFilterSetAll.Location = new Point(1251, 446);
+            btnFilterSetAll.Location = new Point(950, 449);
             btnFilterSetAll.Margin = new Padding(2, 1, 2, 1);
             btnFilterSetAll.Name = "btnFilterSetAll";
             btnFilterSetAll.Size = new Size(80, 22);
@@ -165,7 +164,7 @@
             // 
             // btnFilterClearAll
             // 
-            btnFilterClearAll.Location = new Point(1335, 446);
+            btnFilterClearAll.Location = new Point(1034, 449);
             btnFilterClearAll.Margin = new Padding(2, 1, 2, 1);
             btnFilterClearAll.Name = "btnFilterClearAll";
             btnFilterClearAll.Size = new Size(80, 22);
@@ -176,7 +175,7 @@
             // 
             // btnFilterShows
             // 
-            btnFilterShows.Location = new Point(1167, 446);
+            btnFilterShows.Location = new Point(866, 449);
             btnFilterShows.Margin = new Padding(2, 1, 2, 1);
             btnFilterShows.Name = "btnFilterShows";
             btnFilterShows.Size = new Size(80, 22);
@@ -188,17 +187,17 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(32, 32);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, dataBaseManagementToolStripMenuItem, reportsToolStripMenuItem, searchToolStripMenuItem, helpToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { fileToolStripMenuItem, dataBaseManagementToolStripMenuItem, searchToolStripMenuItem, helpToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1667, 24);
+            menuStrip1.Size = new Size(1418, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripMenuItem1, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
@@ -243,9 +242,28 @@
             arciveActiveDBToolStripMenuItem.Text = "Arcive Active DB";
             arciveActiveDBToolStripMenuItem.Click += arciveActiveDBToolStripMenuItem_Click;
             // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new Size(195, 6);
+            // 
+            // setActiveContactDBToolStripMenuItem
+            // 
+            setActiveContactDBToolStripMenuItem.Name = "setActiveContactDBToolStripMenuItem";
+            setActiveContactDBToolStripMenuItem.Size = new Size(198, 22);
+            setActiveContactDBToolStripMenuItem.Text = "Set Active Contact DB";
+            setActiveContactDBToolStripMenuItem.Click += setActiveContactDBToolStripMenuItem_Click;
+            // 
+            // setActiveContactFileToolStripMenuItem
+            // 
+            setActiveContactFileToolStripMenuItem.Name = "setActiveContactFileToolStripMenuItem";
+            setActiveContactFileToolStripMenuItem.Size = new Size(198, 22);
+            setActiveContactFileToolStripMenuItem.Text = "Save Contact DB As..";
+            setActiveContactFileToolStripMenuItem.Click += saveContactFileAs;
+            // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem, exportContactsToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -253,86 +271,57 @@
             // compareToActiveDBToolStripMenuItem
             // 
             compareToActiveDBToolStripMenuItem.Name = "compareToActiveDBToolStripMenuItem";
-            compareToActiveDBToolStripMenuItem.Size = new Size(219, 22);
+            compareToActiveDBToolStripMenuItem.Size = new Size(234, 22);
             compareToActiveDBToolStripMenuItem.Text = "Compare To Active DB";
             compareToActiveDBToolStripMenuItem.Click += compareToActiveDBToolStripMenuItem_Click;
             // 
             // cleanUpDBToolStripMenuItem
             // 
             cleanUpDBToolStripMenuItem.Name = "cleanUpDBToolStripMenuItem";
-            cleanUpDBToolStripMenuItem.Size = new Size(219, 22);
+            cleanUpDBToolStripMenuItem.Size = new Size(234, 22);
             cleanUpDBToolStripMenuItem.Text = "Clean Up DB";
             cleanUpDBToolStripMenuItem.Click += cleanUpDBToolStripMenuItem_Click;
             // 
             // checkForCancelledShowsToolStripMenuItem
             // 
             checkForCancelledShowsToolStripMenuItem.Name = "checkForCancelledShowsToolStripMenuItem";
-            checkForCancelledShowsToolStripMenuItem.Size = new Size(219, 22);
+            checkForCancelledShowsToolStripMenuItem.Size = new Size(234, 22);
             checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
             checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
             // 
             // updateAdditionalFieldsToolStripMenuItem
             // 
             updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
-            updateAdditionalFieldsToolStripMenuItem.Size = new Size(219, 22);
+            updateAdditionalFieldsToolStripMenuItem.Size = new Size(234, 22);
             updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
             updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
             // 
             // setYearOfInterestToolStripMenuItem
             // 
             setYearOfInterestToolStripMenuItem.Name = "setYearOfInterestToolStripMenuItem";
-            setYearOfInterestToolStripMenuItem.Size = new Size(219, 22);
+            setYearOfInterestToolStripMenuItem.Size = new Size(234, 22);
             setYearOfInterestToolStripMenuItem.Text = "Set Year of Interest";
             setYearOfInterestToolStripMenuItem.Click += setYearOfInterestToolStripMenuItem_Click;
             // 
-            // reportsToolStripMenuItem
+            // exportContactsToolStripMenuItem
             // 
-            reportsToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { generateCallListToolStripMenuItem, generateBookedListToolStripMenuItem, generateICASMailingListToolStripMenuItem, generateICASMailingListAllInRegionToolStripMenuItem });
-            reportsToolStripMenuItem.Name = "reportsToolStripMenuItem";
-            reportsToolStripMenuItem.Size = new Size(59, 22);
-            reportsToolStripMenuItem.Text = "Reports";
-            // 
-            // generateCallListToolStripMenuItem
-            // 
-            generateCallListToolStripMenuItem.Name = "generateCallListToolStripMenuItem";
-            generateCallListToolStripMenuItem.Size = new Size(213, 22);
-            generateCallListToolStripMenuItem.Text = "Generate Call List";
-            generateCallListToolStripMenuItem.Click += generateCallListToolStripMenuItem_Click;
-            // 
-            // generateBookedListToolStripMenuItem
-            // 
-            generateBookedListToolStripMenuItem.Name = "generateBookedListToolStripMenuItem";
-            generateBookedListToolStripMenuItem.Size = new Size(213, 22);
-            generateBookedListToolStripMenuItem.Text = "Generate Booked List";
-            generateBookedListToolStripMenuItem.Click += generateBookedListToolStripMenuItem_Click;
-            // 
-            // generateICASMailingListToolStripMenuItem
-            // 
-            generateICASMailingListToolStripMenuItem.Name = "generateICASMailingListToolStripMenuItem";
-            generateICASMailingListToolStripMenuItem.Size = new Size(213, 22);
-            generateICASMailingListToolStripMenuItem.Text = "Generate ICAS Mailing List";
-            generateICASMailingListToolStripMenuItem.Click += generateICASMailingListToolStripMenuItem_Click;
-            // 
-            // generateICASMailingListAllInRegionToolStripMenuItem
-            // 
-            generateICASMailingListAllInRegionToolStripMenuItem.Name = "generateICASMailingListAllInRegionToolStripMenuItem";
-            generateICASMailingListAllInRegionToolStripMenuItem.Size = new Size(213, 22);
-            generateICASMailingListAllInRegionToolStripMenuItem.Text = "All in Filtered Region";
-            generateICASMailingListAllInRegionToolStripMenuItem.Click += generateICASMailingListAllInRegionToolStripMenuItem_Click;
+            exportContactsToolStripMenuItem.Name = "exportContactsToolStripMenuItem";
+            exportContactsToolStripMenuItem.Size = new Size(234, 22);
+            exportContactsToolStripMenuItem.Text = "Reform DB extracting contacts";
             // 
             // searchToolStripMenuItem
             // 
-            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { contactToolStripMenuItem });
+            searchToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { advancedSearchToolStripMenuItem });
             searchToolStripMenuItem.Name = "searchToolStripMenuItem";
             searchToolStripMenuItem.Size = new Size(54, 22);
             searchToolStripMenuItem.Text = "Search";
             // 
-            // contactToolStripMenuItem
+            // advancedSearchToolStripMenuItem
             // 
-            contactToolStripMenuItem.Name = "contactToolStripMenuItem";
-            contactToolStripMenuItem.Size = new Size(146, 22);
-            contactToolStripMenuItem.Text = "Search Dialog";
-            contactToolStripMenuItem.Click += contactToolStripMenuItem_Click;
+            advancedSearchToolStripMenuItem.Name = "advancedSearchToolStripMenuItem";
+            advancedSearchToolStripMenuItem.Size = new Size(165, 22);
+            advancedSearchToolStripMenuItem.Text = "Advanced Search";
+            advancedSearchToolStripMenuItem.Click += advancedSearchToolStripMenuItem_Click;
             // 
             // helpToolStripMenuItem
             // 
@@ -359,22 +348,18 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // button1
+            // toolStripMenuItem1
             // 
-            button1.Location = new Point(871, 351);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 28;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(198, 22);
+            toolStripMenuItem1.Text = "Compare ASGs";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1667, 474);
-            Controls.Add(button1);
+            ClientSize = new Size(1418, 477);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -412,15 +397,9 @@
         private Button btnFilterClearAll;
         private Button btnFilterShows;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem reportsToolStripMenuItem;
-        private ToolStripMenuItem generateCallListToolStripMenuItem;
-        private ToolStripMenuItem generateBookedListToolStripMenuItem;
-        private ToolStripMenuItem generateICASMailingListToolStripMenuItem;
-        private ToolStripMenuItem generateICASMailingListAllInRegionToolStripMenuItem;
         private Button btnDeleteShow;
         private Button btnCheckForDuplicates;
     private ToolStripMenuItem searchToolStripMenuItem;
-    private ToolStripMenuItem contactToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
@@ -436,6 +415,11 @@
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
         private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
         private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
-        private Button button1;
+        private ToolStripMenuItem exportContactsToolStripMenuItem;
+        private ToolStripSeparator toolStripSeparator2;
+        private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
+        private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
+        private ToolStripMenuItem advancedSearchToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
     }
 }

@@ -28,11 +28,18 @@ namespace AirshowSchedules
         private Button buttonAddLink;
         private Button btnRemoveLink;
         private Airshow airshow;
+        private List<cContact> contacts;
 
-        public AirshowEditForm(Airshow airshow)
+        public AirshowEditForm(Airshow airshow, List<cContact> contacts)
         {
             this.airshow = airshow;
+            this.contacts = contacts;
             InitializeComponent();
+            this.AutoScaleDimensions = new SizeF(7F, 15F);
+            this.AutoScaleMode = AutoScaleMode.Font;
+
+
+
             BindData();
         }
 
@@ -334,7 +341,8 @@ namespace AirshowSchedules
             this.textBoxNotes.Text = airshow.Notes_AirshowStuff;
             this.comboBoxStatus.SelectedItem = airshow.Status.ToString();
             this.listBoxPerformers.Items.AddRange(airshow.Performers.performer.ToArray());
-            this.listBoxContacts.Items.AddRange(airshow.Contacts.contact.ToArray());
+            //contacts
+            this.listBoxContacts.Items.AddRange(cContact.getContacts(contacts, airshow).ToArray());
             this.listBoxUndauntedNotes.Items.AddRange(airshow.UndauntedNotes.ToArray());
             this.listBoxWeblinks.Items.AddRange(airshow.AirshowLinks.ToArray());
         }
@@ -401,7 +409,8 @@ namespace AirshowSchedules
             airshow.Notes_AirshowStuff = this.textBoxNotes.Text;
             airshow.Status = (Airshow.eStatus)Enum.Parse(typeof(Airshow.eStatus), this.comboBoxStatus.SelectedItem.ToString());
             airshow.Performers.performer = new List<string>(this.listBoxPerformers.Items.Cast<string>());
-            airshow.Contacts.contact = new List<Airshow.cContact>(this.listBoxContacts.Items.Cast<Airshow.cContact>());
+            //contacts
+            //Contacts = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
             airshow.UndauntedNotes = new List<string>(this.listBoxUndauntedNotes.Items.Cast<string>());
             airshow.AirshowLinks = new List<string>(this.listBoxWeblinks.Items.Cast<string>());
 
@@ -422,6 +431,7 @@ namespace AirshowSchedules
             {
                 if (contactEditForm.ShowDialog() == DialogResult.OK)
                 {
+                    cContact.addContact(contacts, contactEditForm.Contact, airshow);
                     this.listBoxContacts.Items.Add(contactEditForm.Contact);
                 }
             }
@@ -474,43 +484,79 @@ namespace AirshowSchedules
     {
         public static string ShowDialog(string text, string caption, string existingText = "", bool prependDate = false)
         {
-            Form addressPrompt = new Form()
+            // Create form
+            Form addressPrompt = new Form
             {
                 Width = 500,
-                Height = 250, // Increased height
+                Height = 250, // Adjust size
                 FormBorderStyle = FormBorderStyle.FixedDialog,
                 Text = caption,
-                StartPosition = FormStartPosition.CenterScreen
+                StartPosition = FormStartPosition.CenterScreen,
+                AutoScaleDimensions = new SizeF(8F, 16F), // Adjust for your DPI
+                AutoScaleMode = AutoScaleMode.Font
             };
-            Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
-            TextBox textBox = new TextBox()
+
+            // Create a TableLayoutPanel for layout management
+            TableLayoutPanel layout = new TableLayoutPanel
             {
-                Left = 50,
-                Top = 50,
-                Width = 400,
-                Height = 100, // Increased height
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 3,
+                Padding = new Padding(10),
+            };
+            layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Label
+            layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F)); // TextBox
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize)); // Button
+
+            // Label
+            Label textLabel = new Label
+            {
+                Text = text,
+                AutoSize = true,
+                Dock = DockStyle.Fill,
+                TextAlign = ContentAlignment.MiddleLeft
+            };
+
+            // TextBox
+            TextBox textBox = new TextBox
+            {
                 Multiline = true,
-                WordWrap = true // Enable text wrapping
+                WordWrap = true,
+                Dock = DockStyle.Fill
             };
-            Button confirmation = new Button() { Text = "OK", Left = 350, Width = 100, Top = 160, DialogResult = DialogResult.OK };
-            confirmation.Click += (sender, e) => { addressPrompt.Close(); };
-            addressPrompt.Controls.Add(textBox);
-            addressPrompt.Controls.Add(confirmation);
-            addressPrompt.Controls.Add(textLabel);
-            addressPrompt.AcceptButton = confirmation;
-            if (prependDate)
+
+            // Button
+            Button confirmation = new Button
             {
-                textBox.Text = $"{DateTime.Now:yyyy:MM:dd} - ";
-            }
-            else
-            {                
-                textBox.Text = existingText;
-            }
+                Text = "OK",
+                DialogResult = DialogResult.OK,
+                Anchor = AnchorStyles.Right // Align button to the right
+            };
+
+            // Add controls to layout
+            layout.Controls.Add(textLabel, 0, 0); // Row 0
+            layout.Controls.Add(textBox, 0, 1); // Row 1
+            layout.Controls.Add(confirmation, 0, 2); // Row 2
+
+            // Add layout to form
+            addressPrompt.Controls.Add(layout);
+
+            // Event handlers
+            confirmation.Click += (sender, e) => addressPrompt.Close();
+            addressPrompt.AcceptButton = confirmation;
+
+            // Populate text box
+            textBox.Text = prependDate
+                ? $"{DateTime.Now:yyyy:MM:dd} - "
+                : existingText;
             textBox.SelectionStart = textBox.Text.Length;
-    
+
+            // Show dialog and return result
             return addressPrompt.ShowDialog() == DialogResult.OK ? textBox.Text : string.Empty;
         }
     }
+
 
     public static class WebLinkPrompt
     {
@@ -530,7 +576,8 @@ namespace AirshowSchedules
                 Button copyButton = new Button() { Text = "Copy", Left = 240, Width = 100, Top = 100 };
 
                 confirmation.Click += (sender, e) => { prompt.Close(); };
-                copyButton.Click += (sender, e) => { Clipboard.SetText(textBox.Text); };
+                if( textBox.Text.Length > 0)
+                    copyButton.Click += (sender, e) => { Clipboard.SetText(textBox.Text); };
 
                 prompt.Controls.Add(textBox);
                 prompt.Controls.Add(confirmation);

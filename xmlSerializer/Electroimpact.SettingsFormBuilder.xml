@@ -1,0 +1,273 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Electroimpact.SettingsFormBuilder</name>
+    </assembly>
+    <members>
+        <member name="T:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute">
+            <summary>
+            General Display Settings
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute.SortArrows">
+            <summary>
+            Only Applies to Lists
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute.Sort">
+            <summary>
+            Only Applies to Lists
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute.NoDuplicates">
+            <summary>
+            Only Applies to Lists
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute.DisplayGroups">
+            <summary>
+            Used to assign a member to specific group(s).  These groups can be hidden or shown.  Overrides DisplayGroup on setting.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Attributes.DisplayAttribute.DisplayGroup">
+            <summary>
+            Used to assign a member to specific group.  Groups can be hidden or shown.  Overrides DisplayGroups on setting.
+            </summary>
+        </member>
+        <member name="T:Electroimpact.SettingsFormBuilderV2.Attributes.FileBrowseDialogAttribute">
+            <summary>
+            Enables a file browser dialog
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.PropertyToControl">
+            <summary>
+            Specifies which property of the Group is this member controlling
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.GroupToControlPath">
+            <summary>
+            Set this to the name of a Group to have the value of this member control the visibility of that group.
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.ValuesForTest">
+            <summary>
+            If the value of the controller control matches any of the values in this list the Group specified in GroupToControlPath the 
+            PropertyToControl will be set to ValueToSet.  Otherwise the PropertyToControl will be set to !ValueToSet.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.ValueForTest">
+            <summary>
+            If the value of the controller control matches this value the Group specified in GroupToControlPath the 
+            PropertyToControl will be set to ValueToSet.  Otherwise the PropertyToControl will be set to !ValueToSet.
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.ValueToSet">
+            <summary>
+            Value to set PropertyToControl to if a match is found in ValuesForTest
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.GroupControllerAttribute.Id">
+            <summary>
+            Used to identify this object on a GroupControllerAdded event
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Attributes.CustomDisplayControlAttribute.UserControlType">
+            <summary>
+            Must derive from <see cref="!:CustomUserControlBase"/>
+            </summary>
+        </member>
+        <member name="T:Electroimpact.SettingsFormBuilderV2.Attributes.UseMultiItemPickerAttribute">
+            <summary>
+            Causes field to show an item picker instead of the standard List editor.
+            Only for use with a List of Enum values
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Attributes.ImportExportAttribute.PreventImport">
+            <summary>
+            Disallows importing of this item
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Attributes.ImportExportAttribute.PreventExport">
+            <summary>
+            Disallows exporting of this item
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.ICustomUserControlBase.SetData(System.Object,Electroimpact.SettingsFormBuilderV2.cField)">
+            <summary>
+            
+            </summary>
+            <param name="data">The value currently saved in the settings file</param>
+            <param name="field">Additional information about the data that may optionally be used</param>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.DesignTimeSupport.SettingsForm`1.TestT">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.DesignTimeSupport.ucTypeEditor.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.DesignTimeSupport.ucTypeEditor.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.DesignTimeSupport.ucTypeEditor.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.cField.TryGetControlValue(System.Object@)">
+            <summary>
+            Gets the value in the control, which, if changed, will not match the settings object
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.frmSettings.CreateTree(System.Object@,System.Windows.Forms.TreeNode,Electroimpact.SettingsFormBuilderV2.cField)">
+            <summary>
+            Creates the tree (left hand side) and panel (right hand side) of setting information.  This is a recursive function.
+            </summary>
+            <param name="settingsInstance">The setting object to create the settings window from.  Usually a class containing multiple pieces of setting information.</param>
+            <param name="parentNode">Pass null for a new window</param>
+            <param name="nodename">The name to display for the node.  For a new window pass the name of the root node.</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.frmSettings.CleanTree(System.Windows.Forms.TreeView,System.Windows.Forms.TreeNodeCollection)">
+            <summary>
+            Remove any items from the tree that don't contain controls
+            </summary>
+            <param name="nodes"></param>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.frmSettings.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.frmSettings.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.frmSettings.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Grouping.Group.GetControllerCurrentValue">
+            <summary>
+            Gets the current value of the controller (set by the control that is visible to the user)
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.Grouping.GroupControlAddedArgs.ControllerID">
+            <summary>
+            Used to identify this object on a GroupControllerAdded event
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.ExportImport.Export.ExcludeTreeChildren">
+            <summary>
+            If the root class has "simple" children (int, bool, string, etc) they are displayed under their own node.
+            If the root class is chosen, other tree nodes are not visually indicated as children and it would be confusing to export
+            them if "Export Current" is selected.  Set this value to true in such cases.
+            </summary>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.MultiItemPicker.components">
+            <summary> 
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.MultiItemPicker.Dispose(System.Boolean)">
+            <summary> 
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.MultiItemPicker.InitializeComponent">
+            <summary> 
+            Required method for Designer support - do not modify 
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Authorization.AuthorizationCheck.SetVisibility(Electroimpact.SettingsFormBuilderV2.cField,System.Action{Electroimpact.SettingsFormBuilderV2.Authorization.CallbackArgs})">
+            <summary>
+            Set a control visibility based on the result of the callback.
+            If callback is null "Editable" will be returned.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Authorization.AuthorizationCheck.GetVisibility(Electroimpact.SettingsFormBuilderV2.cField,System.Action{Electroimpact.SettingsFormBuilderV2.Authorization.CallbackArgs})">
+            <summary>
+            Get the desired visibility value as specified by the callback.  
+            If callback is null "Editable" will be returned.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder.AuthorizationCallback">
+            <summary>
+            Optional option to have a method called before a field is displayed.  Allows the programmer
+            to decide if a field should be visible, read only or hidden.  Set <see cref="F:Electroimpact.SettingsFormBuilderV2.Authorization.CallbackArgs.Visibility"/> to
+            modify the field visibility.
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder.#ctor(System.String,System.Object)">
+            <summary>
+            Create a settings dialog which includes file saving abilities.
+            </summary>
+            <param name="fileLocation">Location of the save file</param>
+            <param name="SettingsObject">Object to generate the settings dialog from</param>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder.#ctor(System.Object)">
+            <summary>
+            Create a settings dialog.  No file saving is provided.  To use file saving use the overload that requires a filename.
+            </summary>
+            <param name="SettingsObject">Object to generate the settings dialog from</param>
+        </member>
+        <member name="F:Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder.VisibilityGroupAction">
+            <summary>
+            <para>Affects how groups in "VisibilityGroups" are displayed.</para>  
+            <para>None: No effect is applied to the VisibilityGroups. </para>
+            <para>Hide: Members that match any item in VisibilityGroups are hidden</para>
+            <para>Show: Only members that match any item in VisibilityGroups will be shown.</para>
+            </summary>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Utilties.IsSimpleType(System.Type)">
+            <summary>
+            Used to determine if this is a simple C# type.  
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Utilties.FixType(System.Object)">
+            <summary>
+            Entity Framework adds a wrapper type, check for and correct the problem.
+            </summary>
+            <param name="settingsInstance"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Electroimpact.SettingsFormBuilderV2.Utilties.IsClass(System.Type)">
+            <summary>
+            Returns true if the type is a class, not a list and not a simple type
+            </summary>
+        </member>
+        <member name="T:Electroimpact.SettingsFormBuilderV2.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Electroimpact.SettingsFormBuilderV2.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

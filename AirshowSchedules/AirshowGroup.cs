@@ -11,13 +11,28 @@ namespace AirshowSchedules
         public AirshowGroup()
         { }
 
-        #region Wrapper Classes
         public class cAirshows
         {
             [XmlElement("Airshow")]
             public List<Airshow> myShows = new List<Airshow>();
         }
-        #endregion
+
+        public List<Airshow> GetAirshows()
+        {
+            return Airshows.myShows;
+        }
+        public AirshowGroup DeepCopy()
+        {
+            AirshowGroup asg = new AirshowGroup();
+            asg.AirshowYearOfInterest = AirshowYearOfInterest;
+            asg.Airshows.myShows = Airshow.DeepCopy(GetAirshows());
+            return asg;
+        }
+        public List<Airshow> GetAirshowsForYear()
+        {
+            return Airshows.myShows.Where(x => x.Year == AirshowYearOfInterest).ToList();
+        }
+        
         public static void SaveMe(AirshowGroup airshowGroup, string FileName)
         {
             Electroimpact.XmlSerialization.Serializer.Save(airshowGroup, FileName);

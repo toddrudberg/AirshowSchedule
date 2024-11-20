@@ -27,15 +27,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\FileParser\FileParser\FileParser.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Reference Include="Electroimpact.SettingsFormBuilder">
-      <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.SettingsFormBuilder.dll</HintPath>
+      <HintPath>..\xmlSerializer\Electroimpact.SettingsFormBuilder.dll</HintPath>
     </Reference>
     <Reference Include="Electroimpact.XmlSerializer">
-      <HintPath>..\..\..\Users\toddr\OneDrive\Projects\dotNetSolutions\xmlSerializer\UsingTheseDLLS\Electroimpact.XmlSerializer.dll</HintPath>
+      <HintPath>..\xmlSerializer\Electroimpact.XmlSerializer.dll</HintPath>
     </Reference>
   </ItemGroup>
 

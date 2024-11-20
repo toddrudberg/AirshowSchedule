@@ -7,13 +7,14 @@ public partial class DeleteAirshowForm : Form
 {
     private List<Airshow> duplicateList;
     private List<Airshow> copiedList;
-
-    public DeleteAirshowForm(List<Airshow> duplicateList, List<Airshow> copiedList)
+    private List<cContact> copiedContacts;
+    public DeleteAirshowForm(List<Airshow> duplicateList, List<Airshow> copiedList, List<cContact> copiedContacts)
     {
         InitializeComponent();
         this.duplicateList = duplicateList.OrderBy(airshow => airshow.name_airshow).ToList();
         PopulateCheckedListBox();
         this.copiedList = copiedList;
+        this.copiedContacts = copiedContacts;
     }
 
     private void InitializeComponent()
@@ -105,6 +106,7 @@ public partial class DeleteAirshowForm : Form
 
         foreach (var item in itemsToRemove)
         {
+            cContact.RemoveAirshowReference(copiedContacts, item);
             copiedList.Remove(item);
             checkedListBox.Items.Remove(item);
         }

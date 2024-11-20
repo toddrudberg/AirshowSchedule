@@ -1,5 +1,6 @@
 ﻿using Electroimpact;
 using Electroimpact.SettingsFormBuilderV2.Attributes;
+using Newtonsoft.Json;
 using Pastel;
 using System.Globalization;
 using System.Xml.Serialization;
@@ -9,6 +10,7 @@ namespace AirshowSchedules
 {
     public class Airshow
     {
+        public int ID;
         [Display(DisplayName = "Start Date (yyyy-MM-DD):")]
         public string date_start { get; set; }
 
@@ -24,8 +26,8 @@ namespace AirshowSchedules
         [Display(DisplayName = "Performers:")]
         public cPerformers Performers { get; set; } = new cPerformers();
 
-        [Display(DisplayName = "Contacts:")]
-        public cContacts Contacts { get; set; } = new cContacts();
+        // [Display(DisplayName = "Contacts:")]
+        // public cContacts Contacts { get; set; } = new cContacts(); 
 
         [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
@@ -36,7 +38,11 @@ namespace AirshowSchedules
         [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
         
-
+        [Display(DisplayName = "Contacts:")]
+        public List<int> contactIds { get; set; } = new List<int>();
+        
+        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
+        public string date_added { get; set; }
 
         public enum eStatus
         {
@@ -51,10 +57,41 @@ namespace AirshowSchedules
         [Display(DisplayName = "Status:")]
         public eStatus Status { get; set; } = eStatus.none;
         
-        public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow)
+        public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow, List<cContact> copiedContacts, List<cContact> latestContacts)
         {
+            List<cContact> masterContacts = cContact.getContacts(copiedContacts, masterShow);
+            Console.WriteLine($"Master: {masterShow.name_airshow} ID {masterShow.ID} has {masterContacts.Count} contacts.".Pastel(Color.LimeGreen));
+            foreach (cContact contact in masterContacts)
+            {
+                Console.WriteLine($"{contact.name} with ID: {contact.ID}");
+            }
 
-            masterShow.Contacts.MergeContacts(newShow.Contacts);
+            List<cContact> newContacts = cContact.getContacts(latestContacts, newShow);
+            Console.WriteLine($"New: {newShow.name_airshow} ID {newShow.ID} has {newContacts.Count} contacts.".Pastel(Color.LimeGreen));
+            foreach (cContact contact in newContacts)
+            {
+                Console.WriteLine($"{contact.name} with ID: {contact.ID}");
+            }
+
+            if(newContacts.Count > 1)
+            {
+                MessageBox.Show("Something Wrong.".Pastel(Color.Green));
+                List<cContact> test = cContact.getContacts(latestContacts, newShow);
+            }
+
+            foreach (cContact newContact in newContacts)
+            {
+                
+                List<cContact> existingContact = masterContacts.Where(c => c.name.Trim().ToLower() == newContact.name.Trim().ToLower()).ToList();
+                if (existingContact.Count == 0)
+                {
+                    if (newContact.name.Trim() != "")
+                    {
+                        // There is no existing contact, so legitimately need to add a contact.
+                        cContact.addContact(copiedContacts, newContact, masterShow);
+                    }
+                }
+            }
             Notes_AirshowStuff += newShow.Notes_AirshowStuff;
             masterShow.Performers.MergePerformers(newShow.Performers);
             Console.WriteLine($"Merging Undaunted Notes: {newShow.UndauntedNotes.Count}".Pastel(Color.Green));
@@ -62,15 +99,22 @@ namespace AirshowSchedules
             Console.WriteLine($"Merging Airshow Links: {newShow.AirshowLinks.Count}".Pastel(Color.Green));
             masterShow.AirshowLinks = masterShow.AirshowLinks.Union(newShow.AirshowLinks).ToList();
         }
-        public void AppendCustomFields(Airshow airshow)
+        public void AppendCustomFields(Airshow dupAirshow, List<cContact> copiedContacts)
         {
+            //merge the contact lists
+            //remove the dupAirShow ID from the contacts
 
-            Contacts.MergeContacts(airshow.Contacts);
-            Notes_AirshowStuff += airshow.Notes_AirshowStuff;
+            this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
+            cContact.RemoveAirshowReference(copiedContacts, dupAirshow);
 
-            if(airshow.Status < Status)
+            this.UndauntedNotes = this.UndauntedNotes.Union(dupAirshow.UndauntedNotes).ToList();
+            this.AirshowLinks = this.AirshowLinks.Union(dupAirshow.AirshowLinks).ToList();
+
+            Notes_AirshowStuff += dupAirshow.Notes_AirshowStuff;
+
+            if(dupAirshow.Status < Status)
             {
-              Status = airshow.Status;
+              Status = dupAirshow.Status;
             }
         }
         /*
@@ -100,36 +144,6 @@ namespace AirshowSchedules
             }
         }
 
-        public class cContacts
-        {
-            [XmlElement("Contact")]
-            public List<cContact> contact = new List<cContact>();
-
-            public void MergeContacts(cContacts contactsToMerge)
-            {
-                Console.WriteLine("Merging Contacts");
-                foreach (cContact testContact in contactsToMerge.contact)
-                {
-                    List<cContact> matchingContacts = contact.Where(c => c.name == testContact.name).ToList();
-                    if (matchingContacts.Count == 0)
-                    {
-                        contact.Add(testContact);
-                        Console.WriteLine($"Added {testContact.name}".Pastel(Color.Green));
-                    }
-                    else
-                    {
-                        foreach (cContact matchingContact in matchingContacts)
-                        {
-                            if (matchingContact.phone != testContact.phone)
-                            {
-                                matchingContact.phone = testContact.phone;
-                                Console.WriteLine($"Updated {testContact.name} phone number".Pastel(Color.Green));
-                            }
-                        }
-                    }
-                }
-            }
-        }
         #endregion
 
         #region Helper Classes
@@ -153,9 +167,8 @@ namespace AirshowSchedules
                         string[] dog = rawstring.Split(',');
                         if (dog.Length > 0)
                         {
-                            csString oldshitty = new csString();
                             City = dog[0].Trim();
-                            oldshitty.KillChar(ref City, '\"');
+                            City = City.Replace("\\", "");
                         }
                     }
                     return City;
@@ -205,28 +218,9 @@ namespace AirshowSchedules
                 }
                 return false;
             }
-
-
         }
 
-        public class cContact
-        {
-            public string name;
-            public string phone;
-            public string address;
-            [Display(DisplayName = "Email:")]
-            public List<string> emailAddresses { get; set; } = new List<string>();
 
-
-            public cContact()
-            { }
-
-            public override string ToString()
-            {
-                return name.ToString();
-            }
-
-        }
         #endregion
 
         #region Class Functions
@@ -343,7 +337,23 @@ namespace AirshowSchedules
 
         public override string ToString()
         {
-            return $"{name_airshow.ToString()} - {location.city}, {location.state}, {date_start}";
+            //let's get the number of days for this show:
+            string[] start = date_start.Split('-');
+            string[] end = date_finish.Split('-');
+            System.DateTime dstart = new DateTime(int.Parse(start[0]), int.Parse(start[1]), int.Parse(start[2]));
+            System.DateTime dfinish = new DateTime(int.Parse(end[0]), int.Parse(end[1]), int.Parse(end[2]));
+            TimeSpan days = dfinish - dstart;
+            int totalDays = days.TotalDays > 0 ? (int)days.TotalDays + 1 : 1;
+            string daysstring = "";
+            if( totalDays == 1)
+            {
+                daysstring = "1 day";
+            }
+            else
+            {
+                daysstring = totalDays.ToString() + " days";
+            }
+            return $"{name_airshow.ToString()} - {location.city}, {location.state}, {date_start} - {daysstring}";
         }
 
         public bool CompareYears(object? obj)
@@ -366,12 +376,12 @@ namespace AirshowSchedules
             if (name.ToUpper() == this.name_airshow.ToUpper())
                 return true;
 
-            csString cs = new csString();
-            string name_clean = this.name_airshow.ToUpper();
+            string name_clean = this.name_airshow.Trim().ToUpper();
             char[] kill = { ',', '-', '$', '&', '(', ')', '\t' };
             foreach (char killchar in kill)
             {
-                cs.KillChar(ref name_clean, killchar);
+
+                name_clean = name_clean.Replace(killchar.ToString(), "");
             }
 
             int n = 0;
@@ -411,8 +421,10 @@ namespace AirshowSchedules
 
             return strings.ToArray();
         }
-        public static void LoadFile(cAirshowFileParserSetupTool inputfile, List<Airshow> airshows)
+        public static void LoadFile(cAirshowFileParserSetupTool inputfile, List<Airshow> airshows, List<cContact> contacts)
         {
+            int contactID = 0;
+            int airshowID = 0;
             string[] lines;
             try
             {
@@ -432,12 +444,21 @@ namespace AirshowSchedules
             {
                 for (int ii = 0; ii < lines.Length; ii++)
                 {
+                    // the show starts with a date, we look for the year
+                    // line 1 is the start date
+                    // line 2 is the end date
+                    // line 3 is the name of the show
+                    // line 4 is the location
+                    // performers start with a -
+                    // contacts are after performers and start with a name
+
                     if (lines[ii].StartsWith(ScheduleYear))
                     {//we got one.
 
                         Airshow airshow = new Airshow();
                         airshow.date_start = lines[ii++];
                         airshow.date_finish = lines[ii++];
+                        airshow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
 
                         string airshowname = lines[ii++].ToLower();
                         if (airshowname.Contains("air show"))
@@ -490,8 +511,16 @@ namespace AirshowSchedules
                                     }
                                 }
                                 ii = jj - 1;
-                                airshow.Contacts.contact.Add(acontact);
-                                //airshow.contacts.Add(acontact);
+                                acontact.ID = contactID;
+                                acontact.showIDs.Add(airshowID);
+
+                                airshow.contactIds.Add(contactID);
+                                airshow.ID = airshowID;
+                                
+                                contactID++;
+                                airshowID++;
+
+                                contacts.Add(acontact);
                                 airshows.Add(airshow);
                                 break;
                             }
@@ -507,12 +536,7 @@ namespace AirshowSchedules
 
                     string linein = lines[ii];
 
-                    csString stringer = new csString();
-
-                    //if (linein.Contains("\""))
-                    //  MessageBox.Show("WTF");
-
-                    stringer.KillChar(ref linein, '\"');
+                    linein = linein.Replace("\"", "");
 
                     string[] line = linein.Split('\t');
 
@@ -574,11 +598,12 @@ namespace AirshowSchedules
                 outputline += "\t" + airshow.location.city;
                 outputline += "\t" + airshow.location.state;
                 outputline += "\t" + airshow.name_airshow;
-                foreach (cContact acontact in airshow.Contacts.contact)
-                {
-                    outputline += "\t" + acontact.name;
-                    outputline += "\t" + acontact.phone;
-                }
+                //contacts
+                //foreach (cContact acontact in airshow.Contacts.contact)
+                //{
+                //    outputline += "\t" + acontact.name;
+                //    outputline += "\t" + acontact.phone;
+                //}
                 outputs += outputline + "\n";
             }
             return outputs;

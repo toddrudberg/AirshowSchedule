@@ -13,6 +13,7 @@ public partial class formMain
     private void fileParseDataFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
         List<Airshow> airshows = new List<Airshow>();
+        List<cContact> contacts = new List<cContact>();
 
         //WorkingFileParserClass;
         WorkingFileParserClass = cAirshowFileParserSetupTool.LoadMe();
@@ -26,8 +27,7 @@ public partial class formMain
         {
             this.Enabled = false;
 
-            Airshow.LoadFile(WorkingFileParserClass, airshows);
-            //myFormState.AirshowYearofInterest = WorkingFileParserClass.AirshowYear;
+            Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
             airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
             cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
             this.Enabled = true;
@@ -37,15 +37,14 @@ public partial class formMain
     {
         AirshowGroup asg = new AirshowGroup();
         List<Airshow> airshows = new List<Airshow>();
+        List<cContact> contacts = new List<cContact>();
 
         if (System.IO.File.Exists(WorkingFileParserClass.sFileName))
         {
             try
             {
-                Airshow.LoadFile(WorkingFileParserClass, airshows);
+                Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
                 airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-
-                //myFilteredAirshows = airshows.ToList();
                 asg.Airshows.myShows = airshows;
                 asg.AirshowYearOfInterest = WorkingFileParserClass.AirshowYear;
                 SaveFileDialog sfd = new SaveFileDialog();
@@ -55,6 +54,9 @@ public partial class formMain
                 if (dr == DialogResult.OK)
                 {
                     Electroimpact.XmlSerialization.Serializer.Save(asg, sfd.FileName);
+                    cContact.SaveMe(contacts, sfd.FileName.Replace(".asg.xml", ".contacts.json"));
+                    Console.WriteLine($"Airshow Group saved to {sfd.FileName}".Pastel(Color.Green));
+                    Console.WriteLine($"Contacts saved to {sfd.FileName.Replace(".asg.xml", ".contacts.json")}".Pastel(Color.Green));
                 }
                 return;
             }
@@ -65,8 +67,15 @@ public partial class formMain
 
     private void setActiveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
+        
         System.Windows.Forms.OpenFileDialog ofd = new OpenFileDialog();
         ofd.Filter = "XML|*.xml";
+        ofd.Title = "Open the Airshow Database";
+        string defaultFile = myFormState.fnCurrentXMLDataBase;
+        if (defaultFile != "")
+        {
+            ofd.InitialDirectory = System.IO.Path.GetDirectoryName(defaultFile);
+        }
         DialogResult dr = ofd.ShowDialog();
 
         if (dr == DialogResult.OK)
@@ -79,13 +88,19 @@ public partial class formMain
 
             myFormState.fnCurrentXMLDataBase = ofd.FileName;
             FormState.SaveMe(myFormState);
-            myFilteredAirshows = myAirshowGroup.Airshows.myShows;            
+            myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();            
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             ColorGrid(myFilteredAirshows);
             lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
             this.Enabled = true;
         }
     }
+
+    private void saveContactFileAs(object sender, EventArgs e)
+    {
+        SaveContacts(true);
+    }
+
     private void saveDatabaseFileToolStripMenuItem_Click(object sender, EventArgs e)
     {
         SaveAirshowSchedule(true);
@@ -100,23 +115,22 @@ public partial class formMain
     private void compareToActiveDBToolStripMenuItem_Click(object sender, EventArgs e)
     {
 
-        this.Enabled = false;
         OpenFileDialog openFileDialog = new OpenFileDialog();
         openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
         openFileDialog.Title = "Open the most recent Airshow List to find the most recent updates";
         openFileDialog.DefaultExt = "asg.xml";
         DialogResult dr = openFileDialog.ShowDialog();
 
-
         if (dr == DialogResult.OK)
         {
-            this.Enabled = false;
-
             AirshowGroup asgLeft = myAirshowGroup;
 
             AirshowGroup asgRight = Electroimpact.XmlSerialization.Serializer.Load<AirshowGroup>(openFileDialog.FileName);
+            bool success;
+            List<cContact> contactsRight = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success);
 
             List<Airshow> newShows = new List<Airshow>();
+            List<cContact> newContacts = new List<cContact>();
 
             foreach (Airshow ashow in asgRight.Airshows.myShows)
             {
@@ -124,12 +138,18 @@ public partial class formMain
                 if (foundAirshows.Count > 0)
                     continue;
                 newShows.Add(ashow);
+                foreach(int contactId in ashow.contactIds)
+                {
+                    List<cContact> contactsToAdd = contactsRight.Where(contact => contact.ID == contactId).ToList();
+                    newContacts.AddRange(contactsToAdd);
+                }
             }
 
             // Show the CompareForm
             // create a deep copy of MyAirshows
             List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
-            CompareForm compareForm = new CompareForm(newShows, copiedList, this);
+            List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
+            CompareForm compareForm = new CompareForm(newShows, newContacts, copiedList, copiedContacts, this);
             if (compareForm.ShowDialog() == DialogResult.OK)
             {
                 // ask the user if they want to save the merged data
@@ -137,11 +157,10 @@ public partial class formMain
                 if (dr2 == DialogResult.Yes)
                 {
                     myAirshowGroup.Airshows.myShows = copiedList;
+                    myContacts = copiedContacts;
                     SaveAirshowSchedule(false);
                 }
             }
-
-            this.Enabled = true;
         }
     }
     private void cleanUpDBToolStripMenuItem_Click(object sender, EventArgs e)
@@ -153,17 +172,15 @@ public partial class formMain
 
         //for every airshow in the database, compare cities to see if they show up more than once
         List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
         foreach (Airshow ashow in copiedList)
         {
             List<Airshow> duplicatesFound = new List<Airshow>();
-            duplicatesFound = copiedList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
+            duplicatesFound = copiedList.Where(airshow => airshow.location.Equals(ashow.location) && airshow.Year.Equals(ashow.Year)).ToList();
 
             if (duplicatesFound.Count > 1)
             {
-                // foreach (Airshow adup in duplicatesFound)
-                // {                    
                 duplicateAirshowsFound.Add(ashow);
-                // }
             }
         }
 
@@ -173,9 +190,13 @@ public partial class formMain
             MessageBox.Show("No duplicates found.");
             return;
         }
-        DialogResult dr = MessageBox.Show($"There are {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
+        DialogResult dr = MessageBox.Show($"There are approximately {duplicateAirshowsFound.Count / 2} duplicates.\nDo you want to Open the latest downloaded asg.xml to check which one is valid?", "Open a file?", MessageBoxButtons.YesNo);
         if (dr == DialogResult.Yes)
         {
+            // Remove Duplicates
+            // Remove Shows not in the new database
+            // Remove Cancelled Shows
+
             this.Enabled = false;
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "Airshow Group Files (*.asg.xml)|*.asg.xml";
@@ -190,13 +211,13 @@ public partial class formMain
 
                 foreach (Airshow ashow in duplicateAirshowsFound)
                 {
-                    List<Airshow> airshowsInNewDB = latestAirshowList.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
-                    foreach (Airshow adup in airshowsInNewDB)
+                    List<Airshow> airshowsInNewDB = latestAirshowList.Where(airshow => airshow.location.Equals(ashow.location) && airshow.Year.Equals(ashow.Year)).ToList();
+                    foreach (Airshow airshowInNewDB in airshowsInNewDB)
                     {
-                        if (!airshowsFoundInNewDB.Contains(adup))
+                        if (!airshowsFoundInNewDB.Contains(airshowInNewDB))
                         {
-                            string airshowInNewDB = string.Concat(adup.ToString(), "\n");
-                            airshowsFoundInNewDB.Add(adup);
+                            //string airshowInNewDBstring = string.Concat(airshowInNewDB.ToString(), "\n");
+                            airshowsFoundInNewDB.Add(airshowInNewDB);
                         }
                     }
                 }
@@ -206,12 +227,14 @@ public partial class formMain
                     List<Airshow> validShows = airshowsFoundInNewDB.Where(airshow => airshow.location.Equals(dupShow.location)).ToList();
                     if (validShows.Count == 1)
                     {
+                        
                         if (!validShows[0].IsEqual(dupShow, false))
                         {
                             List<Airshow> airshowToRemove = copiedList.Where(airshow => airshow.IsEqual(dupShow, false)).ToList();
+                            
                             foreach (Airshow adup in airshowToRemove)
                             {
-                                validShows[0].AppendCustomFields(adup);
+                                validShows[0].AppendCustomFields(adup, copiedContacts);                            
                                 copiedList.Remove(adup);
                                 Console.WriteLine($"Removed {adup.ToString()}".Pastel(Color.Red));
                             }
@@ -232,15 +255,16 @@ public partial class formMain
                 Console.WriteLine($"There are {count - copiedList.Count} duplicates removed.".Pastel(Color.Green));
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("The easy ones are removed, now we will remove shows not in the new database:".Pastel(Color.Yellow));
+                Console.WriteLine("Now we will remove shows not in the new database:".Pastel(Color.Yellow));
                 Console.WriteLine("Press any key to continue.".Pastel(Color.Green));
                 Console.ReadKey();
                 Console.WriteLine();
 
 
                 count = copiedList.Count;
+                List<Airshow> copiedListInYearOfInterest = copiedList.Where(airshow => airshow.Year == asgLatest.AirshowYearOfInterest).ToList();
                 List<Airshow> showsToRemove = new List<Airshow>();
-                foreach (Airshow ashow in copiedList)
+                foreach (Airshow ashow in copiedListInYearOfInterest)
                 {
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count == 0)
@@ -249,12 +273,14 @@ public partial class formMain
                         string response = Console.ReadLine();
                         if (response.ToLower() == "y")
                         {
+                            
                             showsToRemove.Add(ashow);
                         }
                     }
                 }
                 foreach (Airshow airshow in showsToRemove)
-                {
+                {                    
+                    cContact.RemoveAirshowReference(copiedContacts, airshow);
                     copiedList.Remove(airshow);
                 }
 
@@ -264,21 +290,22 @@ public partial class formMain
                 Console.WriteLine($"There are {myAirshowGroup.Airshows.myShows.Count} airshows in the original database.".Pastel(Color.Green));
                 Console.WriteLine($"We removed {count - copiedList.Count} non-existant Airshows.".Pastel(Color.Green));
                 Console.WriteLine();
-                Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
-                string response2 = Console.ReadLine();
-                if (response2.ToLower() == "y")
-                {
-                    Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
-                    string confirm = Console.ReadLine();
-                    if (confirm.ToLower() == "y")
-                    {
-                        myAirshowGroup.Airshows.myShows = copiedList;
-                        SaveAirshowSchedule(false);
-                    }
-                }
+//                Console.WriteLine("Do you want to make this permenant? (Y/N)".Pastel(Color.Yellow));
+                // string response2 = Console.ReadLine();
+                // if (response2.ToLower() == "y")
+                // {
+                //     Console.WriteLine("This change is permenant, are you sure?! (Y/N)".Pastel(Color.Red));
+                //     string confirm = Console.ReadLine();
+                //     if (confirm.ToLower() == "y")
+                //     {
+                //         myAirshowGroup.Airshows.myShows = copiedList;
+                //         myContacts = copiedContacts;
+                //         SaveAirshowSchedule(false);
+                //     }
+                // }
 
                 Console.WriteLine();
-                Console.WriteLine("Looking for Airshows that have been cancelled.".Pastel(Color.Green));
+                Console.WriteLine("Looking for Airshows that have been cancelled.".Pastel(Color.LimeGreen));
                 List<Airshow> cancelledShows = latestAirshowList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
                 List<Airshow> cancelledInDB = new   List<Airshow>();
                 List<Airshow> airshowToRemove2 = new List<Airshow>();
@@ -292,15 +319,18 @@ public partial class formMain
                     }
                 }
                 Console.WriteLine();
-                Console.WriteLine("Do these shows match? (Y/N)?".Pastel(Color.Yellow));
+                if( cancelledInDB.Count > 0)
+                {
+                    Console.WriteLine("Do these shows match? (Y/N)?".Pastel(Color.Yellow));
+                }
                 foreach (Airshow ashow in cancelledInDB)
                 {
                     List<Airshow> matchingShow = cancelledShows.Where(airshow => airshow.location.Equals(ashow.location)).ToList();
                     
                     foreach(Airshow adup in matchingShow)
                     {
-                        Console.WriteLine(adup.ToString().Pastel(Color.Green));
-                        Console.WriteLine(ashow.ToString().Pastel(Color.Green));
+                        Console.WriteLine(adup.ToString().Pastel(Color.LimeGreen));
+                        Console.WriteLine(ashow.ToString().Pastel(Color.LimeGreen));
                         Console.WriteLine("Do these match? (Y/N)".Pastel(Color.Yellow));
                         string response = Console.ReadLine();
                         if (response.ToLower() == "y")
@@ -311,29 +341,55 @@ public partial class formMain
                 }
                 Console.WriteLine();
                 Console.WriteLine();
-                Console.WriteLine("Do you want to remove these shows?".Pastel(Color.Yellow));
-                Console.WriteLine();
+                if( airshowToRemove2.Count > 0)
+                {
+                    Console.WriteLine("Do you want to remove these shows?".Pastel(Color.Yellow));
+                    Console.WriteLine();
+                }
                 foreach(Airshow ashow in airshowToRemove2)
                 {
                     Console.WriteLine(ashow.ToString().Pastel(Color.Red));
                 }
-                Console.WriteLine("(Y to remove, N to skip)?".Pastel(Color.Yellow));
-                string response3 = Console.ReadLine();
+                string response3 = "y";
+                if( airshowToRemove2.Count > 0)
+                {
+                    Console.WriteLine("(Y to remove, N to skip)?".Pastel(Color.Yellow));
+                    response3 = Console.ReadLine();
+                }
                 if (response3.ToLower() == "y")
                 {
                     foreach (Airshow ashow in airshowToRemove2)
                     {
+                        cContact.RemoveAirshowReference(copiedContacts, ashow);
                         copiedList.Remove(ashow);
 
                     }
-                    myAirshowGroup.Airshows.myShows = copiedList;
-                    SaveAirshowSchedule(false);
-                    Console.WriteLine("Shows removed.".Pastel(Color.Green));
+                    Console.WriteLine();
+                    Console.WriteLine("The Cleanup is complete.".Pastel(Color.LimeGreen));
+                    Console.WriteLine("Do you want to make these changes to the Active DB? Y/N".Pastel(Color.Yellow));
+                    response3 = Console.ReadLine();
+                    if (response3.ToLower() == "y")
+                    {
+                        Console.WriteLine("Last chance, are you sure? Y/N".Pastel(Color.Red));
+                        response3 = Console.ReadLine();
+                        if (response3.ToLower() == "y")
+                        {
+                            myContacts = copiedContacts;
+                            myAirshowGroup.Airshows.myShows = copiedList;
+                            SaveAirshowSchedule(false);
+                            Console.WriteLine("Shows removed and DB updated".Pastel(Color.Green));
+                        }
+                        else
+                        {
+                            Console.WriteLine("Shows not removed and DB is Unchanged.".Pastel(Color.Green));
+                        }
+                    }
                 }
-                else
+                else               
                 {
                     Console.WriteLine("Shows not removed.".Pastel(Color.Green));
                 }
+   
             }
             this.Enabled = true;
         }
@@ -349,15 +405,16 @@ public partial class formMain
 
             // Open the DeleteAirshowForm
             int Count = copiedList.Count;
-            DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList);
+            DeleteAirshowForm deleteForm = new DeleteAirshowForm(duplicateAirshowsFound, copiedList, copiedContacts);
             if (deleteForm.ShowDialog() == DialogResult.OK)
             {
                 // ask the user if they want to save the merged data
                 DialogResult dr2 = MessageBox.Show("Do you want to save the merged data to the active DB?", "Save Merged Data?", MessageBoxButtons.YesNo);
                 if (dr2 == DialogResult.Yes)
                 {
+                    myContacts = copiedContacts;
                     myAirshowGroup.Airshows.myShows = copiedList;
-                    myFilteredAirshows = myAirshowGroup.Airshows.myShows;
+                    myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();
                     SaveAirshowSchedule(false);
                     Console.WriteLine();
                     Console.WriteLine($"There were {Count - copiedList.Count} airshows removed.".Pastel(Color.Green));
@@ -371,6 +428,7 @@ public partial class formMain
     {
 
         List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContacts = cContact.DeepCopy(myContacts);
         List<Airshow> cancelledShows = copiedList.Where(airshow => airshow.name_airshow.ToLower().Contains("cancelled")).ToList();
         List<Airshow> cancelledInNote = copiedList.Where(airshow => airshow.Notes_AirshowStuff.ToLower().Contains("canc")).ToList();
         foreach (Airshow ashow in cancelledInNote)
@@ -402,6 +460,7 @@ public partial class formMain
             {
                 foreach (Airshow ashow in cancelledShows)
                 {
+                    cContact.RemoveAirshowReference(copiedContacts, ashow);
                     copiedList.Remove(ashow);
                 }
                 myAirshowGroup.Airshows.myShows = copiedList;
@@ -422,8 +481,10 @@ public partial class formMain
 
     private void updateAdditionalFieldsToolStripMenuItem_Click(object sender, EventArgs e)
     {
-        List<Airshow> copiedList = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<Airshow> copiedASGlist = Airshow.DeepCopy(myAirshowGroup.Airshows.myShows);
+        List<cContact> copiedContactList = cContact.DeepCopy(myContacts);
         List<Airshow> latestAirshowList = new List<Airshow>();
+        
 
         {
             this.Enabled = false;
@@ -436,7 +497,9 @@ public partial class formMain
                 IntPtr consoleWindow = GetConsoleWindow();
                 bool success;
                 AirshowGroup asgLatest = AirshowGroup.LoadMe(openFileDialog.FileName, out success);
-                if (!success)
+                bool success2;
+                List<cContact> latestContacts = cContact.LoadMe(openFileDialog.FileName.Replace(".asg.xml", ".contacts.json"), out success2);
+                if (!(success && success2))
                 {
                     MessageBox.Show("Failed to load the selected file.");
                     this.Enabled = true;
@@ -444,16 +507,18 @@ public partial class formMain
                 }
 
                 latestAirshowList = asgLatest.Airshows.myShows.ToList();
-
-                foreach (Airshow ashow in copiedList)
+                int numPasses = 0;
+                foreach (Airshow ashow in copiedASGlist)
                 {
+                    numPasses++;
+
                     List<Airshow> showsFound = latestAirshowList.Where(airshow => airshow.IsEqual(ashow, false)).ToList();
                     if (showsFound.Count > 0)
                     {
-                        Console.WriteLine($"Airshow {ashow.ToString()} has a change, looking for items to add?".Pastel(Color.Yellow));
+                        Console.WriteLine($"Airshow {ashow.ToString()} may have a change, looking for items to add.".Pastel(Color.Yellow));
                         if (showsFound.Count == 1)
                         {
-                            showsFound[0].mergeAdditionalInformation(ashow, showsFound[0]);
+                            showsFound[0].mergeAdditionalInformation(ashow, showsFound[0], copiedContactList, latestContacts);
                         }
                         else
                         {
@@ -467,14 +532,15 @@ public partial class formMain
                                 string response = Console.ReadLine();
                                 if (response.ToLower() == "y")
                                 {
-                                    showsFound[0].mergeAdditionalInformation(ashow, adup);
+                                    showsFound[0].mergeAdditionalInformation(ashow, adup, copiedContactList, latestContacts);
                                     break;
                                 }
                             }
                         }
                     }
                 }
-                myAirshowGroup.Airshows.myShows = copiedList;
+                myContacts = copiedContactList;
+                myAirshowGroup.Airshows.myShows = copiedASGlist;
                 SaveAirshowSchedule(false);
                 MessageBox.Show("Additional fields updated successfully.");
             }
@@ -523,6 +589,7 @@ public partial class formMain
         Console.WriteLine($"Archived file path: {archivedFilePath}");
 
         Electroimpact.XmlSerialization.Serializer.Save(myAirshowGroup, archivedFilePath);
+        cContact.SaveMe(myContacts, archivedFilePath.Replace(".asg.xml", ".contacts.json"));
         Console.WriteLine($"Active DB file archived to: {archivedFilePath}".Pastel(Color.Green));
     }    
 }
