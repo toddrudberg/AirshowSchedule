@@ -280,14 +280,7 @@ public partial class formMain : Form
 
                 List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
                 airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                if( airshowsthisweek.Count == 0)
-                {
-                    lstBoxShows.Text = "No airshows";
-                }
-                else
-                {
-                    lstBoxShows.Text = "";
-                }
+
                 foreach (Airshow airshow in airshowsthisweek)
                 {
                     lstBoxShows.Items.Add(airshow);
