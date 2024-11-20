@@ -1,4 +1,5 @@
-﻿namespace AirshowSchedules
+﻿
+namespace AirshowSchedules
 {
   partial class formMain
   {
@@ -45,6 +46,7 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             pareDataFileToolStripMenuItem = new ToolStripMenuItem();
             fileSaveParsedDataFile = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
@@ -64,7 +66,6 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            toolStripMenuItem1 = new ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
@@ -93,13 +94,15 @@
             // 
             // lstBoxShows
             // 
+            lstBoxShows.DrawMode = DrawMode.OwnerDrawFixed;
             lstBoxShows.FormattingEnabled = true;
-            lstBoxShows.ItemHeight = 15;
+            lstBoxShows.ItemHeight = 30;
             lstBoxShows.Location = new Point(1464, 322);
             lstBoxShows.Margin = new Padding(2, 1, 2, 1);
             lstBoxShows.Name = "lstBoxShows";
-            lstBoxShows.Size = new Size(428, 349);
+            lstBoxShows.Size = new Size(428, 334);
             lstBoxShows.TabIndex = 12;
+            lstBoxShows.DrawItem += lstBoxShows_DrawItem;
             lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
             // 
             // dataGridViewShows
@@ -191,7 +194,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1418, 24);
+            menuStrip1.Size = new Size(1631, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -215,6 +218,13 @@
             fileSaveParsedDataFile.Size = new Size(198, 22);
             fileSaveParsedDataFile.Text = "Save Parsed Data File";
             fileSaveParsedDataFile.Click += fileSaveParsedDataFile_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(198, 22);
+            toolStripMenuItem1.Text = "Compare ASGs";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // toolStripSeparator1
             // 
@@ -348,18 +358,11 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(198, 22);
-            toolStripMenuItem1.Text = "Compare ASGs";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
-            // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1418, 477);
+            ClientSize = new Size(1631, 643);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -385,6 +388,57 @@
             PerformLayout();
         }
 
+        private void lstBoxShows_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return; // Ignore invalid indices
+
+            // Get the current item
+            Airshow ashow = (Airshow)lstBoxShows.Items[e.Index];
+
+            // Determine the background color based on the item's status
+            Color backgroundColor;
+            switch (ashow.Status)
+            {
+                case Airshow.eStatus.maybe:
+                    backgroundColor = Color.LightYellow;
+                    break;
+                case Airshow.eStatus.verbal:
+                    backgroundColor = Color.LightGreen;
+                    break;
+                case Airshow.eStatus.contract:
+                    backgroundColor = Color.LightBlue;
+                    break;
+                case Airshow.eStatus.pursue:
+                    backgroundColor = Color.LightCoral;
+                    break;
+                case Airshow.eStatus.NO:
+                    backgroundColor = Color.LightGray;
+                    break;
+                default:
+                    backgroundColor = Color.White; // Default background color
+                    break;
+            }
+
+            // Draw the background
+            using (Brush backgroundBrush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+            }
+
+            // Draw the text (default black color)
+            e.Graphics.DrawString(
+                ashow.ToString(),     // Text to draw
+                e.Font,               // Use the ListBox's font
+                Brushes.Black,        // Always use black text
+                e.Bounds,             // Bounds of the current item
+                StringFormat.GenericDefault // Default text alignment
+            );
+
+            // Draw the focus rectangle if the item is selected
+            e.DrawFocusRectangle();
+        }
+
+
         #endregion
         private ToolTip toolTip1;
         private DataGridView dgvCalendar;
@@ -399,7 +453,7 @@
         private MenuStrip menuStrip1;
         private Button btnDeleteShow;
         private Button btnCheckForDuplicates;
-    private ToolStripMenuItem searchToolStripMenuItem;
+        private ToolStripMenuItem searchToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
