@@ -35,7 +35,6 @@ namespace AirshowSchedules
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
             lstBoxShows = new ListBox();
-            dataGridViewShows = new DataGridView();
             lblYearOfInterest = new Label();
             btnAddShow = new Button();
             chklstRegions = new CheckedListBox();
@@ -66,8 +65,8 @@ namespace AirshowSchedules
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
+            labelWeekendSelected = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -97,31 +96,13 @@ namespace AirshowSchedules
             lstBoxShows.DrawMode = DrawMode.OwnerDrawFixed;
             lstBoxShows.FormattingEnabled = true;
             lstBoxShows.ItemHeight = 30;
-            lstBoxShows.Location = new Point(1464, 322);
+            lstBoxShows.Location = new Point(839, 62);
             lstBoxShows.Margin = new Padding(2, 1, 2, 1);
             lstBoxShows.Name = "lstBoxShows";
-            lstBoxShows.Size = new Size(428, 334);
+            lstBoxShows.Size = new Size(574, 214);
             lstBoxShows.TabIndex = 12;
             lstBoxShows.DrawItem += lstBoxShows_DrawItem;
             lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
-            // 
-            // dataGridViewShows
-            // 
-            dataGridViewShows.AllowUserToAddRows = false;
-            dataGridViewShows.AllowUserToDeleteRows = false;
-            dataGridViewShows.AllowUserToResizeColumns = false;
-            dataGridViewShows.AllowUserToResizeRows = false;
-            dataGridViewShows.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewShows.Location = new Point(839, 51);
-            dataGridViewShows.Margin = new Padding(2, 1, 2, 1);
-            dataGridViewShows.MultiSelect = false;
-            dataGridViewShows.Name = "dataGridViewShows";
-            dataGridViewShows.RowHeadersWidth = 82;
-            dataGridViewShows.RowTemplate.Height = 41;
-            dataGridViewShows.Size = new Size(576, 232);
-            dataGridViewShows.TabIndex = 13;
-            dataGridViewShows.CellClick += dataGridViewShows_CellClick;
-            dataGridViewShows.CellContentClick += dataGridViewShows_CellContentClick;
             // 
             // lblYearOfInterest
             // 
@@ -194,7 +175,7 @@ namespace AirshowSchedules
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1631, 24);
+            menuStrip1.Size = new Size(1419, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -358,11 +339,21 @@ namespace AirshowSchedules
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
+            // labelWeekendSelected
+            // 
+            labelWeekendSelected.AutoSize = true;
+            labelWeekendSelected.Location = new Point(841, 46);
+            labelWeekendSelected.Name = "labelWeekendSelected";
+            labelWeekendSelected.Size = new Size(125, 15);
+            labelWeekendSelected.TabIndex = 28;
+            labelWeekendSelected.Text = "labelWeekendSelected";
+            // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1631, 643);
+            ClientSize = new Size(1419, 477);
+            Controls.Add(labelWeekendSelected);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
@@ -370,7 +361,6 @@ namespace AirshowSchedules
             Controls.Add(chklstRegions);
             Controls.Add(btnAddShow);
             Controls.Add(lblYearOfInterest);
-            Controls.Add(dataGridViewShows);
             Controls.Add(lstBoxShows);
             Controls.Add(dgvCalendar);
             Controls.Add(menuStrip1);
@@ -381,7 +371,6 @@ namespace AirshowSchedules
             Text = "Undaunted Airshows Schedule Maker";
             Load += frmAirshowScheduleTool_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewShows).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -439,11 +428,12 @@ namespace AirshowSchedules
         }
 
 
+
+
         #endregion
         private ToolTip toolTip1;
         private DataGridView dgvCalendar;
         private ListBox lstBoxShows;
-        private DataGridView dataGridViewShows;
         private Label lblYearOfInterest;
         private Button btnAddShow;
         private CheckedListBox chklstRegions;
@@ -475,5 +465,6 @@ namespace AirshowSchedules
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
         private ToolStripMenuItem advancedSearchToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
+        private Label labelWeekendSelected;
     }
 }

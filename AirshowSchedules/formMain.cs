@@ -269,40 +269,30 @@ public partial class formMain : Form
         {
             object cell = dgvCalendar.SelectedCells[0].Value;
 
-            //if( cell is cAirshowWeekend)
+            string[] weekendinquestion = cell.ToString().Split(' ');
+
+            lstBoxShows.Items.Clear();
+            
+            if (weekendinquestion.Length > 2)
             {
-                //cAirshowWeekend weekend = (cAirshowWeekend)cell;
-                //int weekofyear = weekend.weekofyear;
-                string[] weekendinquestion = cell.ToString().Split(' ');
+                DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
+                AirshowWeekend asw = new AirshowWeekend(dateTime);
 
-                lstBoxShows.Items.Clear();
-                lstBoxShows.Text = "No airshows";
-                dataGridViewShows.Columns.Clear();
-
-                if (weekendinquestion.Length > 2)
+                List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
+                airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
+                if( airshowsthisweek.Count == 0)
                 {
-                    DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                    AirshowWeekend asw = new AirshowWeekend(dateTime);
-
-                    List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                    airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-
-                    List<string> shownames = new List<string>();
-
-                    foreach (Airshow airshow in airshowsthisweek)
-                    {
-                        shownames.Add(airshow.ToString());
-                    }
-                    if (shownames.Count > 0)
-                    {
-                        foreach (Airshow airshow in airshowsthisweek)
-                        {
-                            lstBoxShows.Items.Add(airshow);
-                        }
-                        LoadShowGrid(airshowsthisweek, $"Airshows week of {cell.ToString()}:");
-                        //GridTools.LoadShowGrid(dataGridViewShows, airshowsthisweek, $"Airshows week of {cell.ToString()}:");
-                    }
+                    lstBoxShows.Text = "No airshows";
                 }
+                else
+                {
+                    lstBoxShows.Text = "";
+                }
+                foreach (Airshow airshow in airshowsthisweek)
+                {
+                    lstBoxShows.Items.Add(airshow);
+                }
+                labelWeekendSelected.Text = $"Airshows week of {cell.ToString()}:";
             }
         }
     }
@@ -326,40 +316,9 @@ public partial class formMain : Form
                     SaveAirshowSchedule(false); // Save the updated airshow schedule
                 }
             }
-
-
-            // Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
-            // Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
-            // DialogResult dr = sb.showDialog();
-            // if (dr == DialogResult.OK)
-            // {
-            //     SaveAirshowSchedule(false);
-            //     //ColorGrid(myFilteredAirshows);
-            // }
         }
     }
-
-    private void dataGridViewShows_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-        dataGridViewShows_CellClickHandler(sender, e);
-    }
-
-    private void dataGridViewShows_CellClick(object sender, DataGridViewCellEventArgs e)
-    {
-        dataGridViewShows_CellClickHandler(sender, e);
-    }
-
-    private void dataGridViewShows_CellClickHandler(object sender, DataGridViewCellEventArgs e)
-    {
-        int rowIndex = -1; // Default value in case no cell is selected
-
-        if (dataGridViewShows.SelectedCells.Count > 0)
-        {
-            rowIndex = dataGridViewShows.SelectedCells[0].RowIndex;
-            lstBoxShows.SelectedIndex = rowIndex;
-        }
-    }
-
+   
     private void btnAddShow_Click(object sender, EventArgs e)
     {
         Airshow ashow = new Airshow();
@@ -497,10 +456,8 @@ public partial class formMain : Form
     {
         int rowIndex = -1; // Default value in case no cell is selected
 
-        if (dataGridViewShows.SelectedCells.Count > 0)
+        if (lstBoxShows.SelectedIndex > 0)
         {
-            rowIndex = dataGridViewShows.SelectedCells[0].RowIndex;
-            lstBoxShows.SelectedIndex = rowIndex;
             Airshow ashow = lstBoxShows.SelectedItem as Airshow;
 
             DialogResult dr = MessageBox.Show("Are you sure you want to remomove { " + ashow.ToString() + " } from the database?  There is no UNDO.", "Remove Airshow", MessageBoxButtons.YesNo);
