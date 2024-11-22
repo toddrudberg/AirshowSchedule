@@ -91,7 +91,8 @@ public partial class formMain
             myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();            
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             ColorGrid(myFilteredAirshows);
-            lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelDB.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelContacts.Text = $"Contacts: {myFormState.fnContactDataBase}";
             this.Enabled = true;
         }
     }

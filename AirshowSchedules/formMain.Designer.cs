@@ -1,4 +1,5 @@
 ﻿
+
 namespace AirshowSchedules
 {
   partial class formMain
@@ -35,7 +36,6 @@ namespace AirshowSchedules
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
             lstBoxShows = new ListBox();
-            lblYearOfInterest = new Label();
             btnAddShow = new Button();
             chklstRegions = new CheckedListBox();
             btnFilterSetAll = new Button();
@@ -66,6 +66,8 @@ namespace AirshowSchedules
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
             labelWeekendSelected = new Label();
+            linkLabelContacts = new LinkLabel();
+            linkLabelDB = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
@@ -97,22 +99,11 @@ namespace AirshowSchedules
             lstBoxShows.FormattingEnabled = true;
             lstBoxShows.ItemHeight = 30;
             lstBoxShows.Location = new Point(839, 62);
-            lstBoxShows.Margin = new Padding(2, 1, 2, 1);
             lstBoxShows.Name = "lstBoxShows";
             lstBoxShows.Size = new Size(574, 214);
             lstBoxShows.TabIndex = 12;
             lstBoxShows.DrawItem += lstBoxShows_DrawItem;
             lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
-            // 
-            // lblYearOfInterest
-            // 
-            lblYearOfInterest.AutoSize = true;
-            lblYearOfInterest.Location = new Point(8, 35);
-            lblYearOfInterest.Margin = new Padding(2, 0, 2, 0);
-            lblYearOfInterest.Name = "lblYearOfInterest";
-            lblYearOfInterest.Size = new Size(38, 15);
-            lblYearOfInterest.TabIndex = 14;
-            lblYearOfInterest.Text = "label1";
             // 
             // btnAddShow
             // 
@@ -341,18 +332,41 @@ namespace AirshowSchedules
             // 
             // labelWeekendSelected
             // 
-            labelWeekendSelected.AutoSize = true;
-            labelWeekendSelected.Location = new Point(841, 46);
+            labelWeekendSelected.Location = new Point(840, 44);
             labelWeekendSelected.Name = "labelWeekendSelected";
-            labelWeekendSelected.Size = new Size(125, 15);
+            labelWeekendSelected.Size = new Size(572, 15);
             labelWeekendSelected.TabIndex = 28;
             labelWeekendSelected.Text = "labelWeekendSelected";
+            // 
+            // linkLabelContacts
+            // 
+            linkLabelContacts.AutoSize = true;
+            linkLabelContacts.Location = new Point(8, 35);
+            linkLabelContacts.Name = "linkLabelContacts";
+            linkLabelContacts.Size = new Size(101, 15);
+            linkLabelContacts.TabIndex = 29;
+            linkLabelContacts.TabStop = true;
+            linkLabelContacts.Text = "linkLabelContacts";
+            linkLabelContacts.LinkClicked += linkLabelContacts_LinkClicked;
+            // 
+            // linkLabelDB
+            // 
+            linkLabelDB.AutoSize = true;
+            linkLabelDB.Location = new Point(8, 20);
+            linkLabelDB.Name = "linkLabelDB";
+            linkLabelDB.Size = new Size(69, 15);
+            linkLabelDB.TabIndex = 30;
+            linkLabelDB.TabStop = true;
+            linkLabelDB.Text = "linkLabelDB";
+            linkLabelDB.LinkClicked += linkLabelDB_LinkClicked;
             // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1419, 477);
+            Controls.Add(linkLabelDB);
+            Controls.Add(linkLabelContacts);
             Controls.Add(labelWeekendSelected);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
@@ -360,7 +374,6 @@ namespace AirshowSchedules
             Controls.Add(btnFilterSetAll);
             Controls.Add(chklstRegions);
             Controls.Add(btnAddShow);
-            Controls.Add(lblYearOfInterest);
             Controls.Add(lstBoxShows);
             Controls.Add(dgvCalendar);
             Controls.Add(menuStrip1);
@@ -434,7 +447,6 @@ namespace AirshowSchedules
         private ToolTip toolTip1;
         private DataGridView dgvCalendar;
         private ListBox lstBoxShows;
-        private Label lblYearOfInterest;
         private Button btnAddShow;
         private CheckedListBox chklstRegions;
         private Button btnFilterSetAll;
@@ -466,5 +478,7 @@ namespace AirshowSchedules
         private ToolStripMenuItem advancedSearchToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
         private Label labelWeekendSelected;
+        private LinkLabel linkLabelContacts;
+        private LinkLabel linkLabelDB;
     }
 }

@@ -9,6 +9,7 @@ using Pastel;
 using System.Diagnostics.Metrics;
 using Markdig;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace AirshowSchedules;
 
@@ -76,7 +77,8 @@ public partial class formMain : Form
             }
             myAirshowGroup = asg;
 
-            lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelDB.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelContacts.Text = $"Contacts: {myFormState.fnContactDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();
             ColorGrid(myFilteredAirshows);
@@ -272,7 +274,7 @@ public partial class formMain : Form
             string[] weekendinquestion = cell.ToString().Split(' ');
 
             lstBoxShows.Items.Clear();
-            
+
             if (weekendinquestion.Length > 2)
             {
                 DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
@@ -285,7 +287,12 @@ public partial class formMain : Form
                 {
                     lstBoxShows.Items.Add(airshow);
                 }
-                labelWeekendSelected.Text = $"Airshows week of {cell.ToString()}:";
+
+                string removeAirshowName = cell.ToString().Split('\n')[0];
+                string displaythis = $"Airshows week of {removeAirshowName}";
+
+                labelWeekendSelected.Text = displaythis;
+
             }
         }
     }
@@ -311,7 +318,7 @@ public partial class formMain : Form
             }
         }
     }
-   
+
     private void btnAddShow_Click(object sender, EventArgs e)
     {
         Airshow ashow = new Airshow();
@@ -475,7 +482,8 @@ public partial class formMain : Form
                 int selectedYear = yearSelectionForm.SelectedYear;
                 myAirshowGroup.AirshowYearOfInterest = selectedYear;
                 FormState.SaveMe(myFormState);
-                lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                linkLabelDB.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                linkLabelContacts.Text = $"Contacts: {myFormState.fnContactDataBase}";
                 LoadGrid(myAirshowGroup.AirshowYearOfInterest);
                 ColorGrid(myFilteredAirshows);
                 SaveAirshowSchedule(false);
@@ -560,7 +568,7 @@ public partial class formMain : Form
 
 
         public static void SaveMe(compare2DBs afpst)
-        {   
+        {
             string FileName = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "DBCompare");
             Electroimpact.XmlSerialization.Serializer.Save(afpst, FileName);
         }
@@ -629,6 +637,41 @@ public partial class formMain : Form
             {
                 Console.WriteLine(ashow.ToString());
             }
+        }
+    }
+
+    private void linkLabelDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            // Start the process to open the file with the default application
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = myFormState.fnCurrentXMLDataBase,
+                UseShellExecute = true // Ensures the file is opened with the default application
+            });
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+    }
+
+    private void linkLabelContacts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            // Start the process to open the file with the default application
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = myFormState.fnContactDataBase,
+                UseShellExecute = true // Ensures the file is opened with the default application
+            });
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 
