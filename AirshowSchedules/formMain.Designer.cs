@@ -1,26 +1,27 @@
 ﻿
 
+
 namespace AirshowSchedules
 {
-  partial class formMain
-  {
-    /// <summary>
-    ///  Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
-
-    /// <summary>
-    ///  Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+    partial class formMain
     {
-      if (disposing && (components != null))
-      {
-        components.Dispose();
-      }
-      base.Dispose(disposing);
-    }
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -103,7 +104,7 @@ namespace AirshowSchedules
             lstBoxShows.Size = new Size(574, 214);
             lstBoxShows.TabIndex = 12;
             lstBoxShows.DrawItem += lstBoxShows_DrawItem;
-            lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
+            lstBoxShows.DoubleClick += lstBoxShows_DoubleClick;
             // 
             // btnAddShow
             // 
@@ -390,6 +391,8 @@ namespace AirshowSchedules
             PerformLayout();
         }
 
+
+
         private void lstBoxShows_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return; // Ignore invalid indices
@@ -421,24 +424,38 @@ namespace AirshowSchedules
                     break;
             }
 
+            // Modify the background color if the item is selected
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                backgroundColor = Color.DodgerBlue; // Highlighted background for selected items
+            }
+
             // Draw the background
             using (Brush backgroundBrush = new SolidBrush(backgroundColor))
             {
                 e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
             }
 
-            // Draw the text (default black color)
-            e.Graphics.DrawString(
-                ashow.ToString(),     // Text to draw
-                e.Font,               // Use the ListBox's font
-                Brushes.Black,        // Always use black text
-                e.Bounds,             // Bounds of the current item
-                StringFormat.GenericDefault // Default text alignment
-            );
+            // Draw the text (use contrasting color for selected items)
+            Color textColor = ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                ? Color.White
+                : Color.Black;
 
-            // Draw the focus rectangle if the item is selected
+            using (Brush textBrush = new SolidBrush(textColor))
+            {
+                e.Graphics.DrawString(
+                    ashow.ToString(),     // Text to draw
+                    e.Font,               // Use the ListBox's font
+                    textBrush,            // Brush for text color
+                    e.Bounds,             // Bounds of the current item
+                    StringFormat.GenericDefault // Default text alignment
+                );
+            }
+
+            // Draw the focus rectangle if the item has focus
             e.DrawFocusRectangle();
         }
+
 
 
 

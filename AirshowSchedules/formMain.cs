@@ -265,10 +265,17 @@ public partial class formMain : Form
         CellClickEvent();
     }
 
+    bool isLoadingCellEvent = false;
     private void CellClickEvent()
     {
+        if( isLoadingCellEvent)
+        {
+            isLoadingCellEvent = false;
+            return;
+        }
         if (dgvCalendar.SelectedCells.Count > 0)
         {
+            isLoadingCellEvent = true;
             object cell = dgvCalendar.SelectedCells[0].Value;
 
             string[] weekendinquestion = cell.ToString().Split(' ');
@@ -302,7 +309,7 @@ public partial class formMain : Form
         e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
     }
 
-    private void lstBoxShows_SelectedIndexChanged(object sender, EventArgs e)
+    private void lstBoxShows_DoubleClick(object sender, EventArgs e)
     {
         if (lstBoxShows.SelectedItems.Count > 0)
         {
@@ -456,7 +463,7 @@ public partial class formMain : Form
     {
         int rowIndex = -1; // Default value in case no cell is selected
 
-        if (lstBoxShows.SelectedIndex > 0)
+        if (lstBoxShows.SelectedIndex >= 0)
         {
             Airshow ashow = lstBoxShows.SelectedItem as Airshow;
 
@@ -464,6 +471,11 @@ public partial class formMain : Form
 
             if (dr == DialogResult.Yes)
             {
+                List<cContact> contacts = cContact.getContacts(myContacts, ashow);
+                foreach (cContact contact in contacts)
+                {
+                    contact.showIDs.Remove(ashow.ID);
+                }
                 myAirshowGroup.Airshows.myShows.Remove(ashow);
                 myFilteredAirshows.Remove(ashow);
                 SaveAirshowSchedule(false);
