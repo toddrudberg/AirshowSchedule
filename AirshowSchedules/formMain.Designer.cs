@@ -1,24 +1,27 @@
-﻿namespace AirshowSchedules
-{
-  partial class formMain
-  {
-    /// <summary>
-    ///  Required designer variable.
-    /// </summary>
-    private System.ComponentModel.IContainer components = null;
+﻿
 
-    /// <summary>
-    ///  Clean up any resources being used.
-    /// </summary>
-    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-    protected override void Dispose(bool disposing)
+
+namespace AirshowSchedules
+{
+    partial class formMain
     {
-      if (disposing && (components != null))
-      {
-        components.Dispose();
-      }
-      base.Dispose(disposing);
-    }
+        /// <summary>
+        ///  Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        ///  Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
 
         #region Windows Form Designer generated code
 
@@ -34,8 +37,6 @@
             toolTip1 = new ToolTip(components);
             dgvCalendar = new DataGridView();
             lstBoxShows = new ListBox();
-            dataGridViewShows = new DataGridView();
-            lblYearOfInterest = new Label();
             btnAddShow = new Button();
             chklstRegions = new CheckedListBox();
             btnFilterSetAll = new Button();
@@ -45,6 +46,7 @@
             fileToolStripMenuItem = new ToolStripMenuItem();
             pareDataFileToolStripMenuItem = new ToolStripMenuItem();
             fileSaveParsedDataFile = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
@@ -64,9 +66,10 @@
             helpToolStripMenuItem = new ToolStripMenuItem();
             showHelpFileToolStripMenuItem = new ToolStripMenuItem();
             btnDeleteShow = new Button();
-            toolStripMenuItem1 = new ToolStripMenuItem();
+            labelWeekendSelected = new Label();
+            linkLabelContacts = new LinkLabel();
+            linkLabelDB = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewShows).BeginInit();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -93,42 +96,15 @@
             // 
             // lstBoxShows
             // 
+            lstBoxShows.DrawMode = DrawMode.OwnerDrawFixed;
             lstBoxShows.FormattingEnabled = true;
-            lstBoxShows.ItemHeight = 15;
-            lstBoxShows.Location = new Point(1464, 322);
-            lstBoxShows.Margin = new Padding(2, 1, 2, 1);
+            lstBoxShows.ItemHeight = 30;
+            lstBoxShows.Location = new Point(839, 62);
             lstBoxShows.Name = "lstBoxShows";
-            lstBoxShows.Size = new Size(428, 349);
+            lstBoxShows.Size = new Size(574, 214);
             lstBoxShows.TabIndex = 12;
-            lstBoxShows.SelectedIndexChanged += lstBoxShows_SelectedIndexChanged;
-            // 
-            // dataGridViewShows
-            // 
-            dataGridViewShows.AllowUserToAddRows = false;
-            dataGridViewShows.AllowUserToDeleteRows = false;
-            dataGridViewShows.AllowUserToResizeColumns = false;
-            dataGridViewShows.AllowUserToResizeRows = false;
-            dataGridViewShows.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewShows.Location = new Point(839, 51);
-            dataGridViewShows.Margin = new Padding(2, 1, 2, 1);
-            dataGridViewShows.MultiSelect = false;
-            dataGridViewShows.Name = "dataGridViewShows";
-            dataGridViewShows.RowHeadersWidth = 82;
-            dataGridViewShows.RowTemplate.Height = 41;
-            dataGridViewShows.Size = new Size(576, 232);
-            dataGridViewShows.TabIndex = 13;
-            dataGridViewShows.CellClick += dataGridViewShows_CellClick;
-            dataGridViewShows.CellContentClick += dataGridViewShows_CellContentClick;
-            // 
-            // lblYearOfInterest
-            // 
-            lblYearOfInterest.AutoSize = true;
-            lblYearOfInterest.Location = new Point(8, 35);
-            lblYearOfInterest.Margin = new Padding(2, 0, 2, 0);
-            lblYearOfInterest.Name = "lblYearOfInterest";
-            lblYearOfInterest.Size = new Size(38, 15);
-            lblYearOfInterest.TabIndex = 14;
-            lblYearOfInterest.Text = "label1";
+            lstBoxShows.DrawItem += lstBoxShows_DrawItem;
+            lstBoxShows.DoubleClick += lstBoxShows_DoubleClick;
             // 
             // btnAddShow
             // 
@@ -191,7 +167,7 @@
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Padding = new Padding(4, 1, 0, 1);
-            menuStrip1.Size = new Size(1418, 24);
+            menuStrip1.Size = new Size(1419, 24);
             menuStrip1.TabIndex = 26;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -215,6 +191,13 @@
             fileSaveParsedDataFile.Size = new Size(198, 22);
             fileSaveParsedDataFile.Text = "Save Parsed Data File";
             fileSaveParsedDataFile.Click += fileSaveParsedDataFile_Click;
+            // 
+            // toolStripMenuItem1
+            // 
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(198, 22);
+            toolStripMenuItem1.Text = "Compare ASGs";
+            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // toolStripSeparator1
             // 
@@ -348,26 +331,50 @@
             btnDeleteShow.UseVisualStyleBackColor = true;
             btnDeleteShow.Click += btnDeleteShow_Click;
             // 
-            // toolStripMenuItem1
+            // labelWeekendSelected
             // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(198, 22);
-            toolStripMenuItem1.Text = "Compare ASGs";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            labelWeekendSelected.Location = new Point(840, 44);
+            labelWeekendSelected.Name = "labelWeekendSelected";
+            labelWeekendSelected.Size = new Size(572, 15);
+            labelWeekendSelected.TabIndex = 28;
+            labelWeekendSelected.Text = "labelWeekendSelected";
+            // 
+            // linkLabelContacts
+            // 
+            linkLabelContacts.AutoSize = true;
+            linkLabelContacts.Location = new Point(8, 35);
+            linkLabelContacts.Name = "linkLabelContacts";
+            linkLabelContacts.Size = new Size(101, 15);
+            linkLabelContacts.TabIndex = 29;
+            linkLabelContacts.TabStop = true;
+            linkLabelContacts.Text = "linkLabelContacts";
+            linkLabelContacts.LinkClicked += linkLabelContacts_LinkClicked;
+            // 
+            // linkLabelDB
+            // 
+            linkLabelDB.AutoSize = true;
+            linkLabelDB.Location = new Point(8, 20);
+            linkLabelDB.Name = "linkLabelDB";
+            linkLabelDB.Size = new Size(69, 15);
+            linkLabelDB.TabIndex = 30;
+            linkLabelDB.TabStop = true;
+            linkLabelDB.Text = "linkLabelDB";
+            linkLabelDB.LinkClicked += linkLabelDB_LinkClicked;
             // 
             // formMain
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1418, 477);
+            ClientSize = new Size(1419, 477);
+            Controls.Add(linkLabelDB);
+            Controls.Add(linkLabelContacts);
+            Controls.Add(labelWeekendSelected);
             Controls.Add(btnDeleteShow);
             Controls.Add(btnFilterShows);
             Controls.Add(btnFilterClearAll);
             Controls.Add(btnFilterSetAll);
             Controls.Add(chklstRegions);
             Controls.Add(btnAddShow);
-            Controls.Add(lblYearOfInterest);
-            Controls.Add(dataGridViewShows);
             Controls.Add(lstBoxShows);
             Controls.Add(dgvCalendar);
             Controls.Add(menuStrip1);
@@ -378,19 +385,85 @@
             Text = "Undaunted Airshows Schedule Maker";
             Load += frmAirshowScheduleTool_Load;
             ((System.ComponentModel.ISupportInitialize)dgvCalendar).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewShows).EndInit();
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
+
+
+        private void lstBoxShows_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            if (e.Index < 0) return; // Ignore invalid indices
+
+            // Get the current item
+            Airshow ashow = (Airshow)lstBoxShows.Items[e.Index];
+
+            // Determine the background color based on the item's status
+            Color backgroundColor;
+            switch (ashow.Status)
+            {
+                case Airshow.eStatus.maybe:
+                    backgroundColor = Color.LightYellow;
+                    break;
+                case Airshow.eStatus.verbal:
+                    backgroundColor = Color.LightGreen;
+                    break;
+                case Airshow.eStatus.contract:
+                    backgroundColor = Color.LightBlue;
+                    break;
+                case Airshow.eStatus.pursue:
+                    backgroundColor = Color.LightCoral;
+                    break;
+                case Airshow.eStatus.NO:
+                    backgroundColor = Color.LightGray;
+                    break;
+                default:
+                    backgroundColor = Color.White; // Default background color
+                    break;
+            }
+
+            // Modify the background color if the item is selected
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                backgroundColor = Color.DodgerBlue; // Highlighted background for selected items
+            }
+
+            // Draw the background
+            using (Brush backgroundBrush = new SolidBrush(backgroundColor))
+            {
+                e.Graphics.FillRectangle(backgroundBrush, e.Bounds);
+            }
+
+            // Draw the text (use contrasting color for selected items)
+            Color textColor = ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+                ? Color.White
+                : Color.Black;
+
+            using (Brush textBrush = new SolidBrush(textColor))
+            {
+                e.Graphics.DrawString(
+                    ashow.ToString(),     // Text to draw
+                    e.Font,               // Use the ListBox's font
+                    textBrush,            // Brush for text color
+                    e.Bounds,             // Bounds of the current item
+                    StringFormat.GenericDefault // Default text alignment
+                );
+            }
+
+            // Draw the focus rectangle if the item has focus
+            e.DrawFocusRectangle();
+        }
+
+
+
+
+
         #endregion
         private ToolTip toolTip1;
         private DataGridView dgvCalendar;
         private ListBox lstBoxShows;
-        private DataGridView dataGridViewShows;
-        private Label lblYearOfInterest;
         private Button btnAddShow;
         private CheckedListBox chklstRegions;
         private Button btnFilterSetAll;
@@ -399,7 +472,7 @@
         private MenuStrip menuStrip1;
         private Button btnDeleteShow;
         private Button btnCheckForDuplicates;
-    private ToolStripMenuItem searchToolStripMenuItem;
+        private ToolStripMenuItem searchToolStripMenuItem;
         private ToolStripMenuItem fileToolStripMenuItem;
         private ToolStripMenuItem pareDataFileToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator1;
@@ -421,5 +494,8 @@
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
         private ToolStripMenuItem advancedSearchToolStripMenuItem;
         private ToolStripMenuItem toolStripMenuItem1;
+        private Label labelWeekendSelected;
+        private LinkLabel linkLabelContacts;
+        private LinkLabel linkLabelDB;
     }
 }

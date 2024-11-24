@@ -353,7 +353,7 @@ namespace AirshowSchedules
             if (this.listBoxContacts.SelectedItem != null)
             {
                 cContact selectedContact = (cContact)this.listBoxContacts.SelectedItem;
-                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact))
+                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact, contacts))
                 {
                     if (contactEditForm.ShowDialog() == DialogResult.OK)
                     {
@@ -427,12 +427,16 @@ namespace AirshowSchedules
         private void buttonAddContact_Click(object sender, EventArgs e)
         {
             cContact newContact = new cContact();
-            using (ContactEditForm contactEditForm = new ContactEditForm(newContact))
+            using (ContactEditForm contactEditForm = new ContactEditForm(newContact, contacts))
             {
                 if (contactEditForm.ShowDialog() == DialogResult.OK)
                 {
                     cContact.addContact(contacts, contactEditForm.Contact, airshow);
-                    this.listBoxContacts.Items.Add(contactEditForm.Contact);
+                    //see if the contact exists in the listBoxContacts
+                    if (!this.listBoxContacts.Items.Contains(contactEditForm.Contact))
+                    {
+                        this.listBoxContacts.Items.Add(contactEditForm.Contact);
+                    }
                 }
             }
         }

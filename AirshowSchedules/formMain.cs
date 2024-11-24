@@ -9,6 +9,7 @@ using Pastel;
 using System.Diagnostics.Metrics;
 using Markdig;
 using Newtonsoft.Json;
+using System.Diagnostics;
 
 namespace AirshowSchedules;
 
@@ -76,7 +77,8 @@ public partial class formMain : Form
             }
             myAirshowGroup = asg;
 
-            lblYearOfInterest.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelDB.Text = $"Airshow Year of Interest: {asg.AirshowYearOfInterest.ToString()} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+            linkLabelContacts.Text = $"Contacts: {myFormState.fnContactDataBase}";
             LoadGrid(myAirshowGroup.AirshowYearOfInterest);
             myFilteredAirshows = myAirshowGroup.GetAirshowsForYear();
             ColorGrid(myFilteredAirshows);
@@ -263,46 +265,41 @@ public partial class formMain : Form
         CellClickEvent();
     }
 
+    bool isLoadingCellEvent = false;
     private void CellClickEvent()
     {
+        if( isLoadingCellEvent)
+        {
+            isLoadingCellEvent = false;
+            return;
+        }
         if (dgvCalendar.SelectedCells.Count > 0)
         {
+            isLoadingCellEvent = true;
             object cell = dgvCalendar.SelectedCells[0].Value;
 
-            //if( cell is cAirshowWeekend)
+            string[] weekendinquestion = cell.ToString().Split(' ');
+
+            lstBoxShows.Items.Clear();
+
+            if (weekendinquestion.Length > 2)
             {
-                //cAirshowWeekend weekend = (cAirshowWeekend)cell;
-                //int weekofyear = weekend.weekofyear;
-                string[] weekendinquestion = cell.ToString().Split(' ');
+                DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
+                AirshowWeekend asw = new AirshowWeekend(dateTime);
 
-                lstBoxShows.Items.Clear();
-                lstBoxShows.Text = "No airshows";
-                dataGridViewShows.Columns.Clear();
+                List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
+                airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
 
-                if (weekendinquestion.Length > 2)
+                foreach (Airshow airshow in airshowsthisweek)
                 {
-                    DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                    AirshowWeekend asw = new AirshowWeekend(dateTime);
-
-                    List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                    airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-
-                    List<string> shownames = new List<string>();
-
-                    foreach (Airshow airshow in airshowsthisweek)
-                    {
-                        shownames.Add(airshow.ToString());
-                    }
-                    if (shownames.Count > 0)
-                    {
-                        foreach (Airshow airshow in airshowsthisweek)
-                        {
-                            lstBoxShows.Items.Add(airshow);
-                        }
-                        LoadShowGrid(airshowsthisweek, $"Airshows week of {cell.ToString()}:");
-                        //GridTools.LoadShowGrid(dataGridViewShows, airshowsthisweek, $"Airshows week of {cell.ToString()}:");
-                    }
+                    lstBoxShows.Items.Add(airshow);
                 }
+
+                string removeAirshowName = cell.ToString().Split('\n')[0];
+                string displaythis = $"Airshows week of {removeAirshowName}";
+
+                labelWeekendSelected.Text = displaythis;
+
             }
         }
     }
@@ -312,7 +309,7 @@ public partial class formMain : Form
         e.Column.SortMode = DataGridViewColumnSortMode.NotSortable;
     }
 
-    private void lstBoxShows_SelectedIndexChanged(object sender, EventArgs e)
+    private void lstBoxShows_DoubleClick(object sender, EventArgs e)
     {
         if (lstBoxShows.SelectedItems.Count > 0)
         {
@@ -326,37 +323,6 @@ public partial class formMain : Form
                     SaveAirshowSchedule(false); // Save the updated airshow schedule
                 }
             }
-
-
-            // Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
-            // Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(theAirshow);
-            // DialogResult dr = sb.showDialog();
-            // if (dr == DialogResult.OK)
-            // {
-            //     SaveAirshowSchedule(false);
-            //     //ColorGrid(myFilteredAirshows);
-            // }
-        }
-    }
-
-    private void dataGridViewShows_CellContentClick(object sender, DataGridViewCellEventArgs e)
-    {
-        dataGridViewShows_CellClickHandler(sender, e);
-    }
-
-    private void dataGridViewShows_CellClick(object sender, DataGridViewCellEventArgs e)
-    {
-        dataGridViewShows_CellClickHandler(sender, e);
-    }
-
-    private void dataGridViewShows_CellClickHandler(object sender, DataGridViewCellEventArgs e)
-    {
-        int rowIndex = -1; // Default value in case no cell is selected
-
-        if (dataGridViewShows.SelectedCells.Count > 0)
-        {
-            rowIndex = dataGridViewShows.SelectedCells[0].RowIndex;
-            lstBoxShows.SelectedIndex = rowIndex;
         }
     }
 
@@ -497,16 +463,19 @@ public partial class formMain : Form
     {
         int rowIndex = -1; // Default value in case no cell is selected
 
-        if (dataGridViewShows.SelectedCells.Count > 0)
+        if (lstBoxShows.SelectedIndex >= 0)
         {
-            rowIndex = dataGridViewShows.SelectedCells[0].RowIndex;
-            lstBoxShows.SelectedIndex = rowIndex;
             Airshow ashow = lstBoxShows.SelectedItem as Airshow;
 
             DialogResult dr = MessageBox.Show("Are you sure you want to remomove { " + ashow.ToString() + " } from the database?  There is no UNDO.", "Remove Airshow", MessageBoxButtons.YesNo);
 
             if (dr == DialogResult.Yes)
             {
+                List<cContact> contacts = cContact.getContacts(myContacts, ashow);
+                foreach (cContact contact in contacts)
+                {
+                    contact.showIDs.Remove(ashow.ID);
+                }
                 myAirshowGroup.Airshows.myShows.Remove(ashow);
                 myFilteredAirshows.Remove(ashow);
                 SaveAirshowSchedule(false);
@@ -525,7 +494,8 @@ public partial class formMain : Form
                 int selectedYear = yearSelectionForm.SelectedYear;
                 myAirshowGroup.AirshowYearOfInterest = selectedYear;
                 FormState.SaveMe(myFormState);
-                lblYearOfInterest.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                linkLabelDB.Text = $"Airshow Year of Interest: {selectedYear} - ActiveDB: {myFormState.fnCurrentXMLDataBase}";
+                linkLabelContacts.Text = $"Contacts: {myFormState.fnContactDataBase}";
                 LoadGrid(myAirshowGroup.AirshowYearOfInterest);
                 ColorGrid(myFilteredAirshows);
                 SaveAirshowSchedule(false);
@@ -610,7 +580,7 @@ public partial class formMain : Form
 
 
         public static void SaveMe(compare2DBs afpst)
-        {   
+        {
             string FileName = Electroimpact.XmlSerialization.Serializer.GenerateDefaultFilename("UndauntedAirshows", "DBCompare");
             Electroimpact.XmlSerialization.Serializer.Save(afpst, FileName);
         }
@@ -679,6 +649,41 @@ public partial class formMain : Form
             {
                 Console.WriteLine(ashow.ToString());
             }
+        }
+    }
+
+    private void linkLabelDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            // Start the process to open the file with the default application
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = myFormState.fnCurrentXMLDataBase,
+                UseShellExecute = true // Ensures the file is opened with the default application
+            });
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+    }
+
+    private void linkLabelContacts_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+    {
+        try
+        {
+            // Start the process to open the file with the default application
+            Process.Start(new ProcessStartInfo
+            {
+                FileName = myFormState.fnContactDataBase,
+                UseShellExecute = true // Ensures the file is opened with the default application
+            });
+        }
+        catch (Exception ex)
+        {
+            MessageBox.Show($"Error opening file: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

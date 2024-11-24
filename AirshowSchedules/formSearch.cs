@@ -702,12 +702,10 @@ namespace AirshowSchedules
             {
                 isFormLoading = true; 
                 cContact selectedContact = (cContact)this.lstContacts.SelectedItem;
-                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact))
+                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact, officialContacts))
                 {
                     if (contactEditForm.ShowDialog() == DialogResult.OK)
                     {
-
-                        // Refresh the list box to reflect the updated contact
                         int selectedIndex = this.lstContacts.SelectedIndex;
                         this.lstContacts.Items[selectedIndex] = contactEditForm.Contact;
                     }
