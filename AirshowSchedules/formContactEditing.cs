@@ -21,11 +21,14 @@ namespace AirshowSchedules
         private Button buttonOK;
         private Button buttonCancel;
         private Label label1;
+        private ListBox listContacts;
+        List<cContact> Contacts;
 
         public cContact Contact { get; private set; }
 
-        public ContactEditForm(cContact contact)
+        public ContactEditForm(cContact contact, List<cContact> contacts)
         {
+            this.Contacts = contacts;
             this.Contact = contact;
             InitializeComponent();
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -46,6 +49,7 @@ namespace AirshowSchedules
             buttonOK = new Button();
             buttonCancel = new Button();
             label1 = new Label();
+            listContacts = new ListBox();
             SuspendLayout();
             // 
             // textBoxName
@@ -55,6 +59,7 @@ namespace AirshowSchedules
             textBoxName.PlaceholderText = "Name";
             textBoxName.Size = new Size(200, 23);
             textBoxName.TabIndex = 0;
+            textBoxName.TextChanged += textBoxName_TextChanged;
             // 
             // textBoxPhone
             // 
@@ -143,9 +148,20 @@ namespace AirshowSchedules
             label1.TabIndex = 10;
             label1.Text = "Email Addresses:";
             // 
+            // listContacts
+            // 
+            listContacts.FormattingEnabled = true;
+            listContacts.ItemHeight = 15;
+            listContacts.Location = new Point(220, 10);
+            listContacts.Name = "listContacts";
+            listContacts.Size = new Size(160, 94);
+            listContacts.TabIndex = 11;
+            listContacts.SelectedIndexChanged += listContacts_SelectedIndexChanged;
+            // 
             // ContactEditForm
             // 
-            ClientSize = new Size(350, 270);
+            ClientSize = new Size(387, 270);
+            Controls.Add(listContacts);
             Controls.Add(label1);
             Controls.Add(textBoxName);
             Controls.Add(textBoxPhone);
@@ -169,6 +185,16 @@ namespace AirshowSchedules
             this.textBoxPhone.Text = Contact.phone;
             this.textBoxAddress.Text = Contact.address;
             this.listBoxEmailAddresses.Items.AddRange(Contact.emailAddresses.ToArray());
+
+            listContacts.Items.Clear();
+            if (Contact.name != null && Contact.name != "")
+            {
+                listContacts.Items.Add(Contact);
+            }
+            else
+            {
+                listContacts.Items.AddRange(Contacts.ToArray());
+            }
         }
 
         private void ButtonAddEmail_Click(object sender, EventArgs e)
@@ -217,7 +243,6 @@ namespace AirshowSchedules
             Contact.phone = this.textBoxPhone.Text;
             Contact.address = this.textBoxAddress.Text;
             Contact.emailAddresses = new List<string>(this.listBoxEmailAddresses.Items.Cast<string>());
-
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
@@ -226,6 +251,29 @@ namespace AirshowSchedules
         {
             this.DialogResult = DialogResult.Cancel;
             this.Close();
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            List<cContact> foundContacts = new List<cContact>();
+            foreach (cContact contact in Contacts)
+            {
+                if (contact.name.Trim().ToLower().Contains(textBoxName.Text.Trim().ToLower()))
+                {
+                    foundContacts.Add(contact);
+                }
+            }
+            listContacts.Items.Clear();
+            listContacts.Items.AddRange(foundContacts.ToArray());
+        }
+
+        private void listContacts_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (listContacts.SelectedIndex != -1)
+            {
+                Contact = listContacts.SelectedItems[0] as cContact;
+                BindData();
+            }
         }
     }
 
