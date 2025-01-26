@@ -133,7 +133,6 @@ namespace AirshowSchedules
 
                 contact.showIDs.Clear();
                 contact.showIDs.Add(show.ID);
-                show.contactIds.Add(contact.ID);
 
                 contacts.Add(contact);
             }
@@ -164,7 +163,7 @@ namespace AirshowSchedules
                 //this one makes sense:
                 existingContact.emailAddresses = existingContact.emailAddresses.Union(contact.emailAddresses).ToList();
 
-                show.contactIds.Add(existingContact.ID);
+                //show.contactIds.Add(existingContact.ID);
             }
             else
             {

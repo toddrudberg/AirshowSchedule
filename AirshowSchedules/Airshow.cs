@@ -38,9 +38,6 @@ namespace AirshowSchedules
         [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
         
-        [Display(DisplayName = "Contacts:")]
-        public List<int> contactIds { get; set; } = new List<int>();
-        
         [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
         public string date_added { get; set; }
 
@@ -104,7 +101,7 @@ namespace AirshowSchedules
             //merge the contact lists
             //remove the dupAirShow ID from the contacts
 
-            this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
+            //this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
             cContact.RemoveAirshowReference(copiedContacts, dupAirshow);
 
             this.UndauntedNotes = this.UndauntedNotes.Union(dupAirshow.UndauntedNotes).ToList();
@@ -514,7 +511,7 @@ namespace AirshowSchedules
                                 acontact.ID = contactID;
                                 acontact.showIDs.Add(airshowID);
 
-                                airshow.contactIds.Add(contactID);
+                                //airshow.contactIds.Add(contactID);
                                 airshow.ID = airshowID;
                                 
                                 contactID++;

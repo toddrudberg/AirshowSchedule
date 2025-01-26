@@ -401,13 +401,11 @@ namespace AirshowSchedules
             {
                 foreach (cContact contact in foundContacts)
                 {
-                    foreach (Airshow show in searchAirshows)
+                    contact.showIDs.ForEach(delegate (int showID)
                     {
-                        if (show.contactIds.Contains(contact.ID))
-                        {
-                            foundAirshowByContact.Add(show);
-                        }
-                    }
+                        foundAirshowByContact.Add(searchAirshows.Find(x => x.ID == showID));
+                    });
+
                 }
             }
 
