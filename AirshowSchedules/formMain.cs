@@ -344,8 +344,10 @@ public partial class formMain : Form
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // The Airshow object has been updated
+                ashow.ID = myAirshowGroup.Airshows.myShows.Max(a => a.ID) + 1;
                 myAirshowGroup.Airshows.myShows.Add(ashow);
                 myFilteredAirshows.Add(ashow);
+
                 SaveAirshowSchedule(false); // Save the updated airshow schedule
             }
         }

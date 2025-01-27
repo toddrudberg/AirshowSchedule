@@ -30,15 +30,8 @@
 3. You may have deleted an airshow by accident, so re-run (Data Base Management -> Compare To Active DB)
 
 # things to do:
-1) get rid of contactIDs in the AirshowDB.  Consider using a join table. 
-8) mexico airshows
-9) add a contact database that is seperate from the airshow list and pull in the contacts based on location. 
 12) highlight airshows that showup mid week with a funny color so they don't block the weekend.
-14) ICAS furniture, 2 tall round table with 4 chairs.
-16) Paris Hotel
-17) Clean up hotel reservation. 
-18) red and orange drop cloth for tables
-19) rental car receipt for UA.
+
 
 # coding things
 # ColorGrid: 

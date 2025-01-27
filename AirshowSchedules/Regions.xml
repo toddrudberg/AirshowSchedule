@@ -192,4 +192,8 @@
     <sState>WY</sState>
     <sRegion>Mountain</sRegion>
   </cValuePair>
+  <cValuePair>
+    <sState>Mexico</sState>
+    <sRegion>Mexico</sRegion>
+  </cValuePair>
 </ArrayOfCValuePair>

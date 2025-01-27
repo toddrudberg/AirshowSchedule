@@ -403,9 +403,19 @@ namespace AirshowSchedules
                 {
                     contact.showIDs.ForEach(delegate (int showID)
                     {
-                        foundAirshowByContact.Add(searchAirshows.Find(x => x.ID == showID));
-                    });
+                        Airshow foundAirshow = searchAirshows.Find(x => x.ID == showID);
 
+                        // Only add if the airshow exists and is not already in the list
+                        if (foundAirshow != null && !foundAirshowByContact.Any(existingAirshow => existingAirshow.IsEqual(foundAirshow)))
+                        {
+                            foundAirshowByContact.Add(foundAirshow);
+                        }
+                        else if (foundAirshow == null)
+                        {
+                            // Optionally log or handle the missing airshow
+                            Console.WriteLine($"Airshow with ID {showID} not found. It may have been cancelled or deleted or already added.");
+                        }
+                    });
                 }
             }
 
@@ -488,7 +498,6 @@ namespace AirshowSchedules
         {
             performSearch();
         }
-
 
         private void txtShowState_TextChanged(object sender, EventArgs e)
         {

@@ -526,60 +526,6 @@ namespace AirshowSchedules
                     }
                 }
             }
-            else if (inputfile.eFileSource == cAirshowFileParserSetupTool.efilesource.AirshowStuff)
-            {
-                for (int ii = 1; ii < lines.Length; ii++)
-                {
-
-                    string linein = lines[ii];
-
-                    linein = linein.Replace("\"", "");
-
-                    string[] line = linein.Split('\t');
-
-                    if (line.Length < 7)
-                        continue; //something wrong with this line. 
-
-
-                    Airshow airshow = new Airshow();
-                    string[] sDate = line[0].Split('/');
-                    if (sDate.Length < 3)
-                        continue;
-                    airshow.date_start = sDate[2] + "-" + sDate[0] + "-" + sDate[1];
-
-
-                    sDate = line[1].Split('/');
-                    if (sDate.Length < 3)
-                        continue;
-                    airshow.date_finish = sDate[2] + "-" + sDate[0] + "-" + sDate[1];
-
-                    string airshowname = line[4].ToLower();
-                    if (airshowname.Contains("air show"))
-                        airshowname = airshowname.Replace("air show", "Airshow");
-
-                    airshow.name_airshow = airshowname;
-                    airshow.location.rawstring = line[5].Replace(',', '-') + "," + line[6];
-
-                    if (line.Length > 9)
-                    {
-                        string sPerformers = line[9];
-                        string[] Performers = sPerformers.Split(@"/<br>");
-                        for (int j = 0; j < Performers.Length; j++)
-                        {
-                            airshow.Performers.performer.Add(Performers[j]);
-                        }
-                    }
-
-                    if (line.Length > 10)
-                    {
-                        airshow.Notes_AirshowStuff = line[10];
-                    }
-
-                    //int airshowyear;
-                    if (inputfile.AirshowYear == airshow.Year)
-                        airshows.Add(airshow);
-                }
-            }
         }
         internal static string GetTabOutput(List<Airshow> airshows)
         {
