@@ -139,11 +139,11 @@ public partial class formMain
                 if (foundAirshows.Count > 0)
                     continue;
                 newShows.Add(ashow);
-                foreach(int contactId in ashow.contactIds)
-                {
-                    List<cContact> contactsToAdd = contactsRight.Where(contact => contact.ID == contactId).ToList();
-                    newContacts.AddRange(contactsToAdd);
-                }
+                // get the contacts for this airshow
+                List<cContact> contactsToAdd = cContact.getContacts(contactsRight, ashow);
+                Console.WriteLine($"{ashow.name_airshow} has {contactsToAdd.Count}");
+
+                newContacts.AddRange(contactsToAdd);
             }
 
             // Show the CompareForm

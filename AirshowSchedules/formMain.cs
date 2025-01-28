@@ -344,8 +344,11 @@ public partial class formMain : Form
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // The Airshow object has been updated
+                ashow.ID = myAirshowGroup.Airshows.myShows.Max(a => a.ID) + 1;
+                ashow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
                 myAirshowGroup.Airshows.myShows.Add(ashow);
                 myFilteredAirshows.Add(ashow);
+
                 SaveAirshowSchedule(false); // Save the updated airshow schedule
             }
         }
@@ -600,57 +603,7 @@ public partial class formMain : Form
             return afpst;
         }
     }
-    private void toolStripMenuItem1_Click(object sender, EventArgs e)
-    {
-        compare2DBs TwoDBs = compare2DBs.LoadMe();
 
-        Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder sb = new Electroimpact.SettingsFormBuilderV2.SettingsFormBuilder(TwoDBs);
-
-        DialogResult dr = DialogResult.OK;
-        dr = sb.showDialog();
-
-        if (dr == DialogResult.OK)
-        {
-            compare2DBs.SaveMe(TwoDBs);
-            AirshowGroup asg1 = AirshowGroup.LoadMe(TwoDBs.fnDB1, out bool success);
-            if (!success)
-            {
-                MessageBox.Show("Error loading form: " + "Unable to load the active database");
-                return;
-            }
-            AirshowGroup asg2 = AirshowGroup.LoadMe(TwoDBs.fnDB2, out success);
-            if (!success)
-            {
-                MessageBox.Show("Error loading form: " + "Unable to load the active database");
-                return;
-            }
-
-            //let's make a list of all the shows in asg1 that don't exist in asg2
-            List<Airshow> showsnotin1 = new List<Airshow>();
-            foreach (Airshow ashow in asg1.GetAirshows())
-            {
-                bool found = false;
-                foreach (Airshow ashow2 in asg2.GetAirshows())
-                {
-                    if (ashow.ToString() == ashow2.ToString())
-                    {
-                        found = true;
-                        break;
-                    }
-                }
-                if (!found)
-                {
-                    showsnotin1.Add(ashow);
-                }
-            }
-
-            Console.WriteLine($"Found {showsnotin1.Count} shows in {TwoDBs.fnDB2} that are not in {TwoDBs.fnDB1}".Pastel(Color.LimeGreen));
-            foreach (Airshow ashow in showsnotin1)
-            {
-                Console.WriteLine(ashow.ToString());
-            }
-        }
-    }
 
     private void linkLabelDB_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
     {

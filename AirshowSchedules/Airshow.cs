@@ -17,6 +17,9 @@ namespace AirshowSchedules
         [Display(DisplayName = "Finish Date (yyyy-MM-DD):")]
         public string date_finish { get; set; }
 
+        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
+        public string date_added { get; set; }
+
         [Display(DisplayName = "Airshow Name:")]
         public string name_airshow { get; set; }
 
@@ -26,9 +29,6 @@ namespace AirshowSchedules
         [Display(DisplayName = "Performers:")]
         public cPerformers Performers { get; set; } = new cPerformers();
 
-        // [Display(DisplayName = "Contacts:")]
-        // public cContacts Contacts { get; set; } = new cContacts(); 
-
         [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
 
@@ -37,12 +37,6 @@ namespace AirshowSchedules
 
         [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
-        
-        [Display(DisplayName = "Contacts:")]
-        public List<int> contactIds { get; set; } = new List<int>();
-        
-        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
-        public string date_added { get; set; }
 
         public enum eStatus
         {
@@ -104,7 +98,7 @@ namespace AirshowSchedules
             //merge the contact lists
             //remove the dupAirShow ID from the contacts
 
-            this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
+            //this.contactIds = this.contactIds.Union(dupAirshow.contactIds).ToList();
             cContact.RemoveAirshowReference(copiedContacts, dupAirshow);
 
             this.UndauntedNotes = this.UndauntedNotes.Union(dupAirshow.UndauntedNotes).ToList();
@@ -514,7 +508,7 @@ namespace AirshowSchedules
                                 acontact.ID = contactID;
                                 acontact.showIDs.Add(airshowID);
 
-                                airshow.contactIds.Add(contactID);
+                                //airshow.contactIds.Add(contactID);
                                 airshow.ID = airshowID;
                                 
                                 contactID++;
@@ -527,60 +521,6 @@ namespace AirshowSchedules
                             airshowdata.Add(lines[jj]);
                         }
                     }
-                }
-            }
-            else if (inputfile.eFileSource == cAirshowFileParserSetupTool.efilesource.AirshowStuff)
-            {
-                for (int ii = 1; ii < lines.Length; ii++)
-                {
-
-                    string linein = lines[ii];
-
-                    linein = linein.Replace("\"", "");
-
-                    string[] line = linein.Split('\t');
-
-                    if (line.Length < 7)
-                        continue; //something wrong with this line. 
-
-
-                    Airshow airshow = new Airshow();
-                    string[] sDate = line[0].Split('/');
-                    if (sDate.Length < 3)
-                        continue;
-                    airshow.date_start = sDate[2] + "-" + sDate[0] + "-" + sDate[1];
-
-
-                    sDate = line[1].Split('/');
-                    if (sDate.Length < 3)
-                        continue;
-                    airshow.date_finish = sDate[2] + "-" + sDate[0] + "-" + sDate[1];
-
-                    string airshowname = line[4].ToLower();
-                    if (airshowname.Contains("air show"))
-                        airshowname = airshowname.Replace("air show", "Airshow");
-
-                    airshow.name_airshow = airshowname;
-                    airshow.location.rawstring = line[5].Replace(',', '-') + "," + line[6];
-
-                    if (line.Length > 9)
-                    {
-                        string sPerformers = line[9];
-                        string[] Performers = sPerformers.Split(@"/<br>");
-                        for (int j = 0; j < Performers.Length; j++)
-                        {
-                            airshow.Performers.performer.Add(Performers[j]);
-                        }
-                    }
-
-                    if (line.Length > 10)
-                    {
-                        airshow.Notes_AirshowStuff = line[10];
-                    }
-
-                    //int airshowyear;
-                    if (inputfile.AirshowYear == airshow.Year)
-                        airshows.Add(airshow);
                 }
             }
         }

@@ -2,6 +2,7 @@
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace AirshowSchedules
 {
@@ -35,6 +36,9 @@ namespace AirshowSchedules
         private Label label6;
         private CheckedListBox clbYear;
         private Button btnSaveChanges;
+        private TextBox txtDateAdded;
+        private Label label7;
+        private Label label8;
         private Label lblContactName;
 
         public formSearch(AirshowGroup group, List<cContact> contacts, Regions regions)
@@ -76,6 +80,9 @@ namespace AirshowSchedules
             label6 = new Label();
             clbYear = new CheckedListBox();
             btnSaveChanges = new Button();
+            txtDateAdded = new TextBox();
+            label7 = new Label();
+            label8 = new Label();
             SuspendLayout();
             // 
             // lblShowName
@@ -247,7 +254,7 @@ namespace AirshowSchedules
             // 
             // label6
             // 
-            label6.Location = new Point(21, 139);
+            label6.Location = new Point(21, 164);
             label6.Name = "label6";
             label6.Size = new Size(100, 23);
             label6.TabIndex = 21;
@@ -256,9 +263,9 @@ namespace AirshowSchedules
             // clbYear
             // 
             clbYear.FormattingEnabled = true;
-            clbYear.Location = new Point(119, 139);
+            clbYear.Location = new Point(119, 164);
             clbYear.Name = "clbYear";
-            clbYear.Size = new Size(88, 76);
+            clbYear.Size = new Size(88, 58);
             clbYear.TabIndex = 22;
             clbYear.ItemCheck += clbYear_SelectedIndexChanged;
             // 
@@ -272,9 +279,36 @@ namespace AirshowSchedules
             btnSaveChanges.UseVisualStyleBackColor = true;
             btnSaveChanges.Click += btnSaveChanges_Click;
             // 
+            // txtDateAdded
+            // 
+            txtDateAdded.Location = new Point(119, 137);
+            txtDateAdded.Name = "txtDateAdded";
+            txtDateAdded.Size = new Size(94, 23);
+            txtDateAdded.TabIndex = 24;
+            txtDateAdded.TextChanged += txtDateAdded_TextChanged;
+            // 
+            // label7
+            // 
+            label7.Location = new Point(20, 140);
+            label7.Name = "label7";
+            label7.Size = new Size(100, 23);
+            label7.TabIndex = 25;
+            label7.Text = "Added After:";
+            // 
+            // label8
+            // 
+            label8.Location = new Point(219, 140);
+            label8.Name = "label8";
+            label8.Size = new Size(100, 23);
+            label8.TabIndex = 26;
+            label8.Text = "YYYY-MM-DD";
+            // 
             // formSearch
             // 
             ClientSize = new Size(800, 711);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(txtDateAdded);
             Controls.Add(btnSaveChanges);
             Controls.Add(clbYear);
             Controls.Add(label6);
@@ -373,7 +407,7 @@ namespace AirshowSchedules
             List<cContact> searchContacts = officialContacts;
 
 
-            bool allSearchTermsEmpty = txtContactName.Text == "" && txtShowName.Text == "" && txtShowLocation.Text == "";
+            bool allSearchTermsEmpty = txtContactName.Text == "" && txtShowName.Text == "" && txtShowLocation.Text == "" && txtShowState.Text == "" && txtDateAdded.Text == "";
 
             List<cContact> foundContacts = new List<cContact>();
             if (txtContactName.Text != "")
@@ -401,14 +435,48 @@ namespace AirshowSchedules
             {
                 foreach (cContact contact in foundContacts)
                 {
-                    foreach (Airshow show in searchAirshows)
+                    contact.showIDs.ForEach(delegate (int showID)
                     {
-                        if (show.contactIds.Contains(contact.ID))
+                        Airshow foundAirshow = searchAirshows.Find(x => x.ID == showID);
+
+                        // Only add if the airshow exists and is not already in the list
+                        if (foundAirshow != null && !foundAirshowByContact.Any(existingAirshow => existingAirshow.IsEqual(foundAirshow)))
                         {
-                            foundAirshowByContact.Add(show);
+                            foundAirshowByContact.Add(foundAirshow);
                         }
+                        else if (foundAirshow == null)
+                        {
+                            // Optionally log or handle the missing airshow
+                            Console.WriteLine($"Airshow with ID {showID} not found. It may have been cancelled or deleted or already added.");
+                        }
+                    });
+                }
+            }
+
+            List<Airshow> foundDates = new List<Airshow>();
+            DateTime enteredDate;
+
+            // Check if the input is not empty and validate the date format
+            if (!string.IsNullOrWhiteSpace(txtDateAdded.Text) && 
+                DateTime.TryParseExact(txtDateAdded.Text.Trim(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out enteredDate))
+            {
+                // Loop through each airshow and check the date condition
+                foreach (Airshow show in searchAirshows)
+                {
+                    DateTime showDate;
+
+                    // Check if the airshow date is valid and compare with the entered date
+                    if (!string.IsNullOrWhiteSpace(show.date_added) && DateTime.TryParseExact(show.date_added.Trim(), "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out showDate) &&
+                        showDate >= enteredDate)
+                    {
+                        foundDates.Add(show);
                     }
                 }
+            }
+            else
+            {
+                // Handle invalid date format or empty input
+                //Console.WriteLine("Please enter a valid date in the format yyyy-MM-dd.");
             }
 
             //list to this for the location
@@ -449,6 +517,15 @@ namespace AirshowSchedules
 
             List<Airshow> displayTheseAirshows = new List<Airshow>();
             displayTheseAirshows = foundAirshowByContact;
+            //lets add the ones entered by date
+            foreach (Airshow show in foundDates)
+            {
+                if (!displayTheseAirshows.Contains(show))
+                {
+                    displayTheseAirshows.Add(show);
+                }
+            }
+
             //lets add the locations
             foreach (Airshow show in foundLocations)
             {
@@ -491,8 +568,12 @@ namespace AirshowSchedules
             performSearch();
         }
 
-
         private void txtShowState_TextChanged(object sender, EventArgs e)
+        {
+            performSearch();
+        }
+
+        private void txtDateAdded_TextChanged(object sender, EventArgs e)
         {
             performSearch();
         }
@@ -693,14 +774,14 @@ namespace AirshowSchedules
 
         private void lstContacts_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if( isFormLoading )
+            if (isFormLoading)
             {
                 return;
             }
-              
+
             if (this.lstContacts.SelectedItem != null)
             {
-                isFormLoading = true; 
+                isFormLoading = true;
                 cContact selectedContact = (cContact)this.lstContacts.SelectedItem;
                 using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact, officialContacts))
                 {
@@ -796,11 +877,13 @@ namespace AirshowSchedules
         }
 
         private void btnSaveChanges_Click(object sender, EventArgs e)
-        {   
-            
+        {
+
 
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
+
+
     }
 }

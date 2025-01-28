@@ -176,11 +176,6 @@ namespace AirshowSchedules
                         cContact.addContact(activeContacts, contact, airshowToAdd);
                     }
                 }
-                airshowToAdd.contactIds = airshowToAdd.contactIds.Concat(airshowContacts.Select(c => c.ID)).Distinct().ToList();
-                foreach(var removeContactIDs in contactsToDelete)
-                {
-                    airshowToAdd.contactIds.Remove(removeContactIDs);
-                }
             }
 
             activeDB.Add(airshowToAdd);
