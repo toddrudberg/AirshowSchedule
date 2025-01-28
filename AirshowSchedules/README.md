@@ -30,9 +30,7 @@
 3. You may have deleted an airshow by accident, so re-run (Data Base Management -> Compare To Active DB)
 
 # things to do:
-1) add a way to see what shows have been added since a given download.
-2) add date added field
-3) highlight airshows that showup mid week with a funny color so they don't block the weekend.
+1) highlight airshows that showup mid week with a funny color so they don't block the weekend.
 
 
 # coding things
