@@ -63,7 +63,7 @@ namespace AirshowSchedules
 
                 foreach (cValuePair pair in getthedata)
                 {
-                    fs.myRegions.Add(pair.sState, pair.sRegion);
+                    fs.myRegions.Add(pair.sState.ToUpper(), pair.sRegion.ToUpper());
                 }
 
                 return fs;

@@ -31,7 +31,8 @@
 
 # things to do:
 1) add a way to see what shows have been added since a given download.
-12) highlight airshows that showup mid week with a funny color so they don't block the weekend.
+2) add date added field
+3) highlight airshows that showup mid week with a funny color so they don't block the weekend.
 
 
 # coding things

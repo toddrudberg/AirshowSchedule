@@ -46,7 +46,6 @@ namespace AirshowSchedules
             fileToolStripMenuItem = new ToolStripMenuItem();
             pareDataFileToolStripMenuItem = new ToolStripMenuItem();
             fileSaveParsedDataFile = new ToolStripMenuItem();
-            toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripSeparator1 = new ToolStripSeparator();
             setActiveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
             saveDatabaseFileToolStripMenuItem = new ToolStripMenuItem();
@@ -173,7 +172,7 @@ namespace AirshowSchedules
             // 
             // fileToolStripMenuItem
             // 
-            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripMenuItem1, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
+            fileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { pareDataFileToolStripMenuItem, fileSaveParsedDataFile, toolStripSeparator1, setActiveDatabaseFileToolStripMenuItem, saveDatabaseFileToolStripMenuItem, arciveActiveDBToolStripMenuItem, toolStripSeparator2, setActiveContactDBToolStripMenuItem, setActiveContactFileToolStripMenuItem });
             fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             fileToolStripMenuItem.Size = new Size(37, 22);
             fileToolStripMenuItem.Text = "File";
@@ -191,13 +190,6 @@ namespace AirshowSchedules
             fileSaveParsedDataFile.Size = new Size(198, 22);
             fileSaveParsedDataFile.Text = "Save Parsed Data File";
             fileSaveParsedDataFile.Click += fileSaveParsedDataFile_Click;
-            // 
-            // toolStripMenuItem1
-            // 
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.Size = new Size(198, 22);
-            toolStripMenuItem1.Text = "Compare ASGs";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // toolStripSeparator1
             // 
@@ -391,8 +383,6 @@ namespace AirshowSchedules
             PerformLayout();
         }
 
-
-
         private void lstBoxShows_DrawItem(object sender, DrawItemEventArgs e)
         {
             if (e.Index < 0) return; // Ignore invalid indices
@@ -493,7 +483,6 @@ namespace AirshowSchedules
         private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;
         private ToolStripMenuItem advancedSearchToolStripMenuItem;
-        private ToolStripMenuItem toolStripMenuItem1;
         private Label labelWeekendSelected;
         private LinkLabel linkLabelContacts;
         private LinkLabel linkLabelDB;

@@ -17,6 +17,9 @@ namespace AirshowSchedules
         [Display(DisplayName = "Finish Date (yyyy-MM-DD):")]
         public string date_finish { get; set; }
 
+        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
+        public string date_added { get; set; }
+
         [Display(DisplayName = "Airshow Name:")]
         public string name_airshow { get; set; }
 
@@ -26,9 +29,6 @@ namespace AirshowSchedules
         [Display(DisplayName = "Performers:")]
         public cPerformers Performers { get; set; } = new cPerformers();
 
-        // [Display(DisplayName = "Contacts:")]
-        // public cContacts Contacts { get; set; } = new cContacts(); 
-
         [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
 
@@ -37,9 +37,6 @@ namespace AirshowSchedules
 
         [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
-        
-        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
-        public string date_added { get; set; }
 
         public enum eStatus
         {
