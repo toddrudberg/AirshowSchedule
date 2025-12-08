@@ -31,6 +31,7 @@
 
 # things to do:
 1) highlight airshows that showup mid week with a funny color so they don't block the weekend.
+2) When generating reports, indicate the number of days for the show: eg 1 or 2.  
 
 
 # coding things

@@ -112,7 +112,7 @@ public partial class formMain : Form
     {
 
         // Set the console to be tall and narrow
-        SetConsoleSize(75, 75); // Adjust width and height here
+        //SetConsoleSize(75, 75); // Adjust width and height here
                                 // Set form size to a percentage of screen resolution
                                 // Use a Timer to delay the call to SetConsoleSize
 
