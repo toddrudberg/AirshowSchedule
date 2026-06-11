@@ -240,6 +240,8 @@ namespace AirshowSchedules
       {
         string[] start = date_start.Split('-');
         string[] end = date_finish.Split('-');
+        Console.WriteLine(date_start);
+        Console.WriteLine(date_finish);
         System.DateTime dstart = new DateTime(int.Parse(start[0]), int.Parse(start[1]), int.Parse(start[2]));
         System.DateTime dfinish = new DateTime(int.Parse(end[0]), int.Parse(end[1]), int.Parse(end[2]));
         DateTimeFormatInfo dfi = DateTimeFormatInfo.CurrentInfo;

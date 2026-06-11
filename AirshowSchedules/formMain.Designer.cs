@@ -96,7 +96,7 @@ namespace AirshowSchedules
       // lstBoxShows
       // 
       lstBoxShows.DrawMode = DrawMode.OwnerDrawFixed;
-      lstBoxShows.Font = new Font("Segoe UI", 8.1F, FontStyle.Regular, GraphicsUnit.Point);
+      lstBoxShows.Font = new Font("Arial Narrow", 8.1F, FontStyle.Regular, GraphicsUnit.Point);
       lstBoxShows.FormattingEnabled = true;
       lstBoxShows.ItemHeight = 30;
       lstBoxShows.Location = new Point(839, 62);
