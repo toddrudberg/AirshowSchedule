@@ -4,6 +4,7 @@ namespace AirshowSchedules;
 
 internal sealed class IcasChange
 {
+    public int? TargetId;
     public string Group = "";
     public string Show = "";
     public string Field = "";
@@ -61,6 +62,8 @@ internal sealed class IcasUpdatePlan
             if (candidates.Count == 0 && byName.Count == 0)
                 candidates = existing.Where(s => Place(s) == Place(source) && s.date_start == source.date_start && s.date_finish == source.date_finish).ToList();
             foreach (var s in candidates) seen.Add(s.ID);
+            if (candidates.Count == 1)
+                foreach (var warning in Changes.Where(c => c.Show == source.name_airshow && c.Group == "Cancellation warnings")) warning.TargetId = candidates[0].ID;
             var sourceContacts = incomingContacts.Where(c => c.showIDs.Contains(source.ID)).ToList();
             if (incoming.Count(s => Key(s.name_airshow) == Key(source.name_airshow) && Place(s) == Place(source)
                 && s.date_start == source.date_start && s.date_finish == source.date_finish) > 1)
@@ -93,7 +96,7 @@ internal sealed class IcasUpdatePlan
             void Field(string name, string before, string after, Action apply)
             {
                 if (before == after) return;
-                Changes.Add(new IcasChange { Group = "Updated shows", Show = source.name_airshow, Field = name,
+                Changes.Add(new IcasChange { TargetId = target.ID, Group = "Updated shows", Show = source.name_airshow, Field = name,
                     Before = before, After = after, Selected = true, Apply = apply });
             }
             // Cosmetic capitalization differences do not overwrite legacy names.
@@ -111,13 +114,13 @@ internal sealed class IcasUpdatePlan
             var oldContacts = Contacts.Where(c => c.showIDs.Contains(target.ID)).ToList();
             // A blank ICAS contact cell does not erase existing contacts.
             if (sourceContacts.Count > 0 && !oldContacts.Select(ContactKey).OrderBy(x => x).SequenceEqual(sourceContacts.Select(ContactKey).OrderBy(x => x)))
-                Changes.Add(new IcasChange { Group = "Contact changes", Show = source.name_airshow, Field = "Contacts (replace links for this show)",
+                Changes.Add(new IcasChange { TargetId = target.ID, Group = "Contact changes", Show = source.name_airshow, Field = "Contacts (replace links for this show)",
                     Before = ContactText(oldContacts), After = ContactText(sourceContacts), Selected = oldContacts.Count == 0,
                     Apply = () => ReplaceContacts(target.ID, sourceContacts) });
             if (Changes.Count == beforeCount) Unchanged++;
         }
         foreach (var missing in existing.Where(s => !seen.Contains(s.ID)))
-            Changes.Add(new IcasChange { Group = "Missing from download", Show = missing.name_airshow, Field = "Review only",
+            Changes.Add(new IcasChange { TargetId = missing.ID, Group = "Missing from download", Show = missing.name_airshow, Field = "Review only",
                 Before = $"{missing.date_start} – {missing.date_finish}", After = "Kept in database. Absence does not establish cancellation." });
     }
 

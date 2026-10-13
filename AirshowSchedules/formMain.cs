@@ -40,6 +40,7 @@ public partial class formMain : Form
             {
                 InitializeComponent();
                 InstallIcasUpdateMenu();
+                InstallPlanningTools();
                 this.Text = "Airshow Schedule Tool"; // Set the form title
                 this.Shown += new EventHandler(frmAirshowScheduleTool_Shown); // Subscribe to the Shown event
             }
@@ -96,6 +97,7 @@ public partial class formMain : Form
             {
                 chklstRegions.Items.Add(rgn);
             }
+            chklstRegions.Items.Add("Other / international");
             for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
             {
                 chklstRegions.SetItemChecked(ii, true);
@@ -106,7 +108,7 @@ public partial class formMain : Form
         {
             MessageBox.Show("Error loading form: " + ex.Message);
         }
-        toolTip1.Active = false;
+        toolTip1.Active = true;
     }
 
     private void frmAirshowScheduleTool_Shown(object sender, EventArgs e)
@@ -266,43 +268,9 @@ public partial class formMain : Form
         CellClickEvent();
     }
 
-    bool isLoadingCellEvent = false;
     private void CellClickEvent()
     {
-        if( isLoadingCellEvent)
-        {
-            isLoadingCellEvent = false;
-            return;
-        }
-        if (dgvCalendar.SelectedCells.Count > 0)
-        {
-            isLoadingCellEvent = true;
-            object cell = dgvCalendar.SelectedCells[0].Value;
-
-            string[] weekendinquestion = cell.ToString().Split(' ');
-
-            lstBoxShows.Items.Clear();
-
-            if (weekendinquestion.Length > 2)
-            {
-                DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                AirshowWeekend asw = new AirshowWeekend(dateTime);
-
-                List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-
-                foreach (Airshow airshow in airshowsthisweek)
-                {
-                    lstBoxShows.Items.Add(airshow);
-                }
-
-                string removeAirshowName = cell.ToString().Split('\n')[0];
-                string displaythis = $"Airshows week of {removeAirshowName}";
-
-                labelWeekendSelected.Text = displaythis;
-
-            }
-        }
+        RefreshSelectedWeekend();
     }
 
     private void dataGridView2_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -316,14 +284,8 @@ public partial class formMain : Form
         {
             Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
 
-            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow, myContacts))
-            {
-                if (editForm.ShowDialog() == DialogResult.OK)
-                {
-                    // The Airshow object has been updated
-                    SaveAirshowSchedule(false); // Save the updated airshow schedule
-                }
-            }
+            try { OpenPlanningShow(theAirshow); }
+            catch (Exception ex) { MessageBox.Show(this, ex.Message, "Unable to edit show"); }
         }
     }
 
@@ -345,7 +307,7 @@ public partial class formMain : Form
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // The Airshow object has been updated
-                ashow.ID = myAirshowGroup.Airshows.myShows.Max(a => a.ID) + 1;
+                ashow.ID = myAirshowGroup.Airshows.myShows.Select(a => a.ID).DefaultIfEmpty(-1).Max() + 1;
                 ashow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
                 myAirshowGroup.Airshows.myShows.Add(ashow);
                 myFilteredAirshows.Add(ashow);
@@ -389,7 +351,7 @@ public partial class formMain : Form
             }
             catch
             {
-                continue;
+                rgn = "Other / international";
             }
 
             for (int ii = 0; ii < chklstRegions.CheckedItems.Count; ii++)
@@ -402,6 +364,7 @@ public partial class formMain : Form
         }
         myFilteredAirshows = FilteredAirshows.ToList();
         ColorGrid(myFilteredAirshows);
+        RefreshSelectedWeekend();
     }
 
 

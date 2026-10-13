@@ -1,4 +1,12 @@
 # AirshowSchedule
+## Calendar and planning
+
+The calendar shows Saturday–Sunday dates, month labels, show counts, and a status-color legend. Events appear on every weekend their dates overlap, including Sunday-only events. Colors indicate contract, verbal, maybe, or pursue status. Contract and verbal commitments remain visible across all regions even when the region filter hides their shows; hover for full names and dates. Clicking a weekend lists its filtered weekend events. Weekday-only events have a separate count and **Weekday shows…** view and do not color or occupy a weekend. Unmapped locations are available under **Other / international**.
+
+Choose **Needs attention…** for upcoming shows in the selected year across all regions. It flags cancellation warnings, overlapping contract/verbal commitments, missing phone/email details, and shows marked Pursue. Applied ICAS update history also supplies missing-show warnings and changes to booked dates, including date changes not accepted during review. Date warnings remain available after subsequent imports. Use **Include past shows** for earlier events.
+
+Open a show from the attention list to edit it. **Mark reviewed** hides that individual warning without changing the show or its booking status. **Show reviewed** lets you reopen a warning. If its details change, it appears again. Review acknowledgments are stored in an `.attention-*.json` file beside the active database, scoped to the selected show/contact file pair; keep this file with the database. Existing notes do not establish whether a follow-up happened, so Pursue flags ask you to review the next step rather than claiming a contact is overdue.
+
 ## Updating from ICAS
 
 Choose **Update from ICAS…** on the main menu and select the downloaded calendar. The calendar year is detected automatically. Review the proposed changes, use the category filter, and check the fields you want to apply. Existing contact replacements start unchecked. Missing and ambiguous events are review-only; cancellation warnings preserve your booking status. Applying changes saves both active databases and refreshes the calendar. No intermediate export is necessary.

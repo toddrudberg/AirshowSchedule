@@ -21,6 +21,7 @@ Check(contacts.All(c => shows.Any(s => s.ID == c.showIDs.Single())), "Broken con
 Check(contacts.All(c => !string.IsNullOrWhiteSpace(c.name)), "Empty contact generated.");
 Check(shows.Any(s => s.name_airshow.Contains("& AOPA")), "Ampersand lost.");
 UpdateChecks.Run(shows, contacts);
+PlanningChecks.Run();
 var serializer = new XmlSerializer(typeof(AirshowGroup));
 using var stream = new MemoryStream();
 serializer.Serialize(stream, new AirshowGroup { AirshowYearOfInterest = 2026, Airshows = new AirshowGroup.cAirshows { myShows = shows } });
