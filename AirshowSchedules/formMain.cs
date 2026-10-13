@@ -138,13 +138,13 @@ public partial class formMain : Form
     public class cAirshowFileParserSetupTool
     {
         [Display(DisplayName = "Choose an Input File - not the xml file:")]
-        [FileBrowseDialog(OpenFileDialogFilter = "Text File (.txt)|*.txt")]
+        [FileBrowseDialog(OpenFileDialogFilter = "ICAS Calendar (*.doc;*.html;*.htm;*.txt)|*.doc;*.html;*.htm;*.txt")]
         [XmlElement("FileName")]
         public string sFileName = "";
 
         [XmlAttribute]
         [Display(DisplayName = "Which Airshow Year")]
-        public int AirshowYear = 2023;
+        public int AirshowYear = DateTime.Now.Year;
 
         [XmlAttribute]
         [Display(DisplayName = "File Source")]

@@ -127,7 +127,7 @@ namespace AirshowSchedules
 
             if (duplicateContact.Count == 0)
             {
-                int maxID = contacts.Max(c => c.ID);
+                int maxID = contacts.Select(c => c.ID).DefaultIfEmpty(-1).Max();
                 int newID = maxID + 1;
                 contact.ID = newID;
 
@@ -156,7 +156,7 @@ namespace AirshowSchedules
                 contact.showIDs.Add(show.ID);
 
                 //if the existing contact has an address, do we really want to overwrite it?
-                existingContact.address = contact.address;
+                if (!string.IsNullOrWhiteSpace(contact.address)) existingContact.address = contact.address;
 
                 existingContact.showIDs = existingContact.showIDs.Union(contact.showIDs).ToList();
 

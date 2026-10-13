@@ -4,9 +4,9 @@
 1. Go to airshows.aero
 2. Sign in
 3. Download the calendar for the year of interest
-4. Open in Word
-5. Save as a text file
-6. Parse Data File (file->Parse Data File)
+4. Parse Data File (File -> Parse Data File) and select the downloaded .doc directly. ICAS currently exports an HTML table with a .doc extension; binary Word .doc and .docx files are not supported. Legacy text exports remain supported.
+5. Set the year to match the downloaded calendar. Review the imported show/contact counts; malformed tables produce an error.
+6. Keep the parsed import separate from your active database until you compare and review it. Cancelled labels remain in show names; they do not automatically change your booking status.
 7. Save-as yyyy-mm-dd+"filename".asg.xml (file->Save Parsed Data File)
 
 # Updating Database

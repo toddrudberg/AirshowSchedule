@@ -419,18 +419,21 @@ namespace AirshowSchedules
         {
             int contactID = 0;
             int airshowID = 0;
-            string[] lines;
-            try
+            string content = System.IO.File.ReadAllText(inputfile.sFileName);
+            if (inputfile.eFileSource != cAirshowFileParserSetupTool.efilesource.ICAS)
+                throw new NotSupportedException("Only ICAS imports are currently supported.");
+            if (content.TrimStart().StartsWith("<", StringComparison.Ordinal))
             {
-                lines = System.IO.File.ReadAllLines(inputfile.sFileName);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
+                var imported = IcasHtmlImporter.Parse(content, inputfile.AirshowYear);
+                airshows.AddRange(imported.Shows);
+                contacts.AddRange(imported.Contacts);
                 return;
             }
+            string[] lines = System.IO.File.ReadAllLines(inputfile.sFileName);
 
             string ScheduleYear = inputfile.AirshowYear.ToString();
+            // A terminator lets the legacy parser flush the last record too.
+            lines = lines.Append(ScheduleYear).ToArray();
 
             //Electroimpact.FileParser.cFileParse fp = new Electroimpact.FileParser.cFileParse();
 
@@ -438,6 +441,7 @@ namespace AirshowSchedules
             {
                 for (int ii = 0; ii < lines.Length; ii++)
                 {
+                    if (ii == lines.Length - 1) break;
                     // the show starts with a date, we look for the year
                     // line 1 is the start date
                     // line 2 is the end date
@@ -450,6 +454,8 @@ namespace AirshowSchedules
                     {//we got one.
 
                         Airshow airshow = new Airshow();
+                        if (ii + 3 >= lines.Length - 1)
+                            throw new FormatException($"Incomplete ICAS text record at line {ii + 1}.");
                         airshow.date_start = lines[ii++];
                         airshow.date_finish = lines[ii++];
                         airshow.date_added = DateTime.Now.ToString("yyyy-MM-dd");

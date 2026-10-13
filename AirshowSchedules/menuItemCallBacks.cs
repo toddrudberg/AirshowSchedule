@@ -27,10 +27,17 @@ public partial class formMain
         {
             this.Enabled = false;
 
-            Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
-            airshows = airshows.OrderBy(airshow => airshow.WeekNumber).ToList();
-            cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
-            this.Enabled = true;
+            try
+            {
+                Airshow.LoadFile(WorkingFileParserClass, airshows, contacts);
+                cAirshowFileParserSetupTool.SaveMe(WorkingFileParserClass);
+                MessageBox.Show($"Imported {airshows.Count} shows and {contacts.Count} contacts for {WorkingFileParserClass.AirshowYear}.\nUse Save Parsed Data File to save a separate import for comparison.", "ICAS import");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Import failed");
+            }
+            finally { this.Enabled = true; }
         }
     }
     private void fileSaveParsedDataFile_Click(object sender, EventArgs e)
@@ -60,7 +67,11 @@ public partial class formMain
                 }
                 return;
             }
-            catch { }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Unable to save import");
+                return;
+            }
         }
         MessageBox.Show("Something Wrong.  Be first set this up by using the \"Parse Data File Tool\"");
     }
