@@ -39,6 +39,7 @@ public partial class formMain : Form
             try
             {
                 InitializeComponent();
+                InstallIcasUpdateMenu();
                 this.Text = "Airshow Schedule Tool"; // Set the form title
                 this.Shown += new EventHandler(frmAirshowScheduleTool_Shown); // Subscribe to the Shown event
             }

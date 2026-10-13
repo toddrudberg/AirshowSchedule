@@ -7235,6 +7235,2229 @@
       <AirshowLinks />
       <Status>none</Status>
     </Airshow>
+    <Airshow>
+      <ID>478</ID>
+      <date_start>2027-01-23</date_start>
+      <date_finish>2027-01-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Children's Gasparilla Air Invasion</name_airshow>
+      <location>
+        <city>Tampa Bay</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>479</ID>
+      <date_start>2027-02-23</date_start>
+      <date_finish>2027-02-28</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Avalon Australian International Airshow</name_airshow>
+      <location>
+        <city>Avalon</city>
+        <state>Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>480</ID>
+      <date_start>2027-02-26</date_start>
+      <date_finish>2027-02-28</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Buckeye Air Fair &amp; AOPA Fly-In</name_airshow>
+      <location>
+        <city>Buckeye</city>
+        <state>AZ</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>481</ID>
+      <date_start>2027-03-13</date_start>
+      <date_finish>2027-03-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Yuma Airshow 2027</name_airshow>
+      <location>
+        <city>MCAS Yuma</city>
+        <state>AZ</state>
+      </location>
+      <Performers>
+        <Performer>Matt Jolley, Airshow Announcer</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+        <Performer>USMC F-35B Lightning II</Performer>
+        <Performer>USMC MV-22 Osprey</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>482</ID>
+      <date_start>2027-03-13</date_start>
+      <date_finish>2027-03-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>NAF El Centro Festival of Flight</name_airshow>
+      <location>
+        <city>NAF El Centro</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>483</ID>
+      <date_start>2027-03-20</date_start>
+      <date_finish>2027-03-21</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder &amp; Lightning Over Arizona</name_airshow>
+      <location>
+        <city>Davis-Monthan AFB</city>
+        <state>AZ</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>484</ID>
+      <date_start>2027-03-20</date_start>
+      <date_finish>2027-03-21</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>California Capital Airshow</name_airshow>
+      <location>
+        <city>Sacramento</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>485</ID>
+      <date_start>2027-03-26</date_start>
+      <date_finish>2027-03-28</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Marlborough Lines Classic Fighters 2027</name_airshow>
+      <location>
+        <city>Blenheim</city>
+        <state>Marlborough, New Zealand</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>486</ID>
+      <date_start>2027-03-27</date_start>
+      <date_finish>2027-03-28</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Southern California Airshow at March Field 2027</name_airshow>
+      <location>
+        <city>Riverside (March ARB)</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>487</ID>
+      <date_start>2027-04-03</date_start>
+      <date_finish>2027-04-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Defenders of Liberty Air &amp; Space Show</name_airshow>
+      <location>
+        <city>Barksdale AFB</city>
+        <state>LA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>488</ID>
+      <date_start>2027-04-03</date_start>
+      <date_finish>2027-04-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>MCAS Beaufort Air Show</name_airshow>
+      <location>
+        <city>MCAS Beaufort</city>
+        <state>SC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>489</ID>
+      <date_start>2027-04-03</date_start>
+      <date_finish>2027-04-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Hunter Valley Airshow</name_airshow>
+      <location>
+        <city>Cessnock</city>
+        <state>NSW, Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>490</ID>
+      <date_start>2027-04-06</date_start>
+      <date_finish>2027-04-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>SUN 'n FUN Aerospace Expo</name_airshow>
+      <location>
+        <city>Lakeland</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>491</ID>
+      <date_start>2027-04-10</date_start>
+      <date_finish>2027-04-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Eglin AFB Airshow</name_airshow>
+      <location>
+        <city>Eglin AFB</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>492</ID>
+      <date_start>2027-04-17</date_start>
+      <date_finish>2027-04-18</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>2027 Beale Air Show</name_airshow>
+      <location>
+        <city>Beale AFB</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>493</ID>
+      <date_start>2027-04-17</date_start>
+      <date_finish>2027-04-18</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>"Georgia Skies", The Robins Open House and Air Show</name_airshow>
+      <location>
+        <city>Robins AFB</city>
+        <state>GA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>494</ID>
+      <date_start>2027-04-17</date_start>
+      <date_finish>2027-04-18</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Cocoa Beach</name_airshow>
+      <location>
+        <city>Cocoa Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>495</ID>
+      <date_start>2027-04-17</date_start>
+      <date_finish>2027-04-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings, Wheels and Wine</name_airshow>
+      <location>
+        <city>Mudgee</city>
+        <state>NSW, Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>496</ID>
+      <date_start>2027-04-24</date_start>
+      <date_finish>2027-04-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Dyess 2027 Open House</name_airshow>
+      <location>
+        <city>Dyess AFB</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>497</ID>
+      <date_start>2027-04-24</date_start>
+      <date_finish>2027-04-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Augusta</name_airshow>
+      <location>
+        <city>Augusta</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>498</ID>
+      <date_start>2027-04-24</date_start>
+      <date_finish>2027-04-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Cowtown Airshow</name_airshow>
+      <location>
+        <city>NAS JRB Fort Worth</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>499</ID>
+      <date_start>2027-04-30</date_start>
+      <date_finish>2027-05-02</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Ocala</name_airshow>
+      <location>
+        <city>Ocala</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>500</ID>
+      <date_start>2027-05-01</date_start>
+      <date_finish>2027-05-02</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Warriors Over the Wasatch Air Show</name_airshow>
+      <location>
+        <city>Hill AFB</city>
+        <state>UT</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>501</ID>
+      <date_start>2027-05-08</date_start>
+      <date_finish>2027-05-09</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Wayne Air Space &amp; Technology Expo</name_airshow>
+      <location>
+        <city>Seymour Johnson AFB</city>
+        <state>NC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>502</ID>
+      <date_start>2027-05-08</date_start>
+      <date_finish>2027-05-09</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Fields of Thunder Airshow</name_airshow>
+      <location>
+        <city>Des Moines</city>
+        <state>IA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>503</ID>
+      <date_start>2027-05-14</date_start>
+      <date_finish>2027-05-16</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Oregon International Air Show</name_airshow>
+      <location>
+        <city>Hillsboro</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>504</ID>
+      <date_start>2027-05-15</date_start>
+      <date_finish>2027-05-16</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>The FourLeaf Air Show at Jones Beach</name_airshow>
+      <location>
+        <city>Wantagh</city>
+        <state>NY</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>505</ID>
+      <date_start>2027-05-15</date_start>
+      <date_finish>2027-05-16</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Fort Lauderdale</name_airshow>
+      <location>
+        <city>Fort Lauderdale</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>506</ID>
+      <date_start>2027-05-21</date_start>
+      <date_finish>2027-05-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Shellharbour</name_airshow>
+      <location>
+        <city>Shellharbour</city>
+        <state>NSW, Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>507</ID>
+      <date_start>2027-05-22</date_start>
+      <date_finish>2027-05-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over Dalhart</name_airshow>
+      <location>
+        <city>Dalhart</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>508</ID>
+      <date_start>2027-05-22</date_start>
+      <date_finish>2027-05-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>The Great New England Air Show</name_airshow>
+      <location>
+        <city>Westover ARB/Chicopee</city>
+        <state>MA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>509</ID>
+      <date_start>2027-05-22</date_start>
+      <date_finish>2027-05-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Kirtland Air and Space Fiesta</name_airshow>
+      <location>
+        <city>Albuquerque/Kirtland AFB</city>
+        <state>NM</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>510</ID>
+      <date_start>2027-05-22</date_start>
+      <date_finish>2027-05-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>2027 Millville Airshow</name_airshow>
+      <location>
+        <city>Millville</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>511</ID>
+      <date_start>2027-05-26</date_start>
+      <date_finish>2027-05-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>U.S. Naval Academy Air Show/Graduation Flyover</name_airshow>
+      <location>
+        <city>Annapolis</city>
+        <state>MD</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>512</ID>
+      <date_start>2027-05-27</date_start>
+      <date_finish>2027-05-27</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>U.S. Air Force Academy Graduation</name_airshow>
+      <location>
+        <city>USAF Academy</city>
+        <state>CO</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>513</ID>
+      <date_start>2027-05-27</date_start>
+      <date_finish>2027-05-31</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>BPA Operation Skyhook Fly-in</name_airshow>
+      <location>
+        <city>Pine Bluff</city>
+        <state>AR</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>514</ID>
+      <date_start>2027-05-29</date_start>
+      <date_finish>2027-05-30</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Power in the Pines Open House &amp; Air Show</name_airshow>
+      <location>
+        <city>JB McGuire-Dix-Lakehurst</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>515</ID>
+      <date_start>2027-05-29</date_start>
+      <date_finish>2027-05-30</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Miami Beach Air &amp; Sea Show</name_airshow>
+      <location>
+        <city>Miami Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>516</ID>
+      <date_start>2027-06-04</date_start>
+      <date_finish>2027-06-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>36th Annual World War II Weekend - A Gathering of Warbirds</name_airshow>
+      <location>
+        <city>Reading</city>
+        <state>PA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>517</ID>
+      <date_start>2027-06-05</date_start>
+      <date_finish>2027-06-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Tinker Air Show</name_airshow>
+      <location>
+        <city>Tinker AFB</city>
+        <state>OK</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>518</ID>
+      <date_start>2027-06-05</date_start>
+      <date_finish>2027-06-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>2027 Atlantic City Air Show</name_airshow>
+      <location>
+        <city>Atlantic City</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>519</ID>
+      <date_start>2027-06-11</date_start>
+      <date_finish>2027-06-12</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Moses Lake Airshow</name_airshow>
+      <location>
+        <city>Moses Lake</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>520</ID>
+      <date_start>2027-06-12</date_start>
+      <date_finish>2027-06-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Chippewa Valley Air Show</name_airshow>
+      <location>
+        <city>Eau Claire</city>
+        <state>WI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>521</ID>
+      <date_start>2027-06-12</date_start>
+      <date_finish>2027-06-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Minot AFB Open House</name_airshow>
+      <location>
+        <city>Minot AFB</city>
+        <state>ND</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>522</ID>
+      <date_start>2027-06-12</date_start>
+      <date_finish>2027-06-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Scott AFB Open House</name_airshow>
+      <location>
+        <city>Scott AFB</city>
+        <state>IL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>523</ID>
+      <date_start>2027-06-12</date_start>
+      <date_finish>2027-06-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Dover AFB Air Show</name_airshow>
+      <location>
+        <city>Dover AFB</city>
+        <state>DE</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>524</ID>
+      <date_start>2027-06-12</date_start>
+      <date_finish>2027-06-13</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>First State Airshow</name_airshow>
+      <location>
+        <city>Dover AFB</city>
+        <state>DE</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>525</ID>
+      <date_start>2027-06-18</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over the Heartland Airshow</name_airshow>
+      <location>
+        <city>Topeka</city>
+        <state>KS</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+        <Performer>Luke Carrico, Air Show Announcer</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>526</ID>
+      <date_start>2027-06-18</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>NJ Air Show</name_airshow>
+      <location>
+        <city>West Milford</city>
+        <state>NJ</state>
+      </location>
+      <Performers>
+        <Performer>GhostWriter Airshows</Performer>
+        <Performer>McCart Jet Motorsports</Performer>
+        <Performer>Matt Jolley, Airshow Announcer</Performer>
+        <Performer>Warbird Thunder Airshows</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>527</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Ocean City</name_airshow>
+      <location>
+        <city>Ocean City</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>528</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Deke Slayton Airfest</name_airshow>
+      <location>
+        <city>La Crosse</city>
+        <state>WI</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>529</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Rochester International Airshow</name_airshow>
+      <location>
+        <city>Rochester</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>530</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Westmoreland International Airshow</name_airshow>
+      <location>
+        <city>Latrobe</city>
+        <state>PA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>531</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-20</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Spectacle Aerien International de Bagotville</name_airshow>
+      <location>
+        <city>Bagotville</city>
+        <state>QC</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>532</ID>
+      <date_start>2027-06-19</date_start>
+      <date_finish>2027-06-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Columbia Fly-In</name_airshow>
+      <location>
+        <city>Columbia</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>533</ID>
+      <date_start>2027-06-25</date_start>
+      <date_finish>2027-06-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Yakima Air Fair</name_airshow>
+      <location>
+        <city>Yakima</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>534</ID>
+      <date_start>2027-06-26</date_start>
+      <date_finish>2027-06-27</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>CenterPoint Energy Dayton Air Show</name_airshow>
+      <location>
+        <city>Dayton</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>535</ID>
+      <date_start>2027-06-26</date_start>
+      <date_finish>2027-06-27</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>A Salute to the Red, White and Blue</name_airshow>
+      <location>
+        <city>Davenport</city>
+        <state>IA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>536</ID>
+      <date_start>2027-06-26</date_start>
+      <date_finish>2027-06-27</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Duluth Airshow</name_airshow>
+      <location>
+        <city>Duluth</city>
+        <state>MN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>537</ID>
+      <date_start>2027-06-26</date_start>
+      <date_finish>2027-06-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Fergus Airshow</name_airshow>
+      <location>
+        <city>Fergus Falls</city>
+        <state>MN</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>538</ID>
+      <date_start>2027-06-30</date_start>
+      <date_finish>2027-07-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Battle Creek Field of Flight Air Show &amp; Balloon Festival</name_airshow>
+      <location>
+        <city>Battle Creek</city>
+        <state>MI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>539</ID>
+      <date_start>2027-07-02</date_start>
+      <date_finish>2027-07-02</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over East Texas Air Show</name_airshow>
+      <location>
+        <city>Athens</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>540</ID>
+      <date_start>2027-07-03</date_start>
+      <date_finish>2027-07-03</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Radio Dubuque Air Show &amp; Fireworks Spectacular</name_airshow>
+      <location>
+        <city>Dubuque</city>
+        <state>IA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>541</ID>
+      <date_start>2027-07-03</date_start>
+      <date_finish>2027-07-03</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over Cedar Creek Lake Air Show</name_airshow>
+      <location>
+        <city>Cedar Creek Lake</city>
+        <state>Mabank, TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>542</ID>
+      <date_start>2027-07-03</date_start>
+      <date_finish>2027-07-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Greater Binghamton Air Show</name_airshow>
+      <location>
+        <city>Johnson City</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>543</ID>
+      <date_start>2027-07-03</date_start>
+      <date_finish>2027-07-04</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>National Cherry Festival Air Show</name_airshow>
+      <location>
+        <city>Traverse City</city>
+        <state>MI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>544</ID>
+      <date_start>2027-07-10</date_start>
+      <date_finish>2027-07-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Central PA</name_airshow>
+      <location>
+        <city>Harrisburg (Middletown)</city>
+        <state>PA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>545</ID>
+      <date_start>2027-07-10</date_start>
+      <date_finish>2027-07-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Columbus Air Show</name_airshow>
+      <location>
+        <city>Columbus</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>546</ID>
+      <date_start>2027-07-10</date_start>
+      <date_finish>2027-07-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Geneseo Airshow: The Greatest Show on Turf!</name_airshow>
+      <location>
+        <city>Geneseo</city>
+        <state>NY</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>547</ID>
+      <date_start>2027-07-10</date_start>
+      <date_finish>2027-07-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Bremerton Airshow</name_airshow>
+      <location>
+        <city>Bremerton</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>548</ID>
+      <date_start>2027-07-16</date_start>
+      <date_finish>2027-07-18</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over Michigan Air Show</name_airshow>
+      <location>
+        <city>Ypsilanti (Belleville)</city>
+        <state>MI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>Commemorative Air Force</Performer>
+        <Performer>GhostWriter Airshows</Performer>
+        <Performer>Third Strike Wingwalking</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>549</ID>
+      <date_start>2027-07-17</date_start>
+      <date_finish>2027-07-18</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings and Eagles Airshow</name_airshow>
+      <location>
+        <city>Klamath Falls (Kingsley Field)</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>550</ID>
+      <date_start>2027-07-17</date_start>
+      <date_finish>2027-07-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Pensacola Beach Air Show</name_airshow>
+      <location>
+        <city>Pensacola Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>551</ID>
+      <date_start>2027-07-24</date_start>
+      <date_finish>2027-07-24</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Enid</name_airshow>
+      <location>
+        <city>Enid (Vance AFB)</city>
+        <state>OK</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>552</ID>
+      <date_start>2027-07-24</date_start>
+      <date_finish>2027-07-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Milwaukee Air &amp; Water Show</name_airshow>
+      <location>
+        <city>Milwaukee</city>
+        <state>WI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+        <Performer>U.S. Air Force Parachute Team Wings of Blue</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>553</ID>
+      <date_start>2027-07-25</date_start>
+      <date_finish>2027-07-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Wyoming/Cheyenne Frontier Days</name_airshow>
+      <location>
+        <city>Cheyenne (F.E. Warren AFB)</city>
+        <state>WY</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>554</ID>
+      <date_start>2027-07-26</date_start>
+      <date_finish>2027-08-01</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>EAA AirVenture Oshkosh</name_airshow>
+      <location>
+        <city>Oshkosh</city>
+        <state>WI</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>555</ID>
+      <date_start>2027-08-06</date_start>
+      <date_finish>2027-08-08</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Abbotsford International Airshow</name_airshow>
+      <location>
+        <city>Abbotsford</city>
+        <state>BC</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>556</ID>
+      <date_start>2027-08-07</date_start>
+      <date_finish>2027-08-08</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Boeing Seafair Air Show</name_airshow>
+      <location>
+        <city>Seattle</city>
+        <state>WA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>557</ID>
+      <date_start>2027-08-07</date_start>
+      <date_finish>2027-08-08</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Gary Air Show</name_airshow>
+      <location>
+        <city>Gary</city>
+        <state>IN</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>558</ID>
+      <date_start>2027-08-13</date_start>
+      <date_finish>2027-08-15</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Big Sky Muster</name_airshow>
+      <location>
+        <city>Tooraweenah</city>
+        <state>NSW, Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>559</ID>
+      <date_start>2027-08-14</date_start>
+      <date_finish>2027-08-15</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>69th Annual Chicago Air &amp; Water Show</name_airshow>
+      <location>
+        <city>Chicago</city>
+        <state>IL</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>560</ID>
+      <date_start>2027-08-14</date_start>
+      <date_finish>2027-08-15</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Marine Corps Base Hawaii Air Show</name_airshow>
+      <location>
+        <city>MCAS Kaneohe Bay</city>
+        <state>HI</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>561</ID>
+      <date_start>2027-08-20</date_start>
+      <date_finish>2027-08-23</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Airshow London</name_airshow>
+      <location>
+        <city>London</city>
+        <state>ON</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>562</ID>
+      <date_start>2027-08-21</date_start>
+      <date_finish>2027-08-22</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Roar Over the Rockies</name_airshow>
+      <location>
+        <city>Great Falls</city>
+        <state>MT</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>563</ID>
+      <date_start>2027-08-21</date_start>
+      <date_finish>2027-08-22</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Fargo AirSho</name_airshow>
+      <location>
+        <city>Fargo</city>
+        <state>ND</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>564</ID>
+      <date_start>2027-08-21</date_start>
+      <date_finish>2027-08-22</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Cape Cod Air Show</name_airshow>
+      <location>
+        <city>Buzzards Bay</city>
+        <state>MA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>565</ID>
+      <date_start>2027-08-21</date_start>
+      <date_finish>2027-08-21</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Skagit Skies Airshow</name_airshow>
+      <location>
+        <city>Burlington</city>
+        <state>WA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>566</ID>
+      <date_start>2027-08-21</date_start>
+      <date_finish>2027-08-22</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Props and Pistons Festival</name_airshow>
+      <location>
+        <city>Akron</city>
+        <state>OH</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>567</ID>
+      <date_start>2027-08-27</date_start>
+      <date_finish>2027-08-28</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Airshow of the Cascades</name_airshow>
+      <location>
+        <city>Madras</city>
+        <state>OR</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>568</ID>
+      <date_start>2027-08-27</date_start>
+      <date_finish>2027-08-29</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Oregon International Air Show</name_airshow>
+      <location>
+        <city>McMinnville</city>
+        <state>OR</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>569</ID>
+      <date_start>2027-08-27</date_start>
+      <date_finish>2027-08-29</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Pistons and Props</name_airshow>
+      <location>
+        <city>Janesville</city>
+        <state>WI</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>570</ID>
+      <date_start>2027-08-28</date_start>
+      <date_finish>2027-08-29</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show New York</name_airshow>
+      <location>
+        <city>Montgomery (Goshen)</city>
+        <state>NY</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>571</ID>
+      <date_start>2027-09-03</date_start>
+      <date_finish>2027-09-05</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Warriors and Wings over Acadiana</name_airshow>
+      <location>
+        <city>New Iberia</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>Dacy Airshows</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>572</ID>
+      <date_start>2027-09-04</date_start>
+      <date_finish>2027-09-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Cleveland National Air Show</name_airshow>
+      <location>
+        <city>Cleveland</city>
+        <state>OH</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>573</ID>
+      <date_start>2027-09-04</date_start>
+      <date_finish>2027-09-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Canadian International Air Show</name_airshow>
+      <location>
+        <city>Toronto</city>
+        <state>ON</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>574</ID>
+      <date_start>2027-09-04</date_start>
+      <date_finish>2027-09-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Branson Wings of Pride Airshow</name_airshow>
+      <location>
+        <city>Branson</city>
+        <state>MO</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>575</ID>
+      <date_start>2027-09-11</date_start>
+      <date_finish>2027-09-12</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>International Sanicole Airshow</name_airshow>
+      <location>
+        <city>Hechtel</city>
+        <state>Belgium</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>576</ID>
+      <date_start>2027-09-11</date_start>
+      <date_finish>2027-09-12</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>The Wildwoods Air Show</name_airshow>
+      <location>
+        <city>Wildwood</city>
+        <state>NJ</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>577</ID>
+      <date_start>2027-09-11</date_start>
+      <date_finish>2027-09-12</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Carolina Beach Airshow</name_airshow>
+      <location>
+        <city>Carolina Beach</city>
+        <state>NC</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>578</ID>
+      <date_start>2027-09-11</date_start>
+      <date_finish>2027-09-12</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>North Alabama Airfest</name_airshow>
+      <location>
+        <city>Decatur</city>
+        <state>AL</state>
+      </location>
+      <Performers>
+        <Performer>Coleman Aerosports</Performer>
+        <Performer>GhostWriter Airshows</Performer>
+        <Performer>Titan Aerobatic Team</Performer>
+        <Performer>John Scherff Airshows</Performer>
+        <Performer>Warbird Thunder Airshows</Performer>
+        <Performer>Smoke-n-Thunder Jet Shows</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>579</ID>
+      <date_start>2027-09-15</date_start>
+      <date_finish>2027-09-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>National Championship Air Races and Air Show</name_airshow>
+      <location>
+        <city>Roswell</city>
+        <state>NM</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>580</ID>
+      <date_start>2027-09-17</date_start>
+      <date_finish>2027-09-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Aero Gatineau-Ottawa Airshow</name_airshow>
+      <location>
+        <city>Gatineau</city>
+        <state>QC</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>581</ID>
+      <date_start>2027-09-18</date_start>
+      <date_finish>2027-09-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>NAS Oceana Air Show</name_airshow>
+      <location>
+        <city>Virginia Beach</city>
+        <state>VA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>582</ID>
+      <date_start>2027-09-18</date_start>
+      <date_finish>2027-09-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>JB Andrews Air Show</name_airshow>
+      <location>
+        <city>JB Andrews</city>
+        <state>MD</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>583</ID>
+      <date_start>2027-09-18</date_start>
+      <date_finish>2027-09-19</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Warbirds Over the Murray</name_airshow>
+      <location>
+        <city>Tocumwal</city>
+        <state>NSW, Australia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>584</ID>
+      <date_start>2027-09-24</date_start>
+      <date_finish>2027-09-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Festival Aérien VOLARIA Airshow</name_airshow>
+      <location>
+        <city>Mirabel</city>
+        <state>QC</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>585</ID>
+      <date_start>2027-09-24</date_start>
+      <date_finish>2027-09-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>California International Airshow</name_airshow>
+      <location>
+        <city>Salinas</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+        <Performer>Ace Maker Airshows</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>586</ID>
+      <date_start>2027-09-25</date_start>
+      <date_finish>2027-09-25</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings and Wheels</name_airshow>
+      <location>
+        <city>Spanish Fork</city>
+        <state>UT</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>587</ID>
+      <date_start>2027-09-25</date_start>
+      <date_finish>2027-09-26</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>MCAS Miramar Air Show</name_airshow>
+      <location>
+        <city>San Diego</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>588</ID>
+      <date_start>2027-10-02</date_start>
+      <date_finish>2027-10-03</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Lake Tahoe Air Show</name_airshow>
+      <location>
+        <city>Lake Tahoe</city>
+        <state>NV</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>589</ID>
+      <date_start>2027-10-02</date_start>
+      <date_finish>2027-10-03</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Pacific Airshow Huntington Beach</name_airshow>
+      <location>
+        <city>Huntington Beach</city>
+        <state>CA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>590</ID>
+      <date_start>2027-10-09</date_start>
+      <date_finish>2027-10-09</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Apple Valley Airshow</name_airshow>
+      <location>
+        <city>Apple Valley</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>591</ID>
+      <date_start>2027-10-09</date_start>
+      <date_finish>2027-10-09</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Culpeper Air Fest 2027</name_airshow>
+      <location>
+        <city>Culpeper</city>
+        <state>VA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>592</ID>
+      <date_start>2027-10-09</date_start>
+      <date_finish>2027-10-10</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>San Francisco Fleet Week</name_airshow>
+      <location>
+        <city>San Francisco</city>
+        <state>CA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>593</ID>
+      <date_start>2027-10-09</date_start>
+      <date_finish>2027-10-10</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Amigo Airsho Inc</name_airshow>
+      <location>
+        <city>El Paso</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>594</ID>
+      <date_start>2027-10-15</date_start>
+      <date_finish>2027-10-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Aviation Roundup/Minden-Tahoe Skyfest</name_airshow>
+      <location>
+        <city>Minden</city>
+        <state>NV</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>595</ID>
+      <date_start>2027-10-16</date_start>
+      <date_finish>2027-10-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Atlanta</name_airshow>
+      <location>
+        <city>Peachtree City</city>
+        <state>GA</state>
+      </location>
+      <Performers>
+        <Performer>USMC F-35B Lightning II</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>596</ID>
+      <date_start>2027-10-16</date_start>
+      <date_finish>2027-10-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over North Georgia</name_airshow>
+      <location>
+        <city>Rome</city>
+        <state>GA</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>597</ID>
+      <date_start>2027-10-16</date_start>
+      <date_finish>2027-10-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Houston Airshow</name_airshow>
+      <location>
+        <city>Houston</city>
+        <state>TX</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>598</ID>
+      <date_start>2027-10-16</date_start>
+      <date_finish>2027-10-17</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Thunder Over the Rock</name_airshow>
+      <location>
+        <city>Little Rock AFB</city>
+        <state>AR</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>599</ID>
+      <date_start>2027-10-16</date_start>
+      <date_finish>2027-10-16</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>SkyFiesta Air Race &amp; Airshow</name_airshow>
+      <location>
+        <city>Las Cruces</city>
+        <state>NM</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>600</ID>
+      <date_start>2027-10-23</date_start>
+      <date_finish>2027-10-24</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Rose City Airfest</name_airshow>
+      <location>
+        <city>Tyler</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>601</ID>
+      <date_start>2027-10-23</date_start>
+      <date_finish>2027-10-24</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Sea &amp; Sky Air Show 2027</name_airshow>
+      <location>
+        <city>Jacksonville Beach</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>602</ID>
+      <date_start>2027-10-23</date_start>
+      <date_finish>2027-10-24</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Wings Over Homestead ARB</name_airshow>
+      <location>
+        <city>Homestead ARB</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>603</ID>
+      <date_start>2027-10-30</date_start>
+      <date_finish>2027-10-31</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Hammond Northshore Regional Airshow</name_airshow>
+      <location>
+        <city>Hammond</city>
+        <state>LA</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Navy Blue Angels</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>604</ID>
+      <date_start>2027-10-30</date_start>
+      <date_finish>2027-10-31</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Air Dot Show Orlando</name_airshow>
+      <location>
+        <city>Orlando (Sanford)</city>
+        <state>FL</state>
+      </location>
+      <Performers>
+        <Performer>U.S. Air Force Thunderbirds</Performer>
+      </Performers>
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>605</ID>
+      <date_start>2027-11-05</date_start>
+      <date_finish>2027-11-06</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Blue Angels Homecoming Air Show</name_airshow>
+      <location>
+        <city>NAS Pensacola</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>606</ID>
+      <date_start>2027-11-05</date_start>
+      <date_finish>2027-11-07</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Texas Capital Airshow</name_airshow>
+      <location>
+        <city>San Marcos</city>
+        <state>TX</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>607</ID>
+      <date_start>2027-11-12</date_start>
+      <date_finish>2027-11-14</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>Stuart Airshow</name_airshow>
+      <location>
+        <city>Stuart</city>
+        <state>FL</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
+    <Airshow>
+      <ID>608</ID>
+      <date_start>2027-12-07</date_start>
+      <date_finish>2027-12-11</date_finish>
+      <date_added>2026-10-13</date_added>
+      <name_airshow>AERO Middle East × Sand &amp; Fun</name_airshow>
+      <location>
+        <city>Riyadh</city>
+        <state>Saudi Arabia</state>
+      </location>
+      <Performers />
+      <Notes_AirshowStuff />
+      <UndauntedNotes />
+      <AirshowLinks />
+      <Status>none</Status>
+    </Airshow>
   </Airshows>
-  <AirshowYearOfInterest>2026</AirshowYearOfInterest>
+  <AirshowYearOfInterest>2027</AirshowYearOfInterest>
 </AirshowGroup>

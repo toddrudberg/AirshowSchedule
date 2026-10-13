@@ -1,4 +1,14 @@
 # AirshowSchedule
+## Updating from ICAS
+
+Choose **Update from ICAS…** on the main menu and select the downloaded calendar. The calendar year is detected automatically. Review the proposed changes, use the category filter, and check the fields you want to apply. Existing contact replacements start unchecked. Missing and ambiguous events are review-only; cancellation warnings preserve your booking status. Applying changes saves both active databases and refreshes the calendar. No intermediate export is necessary.
+
+Each applied update stores the original download, before/after copies of both databases, and the selected changes beside the active show database in `<database filename>.icas-history`. Use **File → ICAS update history…** to inspect these records. **File → Undo last ICAS update…** restores both files exactly, provided no subsequent edits have been saved. An interrupted update or undo can be recovered using the same Undo command. Keep the history folder with the database.
+
+Reimporting an applied download produces no further changes for fields already accepted. Fields you declined remain available to review. Notes, links, booking statuses, and existing date-added values are preserved. Blank incoming contacts do not erase your contact links. Shared contacts are preserved when a show's contact details change.
+
+Legacy parse, export and compare commands are under **File → Advanced import / export**.
+
 # Converting ICAS Data for Use with This Tool
 
 1. Go to airshows.aero
