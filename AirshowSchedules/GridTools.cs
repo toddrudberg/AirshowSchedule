@@ -13,7 +13,7 @@ public partial class formMain
         dgvCalendar.Columns.Clear();
         dgvCalendar.ReadOnly = true;
         dgvCalendar.RowHeadersVisible = true;
-        dgvCalendar.RowHeadersWidth = 85;
+        dgvCalendar.RowHeadersWidth = 85 * DeviceDpi / 96;
         dgvCalendar.ShowCellToolTips = true;
         dgvCalendar.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
         dgvCalendar.DefaultCellStyle.Alignment = DataGridViewContentAlignment.TopLeft;
@@ -35,8 +35,9 @@ public partial class formMain
 
     private void SizeCalendarRows()
     {
-        foreach (DataGridViewRow row in dgvCalendar.Rows) row.Height = Math.Max(48, (dgvCalendar.Height - dgvCalendar.ColumnHeadersHeight - 4) / 12);
-        foreach (DataGridViewColumn column in dgvCalendar.Columns) column.Width = Math.Max(90, (dgvCalendar.Width - dgvCalendar.RowHeadersWidth - 20) / 5);
+        dgvCalendar.RowHeadersWidth = 85 * DeviceDpi / 96;
+        foreach (DataGridViewRow row in dgvCalendar.Rows) row.Height = Math.Max(48 * DeviceDpi / 96, (dgvCalendar.Height - dgvCalendar.ColumnHeadersHeight - 4) / 12);
+        foreach (DataGridViewColumn column in dgvCalendar.Columns) column.Width = Math.Max(90 * DeviceDpi / 96, (dgvCalendar.Width - dgvCalendar.RowHeadersWidth - 20) / 5);
     }
 
     private void ColorGrid(List<Airshow> visibleShows)

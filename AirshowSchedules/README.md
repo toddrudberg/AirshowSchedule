@@ -1,4 +1,12 @@
 # AirshowSchedule
+## Display sizes
+
+The calendar and show/filter controls sit side by side on wide windows and stack on narrow or portrait windows. The legend and action buttons wrap, and the calendar scrolls when its cells cannot fit. Windows use per-monitor DPI scaling. Older editors scroll when the screen is smaller than their content, and dialogs fit the current monitor's working area.
+
+The advanced calendar import command uses a resizable file/year/source dialog instead of the legacy generated settings UI. Existing XML databases and saved import settings retain their format and location.
+
+Run `dotnet run --project tools/LayoutCheck` for window layout checks. Manually check dragging the app between monitors at different Windows display scaling settings.
+
 ## Calendar and planning
 
 The calendar shows Saturday–Sunday dates, month labels, show counts, and a status-color legend. Events appear on every weekend their dates overlap, including Sunday-only events. Colors indicate contract, verbal, maybe, or pursue status. Contract and verbal commitments remain visible across all regions even when the region filter hides their shows; hover for full names and dates. Clicking a weekend lists its filtered weekend events. Weekday-only events have a separate count and **Weekday shows…** view and do not color or occupy a weekend. Unmapped locations are available under **Other / international**.
@@ -36,16 +44,14 @@ Legacy parse, export and compare commands are under **File → Advanced import /
 
 # cleaning up the database
 
-1. (Data Base Management -> Clean Up DB)
-2. Initially you'll want to compare to the most recent download.  This will go to the console for user diplay and input. 
-3. Once you've done that, run it again and don't compare, to see a list of remaining potential duplicates.  But becareful, we only are comparing locations and some locations have more than one airshow. 
-4. You may have deleted an airshow by accident, so re-run (Data Base Management -> Compare To Active DB)
+Choose **Data Base Management → Clean up database…** and select the latest comparison `.asg.xml` once. Its matching `.contacts.json` is loaded alongside it; if it is missing, select the corresponding contacts file. The workflow uses the comparison database's year and reviews events in date order.
 
-# checking for cancelled shows
+1. **Clean up DB:** review possible same-location duplicates and events missing from the comparison database. Check only shows to remove; separate events can share a location and missing events may have moved dates.
+2. **Check for cancelled shows:** review cancellation warnings from the active and comparison databases. Removals start unchecked, including booked shows.
+3. **Update additional fields:** unique location/year/week matches start checked. For ambiguous matches, choose at most one comparison show per active show. Dates and booking statuses are preserved.
+4. Review the actions and choose **Apply changes** to save both active databases together. **Skip this step** advances without its changes. **Cancel** discards all staged changes, including earlier steps.
 
-1. (Data Base Management -> Check For Cancelled Shows)
-2. Follow the prompts.
-3. You may have deleted an airshow by accident, so re-run (Data Base Management -> Compare To Active DB)
+Both original files and the action list are saved beside the show database in `<database filename>.cleanup-history`. **Undo last cleanup…** restores both files exactly if no subsequent changes have been saved; it can also recover an interrupted cleanup. Keep this folder with the database. The former one-time contact-extraction migration menu has been removed; current imports already create separate contact files.
 
 # things to do:
 1) highlight airshows that showup mid week with a funny color so they don't block the weekend.

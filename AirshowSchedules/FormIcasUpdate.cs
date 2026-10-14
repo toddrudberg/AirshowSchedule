@@ -4,6 +4,8 @@ internal sealed class FormIcasUpdate : Form
 {
     internal FormIcasUpdate(IcasUpdatePlan plan)
     {
+        AutoScaleDimensions = new SizeF(7, 15);
+        AutoScaleMode = AutoScaleMode.Font;
         Text = $"Review ICAS update — {plan.Year}";
         Width = 1200; Height = 800; MinimumSize = new Size(850, 550);
         StartPosition = FormStartPosition.CenterParent;
@@ -18,11 +20,12 @@ internal sealed class FormIcasUpdate : Form
         var summary = new Label { Dock = DockStyle.Top, Height = 65, Padding = new Padding(10), Text =
             $"{plan.Changes.Count(c => c.Group == "New shows")} new shows · {plan.Changes.Count(c => c.Apply != null && c.Group != "New shows")} field updates · {plan.Unchanged} unchanged · {plan.CancellationCount} cancellation warnings\n" +
             "Notes, booking statuses and links are preserved. Contact replacements need your selection. Missing shows are kept." };
-        var buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 48, FlowDirection = FlowDirection.RightToLeft, Padding = new Padding(6) };
+        ScreenLayout.FitOnLoad(this);
+        var buttons = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Bottom, Height = 48, FlowDirection = FlowDirection.RightToLeft, Padding = new Padding(6) };
         var apply = new Button { Text = "Apply selected changes", AutoSize = true };
         var cancel = new Button { Text = "Cancel", DialogResult = DialogResult.Cancel, AutoSize = true };
         buttons.Controls.Add(apply); buttons.Controls.Add(cancel);
-        var filterBar = new FlowLayoutPanel { Dock = DockStyle.Top, Height = 38 };
+        var filterBar = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Top, Height = 38 };
         var filter = new ComboBox { DropDownStyle = ComboBoxStyle.DropDownList, Width = 240 };
         filter.Items.Add("All changes");
         foreach (string group in plan.Changes.Select(c => c.Group).Distinct()) filter.Items.Add(group);

@@ -4,11 +4,13 @@ internal sealed class FormNeedsAttention : Form
 {
     internal FormNeedsAttention(int year, Func<bool, List<AttentionItem>> load, Action<Airshow> open, Action<AttentionItem> toggleReview, string context)
     {
+        AutoScaleDimensions = new SizeF(7, 15);
+        AutoScaleMode = AutoScaleMode.Font;
         Text = $"Needs attention — {year}";
         Width = 1200; Height = 800; MinimumSize = new Size(900, 550); StartPosition = FormStartPosition.CenterParent;
         var intro = new Label { Dock = DockStyle.Top, Height = 65, Padding = new Padding(8), Text =
             "Across all regions. Open a show to edit it, or mark a warning reviewed without changing its booking status.\n" + context };
-        var options = new FlowLayoutPanel { Dock = DockStyle.Top, Height = 38 };
+        var options = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Top, Height = 38 };
         var category = new ComboBox { Width = 250, DropDownStyle = ComboBoxStyle.DropDownList };
         category.Items.AddRange(new object[] { "All reasons", "Cancellation warning", "Booked dates changed", "Overlapping commitments", "Missing from ICAS", "Missing contact details", "Pursue next step" }); category.SelectedIndex = 0;
         var past = new CheckBox { Text = "Include past shows", AutoSize = true };
@@ -19,7 +21,8 @@ internal sealed class FormNeedsAttention : Form
         foreach (string name in new[] { "Reason", "Show", "Dates", "Location", "Status", "Reviewed" }) grid.Columns.Add(name, name);
         grid.Columns["Show"].FillWeight = 180; grid.Columns["Reviewed"].FillWeight = 50;
         var detail = new TextBox { Dock = DockStyle.Bottom, Height = 170, Multiline = true, ReadOnly = true, ScrollBars = ScrollBars.Vertical };
-        var buttons = new FlowLayoutPanel { Dock = DockStyle.Bottom, Height = 45, Padding = new Padding(6), FlowDirection = FlowDirection.RightToLeft };
+        ScreenLayout.FitOnLoad(this);
+        var buttons = new FlowLayoutPanel { AutoSize = true, Dock = DockStyle.Bottom, Height = 45, Padding = new Padding(6), FlowDirection = FlowDirection.RightToLeft };
         var close = new Button { Text = "Close", AutoSize = true, DialogResult = DialogResult.Cancel };
         var edit = new Button { Text = "Open show…", AutoSize = true };
         var review = new Button { Text = "Mark reviewed", AutoSize = true };

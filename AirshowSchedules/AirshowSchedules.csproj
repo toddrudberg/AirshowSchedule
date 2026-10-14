@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
@@ -6,7 +6,7 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationHighDpiMode>SystemAware</ApplicationHighDpiMode>
+    <ApplicationHighDpiMode>PerMonitorV2</ApplicationHighDpiMode>
     <ForceDesignerDpiUnaware>true</ForceDesignerDpiUnaware>
   </PropertyGroup>
 
@@ -27,9 +27,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Reference Include="Electroimpact.SettingsFormBuilder">
-      <HintPath>..\xmlSerializer\Electroimpact.SettingsFormBuilder.dll</HintPath>
-    </Reference>
     <Reference Include="Electroimpact.XmlSerializer">
       <HintPath>..\xmlSerializer\Electroimpact.XmlSerializer.dll</HintPath>
     </Reference>

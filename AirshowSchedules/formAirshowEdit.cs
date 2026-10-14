@@ -1,4 +1,4 @@
-﻿using static AirshowSchedules.Airshow;
+using static AirshowSchedules.Airshow;
 
 namespace AirshowSchedules
 {
@@ -35,6 +35,7 @@ namespace AirshowSchedules
             this.airshow = airshow;
             this.contacts = contacts;
             InitializeComponent();
+            ScreenLayout.ConfigureScrollable(this);
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
 

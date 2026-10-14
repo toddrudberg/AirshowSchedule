@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -48,6 +48,7 @@ namespace AirshowSchedules
             this.regions = regions;
 
             InitializeComponent();
+            ScreenLayout.ConfigureScrollable(this);
             InitializeForm(GetRegions());
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;

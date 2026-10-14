@@ -1,4 +1,3 @@
-﻿using Electroimpact.SettingsFormBuilderV2.Attributes;
 using Newtonsoft.Json;
 using Pastel;
 using System;
@@ -16,7 +15,6 @@ namespace AirshowSchedules
         public string name;
         public string phone;
         public string address;
-        [Display(DisplayName = "Email:")]
         public List<string> emailAddresses { get; set; } = new List<string>();
         public List<int> showIDs { get; set; } = new List<int>();
 
@@ -153,12 +151,10 @@ namespace AirshowSchedules
                 }
                 // do we want to clear the showIDs, then add the showID?  For instance, is this thing looking at the new show list?  If it is, we don't want to merge the showIDs
                 // i think this works because we remove newShowIDs from the showID in mergeContactAndAirshow.
-                contact.showIDs.Add(show.ID);
+                if (!existingContact.showIDs.Contains(show.ID)) existingContact.showIDs.Add(show.ID);
 
                 //if the existing contact has an address, do we really want to overwrite it?
                 if (!string.IsNullOrWhiteSpace(contact.address)) existingContact.address = contact.address;
-
-                existingContact.showIDs = existingContact.showIDs.Union(contact.showIDs).ToList();
 
                 //this one makes sense:
                 existingContact.emailAddresses = existingContact.emailAddresses.Union(contact.emailAddresses).ToList();
@@ -173,7 +169,7 @@ namespace AirshowSchedules
                     Console.WriteLine($"ID: {existingContact.ID}".Pastel(Color.Yellow));
                     //show.contactIds.Add(existingContact.ID);
                 }
-                MessageBox.Show($"Duplicate Contact: {contact.name} appers in the database more than once.  Nothing Done, check contact DB for errors".Pastel(Color.Red));
+                MessageBox.Show($"Duplicate Contact: {contact.name} appears in the database more than once. Nothing done; check the contact database for errors.");
             }
         }
 

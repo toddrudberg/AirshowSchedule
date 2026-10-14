@@ -1,4 +1,3 @@
-﻿using Electroimpact.SettingsFormBuilderV2.Attributes;
 
 namespace AirshowSchedules
 {

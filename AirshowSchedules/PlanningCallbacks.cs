@@ -14,32 +14,8 @@ public partial class formMain
             statusLegend.Controls.Add(new Label { AutoSize = true, Text = System.Globalization.CultureInfo.CurrentCulture.TextInfo.ToTitleCase(status.ToString()), BackColor = CalendarPlanning.StatusColor(status), Padding = new Padding(4), Margin = new Padding(0, 0, 8, 0) });
         statusLegend.Controls.Add(new Label { Text = "Weekday events do not color weekends", AutoSize = true, Padding = new Padding(4) });
         Controls.Add(statusLegend);
-        var workingArea = Screen.FromControl(this).WorkingArea;
-        ClientSize = new Size(Math.Min(1450, Math.Max(1084, workingArea.Width - 40)), Math.Min(850, Math.Max(610, workingArea.Height - 80)));
-        MinimumSize = new Size(1100, 650);
-        Resize += (_, _) => { LayoutPlanningTools(); if (dgvCalendar.Rows.Count > 0) ColorGrid(myFilteredAirshows); };
-        LayoutPlanningTools();
+        InstallResponsiveLayout();
         Disposed += (_, _) => { calendarBoldFont?.Dispose(); calendarRegularFont?.Dispose(); };
-    }
-    private void LayoutPlanningTools()
-    {
-        if (statusLegend == null) return;
-        linkLabelDB.Location = new Point(8, menuStrip1.Bottom + 2);
-        linkLabelContacts.Location = new Point(8, linkLabelDB.Bottom + 2);
-        statusLegend.Location = new Point(8, linkLabelContacts.Bottom + 4); statusLegend.Width = ClientSize.Width - 16;
-        int top = statusLegend.Bottom + 4;
-        int calendarWidth = (int)(ClientSize.Width * .62);
-        dgvCalendar.SetBounds(8, top, calendarWidth, ClientSize.Height - top - 8);
-        int right = dgvCalendar.Right + 12, width = ClientSize.Width - right - 8;
-        labelWeekendSelected.SetBounds(right, top, width, 22);
-        lstBoxShows.SetBounds(right, labelWeekendSelected.Bottom + 2, width, Math.Max(180, (ClientSize.Height - top) / 2));
-        btnAddShow.SetBounds(right, lstBoxShows.Bottom + 8, 124, 28);
-        btnDeleteShow.SetBounds(right + 132, lstBoxShows.Bottom + 8, 124, 28);
-        chklstRegions.SetBounds(right, btnAddShow.Bottom + 12, width, Math.Max(100, ClientSize.Height - btnAddShow.Bottom - 65));
-        btnFilterSetAll.SetBounds(right, chklstRegions.Bottom + 6, 90, 28);
-        btnFilterClearAll.SetBounds(right + 98, chklstRegions.Bottom + 6, 90, 28);
-        btnFilterShows.SetBounds(right + 196, chklstRegions.Bottom + 6, Math.Max(100, width - 196), 28);
-        SizeCalendarRows();
     }
     private List<AttentionItem> BuildAttention(bool includePast, out string context)
     {

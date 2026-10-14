@@ -1,5 +1,3 @@
-﻿using Electroimpact;
-using Electroimpact.SettingsFormBuilderV2.Attributes;
 using Newtonsoft.Json;
 using Pastel;
 using System.Globalization;
@@ -11,31 +9,14 @@ namespace AirshowSchedules
     public class Airshow
     {
         public int ID;
-        [Display(DisplayName = "Start Date (yyyy-MM-DD):")]
         public string date_start { get; set; }
-
-        [Display(DisplayName = "Finish Date (yyyy-MM-DD):")]
         public string date_finish { get; set; }
-
-        [Display(DisplayName = "Date Added (yyyy-MM-DD):")]
         public string date_added { get; set; }
-
-        [Display(DisplayName = "Airshow Name:")]
         public string name_airshow { get; set; }
-
-        [Display(DisplayName = "Location:")]
         public cLocation location { get; set; } = new cLocation();
-
-        [Display(DisplayName = "Performers:")]
         public cPerformers Performers { get; set; } = new cPerformers();
-
-        [Display(DisplayName = "Notes:")]
         public string Notes_AirshowStuff { get; set; } = "";
-
-        [Display(DisplayName = "Undaunted Notes:")]
         public List<string> UndauntedNotes { get; set; } = new List<string>();
-
-        [Display(DisplayName = "Links To Show:")]
         public List<string> AirshowLinks { get; set; } = new List<string>();
 
         public enum eStatus
@@ -47,8 +28,6 @@ namespace AirshowSchedules
             none = 4,
             NO = 5
         };
-
-        [Display(DisplayName = "Status:")]
         public eStatus Status { get; set; } = eStatus.none;
         
         public void mergeAdditionalInformation(Airshow masterShow, Airshow newShow, List<cContact> copiedContacts, List<cContact> latestContacts)
@@ -67,12 +46,6 @@ namespace AirshowSchedules
                 Console.WriteLine($"{contact.name} with ID: {contact.ID}");
             }
 
-            if(newContacts.Count > 1)
-            {
-                MessageBox.Show("Something Wrong.".Pastel(Color.Green));
-                List<cContact> test = cContact.getContacts(latestContacts, newShow);
-            }
-
             foreach (cContact newContact in newContacts)
             {
                 
@@ -86,7 +59,11 @@ namespace AirshowSchedules
                     }
                 }
             }
-            Notes_AirshowStuff += newShow.Notes_AirshowStuff;
+            if (!string.IsNullOrWhiteSpace(newShow.Notes_AirshowStuff) &&
+                !(masterShow.Notes_AirshowStuff ?? "").Contains(newShow.Notes_AirshowStuff, StringComparison.Ordinal))
+                masterShow.Notes_AirshowStuff = string.IsNullOrWhiteSpace(masterShow.Notes_AirshowStuff)
+                    ? newShow.Notes_AirshowStuff
+                    : masterShow.Notes_AirshowStuff + Environment.NewLine + newShow.Notes_AirshowStuff;
             masterShow.Performers.MergePerformers(newShow.Performers);
             Console.WriteLine($"Merging Undaunted Notes: {newShow.UndauntedNotes.Count}".Pastel(Color.Green));
             masterShow.UndauntedNotes = masterShow.UndauntedNotes.Union(newShow.UndauntedNotes).ToList();

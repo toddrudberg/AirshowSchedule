@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,6 +14,7 @@ namespace AirshowSchedules
         public CompareForm(List<Airshow> newAirshows, List<cContact> newContacts, List<Airshow> activeDB, List<cContact> activeContacts, System.Windows.Forms.Form mainForm)
         {
             InitializeComponent(mainForm);
+            ScreenLayout.ConfigureScrollable(this);
             CenterToMainForm(mainForm);
             PopulateCheckedListBox(newAirshows);
             
