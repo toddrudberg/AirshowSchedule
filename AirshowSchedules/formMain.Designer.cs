@@ -1,4 +1,4 @@
-﻿
+
 
 
 namespace AirshowSchedules
@@ -55,11 +55,7 @@ namespace AirshowSchedules
             setActiveContactFileToolStripMenuItem = new ToolStripMenuItem();
             dataBaseManagementToolStripMenuItem = new ToolStripMenuItem();
             compareToActiveDBToolStripMenuItem = new ToolStripMenuItem();
-            cleanUpDBToolStripMenuItem = new ToolStripMenuItem();
-            checkForCancelledShowsToolStripMenuItem = new ToolStripMenuItem();
-            updateAdditionalFieldsToolStripMenuItem = new ToolStripMenuItem();
             setYearOfInterestToolStripMenuItem = new ToolStripMenuItem();
-            exportContactsToolStripMenuItem = new ToolStripMenuItem();
             searchToolStripMenuItem = new ToolStripMenuItem();
             advancedSearchToolStripMenuItem = new ToolStripMenuItem();
             helpToolStripMenuItem = new ToolStripMenuItem();
@@ -238,7 +234,7 @@ namespace AirshowSchedules
             // 
             // dataBaseManagementToolStripMenuItem
             // 
-            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, cleanUpDBToolStripMenuItem, checkForCancelledShowsToolStripMenuItem, updateAdditionalFieldsToolStripMenuItem, setYearOfInterestToolStripMenuItem, exportContactsToolStripMenuItem });
+            dataBaseManagementToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { compareToActiveDBToolStripMenuItem, setYearOfInterestToolStripMenuItem });
             dataBaseManagementToolStripMenuItem.Name = "dataBaseManagementToolStripMenuItem";
             dataBaseManagementToolStripMenuItem.Size = new Size(144, 22);
             dataBaseManagementToolStripMenuItem.Text = "Data Base Management";
@@ -250,39 +246,12 @@ namespace AirshowSchedules
             compareToActiveDBToolStripMenuItem.Text = "Compare To Active DB";
             compareToActiveDBToolStripMenuItem.Click += compareToActiveDBToolStripMenuItem_Click;
             // 
-            // cleanUpDBToolStripMenuItem
-            // 
-            cleanUpDBToolStripMenuItem.Name = "cleanUpDBToolStripMenuItem";
-            cleanUpDBToolStripMenuItem.Size = new Size(234, 22);
-            cleanUpDBToolStripMenuItem.Text = "Clean Up DB";
-            cleanUpDBToolStripMenuItem.Click += cleanUpDBToolStripMenuItem_Click;
-            // 
-            // checkForCancelledShowsToolStripMenuItem
-            // 
-            checkForCancelledShowsToolStripMenuItem.Name = "checkForCancelledShowsToolStripMenuItem";
-            checkForCancelledShowsToolStripMenuItem.Size = new Size(234, 22);
-            checkForCancelledShowsToolStripMenuItem.Text = "Check For Cancelled Shows";
-            checkForCancelledShowsToolStripMenuItem.Click += checkForCancelledShowsToolStripMenuItem_Click;
-            // 
-            // updateAdditionalFieldsToolStripMenuItem
-            // 
-            updateAdditionalFieldsToolStripMenuItem.Name = "updateAdditionalFieldsToolStripMenuItem";
-            updateAdditionalFieldsToolStripMenuItem.Size = new Size(234, 22);
-            updateAdditionalFieldsToolStripMenuItem.Text = "Update Additional Fields";
-            updateAdditionalFieldsToolStripMenuItem.Click += updateAdditionalFieldsToolStripMenuItem_Click;
-            // 
             // setYearOfInterestToolStripMenuItem
             // 
             setYearOfInterestToolStripMenuItem.Name = "setYearOfInterestToolStripMenuItem";
             setYearOfInterestToolStripMenuItem.Size = new Size(234, 22);
             setYearOfInterestToolStripMenuItem.Text = "Set Year of Interest";
             setYearOfInterestToolStripMenuItem.Click += setYearOfInterestToolStripMenuItem_Click;
-            // 
-            // exportContactsToolStripMenuItem
-            // 
-            exportContactsToolStripMenuItem.Name = "exportContactsToolStripMenuItem";
-            exportContactsToolStripMenuItem.Size = new Size(234, 22);
-            exportContactsToolStripMenuItem.Text = "Reform DB extracting contacts";
             // 
             // searchToolStripMenuItem
             // 
@@ -473,12 +442,8 @@ namespace AirshowSchedules
         private ToolStripMenuItem showHelpFileToolStripMenuItem;
         private ToolStripMenuItem dataBaseManagementToolStripMenuItem;
         private ToolStripMenuItem compareToActiveDBToolStripMenuItem;
-        private ToolStripMenuItem cleanUpDBToolStripMenuItem;
-        private ToolStripMenuItem checkForCancelledShowsToolStripMenuItem;
         private ToolStripMenuItem arciveActiveDBToolStripMenuItem;
-        private ToolStripMenuItem updateAdditionalFieldsToolStripMenuItem;
         private ToolStripMenuItem setYearOfInterestToolStripMenuItem;
-        private ToolStripMenuItem exportContactsToolStripMenuItem;
         private ToolStripSeparator toolStripSeparator2;
         private ToolStripMenuItem setActiveContactFileToolStripMenuItem;
         private ToolStripMenuItem setActiveContactDBToolStripMenuItem;

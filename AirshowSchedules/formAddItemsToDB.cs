@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -14,6 +14,7 @@ namespace AirshowSchedules
         public CompareForm(List<Airshow> newAirshows, List<cContact> newContacts, List<Airshow> activeDB, List<cContact> activeContacts, System.Windows.Forms.Form mainForm)
         {
             InitializeComponent(mainForm);
+            ScreenLayout.ConfigureScrollable(this);
             CenterToMainForm(mainForm);
             PopulateCheckedListBox(newAirshows);
             
@@ -161,7 +162,7 @@ namespace AirshowSchedules
             //this should only return 1 contact because at this stage we aren't referencing the activeDB
             List<cContact> airshowContacts = cContact.getContacts(newContacts, airshowToAdd);
             int airshowIDtoDelete = airshowToAdd.ID;
-            airshowToAdd.ID = activeDB.Max(a => a.ID) + 1;
+            airshowToAdd.ID = activeDB.Select(a => a.ID).DefaultIfEmpty(-1).Max() + 1;
             if (airshowContacts.Count > 0)
             {
                 List<int> contactsToDelete = new List<int>();

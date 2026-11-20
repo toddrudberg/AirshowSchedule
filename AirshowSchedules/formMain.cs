@@ -1,4 +1,3 @@
-using Electroimpact.SettingsFormBuilderV2.Attributes;
 using System.Data;
 using System.Globalization;
 using System.Runtime.InteropServices;
@@ -39,6 +38,9 @@ public partial class formMain : Form
             try
             {
                 InitializeComponent();
+                InstallIcasUpdateMenu();
+                InstallMaintenanceMenu();
+                InstallPlanningTools();
                 this.Text = "Airshow Schedule Tool"; // Set the form title
                 this.Shown += new EventHandler(frmAirshowScheduleTool_Shown); // Subscribe to the Shown event
             }
@@ -95,6 +97,7 @@ public partial class formMain : Form
             {
                 chklstRegions.Items.Add(rgn);
             }
+            chklstRegions.Items.Add("Other / international");
             for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
             {
                 chklstRegions.SetItemChecked(ii, true);
@@ -105,7 +108,7 @@ public partial class formMain : Form
         {
             MessageBox.Show("Error loading form: " + ex.Message);
         }
-        toolTip1.Active = false;
+        toolTip1.Active = true;
     }
 
     private void frmAirshowScheduleTool_Shown(object sender, EventArgs e)
@@ -137,17 +140,13 @@ public partial class formMain : Form
     [Serializable]
     public class cAirshowFileParserSetupTool
     {
-        [Display(DisplayName = "Choose an Input File - not the xml file:")]
-        [FileBrowseDialog(OpenFileDialogFilter = "Text File (.txt)|*.txt")]
         [XmlElement("FileName")]
         public string sFileName = "";
 
         [XmlAttribute]
-        [Display(DisplayName = "Which Airshow Year")]
-        public int AirshowYear = 2023;
+        public int AirshowYear = DateTime.Now.Year;
 
         [XmlAttribute]
-        [Display(DisplayName = "File Source")]
         public efilesource eFileSource;
         public enum efilesource
         {
@@ -265,43 +264,9 @@ public partial class formMain : Form
         CellClickEvent();
     }
 
-    bool isLoadingCellEvent = false;
     private void CellClickEvent()
     {
-        if( isLoadingCellEvent)
-        {
-            isLoadingCellEvent = false;
-            return;
-        }
-        if (dgvCalendar.SelectedCells.Count > 0)
-        {
-            isLoadingCellEvent = true;
-            object cell = dgvCalendar.SelectedCells[0].Value;
-
-            string[] weekendinquestion = cell.ToString().Split(' ');
-
-            lstBoxShows.Items.Clear();
-
-            if (weekendinquestion.Length > 2)
-            {
-                DateTime dateTime = new DateTime(GetYearOfInterest(), int.Parse(weekendinquestion[0]), int.Parse(weekendinquestion[2]));
-                AirshowWeekend asw = new AirshowWeekend(dateTime);
-
-                List<Airshow> airshowsthisweek = myAirshowGroup.GetAirshowsForYear().Where(x => x.WeekNumber == asw.weekofyear).ToList();
-                airshowsthisweek = myFilteredAirshows.Where(x => x.WeekNumber == asw.weekofyear).ToList();
-
-                foreach (Airshow airshow in airshowsthisweek)
-                {
-                    lstBoxShows.Items.Add(airshow);
-                }
-
-                string removeAirshowName = cell.ToString().Split('\n')[0];
-                string displaythis = $"Airshows week of {removeAirshowName}";
-
-                labelWeekendSelected.Text = displaythis;
-
-            }
-        }
+        RefreshSelectedWeekend();
     }
 
     private void dataGridView2_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
@@ -315,14 +280,8 @@ public partial class formMain : Form
         {
             Airshow theAirshow = (Airshow)lstBoxShows.Items[lstBoxShows.SelectedIndex];
 
-            using (AirshowEditForm editForm = new AirshowEditForm(theAirshow, myContacts))
-            {
-                if (editForm.ShowDialog() == DialogResult.OK)
-                {
-                    // The Airshow object has been updated
-                    SaveAirshowSchedule(false); // Save the updated airshow schedule
-                }
-            }
+            try { OpenPlanningShow(theAirshow); }
+            catch (Exception ex) { MessageBox.Show(this, ex.Message, "Unable to edit show"); }
         }
     }
 
@@ -344,7 +303,7 @@ public partial class formMain : Form
             if (editForm.ShowDialog() == DialogResult.OK)
             {
                 // The Airshow object has been updated
-                ashow.ID = myAirshowGroup.Airshows.myShows.Max(a => a.ID) + 1;
+                ashow.ID = myAirshowGroup.Airshows.myShows.Select(a => a.ID).DefaultIfEmpty(-1).Max() + 1;
                 ashow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
                 myAirshowGroup.Airshows.myShows.Add(ashow);
                 myFilteredAirshows.Add(ashow);
@@ -388,7 +347,7 @@ public partial class formMain : Form
             }
             catch
             {
-                continue;
+                rgn = "Other / international";
             }
 
             for (int ii = 0; ii < chklstRegions.CheckedItems.Count; ii++)
@@ -401,6 +360,7 @@ public partial class formMain : Form
         }
         myFilteredAirshows = FilteredAirshows.ToList();
         ColorGrid(myFilteredAirshows);
+        RefreshSelectedWeekend();
     }
 
 
@@ -574,11 +534,7 @@ public partial class formMain : Form
 
     public class compare2DBs
     {
-        [Display(DisplayName = "Choose More Recent DB:")]
-        [FileBrowseDialog(OpenFileDialogFilter = "asg.xml (.asg.xml)|*.asg.xml")]
         public string fnDB1 = "";
-        [Display(DisplayName = "Choose Older DB")]
-        [FileBrowseDialog(OpenFileDialogFilter = "asg.xml (.asg.xml)|*.asg.xml")]
         public string fnDB2 = "";
 
 
@@ -641,150 +597,5 @@ public partial class formMain : Form
     }
 
 
-    //private void exportContactsToolStripMenuItem_Click(object sender, EventArgs e)
-    //{
-    //    //let's make a list of all the contacts
-    //    List<cContact> allcontacts = new List<cContact>();
-    //    int airshowID = 1;
-    //    foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-    //    {
-    //        foreach (cContact contact in ashow.Contacts.contact)
-    //        {
-    //            if ( contact.name == "" )
-    //            {
-    //                continue;
-    //            }
-    //            ashow.ID = airshowID;
-    //            contact.showIds.Add(airshowID);
-    //            allcontacts.Add(contact);
-    //        }
-    //        airshowID++;
-    //    }
-    //    //let's check for duplicates
-    //    List<cContact> nodups = new List<cContact>();
-    //    foreach (cContact contact in allcontacts)
-    //    {
-    //        bool found = false;
-    //        foreach (cContact contact2 in nodups)
-    //        {
-    //            if (contact.name == contact2.name)
-    //            {
-    //                found = true;
-    //                break;
-    //            }
-    //        }
-    //        if (!found)
-    //        {
-    //            nodups.Add(contact);
-    //        }
-    //    }
-    //    // for all of the nodups, let's create a unique id
-    //    int id = 1;
-    //    foreach (cContact contact in nodups)
-    //    {
-    //        contact.id = id++;
-    //    }
-
-    //    Console.WriteLine($"Found {allcontacts.Count} contacts and {nodups.Count} unique contacts".Pastel(Color.LimeGreen));
-
-    //    //now we need to be sure to merge contact data:
-    //    List<cContact> merged = new List<cContact>();
-    //    foreach (cContact contact in nodups)
-    //    {
-    //        cContact newcontact = new cContact();
-    //        newcontact.id = contact.id;
-    //        newcontact.name = contact.name;
-    //        newcontact.phone = contact.phone;
-    //        newcontact.address = contact.address;
-    //        newcontact.emailAddresses = contact.emailAddresses;
-    //        newcontact.showIds = newcontact.showIds;
-    //        foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-    //        {
-    //            foreach (cContact contact2 in ashow.Contacts.contact)
-    //            {
-    //                if (contact2.name == contact.name)
-    //                {
-    //                    newcontact.showIds = newcontact.showIds.Union(contact2.showIds).ToList();
-    //                    if (contact2.phone != "" && newcontact.phone == "")
-    //                    {
-    //                        newcontact.phone = contact2.phone;
-    //                    }
-    //                    if (contact2.address != "" && newcontact.address == "")
-    //                    {
-    //                        newcontact.address = contact2.address;
-    //                    }
-    //                    foreach (string email in contact2.emailAddresses)
-    //                    {
-    //                        if (!newcontact.emailAddresses.Contains(email))
-    //                        {
-    //                            newcontact.emailAddresses.Add(email);
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //        merged.Add(newcontact);
-    //    }
-    //    //output a json file
-    //    string json = JsonConvert.SerializeObject(merged, Formatting.Indented);
-    //    string FileName = "";
-
-    //    SaveFileDialog sfd = new SaveFileDialog();
-    //    sfd.Filter = "*.JSON|*.json";
-    //    sfd.Title = "Save a Contact List";
-    //    //open the file dialog
-    //    DialogResult dr = sfd.ShowDialog();
-    //    if (dr == DialogResult.OK)
-    //    {
-    //        FileName = sfd.FileName;
-    //    }
-    //    else
-    //    {
-    //        return;
-    //    }
-
-    //    //make sure the directory exists
-    //    string dir = Path.GetDirectoryName(FileName);
-    //    if (!Directory.Exists(dir))
-    //    {
-    //        Directory.CreateDirectory(dir);
-    //    }
-    //    System.IO.File.WriteAllText(FileName, json);
-    //    Console.WriteLine($"Contacts have been exported to {FileName}".Pastel(Color.LimeGreen));
-
-
-    //    //now let's assign the contacts to the shows
-    //    foreach (Airshow ashow in myAirshowGroup.Airshows.myShows)
-    //    {
-    //        foreach (cContact contact in merged)
-    //        {
-    //            if (contact.showIds.Contains(ashow.ID))
-    //            {
-    //                ashow.contactIds.Add(contact.id);
-    //            }
-    //        }
-    //    }
-
-    //    //now let's save the airshow group as
-    //    SaveAirshowSchedule(true);
-
-
-    //    Console.WriteLine();
-    //    //now for every contact, let's see if we can find a show they are associated with
-    //    foreach (cContact contact in merged)
-    //    {
-    //        Console.WriteLine();
-    //        List<Airshow> shows = myAirshowGroup.Airshows.myShows.Where(x => x.Contacts.contact.Contains(contact)).ToList();
-    //        if (shows.Count > 0)
-    //        {
-    //            Console.WriteLine($"Contact: {contact.name} is associated with {shows.Count} shows".Pastel(Color.LimeGreen));
-    //            int count = 0;
-    //            foreach (Airshow ashow in shows)
-    //            {
-    //                Console.WriteLine($"\t\t{++count} - {ashow.name_airshow} in {ashow.location.city}, {ashow.location.state}".Pastel(Color.Yellow));
-    //            }
-    //        }
-    //    }
-    //}
 }
     #endregion

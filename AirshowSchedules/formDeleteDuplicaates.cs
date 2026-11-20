@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
@@ -11,6 +11,7 @@ public partial class DeleteAirshowForm : Form
     public DeleteAirshowForm(List<Airshow> duplicateList, List<Airshow> copiedList, List<cContact> copiedContacts)
     {
         InitializeComponent();
+        ScreenLayout.ConfigureScrollable(this);
         this.duplicateList = duplicateList.OrderBy(airshow => airshow.name_airshow).ToList();
         PopulateCheckedListBox();
         this.copiedList = copiedList;

@@ -30,7 +30,7 @@ namespace AirshowSchedules
         }
         public List<Airshow> GetAirshowsForYear()
         {
-            return Airshows.myShows.Where(x => x.Year == AirshowYearOfInterest).ToList();
+            return CalendarPlanning.ForYear(Airshows.myShows, AirshowYearOfInterest);
         }
         
         public static void SaveMe(AirshowGroup airshowGroup, string FileName)

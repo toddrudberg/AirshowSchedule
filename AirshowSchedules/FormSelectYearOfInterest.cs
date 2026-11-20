@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +17,7 @@ namespace AirshowSchedules
         public FormYearSelction(int likelyYear)
         {
             InitializeComponent();
+        ScreenLayout.ConfigureScrollable(this);
             SetLikelyYear(likelyYear);
         }
 
