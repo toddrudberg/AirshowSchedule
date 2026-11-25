@@ -25,6 +25,22 @@ Reimporting an applied download produces no further changes for fields already a
 
 Legacy parse, export and compare commands are under **File → Advanced import / export**.
 
+## Excel export
+
+Open **Search → Advanced Search** and select **Export to Excel**. The workbook contains the current search results, sorted by start date. The first worksheet lists Contract, Verbal, Maybe, and Pursue shows, followed by a worksheet for each region. Choose where to save the `.xlsx` file. Windows opens it in the app associated with Excel workbooks.
+
+## Silent Schedule
+
+Use **Silent Schedule → Publish Silent Schedule** to publish the year of interest to the private website. The dialog shows the private URL, last successful publish time, and snapshot version. Configure the service using `SILENT_SCHEDULE_PC_TOKEN` in the Windows user's environment, then restart the app. The default service is `https://schedule.undauntedairshows.com/`. For sample testing only, set `SILENT_SCHEDULE_URL` to the loopback service URL and use its separate sample token.
+
+Use **Review Web Changes** for the year of interest to import changes individually. For a status conflict, the review shows the web baseline, current local status, and proposed status. Import a new web show before its linked contact. If a local save succeeds but the acknowledgment fails, use **Retry acknowledgment** in the same dialog. The receipt is saved with the local record, so a retry can acknowledge the original save without creating another record. Publish again after importing to refresh the authoritative snapshot.
+
+The `UndauntedAirshowsWebsite` repository's `SILENT_SCHEDULE.md` describes the private service rollout and sample verification.
+
+Review contact edits and deletions in **Review Web Changes**. Contact edits preserve show links and merge changes to unrelated fields. Keep the `.silent-web-receipts` folder beside the contact database with its backups so a saved contact edit or deletion can be acknowledged after a retry.
+
+After publishing, sign in to the private schedule and choose **Download Excel** for the selected year. Each region has its own worksheet, sorted by show start date.
+
 # Converting ICAS Data for Use with This Tool
 
 1. Go to airshows.aero

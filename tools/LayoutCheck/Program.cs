@@ -32,6 +32,19 @@ internal static class Program
         editor.ClientSize = new Size(300, 250);
         Layout(editor);
         Check(editor.AutoScroll && editor.AutoScrollMinSize.Height > editor.ClientSize.Height, "Small editor lost scrollable content");
+        using var scaledEditor = new AirshowEditForm(new Airshow { date_start = "2027-10-16", date_finish = "2027-10-17" }, new());
+        using var largerFont = new Font(scaledEditor.Font.FontFamily, scaledEditor.Font.Size * 1.5f);
+        scaledEditor.Font = largerFont;
+        Layout(scaledEditor);
+        var datePickers = scaledEditor.Controls.OfType<DateTimePicker>().ToArray();
+        Check(datePickers.Length == 2, "Expected a start and finish date picker");
+        foreach (var picker in datePickers)
+        {
+            var label = scaledEditor.Controls.OfType<Label>().Single(l => l.Text == picker.AccessibleName);
+            Check(label.Bottom <= picker.Top && scaledEditor.ClientRectangle.Contains(picker.Bounds), $"{label.Text} field clipped");
+            Check(TextRenderer.MeasureText(picker.Text, picker.Font).Width + SystemInformation.VerticalScrollBarWidth < picker.Width,
+                $"{label.Text} is too narrow for its date and dropdown arrow");
+        }
         var settings = new formMain.cAirshowFileParserSetupTool { sFileName = "unchanged", AirshowYear = 2026 };
         var type = typeof(formMain).Assembly.GetType("AirshowSchedules.FormImportSetup")!;
         using var import = (Form)Activator.CreateInstance(type, BindingFlags.Instance | BindingFlags.NonPublic, null, new object[] { settings }, null)!;
@@ -39,7 +52,7 @@ internal static class Program
         Layout(import);
         Check(settings.sFileName == "unchanged" && settings.AirshowYear == 2026, "Opening import changed settings");
         Check(!typeof(formMain).Assembly.GetReferencedAssemblies().Any(a => a.Name == "Electroimpact.SettingsFormBuilder"), "Legacy generated UI still referenced");
-        System.Console.WriteLine("PASS: wide, narrow, portrait, small window and resize-back layouts; editor scrolling; import settings; legacy UI removal.");
+        System.Console.WriteLine("PASS: wide, narrow, portrait, small window and resize-back layouts; editor scrolling and date picker fit; import settings; legacy UI removal.");
     }
 
     private static object Field(object instance, string name) => instance.GetType().GetField(name, BindingFlags.Instance | BindingFlags.NonPublic)!.GetValue(instance)!;

@@ -9,6 +9,8 @@ namespace AirshowSchedules
     [Serializable]
     public class Regions
     {
+        internal const string OtherRegion = "Other / international";
+
         //Electroimpact.XmlSerialization.SerializableDictionary<string, string> Regions = new Electroimpact.XmlSerialization.SerializableDictionary<string, string>();
         public Dictionary<string, string> myRegions = new Dictionary<string, string>();
 
@@ -47,6 +49,10 @@ namespace AirshowSchedules
 
             return uniqueRegions;
         }
+
+        internal string ForState(string? state) =>
+            myRegions.TryGetValue(state?.Trim().ToUpperInvariant() ?? "", out var region) &&
+            !string.IsNullOrWhiteSpace(region) ? region : OtherRegion;
 
         public static Regions LoadMe(string FileName)
         {

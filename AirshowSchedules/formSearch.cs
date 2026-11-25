@@ -1,6 +1,7 @@
 using System;
 using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Windows.Forms;
 using System.Globalization;
 
@@ -31,6 +32,7 @@ namespace AirshowSchedules
         private CheckedListBox clbStatus;
         private Label label4;
         private Button btnGenerateReport;
+        private Button btnExportExcel;
         private Label label5;
         private TextBox txtShowState;
         private Label label6;
@@ -76,6 +78,12 @@ namespace AirshowSchedules
             clbStatus = new CheckedListBox();
             label4 = new Label();
             btnGenerateReport = new Button();
+            btnExportExcel = new Button
+            {
+                Name = "btnExportExcel", Text = "Export to Excel…", Enabled = false,
+                Location = new Point(221, 164), Size = new Size(145, 28), TabIndex = 27
+            };
+            btnExportExcel.Click += btnExportExcel_Click;
             label5 = new Label();
             txtShowState = new TextBox();
             label6 = new Label();
@@ -316,6 +324,7 @@ namespace AirshowSchedules
             Controls.Add(label5);
             Controls.Add(txtShowState);
             Controls.Add(btnGenerateReport);
+            Controls.Add(btnExportExcel);
             Controls.Add(label4);
             Controls.Add(clbStatus);
             Controls.Add(label3);
@@ -347,7 +356,7 @@ namespace AirshowSchedules
         private void InitializeForm(Regions regions)
         {
             // Populate the ComboBox with regions
-            foreach (var region in regions.GetRegionList())
+            foreach (var region in regions.GetRegionList().Where(region => region != Regions.OtherRegion).Append(Regions.OtherRegion))
             {
                 clbShowRegion.Items.Add(region);
             }
@@ -364,30 +373,13 @@ namespace AirshowSchedules
                 clbStatus.SetItemChecked(i, true);
             }
 
-            // Populate the CheckedListBox with years
-            // Get the list of years from the airshows
-            List<int> years = new List<int>();
-            foreach (Airshow show in officialAirshowGroup.Airshows.myShows)
-            {
-                if (!years.Contains(show.Year))
-                {
-                    years.Add(show.Year);
-                }
-            }
-            // Sort the list of years
-            years.Sort();
-            // Add the years to the CheckedListBox
+            int yearOfInterest = officialAirshowGroup.AirshowYearOfInterest;
+            var years = officialAirshowGroup.GetAirshows().Select(show => show.Year)
+                .Append(yearOfInterest).Distinct().OrderBy(year => year);
             foreach (int year in years)
             {
-                clbYear.Items.Add(year);
+                clbYear.Items.Add(year, year == yearOfInterest);
             }
-            // Select all the years by default
-            for (int i = 0; i < clbYear.Items.Count; i++)
-            {
-                clbYear.SetItemChecked(i, true);
-            }
-
-
         }
 
         private void txtContactName_TextChanged(object sender, EventArgs e)
@@ -497,7 +489,7 @@ namespace AirshowSchedules
             {
                 foreach (Airshow show in searchAirshows)
                 {
-                    if (show.location.state.Trim().ToLower().Contains(txtShowState.Text.Trim().ToLower()))
+                    if (show.location.state?.Trim().Contains(txtShowState.Text.Trim(), StringComparison.CurrentCultureIgnoreCase) == true)
                     {
                         foundLocations.Add(show);
                     }
@@ -555,6 +547,7 @@ namespace AirshowSchedules
             {
                 lstAirshows.Items.Add(show);
             }
+            btnExportExcel.Enabled = lstAirshows.Items.Count > 0;
         }
 
 
@@ -680,19 +673,7 @@ namespace AirshowSchedules
             // Iterate over the input list of airshows
             foreach (Airshow airshow in TheseAirshows)
             {
-                string rgn = "";
-                string state = airshow.location.state.ToUpper();
-
-                try
-                {
-                    // Map the state's region using the regions dictionary
-                    rgn = regions.myRegions[state];
-                }
-                catch
-                {
-                    // Skip this airshow if the region mapping fails
-                    continue;
-                }
+                string rgn = regions.ForState(airshow.location.state);
 
                 // Check if the region (rgn) matches any of the checked items
                 if (checkedItems.Contains(rgn))
@@ -793,6 +774,41 @@ namespace AirshowSchedules
                     }
                 }
                 isFormLoading = false;
+            }
+        }
+
+        private void btnExportExcel_Click(object? sender, EventArgs e)
+        {
+            var results = lstAirshows.Items.Cast<Airshow>().ToArray();
+            if (results.Length == 0) return;
+
+            string fileName = clbYear.CheckedItems.Count == 1
+                ? $"Airshow-Schedule-{clbYear.CheckedItems[0]}.xlsx"
+                : "Airshow-Schedule.xlsx";
+            using var picker = new SaveFileDialog
+            {
+                Title = "Export search results to Excel", Filter = "Excel workbook (*.xlsx)|*.xlsx",
+                FileName = fileName, DefaultExt = "xlsx", RestoreDirectory = true
+            };
+            if (picker.ShowDialog(this) != DialogResult.OK) return;
+            if (!string.Equals(Path.GetExtension(picker.FileName), ".xlsx", StringComparison.OrdinalIgnoreCase))
+            {
+                MessageBox.Show(this, "Use the .xlsx extension for this workbook.", "Export to Excel");
+                return;
+            }
+
+            try { RegionExcelExport.Save(picker.FileName, results, regions); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, ex.Message, "Could not export to Excel", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            try { using var opened = Process.Start(new ProcessStartInfo(picker.FileName) { UseShellExecute = true }); }
+            catch (Exception ex)
+            {
+                MessageBox.Show(this, $"Workbook saved to {picker.FileName}\r\n\r\n{ex.Message}",
+                    "Could not open the workbook", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

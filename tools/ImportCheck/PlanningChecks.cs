@@ -75,6 +75,7 @@ internal static class PlanningChecks
             string dbPath = Path.Combine(folder, "active.asg.xml"), contactsPath = Path.Combine(folder, "contacts.json"), docPath = Path.Combine(folder, "calendar.doc");
             var db = new AirshowGroup { AirshowYearOfInterest = 2026 };
             db.GetAirshows().Add(Show(60, "Booked Show", "2026-06-06", "2026-06-07", Airshow.eStatus.contract));
+            db.GetAirshows().Add(Show(61, "Reversed Dates Show", "2026-10-08", "2026-10-10"));
             using (var writer = File.Create(dbPath)) new XmlSerializer(typeof(AirshowGroup)).Serialize(writer, db);
             File.WriteAllText(contactsPath, "[]");
             File.WriteAllText(docPath, "<table><tr><td>Air Show Dates</td><td>Name</td><td>Location</td><td>Performers</td><td>Contact</td></tr><tr><td>2026-06-13<br>2026-06-14</td><td>Booked Show</td><td>Town, CO</td><td></td><td></td></tr></table>");
@@ -89,12 +90,22 @@ internal static class PlanningChecks
             Check(AttentionReviewStore.Load(dbPath, contactsPath).SetEquals(reviewed), "Review status not persisted.");
             Check(AttentionReviewStore.Load(dbPath, Path.Combine(folder, "other-contacts.json")).Count == 0, "Reviews leaked into another contact database.");
             // A later performer-only update must not lose an unresolved date warning or its review key.
-            File.WriteAllText(docPath, File.ReadAllText(docPath).Replace("<td></td><td></td>", "<td>- Performer<br></td><td></td>"));
+            const string reversedRow = "<tr><td>2026-10-08<br>2026-01-10</td><td>Reversed Dates Show</td><td>Town, CO</td><td></td><td>Organizer</td></tr>";
+            File.WriteAllText(docPath, File.ReadAllText(docPath)
+                .Replace("<td></td><td></td>", "<td>- Performer<br></td><td></td>")
+                .Replace("</tr><tr>", "</tr>" + reversedRow + "<tr>"));
             parsed = IcasHtmlImporter.Parse(File.ReadAllText(docPath), 2026);
+            var oneDayShow = parsed.Shows.Single(s => s.name_airshow == "Reversed Dates Show");
+            Check(parsed.Shows.Count == 2 && oneDayShow.date_start == "2026-10-08" && oneDayShow.Days == 1
+                && parsed.Contacts.Single().showIDs.Single() == oneDayShow.ID,
+                "Reversed dates did not preserve the show as one day with its contact.");
             var later = new IcasUpdatePlan(plan.Database, plan.Contacts, parsed.Shows, parsed.Contacts, 2026);
-            later.ApplySelected();
+            Check(later.ApplySelected() == 3 && later.Database.GetAirshows().Single(s => s.ID == 61).date_finish == "2026-10-08"
+                && later.Contacts.Single().showIDs.Single() == 61, "The one-day show or its contact did not merge.");
             IcasUpdateStore.Commit(dbPath, contactsPath, docPath, later, IcasUpdateStore.Hash(dbPath), IcasUpdateStore.Hash(contactsPath), IcasUpdateStore.Hash(docPath));
             var laterImport = AttentionImport.Load(dbPath, contactsPath, later.Database, later.Contacts, 2026);
+            Check(laterImport.AppliedDateChanges.ContainsKey(61) && !laterImport.Proposed.Any(c => c.Apply != null),
+                "The archived download proposed another update to the one-day show.");
             var laterIssue = AttentionPlanning.Build(later.Database, later.Contacts, 2026, new DateTime(2026, 6, 1), false, laterImport, AttentionReviewStore.Load(dbPath, contactsPath)).Single(i => i.Category == "Booked dates changed");
             Check(laterIssue.Key == firstIssue.Key && laterIssue.Reviewed, "Later import lost a prior date warning or its review status.");
             IcasUpdateStore.Undo(dbPath, contactsPath);

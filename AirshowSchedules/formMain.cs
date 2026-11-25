@@ -41,6 +41,9 @@ public partial class formMain : Form
                 InstallIcasUpdateMenu();
                 InstallMaintenanceMenu();
                 InstallPlanningTools();
+                InstallSilentScheduleMenu();
+                menuStrip1.Items.Insert(menuStrip1.Items.IndexOf(searchToolStripMenuItem),
+                    new ToolStripMenuItem("Contacts…", null, ManageContacts));
                 this.Text = "Airshow Schedule Tool"; // Set the form title
                 this.Shown += new EventHandler(frmAirshowScheduleTool_Shown); // Subscribe to the Shown event
             }
@@ -97,7 +100,7 @@ public partial class formMain : Form
             {
                 chklstRegions.Items.Add(rgn);
             }
-            chklstRegions.Items.Add("Other / international");
+            chklstRegions.Items.Add(Regions.OtherRegion);
             for (int ii = 0; ii < chklstRegions.Items.Count; ii++)
             {
                 chklstRegions.SetItemChecked(ii, true);
@@ -287,30 +290,30 @@ public partial class formMain : Form
 
     private void btnAddShow_Click(object sender, EventArgs e)
     {
-        Airshow ashow = new Airshow();
-        int year = myAirshowGroup.AirshowYearOfInterest;
-        //pick a date in year that is a saturday in july
-        DateTime firstSaturdayInJuly = new DateTime(year, 7, 1);
-        while (firstSaturdayInJuly.DayOfWeek != DayOfWeek.Saturday)
+        DateTime start;
+        if (dgvCalendar.CurrentCell is { Selected: true, Tag: DateTime saturday })
         {
-            firstSaturdayInJuly = firstSaturdayInJuly.AddDays(1);
+            start = saturday;
         }
-        ashow.date_start = firstSaturdayInJuly.ToString("yyyy-MM-dd");
-        ashow.date_finish = firstSaturdayInJuly.AddDays(1).ToString("yyyy-MM-dd");
-
-        using (AirshowEditForm editForm = new AirshowEditForm(ashow, myContacts))
+        else
         {
-            if (editForm.ShowDialog() == DialogResult.OK)
-            {
-                // The Airshow object has been updated
-                ashow.ID = myAirshowGroup.Airshows.myShows.Select(a => a.ID).DefaultIfEmpty(-1).Max() + 1;
-                ashow.date_added = DateTime.Now.ToString("yyyy-MM-dd");
-                myAirshowGroup.Airshows.myShows.Add(ashow);
-                myFilteredAirshows.Add(ashow);
-
-                SaveAirshowSchedule(false); // Save the updated airshow schedule
-            }
+            var julyFirst = new DateTime(myAirshowGroup.AirshowYearOfInterest, 7, 1);
+            start = julyFirst.AddDays(((int)DayOfWeek.Saturday - (int)julyFirst.DayOfWeek + 7) % 7);
         }
+
+        var shows = myAirshowGroup.GetAirshows();
+        var show = new Airshow
+        {
+            ID = shows.Select(s => s.ID).Concat(myContacts.SelectMany(c => c.showIDs)).DefaultIfEmpty(-1).Max() + 1,
+            date_start = start.ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture),
+            date_finish = start.AddDays(1).ToString("yyyy-MM-dd", System.Globalization.CultureInfo.InvariantCulture)
+        };
+        using var editor = new AirshowEditForm(show, myContacts) { Text = "Add Airshow" };
+        if (editor.ShowDialog(this) != DialogResult.OK) return;
+
+        show.date_added = DateTime.Now.ToString("yyyy-MM-dd");
+        shows.Add(show);
+        SaveAirshowSchedule(false);
     }
 
 
@@ -339,16 +342,7 @@ public partial class formMain : Form
         List<Airshow> FilteredAirshows = new List<Airshow>();
         foreach (Airshow airshow in myAirshowGroup.GetAirshowsForYear())
         {
-            string rgn = "";
-            string state = airshow.location.state.ToUpper();
-            try
-            {
-                rgn = myRegions.myRegions[state];
-            }
-            catch
-            {
-                rgn = "Other / international";
-            }
+            string rgn = myRegions.ForState(airshow.location.state);
 
             for (int ii = 0; ii < chklstRegions.CheckedItems.Count; ii++)
             {
@@ -529,6 +523,34 @@ public partial class formMain : Form
                 //save the airshow group
                 SaveAirshowSchedule(false);
             }
+        }
+    }
+
+    private void ManageContacts(object? sender, EventArgs e)
+    {
+        try
+        {
+            string path = myFormState.fnContactDataBase;
+            if (!File.Exists(path))
+                throw new IOException("Choose an active contact database from the File menu first.");
+
+            string originalHash = IcasUpdateStore.Hash(path);
+            var contacts = cContact.LoadMe(path, out bool loaded);
+            if (!loaded || contacts == null)
+                throw new IOException("The active contacts file contains no contact list.");
+
+            using var manager = new FormContacts(contacts, updated =>
+            {
+                if (IcasUpdateStore.Hash(path) != originalHash)
+                    throw new IOException("The contact database changed while this window was open. Reopen Contacts to load the latest version.");
+                cContact.SaveMe(updated, path);
+                myContacts = updated;
+            });
+            manager.ShowDialog(this);
+        }
+        catch (Exception ex) when (ex is IOException or UnauthorizedAccessException or Newtonsoft.Json.JsonException)
+        {
+            MessageBox.Show(this, ex.Message, "Could not open contacts", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 

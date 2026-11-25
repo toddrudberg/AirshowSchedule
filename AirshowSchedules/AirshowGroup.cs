@@ -8,6 +8,8 @@ namespace AirshowSchedules
         //public cAirshowFileParserSetupTool FileSetup = new cAirshowFileParserSetupTool();
         public cAirshows Airshows = new cAirshows();
         public int AirshowYearOfInterest = 2025;
+        public List<SilentScheduleReceipt> SilentScheduleReceipts { get; set; } = new();
+        public bool ShouldSerializeSilentScheduleReceipts() => SilentScheduleReceipts.Count > 0;
         public AirshowGroup()
         { }
 
@@ -26,6 +28,7 @@ namespace AirshowSchedules
             AirshowGroup asg = new AirshowGroup();
             asg.AirshowYearOfInterest = AirshowYearOfInterest;
             asg.Airshows.myShows = Airshow.DeepCopy(GetAirshows());
+            asg.SilentScheduleReceipts = SilentScheduleReceipts.Select(r => new SilentScheduleReceipt { ChangeId = r.ChangeId, LocalId = r.LocalId }).ToList();
             return asg;
         }
         public List<Airshow> GetAirshowsForYear()

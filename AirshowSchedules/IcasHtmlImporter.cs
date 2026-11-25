@@ -46,23 +46,27 @@ internal static class IcasHtmlImporter
                     throw new FormatException($"ICAS row {row}: invalid date '{date}'.");
                 dates.Add(parsed);
             }
-            if (dates.Any(d => d.Year != year) || dates.Last() < dates[0])
-                throw new FormatException($"ICAS row {row}: dates do not match year {year}, or finish precedes start.");
             if (cells[1].Length == 0 || cells[2].Length == 0)
                 throw new FormatException($"ICAS row {row}: missing show name or location.");
+            string name = string.Join(" ", cells[1]);
+            if (dates.Any(d => d.Year != year))
+                throw new FormatException($"ICAS row {row}: dates for {name} do not match year {year}.");
+            // Keep the full international location in the serialized state field.
+            string location = string.Join(" ", cells[2]);
+            int comma = location.IndexOf(',');
+            string city = comma < 0 ? location : location[..comma].Trim();
+            string state = comma < 0 ? "" : location[(comma + 1)..].Trim();
+            DateTime finish = dates[^1] < dates[0] ? dates[0] : dates[^1];
             var show = new Airshow
             {
                 ID = shows.Count,
                 date_start = dates[0].ToString("yyyy-MM-dd"),
-                date_finish = dates.Last().ToString("yyyy-MM-dd"),
+                date_finish = finish.ToString("yyyy-MM-dd"),
                 date_added = DateTime.Now.ToString("yyyy-MM-dd"),
-                name_airshow = string.Join(" ", cells[1])
+                name_airshow = name
             };
-            // Keep the full international location in the serialized state field.
-            string location = string.Join(" ", cells[2]);
-            int comma = location.IndexOf(',');
-            show.location.city = comma < 0 ? location : location[..comma].Trim();
-            show.location.state = comma < 0 ? "" : location[(comma + 1)..].Trim();
+            show.location.city = city;
+            show.location.state = state;
             show.Performers.performer.AddRange(cells[3].Select(s => Regex.Replace(s, @"^-\s*", "")));
             if (cells[4].Length > 0)
             {

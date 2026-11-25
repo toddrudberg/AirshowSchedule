@@ -17,6 +17,8 @@ namespace AirshowSchedules
         public string address;
         public List<string> emailAddresses { get; set; } = new List<string>();
         public List<int> showIDs { get; set; } = new List<int>();
+        [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
+        public string? SilentScheduleChangeId { get; set; }
 
         public cContact()
         { }
@@ -43,12 +45,15 @@ namespace AirshowSchedules
             string json = JsonConvert.SerializeObject(myContacts, Formatting.Indented);
             
             //make sure the directory exists
-            string dir = Path.GetDirectoryName(fileName);
-            if (!Directory.Exists(dir))
+            string path = Path.GetFullPath(fileName);
+            Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+            string temp = path + "." + Guid.NewGuid().ToString("N") + ".tmp";
+            try
             {
-                Directory.CreateDirectory(dir);
+                File.WriteAllText(temp, json);
+                File.Move(temp, path, overwrite: true);
             }
-            System.IO.File.WriteAllText(fileName, json);
+            finally { File.Delete(temp); }
             Console.WriteLine($"Contacts have been exported to {fileName}".Pastel(Color.LimeGreen));
         }
 
@@ -69,19 +74,7 @@ namespace AirshowSchedules
         //make a static deepCopy
         public static List<cContact> DeepCopy(List<cContact> contacts)
         {
-            List<cContact> result = new List<cContact>();
-            foreach (cContact contact in contacts)
-            {
-                cContact newContact = new cContact();
-                newContact.ID = contact.ID;
-                newContact.name = contact.name;
-                newContact.phone = contact.phone;
-                newContact.address = contact.address;
-                newContact.emailAddresses = new List<string>(contact.emailAddresses);
-                newContact.showIDs = new List<int>(contact.showIDs);
-                result.Add(newContact);
-            }
-            return result;
+            return contacts.Select(contact => contact.DeepCopy()).ToList();
         }
 
         public cContact DeepCopy()
@@ -93,6 +86,7 @@ namespace AirshowSchedules
             newContact.address = address;
             newContact.emailAddresses = new List<string>(emailAddresses);
             newContact.showIDs = new List<int>(showIDs);
+            newContact.SilentScheduleChangeId = SilentScheduleChangeId;
             return newContact;
         }
 

@@ -22,15 +22,19 @@ namespace AirshowSchedules
         private Button buttonCancel;
         private Label label1;
         private ListBox listContacts;
-        List<cContact> Contacts;
+        private readonly List<cContact>? Contacts;
 
         public cContact Contact { get; private set; }
 
-        public ContactEditForm(cContact contact, List<cContact> contacts)
+        public ContactEditForm(cContact contact, List<cContact>? contacts = null)
         {
             this.Contacts = contacts;
             this.Contact = contact;
             InitializeComponent();
+            listContacts.Visible = contacts != null;
+            StartPosition = FormStartPosition.CenterParent;
+            AcceptButton = buttonOK;
+            CancelButton = buttonCancel;
             ScreenLayout.ConfigureScrollable(this);
             this.AutoScaleDimensions = new SizeF(7F, 15F);
             this.AutoScaleMode = AutoScaleMode.Font;
@@ -185,8 +189,10 @@ namespace AirshowSchedules
             this.textBoxName.Text = Contact.name;
             this.textBoxPhone.Text = Contact.phone;
             this.textBoxAddress.Text = Contact.address;
+            this.listBoxEmailAddresses.Items.Clear();
             this.listBoxEmailAddresses.Items.AddRange(Contact.emailAddresses.ToArray());
 
+            if (Contacts == null) return;
             listContacts.Items.Clear();
             if (Contact.name != null && Contact.name != "")
             {
@@ -240,6 +246,12 @@ namespace AirshowSchedules
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
+            if (Contacts == null && string.IsNullOrWhiteSpace(textBoxName.Text))
+            {
+                MessageBox.Show(this, "Enter a contact name.", Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                textBoxName.Focus();
+                return;
+            }
             Contact.name = this.textBoxName.Text;
             Contact.phone = this.textBoxPhone.Text;
             Contact.address = this.textBoxAddress.Text;
@@ -256,6 +268,7 @@ namespace AirshowSchedules
 
         private void textBoxName_TextChanged(object sender, EventArgs e)
         {
+            if (Contacts == null) return;
             List<cContact> foundContacts = new List<cContact>();
             foreach (cContact contact in Contacts)
             {

@@ -23,9 +23,7 @@ public partial class formMain
         {
             var row = dgvCalendar.Rows[month - 1];
             row.HeaderCell.Value = CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(month);
-            var saturdays = cCalenderYear.GetSaturdaysList(year).Where(w => w.Date.Month == month).Select(w => w.Date).ToList();
-            if (month == 1 && new DateTime(year, 1, 1).DayOfWeek == DayOfWeek.Sunday)
-                saturdays.Insert(0, new DateTime(year - 1, 12, 31));
+            var saturdays = CalendarPlanning.WeekendStarts(year, month);
             for (int index = 0; index < saturdays.Count; index++) row.Cells[index].Tag = saturdays[index];
             foreach (DataGridViewCell cell in row.Cells)
                 if (cell.Tag == null) { cell.Style.BackColor = Color.Gainsboro; cell.Value = ""; }

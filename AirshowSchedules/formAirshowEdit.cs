@@ -1,11 +1,12 @@
-using static AirshowSchedules.Airshow;
+using System.Globalization;
 
 namespace AirshowSchedules
 {
     public class AirshowEditForm : Form
     {
-        private TextBox textBoxDateStart;
-        private TextBox textBoxDateFinish;
+        private const string DateFormat = "yyyy-MM-dd";
+        private DateTimePicker datePickerStart;
+        private DateTimePicker datePickerFinish;
         private TextBox textBoxNameAirshow;
         private TextBox textBoxLocationCity;
         private TextBox textBoxLocationState;
@@ -27,13 +28,16 @@ namespace AirshowSchedules
         private Label label4;
         private Button buttonAddLink;
         private Button btnRemoveLink;
-        private Airshow airshow;
-        private List<cContact> contacts;
+        private readonly Airshow airshow;
+        private readonly List<cContact> savedContacts;
+        private readonly List<cContact> contacts;
+        private bool contactsChanged;
 
         public AirshowEditForm(Airshow airshow, List<cContact> contacts)
         {
             this.airshow = airshow;
-            this.contacts = contacts;
+            savedContacts = contacts;
+            this.contacts = cContact.DeepCopy(contacts);
             InitializeComponent();
             ScreenLayout.ConfigureScrollable(this);
             this.AutoScaleDimensions = new SizeF(7F, 15F);
@@ -46,8 +50,10 @@ namespace AirshowSchedules
 
         private void InitializeComponent()
         {
-            textBoxDateStart = new TextBox();
-            textBoxDateFinish = new TextBox();
+            datePickerStart = CreateDatePicker("datePickerStart", "Start date", 32, 0);
+            datePickerFinish = CreateDatePicker("datePickerFinish", "Finish date", 84, 1);
+            var startLabel = new Label { Text = "Start date", Location = new Point(10, 8), AutoSize = true };
+            var finishLabel = new Label { Text = "Finish date", Location = new Point(10, 60), AutoSize = true };
             textBoxNameAirshow = new TextBox();
             textBoxLocationCity = new TextBox();
             textBoxLocationState = new TextBox();
@@ -71,27 +77,9 @@ namespace AirshowSchedules
             btnRemoveLink = new Button();
             SuspendLayout();
             // 
-            // textBoxDateStart
-            // 
-            textBoxDateStart.Location = new Point(10, 10);
-            textBoxDateStart.Name = "textBoxDateStart";
-            textBoxDateStart.PlaceholderText = "Start Date (yyyy-MM-DD)";
-            textBoxDateStart.Size = new Size(200, 23);
-            textBoxDateStart.TabIndex = 0;
-            textBoxDateStart.Click += TextBoxDateStart_Enter;
-            // 
-            // textBoxDateFinish
-            // 
-            textBoxDateFinish.Location = new Point(10, 40);
-            textBoxDateFinish.Name = "textBoxDateFinish";
-            textBoxDateFinish.PlaceholderText = "Finish Date (yyyy-MM-DD)";
-            textBoxDateFinish.Size = new Size(200, 23);
-            textBoxDateFinish.TabIndex = 1;
-            textBoxDateFinish.Click += TextBoxDateFinish_Enter;
-            // 
             // textBoxNameAirshow
             // 
-            textBoxNameAirshow.Location = new Point(10, 70);
+            textBoxNameAirshow.Location = new Point(10, 120);
             textBoxNameAirshow.Name = "textBoxNameAirshow";
             textBoxNameAirshow.PlaceholderText = "Name of Airshow";
             textBoxNameAirshow.Size = new Size(200, 23);
@@ -99,7 +87,7 @@ namespace AirshowSchedules
             // 
             // textBoxLocationCity
             // 
-            textBoxLocationCity.Location = new Point(10, 100);
+            textBoxLocationCity.Location = new Point(10, 150);
             textBoxLocationCity.Name = "textBoxLocationCity";
             textBoxLocationCity.PlaceholderText = "City";
             textBoxLocationCity.Size = new Size(200, 23);
@@ -107,7 +95,7 @@ namespace AirshowSchedules
             // 
             // textBoxLocationState
             // 
-            textBoxLocationState.Location = new Point(10, 130);
+            textBoxLocationState.Location = new Point(10, 180);
             textBoxLocationState.Name = "textBoxLocationState";
             textBoxLocationState.PlaceholderText = "State";
             textBoxLocationState.Size = new Size(200, 23);
@@ -115,7 +103,7 @@ namespace AirshowSchedules
             // 
             // textBoxNotes
             // 
-            textBoxNotes.Location = new Point(10, 160);
+            textBoxNotes.Location = new Point(10, 210);
             textBoxNotes.Multiline = true;
             textBoxNotes.Name = "textBoxNotes";
             textBoxNotes.PlaceholderText = "Notes";
@@ -126,7 +114,7 @@ namespace AirshowSchedules
             // 
             comboBoxStatus.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxStatus.Items.AddRange(new object[] { "contract", "verbal", "maybe", "pursue", "none", "NO" });
-            comboBoxStatus.Location = new Point(10, 230);
+            comboBoxStatus.Location = new Point(10, 280);
             comboBoxStatus.Name = "comboBoxStatus";
             comboBoxStatus.Size = new Size(200, 23);
             comboBoxStatus.TabIndex = 6;
@@ -151,7 +139,7 @@ namespace AirshowSchedules
             // listBoxUndauntedNotes
             // 
             listBoxUndauntedNotes.ItemHeight = 15;
-            listBoxUndauntedNotes.Location = new Point(10, 384);
+            listBoxUndauntedNotes.Location = new Point(10, 434);
             listBoxUndauntedNotes.Name = "listBoxUndauntedNotes";
             listBoxUndauntedNotes.Size = new Size(406, 94);
             listBoxUndauntedNotes.TabIndex = 9;
@@ -159,7 +147,7 @@ namespace AirshowSchedules
             // 
             // buttonAddNote
             // 
-            buttonAddNote.Location = new Point(10, 484);
+            buttonAddNote.Location = new Point(10, 534);
             buttonAddNote.Name = "buttonAddNote";
             buttonAddNote.Size = new Size(75, 23);
             buttonAddNote.TabIndex = 10;
@@ -168,7 +156,7 @@ namespace AirshowSchedules
             // 
             // buttonRemoveNote
             // 
-            buttonRemoveNote.Location = new Point(91, 484);
+            buttonRemoveNote.Location = new Point(91, 534);
             buttonRemoveNote.Name = "buttonRemoveNote";
             buttonRemoveNote.Size = new Size(75, 23);
             buttonRemoveNote.TabIndex = 11;
@@ -196,7 +184,7 @@ namespace AirshowSchedules
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 366);
+            label1.Location = new Point(10, 416);
             label1.Name = "label1";
             label1.Size = new Size(103, 15);
             label1.TabIndex = 15;
@@ -243,7 +231,7 @@ namespace AirshowSchedules
             // listBoxWeblinks
             // 
             listBoxWeblinks.ItemHeight = 15;
-            listBoxWeblinks.Location = new Point(10, 278);
+            listBoxWeblinks.Location = new Point(10, 328);
             listBoxWeblinks.Name = "listBoxWeblinks";
             listBoxWeblinks.Size = new Size(406, 49);
             listBoxWeblinks.TabIndex = 20;
@@ -252,7 +240,7 @@ namespace AirshowSchedules
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(10, 260);
+            label4.Location = new Point(10, 310);
             label4.Name = "label4";
             label4.Size = new Size(61, 15);
             label4.TabIndex = 21;
@@ -260,7 +248,7 @@ namespace AirshowSchedules
             // 
             // buttonAddLink
             // 
-            buttonAddLink.Location = new Point(10, 333);
+            buttonAddLink.Location = new Point(10, 383);
             buttonAddLink.Name = "buttonAddLink";
             buttonAddLink.Size = new Size(75, 23);
             buttonAddLink.TabIndex = 22;
@@ -269,7 +257,7 @@ namespace AirshowSchedules
             // 
             // btnRemoveLink
             // 
-            btnRemoveLink.Location = new Point(91, 333);
+            btnRemoveLink.Location = new Point(91, 383);
             btnRemoveLink.Name = "btnRemoveLink";
             btnRemoveLink.Size = new Size(75, 23);
             btnRemoveLink.TabIndex = 23;
@@ -288,8 +276,10 @@ namespace AirshowSchedules
             Controls.Add(buttonRemoveContact);
             Controls.Add(buttonAddContact);
             Controls.Add(label1);
-            Controls.Add(textBoxDateStart);
-            Controls.Add(textBoxDateFinish);
+            Controls.Add(startLabel);
+            Controls.Add(finishLabel);
+            Controls.Add(datePickerStart);
+            Controls.Add(datePickerFinish);
             Controls.Add(textBoxNameAirshow);
             Controls.Add(textBoxLocationCity);
             Controls.Add(textBoxLocationState);
@@ -304,63 +294,62 @@ namespace AirshowSchedules
             Controls.Add(buttonCancel);
             Name = "AirshowEditForm";
             Text = "Edit Airshow";
+            StartPosition = FormStartPosition.CenterParent;
             ResumeLayout(false);
             PerformLayout();
         }
 
-        private void TextBoxDateFinish_Enter(object? sender, EventArgs e)
+        private static DateTimePicker CreateDatePicker(string name, string label, int top, int tabIndex) => new()
         {
-            string existingDate = textBoxDateFinish.Text;
-            if (string.IsNullOrEmpty(existingDate))
-            {
-                existingDate = textBoxDateStart.Text;
-            }
-            string newDate = EditDatePrompt.ShowDialog("Edit Finish Date:", "Edit Date", existingDate);
-            if (!string.IsNullOrEmpty(newDate))
-            {
-                textBoxDateFinish.Text = newDate;
-            }
-        }
+            Name = name, AccessibleName = label, Location = new Point(10, top), Width = 200,
+            Format = DateTimePickerFormat.Custom, CustomFormat = DateFormat, TabIndex = tabIndex
+        };
 
-        private void TextBoxDateStart_Enter(object? sender, EventArgs e)
+        private static void BindDate(DateTimePicker picker, string? text)
         {
-            string existingDate = textBoxDateStart.Text;
-            string newDate = EditDatePrompt.ShowDialog("Edit Start Date:", "Edit Date", existingDate);
-            if (!string.IsNullOrEmpty(newDate))
+            if (DateTime.TryParse(text, CultureInfo.InvariantCulture, DateTimeStyles.None, out var date)
+                && date >= picker.MinDate && date <= picker.MaxDate)
             {
-                textBoxDateStart.Text = newDate;
+                picker.Value = date.Date;
+                return;
             }
+            picker.ShowCheckBox = true;
+            picker.Checked = false;
         }
 
         private void BindData()
         {
-            this.textBoxDateStart.Text = airshow.date_start;
-            this.textBoxDateFinish.Text = airshow.date_finish;
+            BindDate(datePickerStart, airshow.date_start);
+            BindDate(datePickerFinish, airshow.date_finish);
             this.textBoxNameAirshow.Text = airshow.name_airshow;
             this.textBoxLocationCity.Text = airshow.location.city;
             this.textBoxLocationState.Text = airshow.location.state;
             this.textBoxNotes.Text = airshow.Notes_AirshowStuff;
             this.comboBoxStatus.SelectedItem = airshow.Status.ToString();
             this.listBoxPerformers.Items.AddRange(airshow.Performers.performer.ToArray());
-            //contacts
-            this.listBoxContacts.Items.AddRange(cContact.getContacts(contacts, airshow).ToArray());
+            RefreshContacts();
             this.listBoxUndauntedNotes.Items.AddRange(airshow.UndauntedNotes.ToArray());
             this.listBoxWeblinks.Items.AddRange(airshow.AirshowLinks.ToArray());
         }
 
+
+        private void RefreshContacts()
+        {
+            listBoxContacts.Items.Clear();
+            listBoxContacts.Items.AddRange(cContact.getContacts(contacts, airshow).ToArray());
+        }
 
         private void ListBoxContacts_Click(object sender, EventArgs e)
         {
             if (this.listBoxContacts.SelectedItem != null)
             {
                 cContact selectedContact = (cContact)this.listBoxContacts.SelectedItem;
-                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact, contacts))
+                using (ContactEditForm contactEditForm = new ContactEditForm(selectedContact))
                 {
-                    if (contactEditForm.ShowDialog() == DialogResult.OK)
+                    if (contactEditForm.ShowDialog(this) == DialogResult.OK)
                     {
-                        // Refresh the list box to reflect the updated contact
-                        int selectedIndex = this.listBoxContacts.SelectedIndex;
-                        this.listBoxContacts.Items[selectedIndex] = contactEditForm.Contact;
+                        contactsChanged = true;
+                        RefreshContacts();
                     }
                 }
             }
@@ -402,16 +391,28 @@ namespace AirshowSchedules
 
         private void ButtonOK_Click(object sender, EventArgs e)
         {
-            airshow.date_start = this.textBoxDateStart.Text;
-            airshow.date_finish = this.textBoxDateFinish.Text;
+            DateTime start = datePickerStart.Value.Date;
+            DateTime finish = datePickerFinish.Value.Date;
+            if (!datePickerStart.Checked || !datePickerFinish.Checked || finish < start)
+            {
+                MessageBox.Show(this, "Choose a start date and a finish date on or after it.", Text,
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            airshow.date_start = start.ToString(DateFormat, CultureInfo.InvariantCulture);
+            airshow.date_finish = finish.ToString(DateFormat, CultureInfo.InvariantCulture);
             airshow.name_airshow = this.textBoxNameAirshow.Text;
             airshow.location.city = this.textBoxLocationCity.Text;
             airshow.location.state = this.textBoxLocationState.Text;
             airshow.Notes_AirshowStuff = this.textBoxNotes.Text;
             airshow.Status = (Airshow.eStatus)Enum.Parse(typeof(Airshow.eStatus), this.comboBoxStatus.SelectedItem.ToString());
             airshow.Performers.performer = new List<string>(this.listBoxPerformers.Items.Cast<string>());
-            //contacts
-            //Contacts = new List<cContact>(this.listBoxContacts.Items.Cast<cContact>());
+            if (contactsChanged)
+            {
+                savedContacts.Clear();
+                savedContacts.AddRange(contacts);
+            }
             airshow.UndauntedNotes = new List<string>(this.listBoxUndauntedNotes.Items.Cast<string>());
             airshow.AirshowLinks = new List<string>(this.listBoxWeblinks.Items.Cast<string>());
 
@@ -430,23 +431,22 @@ namespace AirshowSchedules
             cContact newContact = new cContact();
             using (ContactEditForm contactEditForm = new ContactEditForm(newContact, contacts))
             {
-                if (contactEditForm.ShowDialog() == DialogResult.OK)
+                if (contactEditForm.ShowDialog(this) == DialogResult.OK)
                 {
                     cContact.addContact(contacts, contactEditForm.Contact, airshow);
-                    //see if the contact exists in the listBoxContacts
-                    if (!this.listBoxContacts.Items.Contains(contactEditForm.Contact))
-                    {
-                        this.listBoxContacts.Items.Add(contactEditForm.Contact);
-                    }
+                    contactsChanged = true;
+                    RefreshContacts();
                 }
             }
         }
 
         private void buttonRemoveContact_Click(object sender, EventArgs e)
         {
-            if (listBoxContacts.SelectedItem != null)
+            if (listBoxContacts.SelectedItem is cContact contact)
             {
-                listBoxContacts.Items.Remove(listBoxContacts.SelectedItem);
+                contact.showIDs.RemoveAll(id => id == airshow.ID);
+                contactsChanged = true;
+                RefreshContacts();
             }
         }
 
@@ -595,35 +595,4 @@ namespace AirshowSchedules
         }
     }
 
-    public static class EditDatePrompt
-    {
-        public static string ShowDialog(string text, string caption, string existingDate = "")
-        {
-            using (Form prompt = new Form())
-            {
-                prompt.Width = 300;
-                prompt.Height = 200;
-                prompt.FormBorderStyle = FormBorderStyle.FixedDialog;
-                prompt.Text = caption;
-                prompt.StartPosition = FormStartPosition.CenterScreen;
-
-                Label textLabel = new Label() { Left = 50, Top = 20, Text = text, AutoSize = true };
-                DateTimePicker dateTimePicker = new DateTimePicker() { Left = 50, Top = 50, Width = 200 };
-                if (DateTime.TryParse(existingDate, out DateTime parsedDate))
-                {
-                    dateTimePicker.Value = parsedDate;
-                }
-                Button confirmation = new Button() { Text = "OK", Left = 150, Width = 100, Top = 100, DialogResult = DialogResult.OK };
-
-                confirmation.Click += (sender, e) => { prompt.Close(); };
-
-                prompt.Controls.Add(dateTimePicker);
-                prompt.Controls.Add(confirmation);
-                prompt.Controls.Add(textLabel);
-                prompt.AcceptButton = confirmation;
-
-                return prompt.ShowDialog() == DialogResult.OK ? dateTimePicker.Value.ToString("yyyy-MM-dd") : string.Empty;
-            }
-        }
-    }
 }

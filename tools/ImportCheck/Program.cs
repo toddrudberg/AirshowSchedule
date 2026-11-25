@@ -2,6 +2,17 @@ using AirshowSchedules;
 using System.Text.RegularExpressions;
 using System.Xml.Serialization;
 
+if (args.Length == 4 && args[0] == "--silent-schedule-sample")
+{
+    await SilentScheduleChecks.Run(args[1], args[2], args[3]);
+    return;
+}
+if (args.Length == 2 && args[0] == "--region-excel-sample")
+{
+    RegionExcelChecks.Run(args[1]);
+    return;
+}
+
 void Check(bool condition, string message)
 {
     if (!condition) throw new Exception(message);

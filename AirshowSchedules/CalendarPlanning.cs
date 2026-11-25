@@ -4,6 +4,14 @@ namespace AirshowSchedules;
 
 internal static class CalendarPlanning
 {
+    internal static List<DateTime> WeekendStarts(int year, int month)
+    {
+        var starts = cCalenderYear.GetSaturdaysList(year).Where(w => w.Date.Month == month).Select(w => w.Date).ToList();
+        if (month == 1 && new DateTime(year, 1, 1).DayOfWeek == DayOfWeek.Sunday)
+            starts.Insert(0, new DateTime(year - 1, 12, 31));
+        return starts;
+    }
+
     internal static bool Dates(Airshow show, out DateTime start, out DateTime finish)
     {
         bool validStart = DateTime.TryParseExact(show.date_start, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out start);
